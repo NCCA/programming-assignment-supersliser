@@ -137,6 +137,6 @@ ObjectEntity o-- vec3
 MoveableEntity o-- vec3
 MoveableEntity o-- quarternion
 
-ObjectEntity <|-- PlaceableEntity
-ColonyBanner <|-- PlaceableEntity
+PlaceableEntity <|-- ObjectEntity
+PlaceableEntity <|-- ColonyBanner
 @enduml

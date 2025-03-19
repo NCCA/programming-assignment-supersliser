@@ -14,3 +14,6 @@ Please see below the class diagram for such:
 (if you would prefer a c-style visualisation please see: [[ClassDiagram.md]])
 
 ![[ClassDiagram.png]]
+
+> [!NOTE]
+> I am 100% sure that I got an arrow the wrong way around in this diagram, if something seems wrong just lemme know because it probably is
