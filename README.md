@@ -7,4 +7,10 @@
 - Forest generator - exports to USD or Houdini or maybe Maya (it exports to something idk what yet)
 - Melee Weapon Generator (parametrically generates weapons based on a list of factors)
 
-> There is more but I cant think of them right now.
+
+## Selected Idea
+ I have opted to do the voxel based colony management game.
+Please see below the class diagram for such:
+(if you would prefer a c-style visualisation please see: [[ClassDiagram.md]])
+
+![[ClassDiagram.png]]
