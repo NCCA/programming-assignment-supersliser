@@ -27,7 +27,7 @@ enum e_placeableItem {
 	PLANKS
 	LEAVES
 }
-abstract class ObjectEntity {
+abstract class a_ObjectEntity {
 	# vec3 m_position
 	# bool m_visible
 	# bool m_selectable
@@ -40,7 +40,7 @@ abstract class ObjectEntity {
 	+ void setSelectable(bool i_selectable)
 	+ bool selected()
 	+ void select()
-	+ void unselect()
+	+ void deselect()
 	+ vec3 position()
 	+ ObjectEntity()
 	+ ObjectEntity(vec3 i_position, bool i_visible = true, bool i_selectable = true)
@@ -49,24 +49,23 @@ abstract class ObjectEntity {
 
 vec3 <.. ObjectEntity
 
-abstract class MoveableEntity {
+abstract class a_MoveableEntity {
 	# quarternion m_rotation
 	# int m_speed
 	# int m_health
 	# int m_maxHealth
 	+ void setRotation(vec3 i_rotation)
-	+ void setRotation(float i_hRotation, float i_vRotation, vec3 i_upVector)
 	+ void setRotation(quarternion i_rotation)
 	+ void rotate(vec3 i_axis, int i_rotation)
-	+ quarternion rotation()
-	+ vec3 rotation()
+	+ quarternion Qrotation()
+	+ vec3 Vrotation()
 	+ void setSpeed(int i_speed)
 	+ int speed()
 	+ void damage(int i_damage)
 	+ void heal(int i_healing)
 	+ int health()
 	+ MoveableEntity()
-	+ MoveableEntity(vec3 i_position, vec3 i_rotation = (0,0,1), int i_health = 100, int i_speed = 100)
+	+ MoveableEntity(vec3 i_position, vec3 i_rotation = (0,0,1), int i_health = 100, int i_speed = 1, int i_visible = true, int i_selectable = true)
 	+ ~MoveableEntity()
 }
 
@@ -78,24 +77,26 @@ class PlayerEntity {
 	# Camera m_cam
 	# bool m_sprinting
 	# int m_stamina
-	# S_Colony m_colony
+	# s_Colony m_colony
 	+ PlayerEntity()
-	+ PlayerEntity(vec3 i_position = (0,0,0), vec3 i_rotation = (0,0,1), i_health = 100)
+	+ PlayerEntity(vec3 i_position, vec3 i_rotation, int i_health)
 	+ void startSprint()
 	+ void stopSprint()
 	+ void move(vec2 i_direction)
 	+ int stamina()
 	+ void setStamina(int i_stamina)
+	+ setColony(s_Colony i_colony)
+	+ s_Colony colony()
 	+ ~PlayerEntity
 }
 
 MoveableEntity <|-- PlayerEntity
 vec3 <.. PlayerEntity
-S_Colony o-- PlayerEntity
+s_Colony o-- PlayerEntity
 Camera o-- PlayerEntity
 
 class ColonistEntity {
-	# {static} S_Colony m_colony
+	# {static} s_Colony m_colony
 	# e_job m_job
 	+ void hire(e_job i_job)
 	+ void fire()
@@ -107,7 +108,7 @@ class ColonistEntity {
 }
 
 MoveableEntity <|-- ColonistEntity
-S_Colony o-- ColonistEntity
+s_Colony o-- ColonistEntity
 e_job <.. ColonistEntity
 vec3 <.. ColonistEntity
 
@@ -141,7 +142,6 @@ class Slot {
 	# Item m_item
 	# int m_quantity
 	# int m_maxItems
-
 	+ void setItem()
 	+ Item item()
 	+ void setQuantity()
@@ -191,15 +191,17 @@ class Hotbar {
 FillableInventory <|-- Hotbar
 
 class Camera {
-	# float fov
-	# int closeCullingDistance
-	# int farCullingDistance
+	# float m_fov
+	# float m_closeCullingDistance
+	# float m_farCullingDistance
+	# float m_aspectRatio
 	+ void setFOV(float i_fov)
 	+ float fov()
+    + void setAspectRatio(float i_aspectRatio)
+	+ float aspectRatio()
 	+ Camera()
-	+ Camera(int i_closeCullingDistance, int i_viewBoxSize, float i_fov)
 	+ Camera(int i_closeCullingDistance, int i_farCullingDistance, float i_fov)
-	+ Draw(vec3 i_position, quarternion i_direction)
+	+ void Draw(vec3 i_position, quarternion i_direction)
 	+ ~Camera()
 }
 class PlacedEntity {
@@ -240,7 +242,7 @@ class S_World {
 PlayerEntity o-- S_World
 PlacedEntity o-- S_World
 
-class S_Colony {
+class s_Colony {
 	# Inventory m_inventory
 	# ColonyBanner m_banner
 	# Vec<ColonistEntity> m_colonists
@@ -255,11 +257,11 @@ class S_Colony {
 	+ fireColonist(ColonistEntity i_colonist)
 }
 
-Inventory o-- S_Colony
-ColonyBanner o-- S_Colony
-ColonistEntity o-- S_Colony
-vec3 <.. S_Colony
-Slot o-- S_Colony
-Item o-- S_Colony
-e_job <.. S_Colony
+Inventory o-- s_Colony
+ColonyBanner o-- s_Colony
+ColonistEntity o-- s_Colony
+vec3 <.. s_Colony
+Slot o-- s_Colony
+Item o-- s_Colony
+e_job <.. s_Colony
 @enduml
