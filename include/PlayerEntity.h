@@ -12,7 +12,7 @@
 class PlayerEntity : public a_MoveableEntity
 {
     protected:
-    Camera m_camera;
+    Camera m_cam;
     bool m_sprinting = false;
     int m_stamina = 100;
     s_Colony* m_colony;
@@ -21,8 +21,8 @@ class PlayerEntity : public a_MoveableEntity
     PlayerEntity(ngl::Vec3 i_position, ngl::Vec3 i_direction, int i_health);
     void startSprint();
     void stopSprint();
-    void move(const ngl::Vec2& i_direction);
     int stamina() const;
+    virtual void move(const ngl::Vec2& i_direction);
     void setStamina(int i_stamina);
     void setColony(s_Colony* i_colony);
     s_Colony* colony() const;

@@ -21,7 +21,7 @@ public:
     float aspectRatio() const;
     Camera() = default;
     Camera(const float i_closeCullingDistance, int i_farCullingDistance, float i_fov, float i_aspectRatio);
-    void Draw(ngl::Vec3 i_position, ngl::Quaternion i_orientation);
+    void Draw(ngl::Vec3 i_position, ngl::Vec3 i_direction, ngl::Vec3 i_up);
     ~Camera() = default;
 };
 

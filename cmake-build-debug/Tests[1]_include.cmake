@@ -1,0 +1,5 @@
+if(EXISTS "/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/Tests[1]_tests.cmake")
+  include("/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/Tests[1]_tests.cmake")
+else()
+  add_test(Tests_NOT_BUILT Tests_NOT_BUILT)
+endif()

@@ -39,23 +39,20 @@ TEST(PlayerEntity, WalkForwards)
     const ngl::Vec2 direction = ngl::Vec2(0.0f, 1.0f);
     const ngl::Vec3 EXPECTED_OUTPUT = ngl::Vec3(0.0f, 0.0f, 1.0f);
 
-    player.setDirection(ngl::Vec3(0.0f, 0.0f, 1.0f));
     player.move(direction);
 
-
-    EXPECT_FLOAT_EQ(player.position().m_x, EXPECTED_OUTPUT.m_x);
-    EXPECT_FLOAT_EQ(player.position().m_y, EXPECTED_OUTPUT.m_y);
-    EXPECT_FLOAT_EQ(player.position().m_z, EXPECTED_OUTPUT.m_z);
+    EXPECT_TRUE(FCompare(player.position().m_x, EXPECTED_OUTPUT.m_x));
+    EXPECT_TRUE(FCompare(player.position().m_y, EXPECTED_OUTPUT.m_y));
+    EXPECT_TRUE(FCompare(player.position().m_z, EXPECTED_OUTPUT.m_z));
 }
 
 TEST(PlayerEntity, SprintForwards)
 {
     PlayerEntity player;
 
-    const ngl::Vec2 direction = ngl::Vec2(0.0f, 1.0f);
-    const ngl::Vec3 EXPECTED_OUTPUT = ngl::Vec3(0.0f, 0.0f, 2.0f);
+    const auto direction = ngl::Vec2(0.0f, 1.0f);
+    const auto EXPECTED_OUTPUT = ngl::Vec3(0.0f, 0.0f, 2.0f);
 
-    player.setDirection(ngl::Vec3(0.0f, 0.0f, 1.0f));
     player.startSprint();
     player.move(direction);
 
@@ -71,6 +68,36 @@ TEST(PlayerEntity, SprintForwards)
     EXPECT_FLOAT_EQ(player.position().m_x, EXPECTED_OUTPUT2.m_x);
     EXPECT_FLOAT_EQ(player.position().m_y, EXPECTED_OUTPUT2.m_y);
     EXPECT_FLOAT_EQ(player.position().m_z, EXPECTED_OUTPUT2.m_z);
+}
+
+TEST(PlayerEntity, SprintLeft)
+{
+    PlayerEntity player;
+    auto direction = ngl::Vec2(1.0f, 0.0f);
+    auto EXPECTED_OUTPUT = ngl::Vec3(1.0f, 0.0f, 0.0f);
+
+    player.move(direction);
+
+    EXPECT_FLOAT_EQ(player.position().m_x, EXPECTED_OUTPUT.m_x);
+    EXPECT_FLOAT_EQ(player.position().m_y, EXPECTED_OUTPUT.m_y);
+    EXPECT_FLOAT_EQ(player.position().m_z, EXPECTED_OUTPUT.m_z);
+
+    player.startSprint();
+    player.move(direction);
+    EXPECTED_OUTPUT = ngl::Vec3(3.0f, 0.0f, 0.0f);
+
+    EXPECT_FLOAT_EQ(player.position().m_x, EXPECTED_OUTPUT.m_x);
+    EXPECT_FLOAT_EQ(player.position().m_y, EXPECTED_OUTPUT.m_y);
+    EXPECT_FLOAT_EQ(player.position().m_z, EXPECTED_OUTPUT.m_z);
+
+    player.stopSprint();
+
+    player.move(direction);
+    EXPECTED_OUTPUT = ngl::Vec3(4.0f, 0.0f, 0.0f);
+
+    EXPECT_FLOAT_EQ(player.position().m_x, EXPECTED_OUTPUT.m_x);
+    EXPECT_FLOAT_EQ(player.position().m_y, EXPECTED_OUTPUT.m_y);
+    EXPECT_FLOAT_EQ(player.position().m_z, EXPECTED_OUTPUT.m_z);
 }
 
 TEST(PlayerEntity, SetRotation)
@@ -90,15 +117,58 @@ TEST(PlayerEntity, Rotate)
 {
     PlayerEntity player;
 
-    const auto startDirection = ngl::Vec3(0.0f, 0.0f, 1.0f);
     const auto rotationAxis = ngl::Vec3(0.0f, 1.0f, 0.0f);
     const int rotationAmount = 90;
     auto EXPECTED_OUTPUT = ngl::Vec3(1.0f, 0.0f, 0.0f);
 
-    player.setDirection(startDirection);
     player.rotate(rotationAxis, rotationAmount);
 
     EXPECT_TRUE(FCompare(player.direction().m_x, EXPECTED_OUTPUT.m_x));
     EXPECT_TRUE(FCompare(player.direction().m_y, EXPECTED_OUTPUT.m_y));
     EXPECT_TRUE(FCompare(player.direction().m_z, EXPECTED_OUTPUT.m_z));
+}
+
+TEST(PlayerEntity, MoveAfterRotate)
+{
+    PlayerEntity player;
+
+    const auto rotationAxis = ngl::Vec3(0.0f, 1.0f, 0.0f);
+    const int rotationAmount = 90;
+    auto EXPECTED_OUTPUT = ngl::Vec3(-1.0f, 0.0f, 0.0f);
+    const auto moveDirection = ngl::Vec2(0.0f, 1.0f);
+
+    player.rotate(rotationAxis, rotationAmount);
+    player.move(moveDirection);
+
+    EXPECT_TRUE(FCompare(player.position().m_x, EXPECTED_OUTPUT.m_x));
+    EXPECT_TRUE(FCompare(player.position().m_y, EXPECTED_OUTPUT.m_y));
+    EXPECT_TRUE(FCompare(player.position().m_z, EXPECTED_OUTPUT.m_z));
+
+    player.rotate(rotationAxis, rotationAmount);
+    player.move(moveDirection);
+
+    EXPECTED_OUTPUT = ngl::Vec3(-1.0f, 0.0f, -1.0f);
+
+    EXPECT_TRUE(FCompare(player.position().m_x, EXPECTED_OUTPUT.m_x));
+    EXPECT_TRUE(FCompare(player.position().m_y, EXPECTED_OUTPUT.m_y));
+    EXPECT_TRUE(FCompare(player.position().m_z, EXPECTED_OUTPUT.m_z));
+}
+
+TEST(PlayerEntity, RunOutOfStamina)
+{
+    PlayerEntity player;
+
+    const auto moveDirection = ngl::Vec2(0.0f, 1.0f);
+    const auto EXPECTED_OUTPUT = ngl::Vec3(0.0f, 0.0f, 201.0f);
+
+    player.startSprint();
+    for (int i = 0; i < 100; i++)
+    {
+        player.move(moveDirection);
+    }
+    player.move(moveDirection);
+
+    EXPECT_TRUE(FCompare(player.position().m_x, EXPECTED_OUTPUT.m_x));
+    EXPECT_TRUE(FCompare(player.position().m_y, EXPECTED_OUTPUT.m_y));
+    EXPECT_TRUE(FCompare(player.position().m_z, EXPECTED_OUTPUT.m_z));
 }

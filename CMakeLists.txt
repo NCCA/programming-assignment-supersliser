@@ -47,6 +47,15 @@ target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
         include/e_job.h
         include/Colony.h
         src/PlayerEntity.cpp
+        include/ColonistEntity.h
+        src/ColonistEntity.cpp
+        include/Item.h
+        include/e_item.h
+        include/PlaceableItem.h
+        include/UseableItem.h
+        src/Item.cpp
+        src/PlaceableItem.cpp
+        src/UseableItem.cpp
 )
 
 # need to add some exta libs for SDL under linux
@@ -70,6 +79,28 @@ include(GoogleTest)
 enable_testing()
 add_executable(Tests)
 include_directories(include)
-target_sources(Tests PRIVATE tests/PlayerEntityTests.cpp src/PlayerEntity.cpp src/ObjectEntity.cpp include/ObjectEntity.h include/PlayerEntity.h include/MoveableEntity.h src/MoveableEntity.cpp include/Camera.h include/e_job.h include/Colony.h)
+target_sources(Tests PRIVATE
+        tests/PlayerEntityTests.cpp
+        tests/ColonistEntityTests.cpp
+        tests/ItemTests.cpp
+        src/PlayerEntity.cpp
+        src/ObjectEntity.cpp
+        include/ObjectEntity.h
+        include/PlayerEntity.h
+        include/MoveableEntity.h
+        src/MoveableEntity.cpp
+        include/Camera.h
+        include/e_job.h
+        include/Colony.h
+        include/ColonistEntity.h
+        src/ColonistEntity.cpp
+        include/Item.h
+        include/e_item.h
+        include/PlaceableItem.h
+        include/UseableItem.h
+        src/Item.cpp
+        src/PlaceableItem.cpp
+        src/UseableItem.cpp
+)
 target_link_libraries(Tests PRIVATE GTest::gtest GTest::gtest_main)
 gtest_discover_tests(Tests)

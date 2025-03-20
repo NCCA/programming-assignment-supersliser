@@ -15,8 +15,10 @@ class a_MoveableEntity : public a_ObjectEntity
     int m_speed = 1;
     int m_health = 100;
     int m_maxHealth = 100;
+    bool m_inAir = false;
 public:
     virtual void setDirection(const ngl::Vec3& i_direction);
+    virtual float directionAngle(ngl::Vec3 i_axis = ngl::Vec3::up()) const;
     virtual void rotate(const ngl::Vec3 i_axis, const int i_rotation);
     virtual ngl::Vec3 direction() const;
     virtual void setSpeed(const int i_speed);
@@ -27,7 +29,10 @@ public:
     a_MoveableEntity() = default;
     a_MoveableEntity(ngl::Vec3 i_position, ngl::Vec3 i_direction = ngl::Vec3(0.0f, 0.0f, 1.0f), int i_health = 100, int i_speed = 1, bool i_visible = true, bool i_selectable = false);
     virtual ~a_MoveableEntity() = default;
-
+    virtual ngl::Vec3 getMovementVector(ngl::Vec2 i_direction) const;
+    virtual void jump();
+    virtual void setInAir(bool i_inAir);
+    virtual bool inAir() const;
 };
 
 #endif //MOVEABLEENTITY_H

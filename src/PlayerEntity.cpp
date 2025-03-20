@@ -3,13 +3,15 @@
 //
 #include "PlayerEntity.h"
 
+#include <bits/algorithmfwd.h>
+
 PlayerEntity::PlayerEntity(ngl::Vec3 i_position, ngl::Vec3 i_direction, int i_health)
 {
     m_position = i_position;
     m_direction = i_direction;
     m_health = i_health;
     m_maxHealth = 100;
-    m_camera = Camera();
+    m_cam = Camera();
 }
 
 void PlayerEntity::startSprint()
@@ -24,9 +26,7 @@ void PlayerEntity::stopSprint()
 
 void PlayerEntity::move(const ngl::Vec2& i_direction)
 {
-    auto direction = ngl::Vec3(i_direction.m_x, 0, i_direction.m_y);
-    direction = m_direction * direction;
-    direction *= m_speed * (m_sprinting ? 2 : 1);
+    auto direction = getMovementVector(i_direction);
     if (m_stamina > 0)
     {
         m_stamina -= 1;
@@ -35,6 +35,7 @@ void PlayerEntity::move(const ngl::Vec2& i_direction)
     {
         m_sprinting = false;
     }
+    direction *= m_speed * (m_sprinting ? 2 : 1);
     incrementPosition(direction);
 }
 

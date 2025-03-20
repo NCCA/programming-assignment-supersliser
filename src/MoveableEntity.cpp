@@ -12,6 +12,23 @@ void a_MoveableEntity::setDirection(const ngl::Vec3& i_direction)
     m_direction = i_direction;
 }
 
+float a_MoveableEntity::directionAngle(ngl::Vec3 i_axis) const
+{
+    if (i_axis == ngl::Vec3::up() || i_axis == ngl::Vec3::down())
+    {
+        return atan2(m_direction.m_x, m_direction.m_z) * 180 / M_PI;
+    }
+    else if (i_axis == ngl::Vec3::right() || i_axis == ngl::Vec3::left())
+    {
+        return atan2(m_direction.m_z, m_direction.m_y) * 180 / M_PI;
+    }
+    else
+    {
+        return atan2(m_direction.m_y, m_direction.m_x) * 180 / M_PI;
+    }
+}
+
+
 void a_MoveableEntity::rotate(const ngl::Vec3 i_axis, const int i_rotation)
 {
     float radians = i_rotation * M_PI / 180.0f;
@@ -71,4 +88,35 @@ a_MoveableEntity::a_MoveableEntity(ngl::Vec3 i_position, ngl::Vec3 i_direction, 
     m_visible = i_visible;
     m_selectable = i_selectable;
     m_selected = false;
+}
+
+void a_MoveableEntity::jump()
+{
+    if (!m_inAir)
+    {
+        m_position.m_y += 1;
+    }
+}
+
+void a_MoveableEntity::setInAir(bool i_inAir)
+{
+    m_inAir = i_inAir;
+}
+
+bool a_MoveableEntity::inAir() const
+{
+    return m_inAir;
+}
+
+ngl::Vec3 a_MoveableEntity::getMovementVector(ngl::Vec2 i_direction) const
+{
+    auto angleDirection = directionAngle();
+    float angleRad = angleDirection * M_PI / 180.0f;
+
+    // Calculate the true direction of movement based on the current angle
+    return {
+        i_direction.m_x * cosf(angleRad) - i_direction.m_y * sinf(angleRad),
+        0,
+        i_direction.m_x * sinf(angleRad) + i_direction.m_y * cosf(angleRad)
+    };
 }

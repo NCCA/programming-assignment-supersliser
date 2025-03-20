@@ -1,6 +1,6 @@
 @startuml
 struct vec3
-struct quarternion
+struct vec2
 enum e_job {
 	UNEMPLOYED
 	WHEAT_FARMER
@@ -19,14 +19,6 @@ enum e_item {
 	BOW
 	ARROW
 }
-enum e_placeableItem {
-	NULL_ITEM
-	GRASS
-	STONE
-	LOG
-	PLANKS
-	LEAVES
-}
 abstract class a_ObjectEntity {
 	# vec3 m_position
 	# bool m_visible
@@ -42,36 +34,39 @@ abstract class a_ObjectEntity {
 	+ void select()
 	+ void deselect()
 	+ vec3 position()
-	+ ObjectEntity()
-	+ ObjectEntity(vec3 i_position, bool i_visible = true, bool i_selectable = true)
-	+ ~ObjectEntity()
+	+ a_ObjectEntity()
+	+ a_ObjectEntity(vec3 i_position, bool i_visible = true, bool i_selectable = true)
+	+ ~a_ObjectEntity()
 }
 
-vec3 <.. ObjectEntity
+vec3 <.. a_ObjectEntity
 
 abstract class a_MoveableEntity {
-	# quarternion m_rotation
+	# vec3 m_direction
 	# int m_speed
 	# int m_health
 	# int m_maxHealth
-	+ void setRotation(vec3 i_rotation)
-	+ void setRotation(quarternion i_rotation)
+	# bool m_inAir
+	+ void setDirection(vec3 i_direction)
 	+ void rotate(vec3 i_axis, int i_rotation)
-	+ quarternion Qrotation()
-	+ vec3 Vrotation()
+	+ void directionAngle(vec3 i_axis)
+	+ vec3 direction()
 	+ void setSpeed(int i_speed)
 	+ int speed()
 	+ void damage(int i_damage)
 	+ void heal(int i_healing)
 	+ int health()
-	+ MoveableEntity()
-	+ MoveableEntity(vec3 i_position, vec3 i_rotation = (0,0,1), int i_health = 100, int i_speed = 1, int i_visible = true, int i_selectable = true)
-	+ ~MoveableEntity()
+	+ a_MoveableEntity()
+	+ a_MoveableEntity(vec3 i_position, vec3 i_direction = (0,0,1), int i_health = 100, int i_speed = 1, int i_visible = true, int i_selectable = true)
+	+ ~a_MoveableEntity()
+	+ void jump()
+	+ void setInAir(bool i_inAir)
+	+ bool inAir()
+	+ vec3 getMovementVector(vec2 i_direction)
 }
 
-ObjectEntity <|-- MoveableEntity
-quarternion <.. MoveableEntity
-vec3 <.. MoveableEntity
+a_ObjectEntity <|-- a_MoveableEntity
+vec3 <.. a_MoveableEntity
 
 class PlayerEntity {
 	# Camera m_cam
@@ -85,78 +80,83 @@ class PlayerEntity {
 	+ void move(vec2 i_direction)
 	+ int stamina()
 	+ void setStamina(int i_stamina)
-	+ setColony(s_Colony i_colony)
-	+ s_Colony colony()
+	+ setColony(s_Colony* i_colony)
+	+ s_Colony* colony()
 	+ ~PlayerEntity
 }
 
-MoveableEntity <|-- PlayerEntity
+a_MoveableEntity <|-- PlayerEntity
 vec3 <.. PlayerEntity
 s_Colony o-- PlayerEntity
 Camera o-- PlayerEntity
+vec2 <.. PlayerEntity
 
 class ColonistEntity {
-	# {static} s_Colony m_colony
+	# s_Colony* m_colony
 	# e_job m_job
 	+ void hire(e_job i_job)
 	+ void fire()
 	+ e_job job()
+	+ void setColony(s_Colony* i_colony)
 	+ ColonistEntity()
 	+ ColonistEntity(e_job i_job)
-	+ ColonistEntity(vec3 i_position, vec3 i_rotation, e_job i_job)
+	+ void move(vec2 i_direction)
+	+ ColonistEntity(vec3 i_position, vec3 i_direction, e_job i_job)
 	+ ~ColonistEntity()
 }
 
-MoveableEntity <|-- ColonistEntity
+a_MoveableEntity <|-- ColonistEntity
 s_Colony o-- ColonistEntity
 e_job <.. ColonistEntity
 vec3 <.. ColonistEntity
+vec2 <.. ColonistEntity
 
-abstract class Item {
+abstract class a_item {
 	# e_item m_item
 	+ {abstract} void use()
 	+ string name()
-	+ {static} Item createItem(e_item i_item)
-	+ ~Item()
+	+ ~a_item()
 }
 
-e_item <.. Item
+e_item <.. a_item
 
 abstract class PlaceableItem {
 	+ void use()
 	+ {static} PlaceableItem createItem(e_item i_item)
+	+ e_item item()
 }
 
-Item <|-- PlaceableItem
+a_item <|-- PlaceableItem
 e_item <.. PlaceableItem
 
 abstract class UseableItem {
 	+ void use()
 	+ {static} UseableItem createItem(e_item i_item)
+	+ e_item item()
 }
 
-Item <|-- UseableItem
+a_item <|-- UseableItem
 e_item <.. UseableItem
 
 class Slot {
-	# Item m_item
+	# a_item m_item
 	# int m_quantity
 	# int m_maxItems
 	+ void setItem()
-	+ Item item()
+	+ a_item item()
 	+ void setQuantity()
 	+ int quantity()
 	+ Slot()
-	+ Slot(Item i_item = 0, i_quantity = 0, i_maxItems = 255)
+	+ Slot(a_item i_item = 0, i_quantity = 0, i_maxItems = 255)
 	+ ~Slot()
 }
 
-Item o-- Slot
+a_item o-- Slot
 
 class Inventory {
 	# vec<Slot> m_slots
 	# int m_selctedItemIndex
-	+ void addItem(Item i_item, int i_quantity)
+	+ void addItem(a_item i_item, int i_quantity)
 	+ Slot getItem()
 	+ void startMoveItem()
 	+ void finishMoveItem()
@@ -167,18 +167,18 @@ class Inventory {
 }
 
 Slot o-- Inventory
-Item o-- Inventory
+a_item o-- Inventory
 
 class FillableInventory {
 	# int m_maxItems
-	+ void addItem(Item i_item, int i_quantity)
+	+ void addItem(a_item i_item, int i_quantity)
 	+ FillableInventory()
 	+ FillableInventory(int i_maxItems)
 	+ ~FillableInventory
 }
 
 Inventory <|-- FillableInventory
-Item o-- FillableInventory
+a_item o-- FillableInventory
 
 class Hotbar {
 	+ void selectItem(int i_itemNum)
@@ -200,8 +200,8 @@ class Camera {
     + void setAspectRatio(float i_aspectRatio)
 	+ float aspectRatio()
 	+ Camera()
-	+ Camera(int i_closeCullingDistance, int i_farCullingDistance, float i_fov)
-	+ void Draw(vec3 i_position, quarternion i_direction)
+	+ Camera(int i_closeCullingDistance, int i_farCullingDistance, float i_fov, float i_aspectRatio)
+	+ void Draw(vec3 i_position, vec3 i_direction, vec3 i_up)
 	+ ~Camera()
 }
 class PlacedEntity {
@@ -214,8 +214,8 @@ class PlacedEntity {
 	+ ~PlacedEntity()
 }
 
-ObjectEntity <|-- PlacedEntity
-e_placeableItem <.. PlacedEntity
+a_ObjectEntity <|-- PlacedEntity
+e_item <.. PlacedEntity
 
 class ColonyBanner {
 	+ void break()
@@ -247,8 +247,9 @@ class s_Colony {
 	# ColonyBanner m_banner
 	# Vec<ColonistEntity> m_colonists
 	# vec3 m_size
+	# {static} s_World m_world
 	+ void addItemToInventory(Slot i_item)
-	+ void pickupItem(Item i_item)
+	+ void pickupItem(a_item i_item)
 	+ ColonyBanner banner()
 	+ Vec<Slot> items()
 	+ spawnColonist()
@@ -262,6 +263,6 @@ ColonyBanner o-- s_Colony
 ColonistEntity o-- s_Colony
 vec3 <.. s_Colony
 Slot o-- s_Colony
-Item o-- s_Colony
+a_item o-- s_Colony
 e_job <.. s_Colony
 @enduml
