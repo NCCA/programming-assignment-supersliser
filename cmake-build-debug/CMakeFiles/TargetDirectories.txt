@@ -1,4 +1,0 @@
-/home/tom/programming-assignment-supersliser/cmake-build-debug/CMakeFiles/ColonyManager.dir
-/home/tom/programming-assignment-supersliser/cmake-build-debug/CMakeFiles/ColonyManagerCopyShaders.dir
-/home/tom/programming-assignment-supersliser/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/tom/programming-assignment-supersliser/cmake-build-debug/CMakeFiles/rebuild_cache.dir
