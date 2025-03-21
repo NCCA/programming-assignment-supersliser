@@ -69,10 +69,66 @@ include CMakeFiles/ColonyManager.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ColonyManager.dir/flags.make
 
+CMakeFiles/ColonyManager.dir/src/Slot.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
+CMakeFiles/ColonyManager.dir/src/Slot.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/Slot.cpp
+CMakeFiles/ColonyManager.dir/src/Slot.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ColonyManager.dir/src/Slot.cpp.o"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/Slot.cpp.o -MF CMakeFiles/ColonyManager.dir/src/Slot.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/Slot.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/Slot.cpp
+
+CMakeFiles/ColonyManager.dir/src/Slot.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ColonyManager.dir/src/Slot.cpp.i"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/s5605187/Documents/programming-assignment-supersliser/src/Slot.cpp > CMakeFiles/ColonyManager.dir/src/Slot.cpp.i
+
+CMakeFiles/ColonyManager.dir/src/Slot.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ColonyManager.dir/src/Slot.cpp.s"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/s5605187/Documents/programming-assignment-supersliser/src/Slot.cpp -o CMakeFiles/ColonyManager.dir/src/Slot.cpp.s
+
+CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
+CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/Inventory.cpp
+CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o -MF CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/Inventory.cpp
+
+CMakeFiles/ColonyManager.dir/src/Inventory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ColonyManager.dir/src/Inventory.cpp.i"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/s5605187/Documents/programming-assignment-supersliser/src/Inventory.cpp > CMakeFiles/ColonyManager.dir/src/Inventory.cpp.i
+
+CMakeFiles/ColonyManager.dir/src/Inventory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ColonyManager.dir/src/Inventory.cpp.s"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/s5605187/Documents/programming-assignment-supersliser/src/Inventory.cpp -o CMakeFiles/ColonyManager.dir/src/Inventory.cpp.s
+
+CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
+CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/FillableInventory.cpp
+CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o -MF CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/FillableInventory.cpp
+
+CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.i"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/s5605187/Documents/programming-assignment-supersliser/src/FillableInventory.cpp > CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.i
+
+CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.s"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/s5605187/Documents/programming-assignment-supersliser/src/FillableInventory.cpp -o CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.s
+
+CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
+CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/Hotbar.cpp
+CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o -MF CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/Hotbar.cpp
+
+CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.i"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/s5605187/Documents/programming-assignment-supersliser/src/Hotbar.cpp > CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.i
+
+CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.s"
+	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/s5605187/Documents/programming-assignment-supersliser/src/Hotbar.cpp -o CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.s
+
 CMakeFiles/ColonyManager.dir/src/main.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
 CMakeFiles/ColonyManager.dir/src/main.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/main.cpp
 CMakeFiles/ColonyManager.dir/src/main.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ColonyManager.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ColonyManager.dir/src/main.cpp.o"
 	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/main.cpp.o -MF CMakeFiles/ColonyManager.dir/src/main.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/main.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/main.cpp
 
 CMakeFiles/ColonyManager.dir/src/main.cpp.i: cmake_force
@@ -86,7 +142,7 @@ CMakeFiles/ColonyManager.dir/src/main.cpp.s: cmake_force
 CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
 CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/NGLDraw.cpp
 CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o"
 	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o -MF CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/NGLDraw.cpp
 
 CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.i: cmake_force
@@ -100,7 +156,7 @@ CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.s: cmake_force
 CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
 CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/ObjectEntity.cpp
 CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o"
 	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o -MF CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/ObjectEntity.cpp
 
 CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.i: cmake_force
@@ -114,7 +170,7 @@ CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.s: cmake_force
 CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
 CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/MoveableEntity.cpp
 CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.o"
 	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.o -MF CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/MoveableEntity.cpp
 
 CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.i: cmake_force
@@ -128,7 +184,7 @@ CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.s: cmake_force
 CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
 CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/PlayerEntity.cpp
 CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.o"
 	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.o -MF CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/PlayerEntity.cpp
 
 CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.i: cmake_force
@@ -142,7 +198,7 @@ CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.s: cmake_force
 CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
 CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/ColonistEntity.cpp
 CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.o"
 	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.o -MF CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/ColonistEntity.cpp
 
 CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.i: cmake_force
@@ -156,7 +212,7 @@ CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.s: cmake_force
 CMakeFiles/ColonyManager.dir/src/Item.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
 CMakeFiles/ColonyManager.dir/src/Item.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/Item.cpp
 CMakeFiles/ColonyManager.dir/src/Item.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ColonyManager.dir/src/Item.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ColonyManager.dir/src/Item.cpp.o"
 	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/Item.cpp.o -MF CMakeFiles/ColonyManager.dir/src/Item.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/Item.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/Item.cpp
 
 CMakeFiles/ColonyManager.dir/src/Item.cpp.i: cmake_force
@@ -170,7 +226,7 @@ CMakeFiles/ColonyManager.dir/src/Item.cpp.s: cmake_force
 CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
 CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/PlaceableItem.cpp
 CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.o"
 	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.o -MF CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/PlaceableItem.cpp
 
 CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.i: cmake_force
@@ -184,7 +240,7 @@ CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.s: cmake_force
 CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.o: CMakeFiles/ColonyManager.dir/flags.make
 CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.o: /home/s5605187/Documents/programming-assignment-supersliser/src/UseableItem.cpp
 CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.o: CMakeFiles/ColonyManager.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.o"
 	/opt/rh/gcc-toolset-13/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.o -MF CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.o.d -o CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.o -c /home/s5605187/Documents/programming-assignment-supersliser/src/UseableItem.cpp
 
 CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.i: cmake_force
@@ -197,6 +253,10 @@ CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.s: cmake_force
 
 # Object files for target ColonyManager
 ColonyManager_OBJECTS = \
+"CMakeFiles/ColonyManager.dir/src/Slot.cpp.o" \
+"CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o" \
+"CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o" \
+"CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o" \
 "CMakeFiles/ColonyManager.dir/src/main.cpp.o" \
 "CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o" \
 "CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o" \
@@ -210,6 +270,10 @@ ColonyManager_OBJECTS = \
 # External object files for target ColonyManager
 ColonyManager_EXTERNAL_OBJECTS =
 
+ColonyManager: CMakeFiles/ColonyManager.dir/src/Slot.cpp.o
+ColonyManager: CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o
+ColonyManager: CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o
+ColonyManager: CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o
 ColonyManager: CMakeFiles/ColonyManager.dir/src/main.cpp.o
 ColonyManager: CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o
 ColonyManager: CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o
@@ -332,7 +396,7 @@ ColonyManager: /usr/lib64/libGL.so
 ColonyManager: /usr/lib64/libGLU.so
 ColonyManager: /public/devel/24-25/vcpkg/installed/x64-linux/debug/lib/libasound.a
 ColonyManager: CMakeFiles/ColonyManager.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable ColonyManager"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable ColonyManager"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ColonyManager.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

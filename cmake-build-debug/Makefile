@@ -192,6 +192,78 @@ src/ColonistEntity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/ColonistEntity.cpp.s
 .PHONY : src/ColonistEntity.cpp.s
 
+src/FillableInventory.o: src/FillableInventory.cpp.o
+.PHONY : src/FillableInventory.o
+
+# target to build an object file
+src/FillableInventory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o
+.PHONY : src/FillableInventory.cpp.o
+
+src/FillableInventory.i: src/FillableInventory.cpp.i
+.PHONY : src/FillableInventory.i
+
+# target to preprocess a source file
+src/FillableInventory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.i
+.PHONY : src/FillableInventory.cpp.i
+
+src/FillableInventory.s: src/FillableInventory.cpp.s
+.PHONY : src/FillableInventory.s
+
+# target to generate assembly for a file
+src/FillableInventory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.s
+.PHONY : src/FillableInventory.cpp.s
+
+src/Hotbar.o: src/Hotbar.cpp.o
+.PHONY : src/Hotbar.o
+
+# target to build an object file
+src/Hotbar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o
+.PHONY : src/Hotbar.cpp.o
+
+src/Hotbar.i: src/Hotbar.cpp.i
+.PHONY : src/Hotbar.i
+
+# target to preprocess a source file
+src/Hotbar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.i
+.PHONY : src/Hotbar.cpp.i
+
+src/Hotbar.s: src/Hotbar.cpp.s
+.PHONY : src/Hotbar.s
+
+# target to generate assembly for a file
+src/Hotbar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.s
+.PHONY : src/Hotbar.cpp.s
+
+src/Inventory.o: src/Inventory.cpp.o
+.PHONY : src/Inventory.o
+
+# target to build an object file
+src/Inventory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o
+.PHONY : src/Inventory.cpp.o
+
+src/Inventory.i: src/Inventory.cpp.i
+.PHONY : src/Inventory.i
+
+# target to preprocess a source file
+src/Inventory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Inventory.cpp.i
+.PHONY : src/Inventory.cpp.i
+
+src/Inventory.s: src/Inventory.cpp.s
+.PHONY : src/Inventory.s
+
+# target to generate assembly for a file
+src/Inventory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Inventory.cpp.s
+.PHONY : src/Inventory.cpp.s
+
 src/Item.o: src/Item.cpp.o
 .PHONY : src/Item.o
 
@@ -351,6 +423,30 @@ src/PlayerEntity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/PlayerEntity.cpp.s
 .PHONY : src/PlayerEntity.cpp.s
 
+src/Slot.o: src/Slot.cpp.o
+.PHONY : src/Slot.o
+
+# target to build an object file
+src/Slot.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Slot.cpp.o
+.PHONY : src/Slot.cpp.o
+
+src/Slot.i: src/Slot.cpp.i
+.PHONY : src/Slot.i
+
+# target to preprocess a source file
+src/Slot.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Slot.cpp.i
+.PHONY : src/Slot.cpp.i
+
+src/Slot.s: src/Slot.cpp.s
+.PHONY : src/Slot.s
+
+# target to generate assembly for a file
+src/Slot.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Slot.cpp.s
+.PHONY : src/Slot.cpp.s
+
 src/UseableItem.o: src/UseableItem.cpp.o
 .PHONY : src/UseableItem.o
 
@@ -489,6 +585,15 @@ help:
 	@echo "... src/ColonistEntity.o"
 	@echo "... src/ColonistEntity.i"
 	@echo "... src/ColonistEntity.s"
+	@echo "... src/FillableInventory.o"
+	@echo "... src/FillableInventory.i"
+	@echo "... src/FillableInventory.s"
+	@echo "... src/Hotbar.o"
+	@echo "... src/Hotbar.i"
+	@echo "... src/Hotbar.s"
+	@echo "... src/Inventory.o"
+	@echo "... src/Inventory.i"
+	@echo "... src/Inventory.s"
 	@echo "... src/Item.o"
 	@echo "... src/Item.i"
 	@echo "... src/Item.s"
@@ -507,6 +612,9 @@ help:
 	@echo "... src/PlayerEntity.o"
 	@echo "... src/PlayerEntity.i"
 	@echo "... src/PlayerEntity.s"
+	@echo "... src/Slot.o"
+	@echo "... src/Slot.i"
+	@echo "... src/Slot.s"
 	@echo "... src/UseableItem.o"
 	@echo "... src/UseableItem.i"
 	@echo "... src/UseableItem.s"

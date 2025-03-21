@@ -32,7 +32,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the name of the executable we want to build
-add_executable(${TargetName})
+add_executable(${TargetName}
+        include/Slot.h
+        src/Slot.cpp
+        include/PlacedEntity.h
+        include/Inventory.h
+        src/Inventory.cpp
+        "include/FillableInventory.h"
+        src/FillableInventory.cpp
+        include/Hotbar.h
+        src/Hotbar.cpp)
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
 target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
@@ -50,7 +59,6 @@ target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
         include/ColonistEntity.h
         src/ColonistEntity.cpp
         include/Item.h
-        include/e_item.h
         include/PlaceableItem.h
         include/UseableItem.h
         src/Item.cpp
@@ -95,7 +103,6 @@ target_sources(Tests PRIVATE
         include/ColonistEntity.h
         src/ColonistEntity.cpp
         include/Item.h
-        include/e_item.h
         include/PlaceableItem.h
         include/UseableItem.h
         src/Item.cpp

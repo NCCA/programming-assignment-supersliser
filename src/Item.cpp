@@ -11,5 +11,11 @@ void a_Item::use()
 
 std::string a_Item::name()
 {
-    return "NULL_ITEM";
+    return m_name;
+}
+
+a_Item::a_Item(const std::string& i_name, const unsigned int i_id)
+{
+    m_name = i_name;
+    m_id = i_id;
 }

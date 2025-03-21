@@ -6,16 +6,17 @@
 #define ITEM_H
 #include <string>
 
-#include "e_item.h"
-
 class a_Item
 {
 protected:
-    e_item m_item = e_item::NULL_ITEM;
+    std::string m_name = "NULL_ITEM";
+    unsigned int m_id = 0;
 public:
-    virtual void use() = 0;
+    virtual void use();
     virtual std::string name();
     virtual ~a_Item() = default;
+    a_Item() = default;
+    a_Item(const std::string& i_name, const unsigned int i_id);
 };
 
 #endif //ITEM_H

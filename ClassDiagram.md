@@ -9,16 +9,6 @@ enum e_job {
 	BAKER
 	GUARD
 }
-enum e_item {
-	NULL_ITEM
-	DIRT
-	GRASS
-	LOG
-	WOOD
-	LEAVES
-	BOW
-	ARROW
-}
 abstract class a_ObjectEntity {
 	# vec3 m_position
 	# bool m_visible
@@ -121,33 +111,86 @@ abstract class a_item {
 e_item <.. a_item
 
 abstract class PlaceableItem {
+	# PlacedEntity m_placedItem
 	+ void use()
-	+ {static} PlaceableItem createItem(e_item i_item)
-	+ e_item item()
+	+ {static} PlaceableItem createItem(int i_id)
+	+ PlaceableItem()
+	+ PlaceableItem(string i_name, int i_id)
+	+ ~PlaceableItem()
 }
 
 a_item <|-- PlaceableItem
-e_item <.. PlaceableItem
+PlacedEntity o-- PlaceableItem
+
+class Grass {
+	+ Grass()
+	+ void use()
+}
+
+PlaceableItem <|-- Grass
+
+class Log {
+	+ Log()
+	+ void use()
+}
+
+PlaceableItem <|-- Log
+
+class Leaves {
+	+ Leaves()
+	+ void use()
+}
+
+PlaceableItem <|-- Leaves
+
+class Stone {
+	+ Stone()
+	+ void use()
+}
+
+PlaceableItem <|-- Stone
+
+class Planks {
+	+ Planks()
+	+ void use()
+}
+
+PlaceableItem <|-- Planks
 
 abstract class UseableItem {
-	+ void use()
-	+ {static} UseableItem createItem(e_item i_item)
-	+ e_item item()
++ void use()
++ {static} UseableItem createItem(int i_id)
++ UseableItem()
++ UseableItem(string i_name, int i_id)
++ ~UseableItem()
 }
 
 a_item <|-- UseableItem
-e_item <.. UseableItem
+
+class Bow {
+	+ Bow()
+	+ void use()
+}
+
+UseableItem <|-- Bow
+
+class Arrow {
+	+ Arrow()
+	+ void use()
+}
+
+UseableItem <|-- Arrow
 
 class Slot {
 	# a_item m_item
 	# int m_quantity
 	# int m_maxItems
-	+ void setItem()
+	+ void setItem(a_Item i_item);
 	+ a_item item()
-	+ void setQuantity()
+	+ void setQuantity(int i_quantity)
 	+ int quantity()
 	+ Slot()
-	+ Slot(a_item i_item = 0, i_quantity = 0, i_maxItems = 255)
+	+ Slot(a_item i_item = 0, i_quantity = 1, i_maxItems = 64)
 	+ ~Slot()
 }
 
@@ -156,13 +199,15 @@ a_item o-- Slot
 class Inventory {
 	# vec<Slot> m_slots
 	# int m_selctedItemIndex
+	# bool m_moving
 	+ void addItem(a_item i_item, int i_quantity)
+	+ void removeItem(a_Item i_item, int i_quantity)
 	+ Slot getItem()
 	+ void startMoveItem()
-	+ void finishMoveItem()
+	+ void moveItem(Slot* i_slot)
+	+ void stopMoveItem()
 	+ void selectItem(i_itemNum)
 	+ Inventory()
-	+ Inventory(vec<Slot> i_items)
 	+ ~Inventory
 }
 
@@ -215,7 +260,6 @@ class PlacedEntity {
 }
 
 a_ObjectEntity <|-- PlacedEntity
-e_item <.. PlacedEntity
 
 class ColonyBanner {
 	+ void break()

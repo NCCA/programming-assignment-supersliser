@@ -9,14 +9,22 @@ void PlaceableItem::use()
     // Placeholder
 }
 
-PlaceableItem PlaceableItem::createItem(e_item i_item)
+PlaceableItem PlaceableItem::createItem(const int i_id)
 {
-    PlaceableItem item;
-    item.m_item = static_cast<e_item>(i_item);
-    return item;
-}
-
-e_item PlaceableItem::item() const
-{
-    return m_item;
+    switch (i_id)
+    {
+    case 1:
+        return Grass();
+    case 2:
+        return Log();
+    case 3:
+        return Leaves();
+    case 4:
+        return Stone();
+    case 5:
+        return Planks();
+        case 0:
+        default:
+            return PlaceableItem("NUll_ITEM", 0);
+    }
 }

@@ -9,14 +9,15 @@ void UseableItem::use()
     // Placeholder
 }
 
-UseableItem UseableItem::createItem(e_item i_item)
+UseableItem UseableItem::createItem(const int i_id)
 {
-    UseableItem item;
-    item.m_item = static_cast<e_item>(i_item);
-    return item;
-}
-
-e_item UseableItem::item() const
-{
-    return m_item;
+    switch (i_id)
+    {
+        case 6:
+            return Bow();
+        case 7:
+            return Arrow();
+        default:
+            return UseableItem("NULL_ITEM", 0);
+    }
 }

@@ -10,8 +10,24 @@ class UseableItem : public a_Item
 {
 public:
     void use() override;
-    static UseableItem createItem(e_item i_item);
-    e_item item() const;
+    static UseableItem createItem(const int  i_id);
+    UseableItem() = default;
+    UseableItem(const std::string& i_name, const unsigned int i_id): a_Item(i_name, i_id) {}
+    ~UseableItem() override = default;
+};
+
+class Bow : public UseableItem
+{
+public:
+    Bow() : UseableItem("BOW", 6) {}
+    void use() override;
+};
+
+class Arrow : public UseableItem
+{
+public:
+    Arrow() : UseableItem("ARROW", 7) {}
+    void use() override;
 };
 
 #endif //USEABLEITEM_H
