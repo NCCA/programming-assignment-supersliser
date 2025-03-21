@@ -33,37 +33,15 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the name of the executable we want to build
 add_executable(${TargetName}
-        include/Slot.h
-        src/Slot.cpp
-        include/PlacedEntity.h
-        include/Inventory.h
-        src/Inventory.cpp
-        "include/FillableInventory.h"
-        src/FillableInventory.cpp
-        include/Hotbar.h
-        src/Hotbar.cpp)
+        include/EntityManager.h)
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
 target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
     ${PROJECT_SOURCE_DIR}/src/NGLDraw.cpp
     ${PROJECT_SOURCE_DIR}/include/NGLDraw.h
-        include/ObjectEntity.h
-        src/ObjectEntity.cpp
-        include/MoveableEntity.h
-        src/MoveableEntity.cpp
-        include/PlayerEntity.h
-        include/Camera.h
-        include/e_job.h
-        include/Colony.h
-        src/PlayerEntity.cpp
-        include/ColonistEntity.h
-        src/ColonistEntity.cpp
-        include/Item.h
-        include/PlaceableItem.h
-        include/UseableItem.h
-        src/Item.cpp
-        src/PlaceableItem.cpp
-        src/UseableItem.cpp
+        include/Entity.h
+        include/TransformComponent.h
+        include/Entity.h
 )
 
 # need to add some exta libs for SDL under linux
@@ -82,32 +60,13 @@ add_custom_target(${TargetName}CopyShaders ALL
     $<TARGET_FILE_DIR:${TargetName}>/shaders
 )
 
-find_package(GTest CONFIG REQUIRED)
-include(GoogleTest)
-enable_testing()
-add_executable(Tests)
-include_directories(include)
-target_sources(Tests PRIVATE
-        tests/PlayerEntityTests.cpp
-        tests/ColonistEntityTests.cpp
-        tests/ItemTests.cpp
-        src/PlayerEntity.cpp
-        src/ObjectEntity.cpp
-        include/ObjectEntity.h
-        include/PlayerEntity.h
-        include/MoveableEntity.h
-        src/MoveableEntity.cpp
-        include/Camera.h
-        include/e_job.h
-        include/Colony.h
-        include/ColonistEntity.h
-        src/ColonistEntity.cpp
-        include/Item.h
-        include/PlaceableItem.h
-        include/UseableItem.h
-        src/Item.cpp
-        src/PlaceableItem.cpp
-        src/UseableItem.cpp
-)
-target_link_libraries(Tests PRIVATE GTest::gtest GTest::gtest_main)
-gtest_discover_tests(Tests)
+#find_package(GTest CONFIG REQUIRED)
+#include(GoogleTest)
+#enable_testing()
+#add_executable(Tests)
+#include_directories(include)
+#target_sources(Tests PRIVATE
+#
+#)
+#target_link_libraries(Tests PRIVATE GTest::gtest GTest::gtest_main)
+#gtest_discover_tests(Tests)
