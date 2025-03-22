@@ -4,17 +4,26 @@
 
 #include "Table.h"
 
+#include "PositionComponent.h"
+
 uint32_t Table::createEntity() {
     if (m_columns.empty()) {
-        m_columns.push_back(std::vector<a_Component *>());
-        m_columns[0].push_back(new Entity());
+        Entity* ColumnItem = new Entity();
+        ColumnItem->addEntity();
+        m_columns.push_back({ColumnItem->getComponentID(), ColumnItem});
         return 0;
     }
-    std::vector<a_Component *> empty = std::vector<a_Component *>(m_columns[0].size());
-    Entity entity;
-    empty[0] = &entity;
-    m_columns.push_back(empty);
-    return m_columns.size() - 1;
+    static_cast<Entity*>(m_columns[0].m_column)->addEntity();
+    for (size_t i = 1; i < m_columns.size(); i++) {
+        switch (m_columns[i].m_componentID)
+        {
+            case 1:
+                static_cast<Entity*>(m_columns[i].m_column)->addEntity();
+        case 2:
+            static_cast<PositonComponent*>(m_columns[i].m_column)->m_ps.push_back(ngl::Vec3());
+        }
+    }
+    return static_cast<Entity*>(m_columns[0].m_column)->getEntityCount() - 1;
 }
 
 //template<typename T>
@@ -24,40 +33,45 @@ uint32_t Table::createEntity() {
 //    }
 //}
 
-template<typename T>
-void Table::removeComponent(uint32_t i_entity, const T& i_componentType)  {
-    m_columns[i_entity].erase(i_componentType);
-}
-
-uint32_t Table::registerComponentType(a_Component* i_componentType) {
-    for (size_t i = 0; i < m_columns[0].size(); i++) {
-        if (m_columns[0][i]->getComponentID() == i_componentType->getComponentID()) {
-            return i;
+uint32_t Table::registerComponentType(const uint8_t i_componentType) {
+    for (size_t i = 0; i < m_columns.size(); i++) {
+        if (m_columns[i].m_componentID == i_componentType) {
+            return 0;
         }
     }
-    for (size_t i = 0; i < m_columns.size(); i++) {
-        m_columns[i].push_back(i_componentType);
+    switch (i_componentType)
+    {
+        case 1:
+            m_columns.push_back({i_componentType, new Entity()});
+            break;
+        case 2:
+            m_columns.push_back({i_componentType, new PositonComponent()});
+            break;
     }
-    return m_columns[0].size() - 1;
+    return m_columns.size() - 1;
 }
 
-void Table::addComponent(a_Component* i_component, uint32_t i_entity){
-    uint32_t index = registerComponentType(i_component);
-    m_columns[i_entity][index] = i_component;
+std::vector<Column> Table::getEntity(uint32_t i_entity) const {
+    std::vector<Column> entity;
+    for (size_t i = 0; i < m_columns.size(); i++) {
+        switch (m_columns[i].m_componentID)
+        {
+            case 1:
+                entity.push_back(m_columns[i]);
+                break;
+            case 2:
+                entity.push_back(m_columns[i]);
+                break;
+        }
+    }
+    return entity;
 }
 
-
-
-std::vector<a_Component*> Table::getEntity(uint32_t i_entity) const {
-    return m_columns[i_entity];
-}
-
-int Table::getComponentIndex(uint32_t i_componentID) {
-    for (size_t j = 0; j < m_columns.size(); j++) {
-        for (size_t i = 0; i < m_columns[j].size(); i++) {
-            if (m_columns[j][i]->getComponentID() == i_componentID) {
-                return i;
-            }
+int Table::getComponentIndex(uint8_t i_componentType) const
+{
+    for (size_t i = 0; i < m_columns.size(); i++) {
+        if (m_columns[i].m_componentID == i_componentType) {
+            return i;
         }
     }
     return -1;

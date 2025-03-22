@@ -4,6 +4,9 @@
 
 #include "MoveSystem.h"
 
-void MoveSystem::run(TransformComponent& i_component) {
-    i_component.m_p += ngl::Vec3(1, 0, 0);
+void MoveSystem::run(PositonComponent& i_component, int i_index)
+{
+    i_component.m_ps[i_index].m_x += 1;
+    i_component.m_ps[i_index].m_y += 1;
+    i_component.m_ps[i_index].m_z += 1;
 }

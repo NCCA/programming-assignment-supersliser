@@ -6,12 +6,12 @@
 #define COLONYMANAGER_MOVESYSTEM_H
 
 #include "System.h"
-#include "TransformComponent.h"
+#include "PositionComponent.h"
 
 
-class MoveSystem : public a_System<TransformComponent> {
+class MoveSystem : public a_System<PositonComponent> {
 public:
-    void run(TransformComponent& i_component) override;
+    void run(PositonComponent& i_component, int i_index) override;
 };
 
 #endif //COLONYMANAGER_MOVESYSTEM_H

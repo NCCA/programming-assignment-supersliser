@@ -1,30 +1,45 @@
 @startuml
 
 class Table {
-	# Vector<Column<Component>> m_columns
-	+ void registerComponentType(T& i_componentType)
-	+ void addComponent(T& i_component, Entity i_entity)
-	+ void removeComponent(T& i_componentType, Entity i_entity)
-	+ void run(System& i_system, uint32_t i_componentID)
+	# Vector<Column<Column>> m_columns
+	+ void registerComponentType(unsigned int8 i_componentType)
+	+ void run(System<T> i_system, unsigned int8 i_componentType)
+    + vector<Column> getEntity(unsigned int32 i_entity)
+    + int getComponentIndex(unsigned int8 i_componentType)
 	+ Entity createEntity()
 }
 
-abstract class Component {
-	+ unsigned int32 m_id
+class Column {
+    + unsigned int8 m_componentType
+	+ pointer m_column
 }
 
-class TransformComponent {
-	+ vec3 m_position
-	+ vec3 m_rotation
-	+ vec3 m_scale
+class PositionComponent {
+	+ vector<Vec3> m_positions
+    + {static} unsigned int8 getComponentType()
+}
+
+class Entity { 
+	# vector<unsigned int32> m_entities
+	+ {static} unsigned int8 getComponentType()
+	+ void addEntity()
+	+ unsigned int32 getEntityID(int i_index)
+	+ int getEntityIndex(unsigned int32 i_entityID)
+	+ void removeEntity(unsigned int32 i_entityID)
 }
 
 abstract class System {
-	+ virtual void run(a_Component& i_component);
+	+ {virtual} void run(T& i_component, int i_index);
 }
 
-Table o-- System : "Applied To Components by"
-Component <|-- TransformComponent : "Inherits From"
-Table o-- Component : "Contains multiple"
+class MoveSystem {
+	+ void run(PositionComponent i_position, int i_index)
+}
+
+Table "1" *-- "0..*" Column : "Contains multiple"
+Column o.. PositionComponent : "Could Point to a"
+Column o.. Entity : "Could Point to an"
+System <|-- MoveSystem : "Inherits with T = PositionComponent"
+Table o-- System : "Runs"
 
 @enduml

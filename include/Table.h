@@ -8,43 +8,41 @@
 #include <utility>
 #include <vector>
 #include <stdexcept>
-#include "Component.h"
 #include "System.h"
 #include "Entity.h"
 #include <set>
+#include "Column.h"
 
 
 class Table {
 
 protected:
-    std::vector<std::vector<a_Component*>> m_columns;
+    std::vector<Column> m_columns;
 
 public:
     Table() = default;
     ~Table() = default;
 
-    uint32_t registerComponentType(a_Component* i_componentType);
-
-    void addComponent(a_Component* i_component, uint32_t i_entity);
+    uint32_t registerComponentType(const uint8_t i_componentType);
 
     template<typename T>
-    void removeComponent(uint32_t i_entity, const T& i_componentType);
+    void run(a_System<T>& i_system, const uint8_t i_componentType);
 
-    template<typename T>
-    void run(a_System<T>& i_system, uint32_t i_componentID);
+    std::vector<Column> getEntity(uint32_t i_entity) const;
 
-    std::vector<a_Component*> getEntity(uint32_t i_entity) const;
-
-    int getComponentIndex(uint32_t i_componentID);
+    int getComponentIndex(uint8_t i_componentType) const;
 
     uint32_t createEntity();
 };
 
 template<typename T>
-void Table::run(a_System<T>& i_system, uint32_t i_componentID) {
-    int index = getComponentIndex(std::move(i_componentID));
-    for (auto & m_column : m_columns) {
-        i_system.run(static_cast<T&>((*m_column[index])));
+void Table::run(a_System<T>& i_system, const uint8_t i_componentType) {
+    int index = getComponentIndex(i_componentType);
+    if (index == -1) {
+        throw std::invalid_argument("Component type not found");
+    }
+    for (int i = 0; i < static_cast<Entity*>(m_columns[0].m_column)->getEntityCount(); i++) {
+        i_system.run(*static_cast<T*>(m_columns[index].m_column), i);
     }
 }
 

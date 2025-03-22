@@ -23,28 +23,29 @@ TEST(Table, AddEntity) {
 TEST(Table, AddComponent) {
     Table table;
     uint32_t entity = table.createEntity();
-    table.addComponent(new TransformComponent(), entity);
+    table.registerComponentType(PositonComponent().getComponentID());
     EXPECT_EQ(table.getEntity(entity).size(), 2);
 
-    table.addComponent(new TransformComponent(), entity);
+    table.registerComponentType(PositonComponent().getComponentID());
     EXPECT_EQ(table.getEntity(entity).size(), 2);
 
     uint32_t entity2 = table.createEntity();
-    table.addComponent(new TransformComponent(), entity2);
     EXPECT_EQ(table.getEntity(entity2).size(), 2);
 }
 
 TEST(System, RunSystem) {
     Table table;
+    uint32_t entity = table.createEntity();
+    table.registerComponentType(PositonComponent().getComponentID());
     for (uint32_t i = 1; i < 10; i++) {
-        uint32_t entity = table.createEntity();
-        table.addComponent(new TransformComponent(), entity);
+        uint32_t entity2 = table.createEntity();
+
     }
     MoveSystem moveSystem;
     table.run(moveSystem, 2);
     for (uint32_t i = 0; i < 10; i++) {
-        auto entity = table.getEntity(i);
-        auto transform = dynamic_cast<TransformComponent*>(entity[1]);
-        EXPECT_EQ(transform->m_p.m_x, 1);
+        std::vector<Column> entity3 = table.getEntity(i);
+        PositonComponent* positionComponent = static_cast<PositonComponent*>(entity3[1].m_column);
+        EXPECT_EQ(positionComponent->m_ps[i].m_x, 1);
     }
 }

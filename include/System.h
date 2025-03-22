@@ -5,12 +5,10 @@
 #ifndef COLONYMANAGER_SYSTEM_H
 #define COLONYMANAGER_SYSTEM_H
 
-#include "Component.h"
-
 template<typename T>
 class a_System {
 public:
-    virtual void run(T& i_component) = 0;
+    virtual void run(T& i_component, int i_index) = 0;
 };
 
 #endif //COLONYMANAGER_SYSTEM_H
