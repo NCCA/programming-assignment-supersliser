@@ -1,0 +1,2274 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/CMakeFiles/3.29.6/CMakeSystem.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/scripts/buildsystems/vcpkg.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDependentOption.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-Initialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/CMakeFiles/3.29.6/CMakeCCompiler.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/CMakeFiles/3.29.6/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/s5605187/NGL/NGLConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/glm/glmConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/glm/glmConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/glm/glmConfig-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/glm/glmConfig-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/fmt/fmt-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/fmt/fmt-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/fmt/fmt-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/fmt/fmt-targets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/fmt/fmt-targets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openimageio/OpenImageIOConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openimageio/OpenImageIOConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/gif/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindGIF.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakePushCheckState.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckStructHasMember.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckCXXSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libheif/libheif-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libheif/libheif-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libheif/libheif-config-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libheif/libheif-config-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libheif/libheif-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/png/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPNG.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zlib/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindZLIB.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/opencv4/OpenCVConfig-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/opencv4/OpenCVConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/opencv4/OpenCVModules.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/protobuf/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/protobuf/protobuf-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/protobuf/protobuf-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/protobuf/protobuf-options.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/protobuf/protobuf-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/protobuf/protobuf-targets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/protobuf/protobuf-targets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/protobuf/protobuf-module.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/tiff/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindTIFF.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/tiff/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/liblzma/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindLibLZMA.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/jpeg/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindJPEG.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zlib/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindZLIB.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/quirc/quirc-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/quirc/quirc-config-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/quirc/quirc-config-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/opencv4/OpenCVModules-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/opencv4/OpenCVModules-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/opencolorio/OpenColorIOConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/opencolorio/OpenColorIOConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/expat-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/expat-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/expat.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/expat-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/expat-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/expat-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/expat-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/pystring/pystring-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/pystring/pystring-config-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/pystring/pystring-config-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/yaml-cpp/yaml-cpp-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/yaml-cpp/yaml-cpp-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/yaml-cpp/yaml-cpp-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/yaml-cpp/yaml-cpp-targets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/yaml-cpp/yaml-cpp-targets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zlib/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindZLIB.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindBZip2.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckSymbolExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakePushCheckState.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/liblzma/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindLibLZMA.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zstd/zstdConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zstd/zstdConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zstd/zstdTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zstd/zstdTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zstd/zstdTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openssl/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindOpenSSL.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPkgConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/expat-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/expat/expat-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/pystring/pystring-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/yaml-cpp/yaml-cpp-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/yaml-cpp/yaml-cpp-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/yaml-cpp/yaml-cpp-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zlib/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindZLIB.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/minizip-ng/minizip-ng.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/opencolorio/OpenColorIOTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/opencolorio/OpenColorIOTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/opencolorio/OpenColorIOTargets-release.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openjpeg/OpenJPEGConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openjpeg/OpenJPEGConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openjpeg/OpenJPEGTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openjpeg/OpenJPEGTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openjpeg/OpenJPEGTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/WebP/WebPConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/WebP/WebPConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/WebP/WebPTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/WebP/WebPTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/WebP/WebPTargets-release.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libraw/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libraw/FindLibRaw.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPkgConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindJasper.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/jpeg/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindJPEG.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/lcms2/lcms2Config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/lcms2/lcms2Config-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/lcms2/lcms2Config-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zlib/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindZLIB.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openexr/OpenEXRConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openexr/OpenEXRConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libdeflate/libdeflate-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libdeflate/libdeflate-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libdeflate/libdeflate-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libdeflate/libdeflate-targets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/libdeflate/libdeflate-targets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openexr/OpenEXRTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openexr/OpenEXRTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openexr/OpenEXRTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/jpeg/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindJPEG.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openimageio/OpenImageIOTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openimageio/OpenImageIOTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openimageio/OpenImageIOTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/gl3w/gl3wConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/gl3w/gl3wConfig-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/gl3w/gl3wConfig-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openexr/OpenEXRConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openexr/OpenEXRConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/openexr/OpenEXRTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindBoost.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost/BoostConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost/BoostConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_headers/boost_headers-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_headers/boost_headers-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_headers/boost_headers-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_filesystem/boost_filesystem-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_filesystem/boost_filesystem-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_assert/boost_assert-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_assert/boost_assert-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_config/boost_config-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_config/boost_config-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_config/boost_config-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_assert/boost_assert-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_container_hash/boost_container_hash-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_container_hash/boost_container_hash-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_describe/boost_describe-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_describe/boost_describe-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_mp11/boost_mp11-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_mp11/boost_mp11-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_mp11/boost_mp11-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_describe/boost_describe-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_container_hash/boost_container_hash-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_detail/boost_detail-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_detail/boost_detail-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_core/boost_core-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_core/boost_core-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_static_assert/boost_static_assert-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_static_assert/boost_static_assert-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_static_assert/boost_static_assert-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_throw_exception/boost_throw_exception-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_throw_exception/boost_throw_exception-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_throw_exception/boost_throw_exception-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_core/boost_core-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_preprocessor/boost_preprocessor-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_preprocessor/boost_preprocessor-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_preprocessor/boost_preprocessor-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_type_traits/boost_type_traits-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_type_traits/boost_type_traits-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_type_traits/boost_type_traits-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_detail/boost_detail-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_io/boost_io-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_io/boost_io-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_io/boost_io-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_iterator/boost_iterator-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_iterator/boost_iterator-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_concept_check/boost_concept_check-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_concept_check/boost_concept_check-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_concept_check/boost_concept_check-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_function_types/boost_function_types-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_function_types/boost_function_types-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_mpl/boost_mpl-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_mpl/boost_mpl-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_predef/boost_predef-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_predef/boost_predef-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_predef/boost_predef-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_utility/boost_utility-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_utility/boost_utility-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_utility/boost_utility-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_mpl/boost_mpl-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_function_types/boost_function_types-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_fusion/boost_fusion-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_fusion/boost_fusion-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_tuple/boost_tuple-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_tuple/boost_tuple-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_tuple/boost_tuple-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_typeof/boost_typeof-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_typeof/boost_typeof-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_typeof/boost_typeof-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_functional/boost_functional-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_functional/boost_functional-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_function/boost_function-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_function/boost_function-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_bind/boost_bind-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_bind/boost_bind-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_bind/boost_bind-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_function/boost_function-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_functional/boost_functional-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_fusion/boost_fusion-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_optional/boost_optional-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_optional/boost_optional-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_move/boost_move-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_move/boost_move-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_move/boost_move-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_optional/boost_optional-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_smart_ptr/boost_smart_ptr-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_smart_ptr/boost_smart_ptr-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_smart_ptr/boost_smart_ptr-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_iterator/boost_iterator-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_system/boost_system-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_system/boost_system-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_variant2/boost_variant2-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_variant2/boost_variant2-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_variant2/boost_variant2-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_winapi/boost_winapi-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_winapi/boost_winapi-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_winapi/boost_winapi-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_system/boost_system-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_system/boost_system-targets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_system/boost_system-targets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_scope/boost_scope-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_scope/boost_scope-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_scope/boost_scope-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_atomic/boost_atomic-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_atomic/boost_atomic-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_align/boost_align-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_align/boost_align-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_align/boost_align-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_atomic/boost_atomic-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_atomic/boost_atomic-targets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_atomic/boost_atomic-targets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_filesystem/boost_filesystem-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_filesystem/boost_filesystem-targets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/boost_filesystem/boost_filesystem-targets-release.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindOpenMP.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeParseImplicitLinkInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/freetype/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/freetype/freetype-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/freetype/freetype-config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/freetype/freetype-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/freetype/freetype-targets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/freetype/freetype-targets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zlib/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindZLIB.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindBZip2.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckSymbolExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakePushCheckState.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/png/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPNG.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/zlib/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindZLIB.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/rapidjson/RapidJSONConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/rapidjson/RapidJSONConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/sdl2/SDL2ConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/sdl2/SDL2Config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FeatureSummary.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/sdl2/SDL2staticTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/sdl2/SDL2staticTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/sdl2/SDL2staticTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/sdl2/SDL2mainTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/sdl2/SDL2mainTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/sdl2/SDL2mainTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/sdl2/sdlfind.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/vcpkg/installed/x64-linux/share/alsa/vcpkg-cmake-wrapper.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindALSA.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug",
+		"source" : "/home/s5605187/Documents/programming-assignment-supersliser"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

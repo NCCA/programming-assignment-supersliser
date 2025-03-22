@@ -33,15 +33,18 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the name of the executable we want to build
 add_executable(${TargetName}
-        include/EntityManager.h)
+)
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
 target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
     ${PROJECT_SOURCE_DIR}/src/NGLDraw.cpp
     ${PROJECT_SOURCE_DIR}/include/NGLDraw.h
-        include/Entity.h
         include/TransformComponent.h
-        include/Entity.h
+        include/Table.h
+        include/Column.h
+        include/Component.h
+        include/System.h
+        src/Table.cpp
 )
 
 # need to add some exta libs for SDL under linux

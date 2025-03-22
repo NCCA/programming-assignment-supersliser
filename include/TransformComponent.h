@@ -7,8 +7,10 @@
 
 #include <ngl/Vec3.h>
 #include <ngl/Quaternion.h>
+#include "Component.h"
 
-struct TransformComponent {
+class TransformComponent : public a_Component {
+public:
 	ngl::Vec3 m_p;
     ngl::Quaternion m_r;
     ngl::Vec3 m_s;
