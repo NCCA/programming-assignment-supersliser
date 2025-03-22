@@ -17,6 +17,7 @@ class Column {
 class PositionComponent {
 	+ vector<Vec3> m_positions
     + {static} unsigned int8 getComponentType()
+	+ PositionComponent(size_t i_size)
 }
 
 class Entity { 

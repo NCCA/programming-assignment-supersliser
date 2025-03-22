@@ -23,6 +23,8 @@ public:
 
     size_t getEntityCount();
 
+    Entity() = default;
+    Entity(const size_t i_size);
 };
 
 #endif //COLONYMANAGER_ENTITY_H

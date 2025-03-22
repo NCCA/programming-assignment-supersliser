@@ -6,7 +6,7 @@
 #define COLONYMANAGER_MOVESYSTEM_H
 
 #include "System.h"
-#include "PositionComponent.h"
+#include "component/PositionComponent.h"
 
 
 class MoveSystem : public a_System<PositonComponent> {

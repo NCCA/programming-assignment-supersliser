@@ -5,13 +5,11 @@
 #ifndef TABLE_H
 #define TABLE_H
 #include <cstdint>
-#include <utility>
 #include <vector>
 #include <stdexcept>
-#include "System.h"
-#include "Entity.h"
-#include <set>
-#include "Column.h"
+#include "component/Column.h"
+#include "system/System.h"
+#include "component/Entity.h"
 
 
 class Table {

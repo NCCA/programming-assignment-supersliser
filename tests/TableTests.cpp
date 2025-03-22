@@ -2,7 +2,7 @@
 // Created by s5605187 on 22/03/25.
 //
 
-#include "MoveSystem.h"
+#include "../include/system/MoveSystem.h"
 #include <gtest/gtest.h>
 #include "Table.h"
 
@@ -23,10 +23,10 @@ TEST(Table, AddEntity) {
 TEST(Table, AddComponent) {
     Table table;
     uint32_t entity = table.createEntity();
-    table.registerComponentType(PositonComponent().getComponentID());
+    table.registerComponentType(PositonComponent::getComponentID());
     EXPECT_EQ(table.getEntity(entity).size(), 2);
 
-    table.registerComponentType(PositonComponent().getComponentID());
+    table.registerComponentType(PositonComponent::getComponentID());
     EXPECT_EQ(table.getEntity(entity).size(), 2);
 
     uint32_t entity2 = table.createEntity();
@@ -35,17 +35,31 @@ TEST(Table, AddComponent) {
 
 TEST(System, RunSystem) {
     Table table;
-    uint32_t entity = table.createEntity();
-    table.registerComponentType(PositonComponent().getComponentID());
-    for (uint32_t i = 1; i < 10; i++) {
-        uint32_t entity2 = table.createEntity();
-
+    for (uint32_t i = 0; i < 10; i++) {
+        table.createEntity();
     }
+    table.registerComponentType(PositonComponent::getComponentID());
     MoveSystem moveSystem;
     table.run(moveSystem, 2);
     for (uint32_t i = 0; i < 10; i++) {
         std::vector<Column> entity3 = table.getEntity(i);
-        PositonComponent* positionComponent = static_cast<PositonComponent*>(entity3[1].m_column);
+        auto* positionComponent = static_cast<PositonComponent*>(entity3[table.getComponentIndex(PositonComponent::getComponentID())].m_column);
+        EXPECT_EQ(positionComponent->m_ps[i].m_x, 1);
+    }
+
+    for (uint32_t i = 0; i < 10; i++)
+    {
+        table.createEntity();
+    }
+    table.run(moveSystem, 2);
+    for (uint32_t i = 0; i < 10; i++) {
+        std::vector<Column> entity3 = table.getEntity(i);
+        PositonComponent* positionComponent = static_cast<PositonComponent*>(entity3[table.getComponentIndex(PositonComponent::getComponentID())].m_column);
+        EXPECT_EQ(positionComponent->m_ps[i].m_x, 2);
+    }
+    for (uint32_t i = 10; i < 20; i++) {
+        std::vector<Column> entity3 = table.getEntity(i);
+        PositonComponent* positionComponent = static_cast<PositonComponent*>(entity3[table.getComponentIndex(PositonComponent::getComponentID())].m_column);
         EXPECT_EQ(positionComponent->m_ps[i].m_x, 1);
     }
 }

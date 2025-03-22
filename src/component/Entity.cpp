@@ -2,7 +2,7 @@
 // Created by thoma on 22/03/2025.
 //
 
-#include "Entity.h"
+#include "component/Entity.h"
 
 
 void Entity::addEntity() {
@@ -32,4 +32,10 @@ void Entity::removeEntity(uint32_t i_componentID) {
 
 size_t Entity::getEntityCount() {
     return m_entities.size();
+}
+
+Entity::Entity(const size_t i_size) {
+    for (size_t i = 0; i < i_size; i++) {
+        m_entities.push_back(i);
+    }
 }

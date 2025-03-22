@@ -33,21 +33,22 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the name of the executable we want to build
 add_executable(${TargetName}
+        src/component/PositionComponent.cpp
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
 target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
     ${PROJECT_SOURCE_DIR}/src/NGLDraw.cpp
     ${PROJECT_SOURCE_DIR}/include/NGLDraw.h
-        include/PositionComponent.h
+        include/component/PositionComponent.h
         include/Table.h
-        include/System.h
+        include/system/System.h
         src/Table.cpp
-        include/MoveSystem.h
-        src/MoveSystem.cpp
-        include/Entity.h
-        src/Entity.cpp
-        include/Column.h
+        include/system/MoveSystem.h
+        src/system/MoveSystem.cpp
+        include/component/Entity.h
+        src/component/Entity.cpp
+        include/component/Column.h
 )
 
 # need to add some exta libs for SDL under linux
@@ -73,15 +74,16 @@ add_executable(Tests)
 include_directories(include)
 target_sources(Tests PRIVATE
         tests/TableTests.cpp
-        include/PositionComponent.h
+        include/component/PositionComponent.h
         include/Table.h
-        include/System.h
+        include/system/System.h
         src/Table.cpp
-        include/MoveSystem.h
-        src/MoveSystem.cpp
-        include/Entity.h
-        src/Entity.cpp
-        include/Column.h
+        include/system/MoveSystem.h
+        src/system/MoveSystem.cpp
+        include/component/Entity.h
+        src/component/Entity.cpp
+        include/component/Column.h
+        src/component/PositionComponent.cpp
 )
 target_link_libraries(Tests PRIVATE GTest::gtest GTest::gtest_main)
 gtest_discover_tests(Tests)

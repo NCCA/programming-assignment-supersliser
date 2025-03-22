@@ -10,6 +10,7 @@
 
 class PositonComponent {
 public:
+    PositonComponent(size_t i_size);
     std::vector<ngl::Vec3> m_ps;
     static std::uint8_t getComponentID() { return 2;}
 };
