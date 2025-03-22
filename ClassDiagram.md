@@ -23,8 +23,8 @@ abstract class System {
 	+ virtual void run(a_Component& i_component);
 }
 
-Table o-- System : "Applied by"
-Component <|-- TransformComponent : "Inherits"
+Table o-- System : "Applied To Components by"
+Component <|-- TransformComponent : "Inherits From"
 Table o-- Component : "Contains multiple"
 
 @enduml
