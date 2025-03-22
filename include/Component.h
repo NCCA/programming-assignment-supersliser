@@ -9,7 +9,6 @@
 
 class a_Component {
 public:
-    std::uint32_t m_ComponentID;
-    virtual ~a_Component() = default;
+    virtual std::uint8_t getComponentID() const { return 0;}
 };
 #endif //COLONYMANAGER_COMPONENT_H

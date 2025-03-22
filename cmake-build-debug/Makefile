@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/s5605187/Documents/programming-assignment-supersliser/c
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/public/devel/24-25/clion/bin/cmake/linux/x64/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -142,6 +152,46 @@ ColonyManagerCopyShaders/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManagerCopyShaders.dir/build.make CMakeFiles/ColonyManagerCopyShaders.dir/build
 .PHONY : ColonyManagerCopyShaders/fast
 
+#=============================================================================
+# Target rules for targets named Tests
+
+# Build rule for target.
+Tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Tests
+.PHONY : Tests
+
+# fast build rule for target.
+Tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/build
+.PHONY : Tests/fast
+
+src/MoveSystem.o: src/MoveSystem.cpp.o
+.PHONY : src/MoveSystem.o
+
+# target to build an object file
+src/MoveSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveSystem.cpp.o
+.PHONY : src/MoveSystem.cpp.o
+
+src/MoveSystem.i: src/MoveSystem.cpp.i
+.PHONY : src/MoveSystem.i
+
+# target to preprocess a source file
+src/MoveSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveSystem.cpp.i
+.PHONY : src/MoveSystem.cpp.i
+
+src/MoveSystem.s: src/MoveSystem.cpp.s
+.PHONY : src/MoveSystem.s
+
+# target to generate assembly for a file
+src/MoveSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveSystem.cpp.s
+.PHONY : src/MoveSystem.cpp.s
+
 src/NGLDraw.o: src/NGLDraw.cpp.o
 .PHONY : src/NGLDraw.o
 
@@ -172,6 +222,7 @@ src/Table.o: src/Table.cpp.o
 # target to build an object file
 src/Table.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Table.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Table.cpp.o
 .PHONY : src/Table.cpp.o
 
 src/Table.i: src/Table.cpp.i
@@ -180,6 +231,7 @@ src/Table.i: src/Table.cpp.i
 # target to preprocess a source file
 src/Table.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Table.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Table.cpp.i
 .PHONY : src/Table.cpp.i
 
 src/Table.s: src/Table.cpp.s
@@ -188,6 +240,7 @@ src/Table.s: src/Table.cpp.s
 # target to generate assembly for a file
 src/Table.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Table.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Table.cpp.s
 .PHONY : src/Table.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -214,6 +267,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+tests/TableTests.o: tests/TableTests.cpp.o
+.PHONY : tests/TableTests.o
+
+# target to build an object file
+tests/TableTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/TableTests.cpp.o
+.PHONY : tests/TableTests.cpp.o
+
+tests/TableTests.i: tests/TableTests.cpp.i
+.PHONY : tests/TableTests.i
+
+# target to preprocess a source file
+tests/TableTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/TableTests.cpp.i
+.PHONY : tests/TableTests.cpp.i
+
+tests/TableTests.s: tests/TableTests.cpp.s
+.PHONY : tests/TableTests.s
+
+# target to generate assembly for a file
+tests/TableTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/TableTests.cpp.s
+.PHONY : tests/TableTests.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -222,8 +299,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... ColonyManagerCopyShaders"
 	@echo "... ColonyManager"
+	@echo "... Tests"
+	@echo "... src/MoveSystem.o"
+	@echo "... src/MoveSystem.i"
+	@echo "... src/MoveSystem.s"
 	@echo "... src/NGLDraw.o"
 	@echo "... src/NGLDraw.i"
 	@echo "... src/NGLDraw.s"
@@ -233,6 +315,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... tests/TableTests.o"
+	@echo "... tests/TableTests.i"
+	@echo "... tests/TableTests.s"
 .PHONY : help
 
 

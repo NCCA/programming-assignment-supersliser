@@ -52,6 +52,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindTIFF.cmake"
   "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindThreads.cmake"
   "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/FindZLIB.cmake"
+  "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/GoogleTest.cmake"
   "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake"
   "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-C.cmake"
   "/public/devel/24-25/clion/bin/cmake/linux/x64/share/cmake-3.29/Modules/Platform/Linux-GNU-CXX.cmake"
@@ -205,6 +206,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/public/devel/24-25/vcpkg/installed/x64-linux/share/glm/glmConfig-release.cmake"
   "/public/devel/24-25/vcpkg/installed/x64-linux/share/glm/glmConfig.cmake"
   "/public/devel/24-25/vcpkg/installed/x64-linux/share/glm/glmConfigVersion.cmake"
+  "/public/devel/24-25/vcpkg/installed/x64-linux/share/gtest/GTestConfig.cmake"
+  "/public/devel/24-25/vcpkg/installed/x64-linux/share/gtest/GTestConfigVersion.cmake"
+  "/public/devel/24-25/vcpkg/installed/x64-linux/share/gtest/GTestTargets-debug.cmake"
+  "/public/devel/24-25/vcpkg/installed/x64-linux/share/gtest/GTestTargets-release.cmake"
+  "/public/devel/24-25/vcpkg/installed/x64-linux/share/gtest/GTestTargets.cmake"
   "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathConfig.cmake"
   "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathConfigVersion.cmake"
   "/public/devel/24-25/vcpkg/installed/x64-linux/share/imath/ImathTargets-debug.cmake"
@@ -313,4 +319,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ColonyManager.dir/DependInfo.cmake"
   "CMakeFiles/ColonyManagerCopyShaders.dir/DependInfo.cmake"
+  "CMakeFiles/Tests.dir/DependInfo.cmake"
   )

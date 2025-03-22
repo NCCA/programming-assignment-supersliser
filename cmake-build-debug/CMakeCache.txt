@@ -286,6 +286,9 @@ GIF_LIBRARY_DEBUG:FILEPATH=/public/devel/24-25/vcpkg/installed/x64-linux/debug/l
 //Path to a library.
 GIF_LIBRARY_RELEASE:FILEPATH=/public/devel/24-25/vcpkg/installed/x64-linux/lib/libgif.a
 
+//The directory containing a CMake configuration file for GTest.
+GTest_DIR:PATH=/public/devel/24-25/vcpkg/installed/x64-linux/share/gtest
+
 //The directory containing a CMake configuration file for Imath.
 Imath_DIR:PATH=/public/devel/24-25/vcpkg/installed/x64-linux/share/imath
 

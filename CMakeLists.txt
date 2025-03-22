@@ -33,6 +33,8 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the name of the executable we want to build
 add_executable(${TargetName}
+        include/Entity.h
+        include/Column.h
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
@@ -41,10 +43,11 @@ target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
     ${PROJECT_SOURCE_DIR}/include/NGLDraw.h
         include/TransformComponent.h
         include/Table.h
-        include/Column.h
         include/Component.h
         include/System.h
         src/Table.cpp
+        include/MoveSystem.h
+        src/MoveSystem.cpp
 )
 
 # need to add some exta libs for SDL under linux
@@ -63,13 +66,20 @@ add_custom_target(${TargetName}CopyShaders ALL
     $<TARGET_FILE_DIR:${TargetName}>/shaders
 )
 
-#find_package(GTest CONFIG REQUIRED)
-#include(GoogleTest)
-#enable_testing()
-#add_executable(Tests)
-#include_directories(include)
-#target_sources(Tests PRIVATE
-#
-#)
-#target_link_libraries(Tests PRIVATE GTest::gtest GTest::gtest_main)
-#gtest_discover_tests(Tests)
+find_package(GTest CONFIG REQUIRED)
+include(GoogleTest)
+enable_testing()
+add_executable(Tests)
+include_directories(include)
+target_sources(Tests PRIVATE
+        tests/TableTests.cpp
+        include/TransformComponent.h
+        include/Table.h
+        include/Component.h
+        include/System.h
+        src/Table.cpp
+        include/MoveSystem.h
+        src/MoveSystem.cpp
+)
+target_link_libraries(Tests PRIVATE GTest::gtest GTest::gtest_main)
+gtest_discover_tests(Tests)

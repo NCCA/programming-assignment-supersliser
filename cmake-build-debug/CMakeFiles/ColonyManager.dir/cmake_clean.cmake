@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.o"
+  "CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.o.d"
   "CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o"
   "CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o.d"
   "CMakeFiles/ColonyManager.dir/src/Table.cpp.o"

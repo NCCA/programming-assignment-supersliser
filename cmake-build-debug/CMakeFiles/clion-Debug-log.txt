@@ -5,16 +5,6 @@
 Using default home dir
 /home/s5605187/NGL
 -- Configuring done (0.9s)
-CMake Error at CMakeLists.txt:39 (target_sources):
-  Cannot find source file:
-
-    include/Column.h
-
-  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm
-  .ccm .cxxm .c++m .h .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90
-  .f95 .f03 .hip .ispc
-
-
 CMake Warning (dev) at /public/devel/24-25/vcpkg/installed/x64-linux/share/opencolorio/OpenColorIOTargets.cmake:60 (set_target_properties):
   The library that is being linked to, yaml-cpp, is marked as being
   deprecated by the owner.  The message provided by the developer is:
@@ -33,10 +23,5 @@ Call Stack (most recent call first):
   CMakeLists.txt:24 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
-CMake Error at /public/devel/24-25/vcpkg/scripts/buildsystems/vcpkg.cmake:598 (_add_executable):
-  No SOURCES given to target: ColonyManager
-Call Stack (most recent call first):
-  CMakeLists.txt:35 (add_executable)
-
-
-CMake Generate step failed.  Build files cannot be regenerated correctly.
+-- Generating done (0.1s)
+-- Build files have been written to: /home/s5605187/Documents/programming-assignment-supersliser/cmake-build-debug

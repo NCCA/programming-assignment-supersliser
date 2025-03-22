@@ -7,10 +7,10 @@
 
 #include "Component.h"
 
+template<typename T>
 class a_System {
 public:
-    virtual ~a_System() = default;
-    virtual void run(a_Component& i_component) = 0;
+    virtual void run(T& i_component) = 0;
 };
 
 #endif //COLONYMANAGER_SYSTEM_H
