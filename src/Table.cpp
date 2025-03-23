@@ -5,7 +5,7 @@
 #include "Table.h"
 
 #include "component/Entity.h"
-#include "component/PositionComponent.h"
+#include "component/TransformComponent.h"
 
 uint32_t Table::createEntity() {
     if (m_columns.empty()) {
@@ -21,7 +21,7 @@ uint32_t Table::createEntity() {
                 static_cast<Entity*>(m_columns[i].m_column)->addEntity();
             break;
         case 2:
-            static_cast<PositonComponent*>(m_columns[i].m_column)->m_ps.push_back(ngl::Vec3());
+            static_cast<TransformComponent*>(m_columns[i].m_column)->m_ps.push_back(ngl::Vec3());
             break;
         }
     }
@@ -41,7 +41,7 @@ uint32_t Table::registerComponentType(const uint8_t i_componentType) {
             break;
         case 2:
             int a= static_cast<Entity*>(m_columns[0].m_column)->getEntityCount();
-            m_columns.push_back({i_componentType, new PositonComponent(static_cast<Entity*>(m_columns[0].m_column)->getEntityCount())});
+            m_columns.push_back({i_componentType, new TransformComponent(static_cast<Entity*>(m_columns[0].m_column)->getEntityCount())});
             break;
     }
     return m_columns.size() - 1;

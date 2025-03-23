@@ -1,7 +1,7 @@
 @startuml
 
 class Table {
-	# Vector<Column<Column>> m_columns
+	# Vector<Column> m_columns
 	+ void registerComponentType(unsigned int8 i_componentType)
 	+ void run(System<T> i_system, unsigned int8 i_componentType)
     + vector<Column> getEntity(unsigned int32 i_entity)
@@ -36,6 +36,8 @@ abstract class System {
 class MoveSystem {
 	+ void run(PositionComponent i_position, int i_index)
 }
+
+
 
 Table "1" *-- "0..*" Column : "Contains multiple"
 Column o.. PositionComponent : "Could Point to a"

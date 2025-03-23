@@ -5,12 +5,15 @@
 #ifndef TESTISBLOCKEDSYSTEM_H
 #define TESTISBLOCKEDSYSTEM_H
 #include "System.h"
-#include "component/PositionComponent.h"
+#include "Table.h"
+#include "component/TransformComponent.h"
 
-class TestIsBlockedSystem : public a_System<PositonComponent>
+class TestIsBlockedSystem : public a_System<TransformComponent>
 {
 public:
-    void run(PositonComponent* io_component, int i_index, void* i_world, std::vector<float> i_args) override;
+    Table* i_world = nullptr;
+    ngl::Vec3 i_pos;
+    void run(TransformComponent* io_component, int i_index) override;
     bool o_output = false;
 };
 

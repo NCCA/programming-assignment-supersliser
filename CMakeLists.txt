@@ -34,13 +34,7 @@ set(CMAKE_CXX_EXTENSIONS ON)
 # Set the name of the executable we want to build
 add_executable(${TargetName}
         include/system/TestIsBlockedSystem.h
-)
-# Add NGL include path
-include_directories(include $ENV{HOME}/NGL/include include/)
-target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
-    ${PROJECT_SOURCE_DIR}/src/NGLDraw.cpp
-    ${PROJECT_SOURCE_DIR}/include/NGLDraw.h
-        include/component/PositionComponent.h
+        include/component/TransformComponent.h
         include/Table.h
         include/system/System.h
         src/Table.cpp
@@ -49,6 +43,14 @@ target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
         include/component/Entity.h
         src/component/Entity.cpp
         include/component/Column.h
+        include/component/BlockComponent.h
+        src/component/BlockComponent.cpp
+)
+# Add NGL include path
+include_directories(include $ENV{HOME}/NGL/include include/)
+target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
+    ${PROJECT_SOURCE_DIR}/src/NGLDraw.cpp
+    ${PROJECT_SOURCE_DIR}/include/NGLDraw.h
 )
 
 # need to add some exta libs for SDL under linux
@@ -71,11 +73,10 @@ find_package(GTest CONFIG REQUIRED)
 include(GoogleTest)
 enable_testing()
 add_executable(Tests
-        src/system/TestIsBlockedSystem.cpp)
-include_directories(include)
-target_sources(Tests PRIVATE
+        src/system/TestIsBlockedSystem.cpp
+        tests/WorldTests.cpp
         tests/TableTests.cpp
-        include/component/PositionComponent.h
+        include/component/TransformComponent.h
         include/Table.h
         include/system/System.h
         src/Table.cpp
@@ -84,9 +85,13 @@ target_sources(Tests PRIVATE
         include/component/Entity.h
         src/component/Entity.cpp
         include/component/Column.h
-        src/component/PositionComponent.cpp
+        src/component/TransformComponent.cpp
         include/system/SetPositionSystem.h
         src/system/SetPositionSystem.cpp
+        include/component/BlockComponent.h
+        src/component/BlockComponent.cpp
 )
+include_directories(include)
+target_sources(Tests PRIVATE)
 target_link_libraries(Tests PRIVATE GTest::gtest GTest::gtest_main)
 gtest_discover_tests(Tests)

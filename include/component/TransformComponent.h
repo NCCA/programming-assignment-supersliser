@@ -8,10 +8,12 @@
 #include <ngl/Vec3.h>
 #include <ngl/Quaternion.h>
 
-class PositonComponent {
+class TransformComponent {
 public:
-    PositonComponent(size_t i_size);
+    TransformComponent(size_t i_size);
     std::vector<ngl::Vec3> m_ps;
+    std::vector<ngl::Quaternion> m_rs;
+    std::vector<ngl::Vec3> m_ss;
     static std::uint8_t getComponentID() { return 2;}
 };
 

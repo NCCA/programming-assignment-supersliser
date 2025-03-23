@@ -4,12 +4,9 @@
 
 #include "system/SetPositionSystem.h"
 
-void SetPositionSystem::run(PositonComponent* io_component, int i_index, void* i_world, std::vector<float> i_args)
+void SetPositionSystem::run(TransformComponent* io_component, int i_index)
 {
-    if (i_args.size() < 4) {
-        throw std::invalid_argument("Insufficient arguments");
-    }
-    io_component->m_ps[i_args[0]].m_x = i_args[1];
-    io_component->m_ps[i_args[0]].m_y = i_args[2];
-    io_component->m_ps[i_args[0]].m_z = i_args[3];
+    io_component->m_ps[i_index].m_x = i_pos.m_x;
+    io_component->m_ps[i_index].m_y = i_pos.m_y;
+    io_component->m_ps[i_index].m_z = i_pos.m_z;
 }

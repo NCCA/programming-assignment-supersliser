@@ -7,12 +7,13 @@
 
 #include "System.h"
 #include "Table.h"
-#include "component/PositionComponent.h"
+#include "component/TransformComponent.h"
 
-class SetPositionSystem : public a_System<PositonComponent>
+class SetPositionSystem : public a_System<TransformComponent>
 {
 public:
-    void run(PositonComponent* io_component, int i_index, void* i_world, std::vector<float> i_args) override;
+    ngl::Vec3 i_pos;
+    void run(TransformComponent* io_component, int i_index) override;
 };
 
 #endif //SETPOSITIONSYSTEM_H

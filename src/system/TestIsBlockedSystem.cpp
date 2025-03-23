@@ -6,9 +6,9 @@
 
 #include "Table.h"
 
-void TestIsBlockedSystem::run(PositonComponent* io_component, int i_index, void* i_world, std::vector<float> i_args)
+void TestIsBlockedSystem::run(TransformComponent* io_component, int i_index)
 {
-    if (io_component->m_ps[i_index].m_x == i_args[0] && io_component->m_ps[i_index].m_y == i_args[1] && io_component->m_ps[i_index].m_z == i_args[2])
+    if (io_component->m_ps[i_index].m_x == i_pos.m_x && io_component->m_ps[i_index].m_y == i_pos.m_y && io_component->m_ps[i_index].m_z == i_pos.m_z)
     {
         o_output = true;
     }
