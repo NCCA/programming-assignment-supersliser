@@ -1,7 +1,7 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G Ninja -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_PREFIX_PATH=~/NGL -S /home/tom/programming-assignment-supersliser -B /home/tom/programming-assignment-supersliser/cmake-build-debug
 Using default home dir
 /home/tom/NGL
--- Configuring done (4.9s)
+-- Configuring done (4.5s)
 CMake Warning (dev) at /home/tom/vcpkg/installed/x64-linux/share/opencolorio/OpenColorIOTargets.cmake:60 (set_target_properties):
   The library that is being linked to, yaml-cpp, is marked as being
   deprecated by the owner.  The message provided by the developer is:

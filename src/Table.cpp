@@ -14,14 +14,15 @@ uint32_t Table::createEntity() {
         m_columns.push_back({ColumnItem->getComponentID(), ColumnItem});
         return 0;
     }
-    static_cast<Entity*>(m_columns[0].m_column)->addEntity();
-    for (size_t i = 1; i < m_columns.size(); i++) {
+    for (size_t i = 0; i < m_columns.size(); i++) {
         switch (m_columns[i].m_componentID)
         {
             case 1:
                 static_cast<Entity*>(m_columns[i].m_column)->addEntity();
+            break;
         case 2:
             static_cast<PositonComponent*>(m_columns[i].m_column)->m_ps.push_back(ngl::Vec3());
+            break;
         }
     }
     return static_cast<Entity*>(m_columns[0].m_column)->getEntityCount() - 1;
@@ -39,6 +40,7 @@ uint32_t Table::registerComponentType(const uint8_t i_componentType) {
             m_columns.push_back({i_componentType, new Entity()});
             break;
         case 2:
+            int a= static_cast<Entity*>(m_columns[0].m_column)->getEntityCount();
             m_columns.push_back({i_componentType, new PositonComponent(static_cast<Entity*>(m_columns[0].m_column)->getEntityCount())});
             break;
     }
@@ -69,4 +71,8 @@ int Table::getComponentIndex(uint8_t i_componentType) const
         }
     }
     return -1;
+}
+
+void* Table::getColumn(uint32_t i_column) const {
+    return m_columns[i_column].m_column;
 }

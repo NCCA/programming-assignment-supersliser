@@ -5,6 +5,7 @@
 #ifndef TABLE_H
 #define TABLE_H
 #include <cstdint>
+#include <memory>
 #include <vector>
 #include <stdexcept>
 #include "component/Column.h"
@@ -24,24 +25,43 @@ public:
     uint32_t registerComponentType(const uint8_t i_componentType);
 
     template<typename T>
-    void run(a_System<T>& i_system, const uint8_t i_componentType);
+    void run(a_System<T>* i_system, const uint8_t i_componentType, std::vector<float> i_args = {}, Table* i_world = nullptr, int startIndex = -1, int endIndex = -1);
 
     std::vector<Column> getEntity(uint32_t i_entity) const;
 
     int getComponentIndex(uint8_t i_componentType) const;
 
+    void* getColumn(uint32_t i_column) const;
+
     uint32_t createEntity();
 };
 
 template<typename T>
-void Table::run(a_System<T>& i_system, const uint8_t i_componentType) {
+void Table::run(a_System<T>* i_system, const uint8_t i_componentType, std::vector<float> i_args, Table* i_world, int startIndex, int endIndex) {
     int index = getComponentIndex(i_componentType);
     if (index == -1) {
         throw std::invalid_argument("Component type not found");
     }
-    for (int i = 0; i < static_cast<Entity*>(m_columns[0].m_column)->getEntityCount(); i++) {
-        i_system.run(*static_cast<T*>(m_columns[index].m_column), i);
+    if (startIndex == -1)
+    {
+        startIndex = 0;
     }
+    if (endIndex == -1)
+    {
+        endIndex = static_cast<Entity*>(m_columns[0].m_column)->getEntityCount();
+    }
+    if (startIndex == endIndex)
+    {
+        endIndex++;
+    }
+        for (int i = startIndex; i < endIndex; i++) {
+            T* component = static_cast<T*>(m_columns[index].m_column);
+            if (component == nullptr) {
+                throw std::runtime_error("Component is null");
+            }
+            i_system->run(component, i, i_world, i_args);
+        }
+
 }
 
 

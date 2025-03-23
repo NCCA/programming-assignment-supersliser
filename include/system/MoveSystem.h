@@ -11,7 +11,7 @@
 
 class MoveSystem : public a_System<PositonComponent> {
 public:
-    void run(PositonComponent& i_component, int i_index) override;
+    void run(PositonComponent* io_component, int i_index, void* i_world, std::vector<float> i_args) override;
 };
 
 #endif //COLONYMANAGER_MOVESYSTEM_H

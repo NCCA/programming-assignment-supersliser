@@ -33,7 +33,7 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the name of the executable we want to build
 add_executable(${TargetName}
-        src/component/PositionComponent.cpp
+        include/system/TestIsBlockedSystem.h
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
@@ -70,7 +70,8 @@ add_custom_target(${TargetName}CopyShaders ALL
 find_package(GTest CONFIG REQUIRED)
 include(GoogleTest)
 enable_testing()
-add_executable(Tests)
+add_executable(Tests
+        src/system/TestIsBlockedSystem.cpp)
 include_directories(include)
 target_sources(Tests PRIVATE
         tests/TableTests.cpp
@@ -84,6 +85,8 @@ target_sources(Tests PRIVATE
         src/component/Entity.cpp
         include/component/Column.h
         src/component/PositionComponent.cpp
+        include/system/SetPositionSystem.h
+        src/system/SetPositionSystem.cpp
 )
 target_link_libraries(Tests PRIVATE GTest::gtest GTest::gtest_main)
 gtest_discover_tests(Tests)
