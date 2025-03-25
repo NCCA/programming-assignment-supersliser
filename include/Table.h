@@ -31,7 +31,7 @@ public:
 
     int getComponentIndex(uint8_t i_componentType) const;
 
-    void* getColumn(uint32_t i_columnIndex) const;
+    std::shared_ptr<void> getColumn(uint32_t i_columnIndex) const;
 
     uint32_t createEntity();
 };

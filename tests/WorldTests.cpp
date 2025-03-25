@@ -173,19 +173,48 @@ TEST(System, WorldVisible)
 
     RenderWorldSystem renderWorldSystem;
     renderWorldSystem.i_world = &world;
-    renderWorldSystem.i_cams = static_cast<CameraComponents*>(players.getEntity(0)[players.getComponentIndex(CameraComponents::getComponentID())].m_column.get());
-    renderWorldSystem.run(static_cast<CameraComponents*>(players.getColumn(1)), 0);
+    renderWorldSystem.i_cams = static_cast<CameraComponents*>(players.getColumn(1).get());
+    renderWorldSystem.run(static_cast<CameraComponents*>(players.getColumn(1).get()), 0);
 
-    // now we draw ngl
-      players.run(&renderWorldSystem, CameraComponents::getComponentID());
-    // swap the buffers
-    SDL_GL_SwapWindow(window);
+    bool success = false;
 
-    std::string userOutput;
-    std::cout << "Running World Visible Test, please enter 1 if you can see the world: ";
-    std::getline(std::cin, userOutput);
-    EXPECT_TRUE(userOutput == "1");
 
+    while(!quit)
+    {
+
+        while ( SDL_PollEvent(&event) )
+        {
+            switch (event.type)
+            {
+                // this is the window x being clicked.
+                case SDL_QUIT : quit = true; break;
+
+                    // now we look for a keydown event
+                case SDL_KEYDOWN:
+                {
+                    switch( event.key.keysym.sym )
+                    {
+                        // if it's the escape key quit
+                        case SDLK_ESCAPE :  quit = true; break;
+                        case SDLK_RETURN : success = true; quit = true; break;
+                        default : break;
+                    } // end of key process
+                } // end of keydown
+
+                    break;
+                default : break;
+            } // end of event switch
+        } // end of poll events
+
+        // now we draw ngl
+        players.run(&renderWorldSystem, CameraComponents::getComponentID());
+        std::cout << "Running World Visible Test, please press enter if you can see the world or escape otherwise: ";
+        // swap the buffers
+        SDL_GL_SwapWindow(window);
+
+    }
+
+    EXPECT_TRUE(success);
   // now tidy up and exit SDL
  SDL_Quit();
 }
