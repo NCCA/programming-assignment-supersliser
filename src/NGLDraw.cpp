@@ -102,7 +102,7 @@ void NGLDraw::draw()
   // get the VBO instance and draw the built in teapot
   // draw
   loadMatricesToShader();
-  ngl::VAOPrimitives::draw("teapot");
+  ngl::VAOPrimitives::draw(ngl::teapot);
   ngl::ShaderLib::use(ngl::nglCheckerShader);
   auto tx = ngl::Mat4::translate(0.0f, -0.45f, 0.0f);
   ngl::Mat4 MVP = m_project * m_view * m_mouseGlobalTX * tx;

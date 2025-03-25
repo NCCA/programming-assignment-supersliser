@@ -165,158 +165,32 @@ Tests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/build
 .PHONY : Tests/fast
 
-src/ColonistEntity.o: src/ColonistEntity.cpp.o
-.PHONY : src/ColonistEntity.o
+src/MoveSystem.o: src/MoveSystem.cpp.o
+.PHONY : src/MoveSystem.o
 
 # target to build an object file
-src/ColonistEntity.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/ColonistEntity.cpp.o
-.PHONY : src/ColonistEntity.cpp.o
+src/MoveSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveSystem.cpp.o
+.PHONY : src/MoveSystem.cpp.o
 
-src/ColonistEntity.i: src/ColonistEntity.cpp.i
-.PHONY : src/ColonistEntity.i
-
-# target to preprocess a source file
-src/ColonistEntity.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/ColonistEntity.cpp.i
-.PHONY : src/ColonistEntity.cpp.i
-
-src/ColonistEntity.s: src/ColonistEntity.cpp.s
-.PHONY : src/ColonistEntity.s
-
-# target to generate assembly for a file
-src/ColonistEntity.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/ColonistEntity.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/ColonistEntity.cpp.s
-.PHONY : src/ColonistEntity.cpp.s
-
-src/FillableInventory.o: src/FillableInventory.cpp.o
-.PHONY : src/FillableInventory.o
-
-# target to build an object file
-src/FillableInventory.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.o
-.PHONY : src/FillableInventory.cpp.o
-
-src/FillableInventory.i: src/FillableInventory.cpp.i
-.PHONY : src/FillableInventory.i
+src/MoveSystem.i: src/MoveSystem.cpp.i
+.PHONY : src/MoveSystem.i
 
 # target to preprocess a source file
-src/FillableInventory.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.i
-.PHONY : src/FillableInventory.cpp.i
+src/MoveSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveSystem.cpp.i
+.PHONY : src/MoveSystem.cpp.i
 
-src/FillableInventory.s: src/FillableInventory.cpp.s
-.PHONY : src/FillableInventory.s
-
-# target to generate assembly for a file
-src/FillableInventory.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/FillableInventory.cpp.s
-.PHONY : src/FillableInventory.cpp.s
-
-src/Hotbar.o: src/Hotbar.cpp.o
-.PHONY : src/Hotbar.o
-
-# target to build an object file
-src/Hotbar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.o
-.PHONY : src/Hotbar.cpp.o
-
-src/Hotbar.i: src/Hotbar.cpp.i
-.PHONY : src/Hotbar.i
-
-# target to preprocess a source file
-src/Hotbar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.i
-.PHONY : src/Hotbar.cpp.i
-
-src/Hotbar.s: src/Hotbar.cpp.s
-.PHONY : src/Hotbar.s
+src/MoveSystem.s: src/MoveSystem.cpp.s
+.PHONY : src/MoveSystem.s
 
 # target to generate assembly for a file
-src/Hotbar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Hotbar.cpp.s
-.PHONY : src/Hotbar.cpp.s
-
-src/Inventory.o: src/Inventory.cpp.o
-.PHONY : src/Inventory.o
-
-# target to build an object file
-src/Inventory.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Inventory.cpp.o
-.PHONY : src/Inventory.cpp.o
-
-src/Inventory.i: src/Inventory.cpp.i
-.PHONY : src/Inventory.i
-
-# target to preprocess a source file
-src/Inventory.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Inventory.cpp.i
-.PHONY : src/Inventory.cpp.i
-
-src/Inventory.s: src/Inventory.cpp.s
-.PHONY : src/Inventory.s
-
-# target to generate assembly for a file
-src/Inventory.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Inventory.cpp.s
-.PHONY : src/Inventory.cpp.s
-
-src/Item.o: src/Item.cpp.o
-.PHONY : src/Item.o
-
-# target to build an object file
-src/Item.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Item.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Item.cpp.o
-.PHONY : src/Item.cpp.o
-
-src/Item.i: src/Item.cpp.i
-.PHONY : src/Item.i
-
-# target to preprocess a source file
-src/Item.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Item.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Item.cpp.i
-.PHONY : src/Item.cpp.i
-
-src/Item.s: src/Item.cpp.s
-.PHONY : src/Item.s
-
-# target to generate assembly for a file
-src/Item.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Item.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Item.cpp.s
-.PHONY : src/Item.cpp.s
-
-src/MoveableEntity.o: src/MoveableEntity.cpp.o
-.PHONY : src/MoveableEntity.o
-
-# target to build an object file
-src/MoveableEntity.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveableEntity.cpp.o
-.PHONY : src/MoveableEntity.cpp.o
-
-src/MoveableEntity.i: src/MoveableEntity.cpp.i
-.PHONY : src/MoveableEntity.i
-
-# target to preprocess a source file
-src/MoveableEntity.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveableEntity.cpp.i
-.PHONY : src/MoveableEntity.cpp.i
-
-src/MoveableEntity.s: src/MoveableEntity.cpp.s
-.PHONY : src/MoveableEntity.s
-
-# target to generate assembly for a file
-src/MoveableEntity.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveableEntity.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveableEntity.cpp.s
-.PHONY : src/MoveableEntity.cpp.s
+src/MoveSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveSystem.cpp.s
+.PHONY : src/MoveSystem.cpp.s
 
 src/NGLDraw.o: src/NGLDraw.cpp.o
 .PHONY : src/NGLDraw.o
@@ -342,137 +216,32 @@ src/NGLDraw.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.s
 .PHONY : src/NGLDraw.cpp.s
 
-src/ObjectEntity.o: src/ObjectEntity.cpp.o
-.PHONY : src/ObjectEntity.o
+src/Table.o: src/Table.cpp.o
+.PHONY : src/Table.o
 
 # target to build an object file
-src/ObjectEntity.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/ObjectEntity.cpp.o
-.PHONY : src/ObjectEntity.cpp.o
+src/Table.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Table.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Table.cpp.o
+.PHONY : src/Table.cpp.o
 
-src/ObjectEntity.i: src/ObjectEntity.cpp.i
-.PHONY : src/ObjectEntity.i
-
-# target to preprocess a source file
-src/ObjectEntity.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/ObjectEntity.cpp.i
-.PHONY : src/ObjectEntity.cpp.i
-
-src/ObjectEntity.s: src/ObjectEntity.cpp.s
-.PHONY : src/ObjectEntity.s
-
-# target to generate assembly for a file
-src/ObjectEntity.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/ObjectEntity.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/ObjectEntity.cpp.s
-.PHONY : src/ObjectEntity.cpp.s
-
-src/PlaceableItem.o: src/PlaceableItem.cpp.o
-.PHONY : src/PlaceableItem.o
-
-# target to build an object file
-src/PlaceableItem.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/PlaceableItem.cpp.o
-.PHONY : src/PlaceableItem.cpp.o
-
-src/PlaceableItem.i: src/PlaceableItem.cpp.i
-.PHONY : src/PlaceableItem.i
+src/Table.i: src/Table.cpp.i
+.PHONY : src/Table.i
 
 # target to preprocess a source file
-src/PlaceableItem.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/PlaceableItem.cpp.i
-.PHONY : src/PlaceableItem.cpp.i
+src/Table.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Table.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Table.cpp.i
+.PHONY : src/Table.cpp.i
 
-src/PlaceableItem.s: src/PlaceableItem.cpp.s
-.PHONY : src/PlaceableItem.s
-
-# target to generate assembly for a file
-src/PlaceableItem.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/PlaceableItem.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/PlaceableItem.cpp.s
-.PHONY : src/PlaceableItem.cpp.s
-
-src/PlayerEntity.o: src/PlayerEntity.cpp.o
-.PHONY : src/PlayerEntity.o
-
-# target to build an object file
-src/PlayerEntity.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/PlayerEntity.cpp.o
-.PHONY : src/PlayerEntity.cpp.o
-
-src/PlayerEntity.i: src/PlayerEntity.cpp.i
-.PHONY : src/PlayerEntity.i
-
-# target to preprocess a source file
-src/PlayerEntity.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/PlayerEntity.cpp.i
-.PHONY : src/PlayerEntity.cpp.i
-
-src/PlayerEntity.s: src/PlayerEntity.cpp.s
-.PHONY : src/PlayerEntity.s
+src/Table.s: src/Table.cpp.s
+.PHONY : src/Table.s
 
 # target to generate assembly for a file
-src/PlayerEntity.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/PlayerEntity.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/PlayerEntity.cpp.s
-.PHONY : src/PlayerEntity.cpp.s
-
-src/Slot.o: src/Slot.cpp.o
-.PHONY : src/Slot.o
-
-# target to build an object file
-src/Slot.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Slot.cpp.o
-.PHONY : src/Slot.cpp.o
-
-src/Slot.i: src/Slot.cpp.i
-.PHONY : src/Slot.i
-
-# target to preprocess a source file
-src/Slot.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Slot.cpp.i
-.PHONY : src/Slot.cpp.i
-
-src/Slot.s: src/Slot.cpp.s
-.PHONY : src/Slot.s
-
-# target to generate assembly for a file
-src/Slot.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Slot.cpp.s
-.PHONY : src/Slot.cpp.s
-
-src/UseableItem.o: src/UseableItem.cpp.o
-.PHONY : src/UseableItem.o
-
-# target to build an object file
-src/UseableItem.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/UseableItem.cpp.o
-.PHONY : src/UseableItem.cpp.o
-
-src/UseableItem.i: src/UseableItem.cpp.i
-.PHONY : src/UseableItem.i
-
-# target to preprocess a source file
-src/UseableItem.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/UseableItem.cpp.i
-.PHONY : src/UseableItem.cpp.i
-
-src/UseableItem.s: src/UseableItem.cpp.s
-.PHONY : src/UseableItem.s
-
-# target to generate assembly for a file
-src/UseableItem.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/UseableItem.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/UseableItem.cpp.s
-.PHONY : src/UseableItem.cpp.s
+src/Table.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Table.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Table.cpp.s
+.PHONY : src/Table.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -498,77 +267,29 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-tests/ColonistEntityTests.o: tests/ColonistEntityTests.cpp.o
-.PHONY : tests/ColonistEntityTests.o
+tests/TableTests.o: tests/TableTests.cpp.o
+.PHONY : tests/TableTests.o
 
 # target to build an object file
-tests/ColonistEntityTests.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/ColonistEntityTests.cpp.o
-.PHONY : tests/ColonistEntityTests.cpp.o
+tests/TableTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/TableTests.cpp.o
+.PHONY : tests/TableTests.cpp.o
 
-tests/ColonistEntityTests.i: tests/ColonistEntityTests.cpp.i
-.PHONY : tests/ColonistEntityTests.i
-
-# target to preprocess a source file
-tests/ColonistEntityTests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/ColonistEntityTests.cpp.i
-.PHONY : tests/ColonistEntityTests.cpp.i
-
-tests/ColonistEntityTests.s: tests/ColonistEntityTests.cpp.s
-.PHONY : tests/ColonistEntityTests.s
-
-# target to generate assembly for a file
-tests/ColonistEntityTests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/ColonistEntityTests.cpp.s
-.PHONY : tests/ColonistEntityTests.cpp.s
-
-tests/ItemTests.o: tests/ItemTests.cpp.o
-.PHONY : tests/ItemTests.o
-
-# target to build an object file
-tests/ItemTests.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/ItemTests.cpp.o
-.PHONY : tests/ItemTests.cpp.o
-
-tests/ItemTests.i: tests/ItemTests.cpp.i
-.PHONY : tests/ItemTests.i
+tests/TableTests.i: tests/TableTests.cpp.i
+.PHONY : tests/TableTests.i
 
 # target to preprocess a source file
-tests/ItemTests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/ItemTests.cpp.i
-.PHONY : tests/ItemTests.cpp.i
+tests/TableTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/TableTests.cpp.i
+.PHONY : tests/TableTests.cpp.i
 
-tests/ItemTests.s: tests/ItemTests.cpp.s
-.PHONY : tests/ItemTests.s
-
-# target to generate assembly for a file
-tests/ItemTests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/ItemTests.cpp.s
-.PHONY : tests/ItemTests.cpp.s
-
-tests/PlayerEntityTests.o: tests/PlayerEntityTests.cpp.o
-.PHONY : tests/PlayerEntityTests.o
-
-# target to build an object file
-tests/PlayerEntityTests.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/PlayerEntityTests.cpp.o
-.PHONY : tests/PlayerEntityTests.cpp.o
-
-tests/PlayerEntityTests.i: tests/PlayerEntityTests.cpp.i
-.PHONY : tests/PlayerEntityTests.i
-
-# target to preprocess a source file
-tests/PlayerEntityTests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/PlayerEntityTests.cpp.i
-.PHONY : tests/PlayerEntityTests.cpp.i
-
-tests/PlayerEntityTests.s: tests/PlayerEntityTests.cpp.s
-.PHONY : tests/PlayerEntityTests.s
+tests/TableTests.s: tests/TableTests.cpp.s
+.PHONY : tests/TableTests.s
 
 # target to generate assembly for a file
-tests/PlayerEntityTests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/PlayerEntityTests.cpp.s
-.PHONY : tests/PlayerEntityTests.cpp.s
+tests/TableTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/TableTests.cpp.s
+.PHONY : tests/TableTests.cpp.s
 
 # Help Target
 help:
@@ -582,54 +303,21 @@ help:
 	@echo "... ColonyManagerCopyShaders"
 	@echo "... ColonyManager"
 	@echo "... Tests"
-	@echo "... src/ColonistEntity.o"
-	@echo "... src/ColonistEntity.i"
-	@echo "... src/ColonistEntity.s"
-	@echo "... src/FillableInventory.o"
-	@echo "... src/FillableInventory.i"
-	@echo "... src/FillableInventory.s"
-	@echo "... src/Hotbar.o"
-	@echo "... src/Hotbar.i"
-	@echo "... src/Hotbar.s"
-	@echo "... src/Inventory.o"
-	@echo "... src/Inventory.i"
-	@echo "... src/Inventory.s"
-	@echo "... src/Item.o"
-	@echo "... src/Item.i"
-	@echo "... src/Item.s"
-	@echo "... src/MoveableEntity.o"
-	@echo "... src/MoveableEntity.i"
-	@echo "... src/MoveableEntity.s"
+	@echo "... src/MoveSystem.o"
+	@echo "... src/MoveSystem.i"
+	@echo "... src/MoveSystem.s"
 	@echo "... src/NGLDraw.o"
 	@echo "... src/NGLDraw.i"
 	@echo "... src/NGLDraw.s"
-	@echo "... src/ObjectEntity.o"
-	@echo "... src/ObjectEntity.i"
-	@echo "... src/ObjectEntity.s"
-	@echo "... src/PlaceableItem.o"
-	@echo "... src/PlaceableItem.i"
-	@echo "... src/PlaceableItem.s"
-	@echo "... src/PlayerEntity.o"
-	@echo "... src/PlayerEntity.i"
-	@echo "... src/PlayerEntity.s"
-	@echo "... src/Slot.o"
-	@echo "... src/Slot.i"
-	@echo "... src/Slot.s"
-	@echo "... src/UseableItem.o"
-	@echo "... src/UseableItem.i"
-	@echo "... src/UseableItem.s"
+	@echo "... src/Table.o"
+	@echo "... src/Table.i"
+	@echo "... src/Table.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... tests/ColonistEntityTests.o"
-	@echo "... tests/ColonistEntityTests.i"
-	@echo "... tests/ColonistEntityTests.s"
-	@echo "... tests/ItemTests.o"
-	@echo "... tests/ItemTests.i"
-	@echo "... tests/ItemTests.s"
-	@echo "... tests/PlayerEntityTests.o"
-	@echo "... tests/PlayerEntityTests.i"
-	@echo "... tests/PlayerEntityTests.s"
+	@echo "... tests/TableTests.o"
+	@echo "... tests/TableTests.i"
+	@echo "... tests/TableTests.s"
 .PHONY : help
 
 

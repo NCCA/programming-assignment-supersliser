@@ -14,10 +14,10 @@ if(NOT DEFINED CMAKE_TOOLCHAIN_FILE AND DEFINED ENV{CMAKE_TOOLCHAIN_FILE})
 endif()
 
 # Name of the project
-project(ColonyManager)
+project(ColonyManagerBuild)
 
 # This is the name of the Exe change this and it will change everywhere
-set(TargetName ColonyManager)
+set(TargetName ColonyGame)
 
 # This will include the file NGLConfig.cmake, you need to add the location to this either using
 # -DCMAKE_PREFIX_PATH=~/NGL or as a system environment variable.
@@ -33,37 +33,32 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the name of the executable we want to build
 add_executable(${TargetName}
-        include/Slot.h
-        src/Slot.cpp
-        include/PlacedEntity.h
-        include/Inventory.h
-        src/Inventory.cpp
-        "include/FillableInventory.h"
-        src/FillableInventory.cpp
-        include/Hotbar.h
-        src/Hotbar.cpp)
+        src/system/TestIsBlockedSystem.cpp
+        include/component/TransformComponents.h
+        include/Table.h
+        include/system/System.h
+        src/Table.cpp
+        include/system/MoveSystem.h
+        src/system/MoveSystem.cpp
+        include/component/Entities.h
+        src/component/Entities.cpp
+        include/component/Column.h
+        src/component/TransformComponents.cpp
+        include/system/SetPositionSystem.h
+        src/system/SetPositionSystem.cpp
+        include/component/BlockComponents.h
+        src/component/BlockComponents.cpp
+        include/system/RenderCubeSystem.h
+        src/system/RenderCubeSystem.cpp
+        include/system/RenderWorldSystem.h
+        src/system/RenderWorldSystem.cpp
+        src/component/CameraComponents.cpp
+)
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
 target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
     ${PROJECT_SOURCE_DIR}/src/NGLDraw.cpp
     ${PROJECT_SOURCE_DIR}/include/NGLDraw.h
-        include/ObjectEntity.h
-        src/ObjectEntity.cpp
-        include/MoveableEntity.h
-        src/MoveableEntity.cpp
-        include/PlayerEntity.h
-        include/Camera.h
-        include/e_job.h
-        include/Colony.h
-        src/PlayerEntity.cpp
-        include/ColonistEntity.h
-        src/ColonistEntity.cpp
-        include/Item.h
-        include/PlaceableItem.h
-        include/UseableItem.h
-        src/Item.cpp
-        src/PlaceableItem.cpp
-        src/UseableItem.cpp
 )
 
 # need to add some exta libs for SDL under linux
@@ -76,38 +71,42 @@ target_link_libraries(${TargetName} PRIVATE NGL)
 # Link in the SDL2 libraries
 target_link_libraries(${TargetName} PRIVATE SDL2::SDL2)
 
-add_custom_target(${TargetName}CopyShaders ALL
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_CURRENT_SOURCE_DIR}/shaders
-    $<TARGET_FILE_DIR:${TargetName}>/shaders
-)
-
 find_package(GTest CONFIG REQUIRED)
 include(GoogleTest)
 enable_testing()
-add_executable(Tests)
-include_directories(include)
-target_sources(Tests PRIVATE
-        tests/PlayerEntityTests.cpp
-        tests/ColonistEntityTests.cpp
-        tests/ItemTests.cpp
-        src/PlayerEntity.cpp
-        src/ObjectEntity.cpp
-        include/ObjectEntity.h
-        include/PlayerEntity.h
-        include/MoveableEntity.h
-        src/MoveableEntity.cpp
-        include/Camera.h
-        include/e_job.h
-        include/Colony.h
-        include/ColonistEntity.h
-        src/ColonistEntity.cpp
-        include/Item.h
-        include/PlaceableItem.h
-        include/UseableItem.h
-        src/Item.cpp
-        src/PlaceableItem.cpp
-        src/UseableItem.cpp
+add_executable(Tests
+        tests/TableTests.cpp
+        tests/WorldTests.cpp
+        src/system/TestIsBlockedSystem.cpp
+        include/component/TransformComponents.h
+        include/Table.h
+        include/system/System.h
+        src/Table.cpp
+        include/system/MoveSystem.h
+        src/system/MoveSystem.cpp
+        include/component/Entities.h
+        src/component/Entities.cpp
+        include/component/Column.h
+        src/component/TransformComponents.cpp
+        include/system/SetPositionSystem.h
+        src/system/SetPositionSystem.cpp
+        include/component/BlockComponents.h
+        src/component/BlockComponents.cpp
+        include/system/RenderCubeSystem.h
+        src/system/RenderCubeSystem.cpp
+        include/system/RenderWorldSystem.h
+        src/system/RenderWorldSystem.cpp
+        src/component/CameraComponents.cpp
 )
+include_directories(include)
+target_sources(Tests PRIVATE)
 target_link_libraries(Tests PRIVATE GTest::gtest GTest::gtest_main)
+target_link_libraries(Tests PRIVATE NGL)
+target_link_libraries(Tests PRIVATE SDL2::SDL2)
 gtest_discover_tests(Tests)
+
+add_custom_target(${TargetName}CopyShaders ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_CURRENT_SOURCE_DIR}/shaders
+        $<TARGET_FILE_DIR:${TargetName}>/shaders
+)
