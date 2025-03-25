@@ -10,7 +10,7 @@
 class Column {
   public:
     uint8_t m_componentID;
-    void* m_column;
+    std::shared_ptr<void> m_column;
 
 };
 

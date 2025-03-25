@@ -7,7 +7,7 @@
 #include "Table.h"
 #include "system/TestIsBlockedSystem.h"
 
-void MoveSystem::run(TransformComponent* io_component, int i_index)
+void MoveSystem::run(TransformComponents* io_component, int i_index)
 {
     if (i_world == nullptr)
     {
@@ -22,7 +22,7 @@ void MoveSystem::run(TransformComponent* io_component, int i_index)
     system.o_output = false;
     system.i_pos = io_component->m_ps[i_index] + i_pos;
     system.i_world = world;
-    world->run(&system, TransformComponent::getComponentID());
+    world->run(&system, TransformComponents::getComponentID());
 
     if (system.o_output)
     {

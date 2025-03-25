@@ -1,0 +1,53 @@
+-------------------------------------------------------------------------------
+[12:33AM] NGL configured with 
+[12:33AM] OpenGL 4.6 (Core Profile) Mesa 24.2.8-1ubuntu1~24.04.1
+[12:33AM] GLSL version 4.60
+-------------------------------------------------------------------------------
+[12:33AM] creating empty ShaderProgram nglTextShader
+[12:33AM] just attached nglTextVertex to ngl::ShaderLib
+[12:33AM] just attached nglTextFragment to ngl::ShaderLib
+[12:33AM] Compiling Shader nglTextVertex
+[12:33AM] Compiling Shader nglTextFragment
+[12:33AM] nglTextVertex attached to program
+[12:33AM] nglTextFragment attached to program
+[12:33AM] Linking nglTextShader
+[12:33AM] linking Shader nglTextShader 
+FOUND UNIFORM BLOCKS 0
+FOUND UNIFORM BLOCKS 0
+[12:33AM] creating empty ShaderProgram nglColourShader
+[12:33AM] just attached nglColourVertex to ngl::ShaderLib
+[12:33AM] just attached nglColourFragment to ngl::ShaderLib
+[12:33AM] Compiling Shader nglColourVertex
+[12:33AM] Compiling Shader nglColourFragment
+[12:33AM] nglColourVertex attached to program
+[12:33AM] nglColourFragment attached to program
+[12:33AM] Linking nglColourShader
+[12:33AM] linking Shader nglColourShader 
+FOUND UNIFORM BLOCKS 0
+FOUND UNIFORM BLOCKS 0
+[12:33AM] creating empty ShaderProgram nglDiffuseShader
+[12:33AM] just attached nglDiffuseVertex to ngl::ShaderLib
+[12:33AM] just attached nglDiffuseFragment to ngl::ShaderLib
+[12:33AM] Compiling Shader nglDiffuseVertex
+[12:33AM] Compiling Shader nglDiffuseFragment
+[12:33AM] nglDiffuseVertex attached to program
+[12:33AM] nglDiffuseFragment attached to program
+[12:33AM] Linking nglDiffuseShader
+[12:33AM] linking Shader nglDiffuseShader 
+FOUND UNIFORM BLOCKS 0
+FOUND UNIFORM BLOCKS 0
+[12:33AM] creating empty ShaderProgram nglCheckerShader
+[12:33AM] just attached nglCheckerVertex to ngl::ShaderLib
+[12:33AM] just attached nglCheckerFragment to ngl::ShaderLib
+[12:33AM] Compiling Shader nglCheckerVertex
+[12:33AM] Compiling Shader nglCheckerFragment
+[12:33AM] nglCheckerVertex attached to program
+[12:33AM] nglCheckerFragment attached to program
+[12:33AM] Linking nglCheckerShader
+[12:33AM] linking Shader nglCheckerShader 
+FOUND UNIFORM BLOCKS 0
+FOUND UNIFORM BLOCKS 0
+[12:33AM] creating empty ShaderProgram PBR
+[12:33AM] just attached PBRVertex to ngl::ShaderLib
+[12:33AM] just attached PBRFragment to ngl::ShaderLib
+[12:33AM] [ERROR] :- File not found shaders/PBRVertex.glsl

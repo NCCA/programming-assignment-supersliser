@@ -10,13 +10,13 @@
 #include <stdexcept>
 #include "component/Column.h"
 #include "system/System.h"
-#include "component/Entity.h"
+#include "component/Entities.h"
 
 
 class Table {
 
 protected:
-    std::vector<Column> m_columns;
+    std::vector<Column> m_columns = {};
 
 public:
     Table() = default;
@@ -31,7 +31,7 @@ public:
 
     int getComponentIndex(uint8_t i_componentType) const;
 
-    void* getColumn(uint32_t i_column) const;
+    void* getColumn(uint32_t i_columnIndex) const;
 
     uint32_t createEntity();
 };
@@ -48,14 +48,14 @@ void Table::run(a_System<T>* i_system, const uint8_t i_componentType, int startI
     }
     if (endIndex == -1)
     {
-        endIndex = static_cast<Entity*>(m_columns[0].m_column)->getEntityCount();
+        endIndex = static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount();
     }
     if (startIndex == endIndex)
     {
         endIndex++;
     }
     for (int i = startIndex; i < endIndex; i++) {
-        T* component = static_cast<T*>(m_columns[index].m_column);
+        T* component = static_cast<T*>(m_columns[index].m_column.get());
         if (component == nullptr) {
             throw std::runtime_error("Component is null");
         }

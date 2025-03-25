@@ -7,13 +7,13 @@
 
 #include "System.h"
 #include "Table.h"
-#include "component/TransformComponent.h"
+#include "component/TransformComponents.h"
 
-class SetPositionSystem : public a_System<TransformComponent>
+class SetPositionSystem : public a_System<TransformComponents>
 {
 public:
     ngl::Vec3 i_pos;
-    void run(TransformComponent* io_component, int i_index) override;
+    void run(TransformComponents* io_component, int i_index) override;
 };
 
 #endif //SETPOSITIONSYSTEM_H

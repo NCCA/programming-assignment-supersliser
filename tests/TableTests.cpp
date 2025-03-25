@@ -24,10 +24,10 @@ TEST(Table, AddEntity) {
 TEST(Table, AddComponent) {
     Table table;
     uint32_t entity = table.createEntity();
-    table.registerComponentType(TransformComponent::getComponentID());
+    table.registerComponentType(TransformComponents::getComponentID());
     EXPECT_EQ(table.getEntity(entity).size(), 2);
 
-    table.registerComponentType(TransformComponent::getComponentID());
+    table.registerComponentType(TransformComponents::getComponentID());
     EXPECT_EQ(table.getEntity(entity).size(), 2);
 
     uint32_t entity2 = table.createEntity();
@@ -39,14 +39,14 @@ TEST(System, RunSystem) {
     for (uint32_t i = 0; i < 10; i++) {
         table.createEntity();
     }
-    table.registerComponentType(TransformComponent::getComponentID());
+    table.registerComponentType(TransformComponents::getComponentID());
     MoveSystem moveSystem;
 
     moveSystem.i_pos = ngl::Vec3{1.0f, 0.0f, 0.0f};
     table.run(&moveSystem, 2);
     for (uint32_t i = 0; i < 10; i++) {
         std::vector<Column> entity3 = table.getEntity(i);
-        auto* positionComponent = static_cast<TransformComponent*>(entity3[table.getComponentIndex(TransformComponent::getComponentID())].m_column);
+        auto* positionComponent = static_cast<TransformComponents*>(entity3[table.getComponentIndex(TransformComponents::getComponentID())].m_column.get());
         EXPECT_EQ(positionComponent->m_ps[i].m_x, 1);
     }
 
@@ -54,28 +54,28 @@ TEST(System, RunSystem) {
     {
         table.createEntity();
     }
-    table.run(&moveSystem, TransformComponent::getComponentID());
+    table.run(&moveSystem, TransformComponents::getComponentID());
     for (uint32_t i = 0; i < 10; i++) {
         std::vector<Column> entity3 = table.getEntity(i);
-        int index = table.getComponentIndex(TransformComponent::getComponentID());
-        TransformComponent* positionComponent = static_cast<TransformComponent*>(entity3[index].m_column);
+        int index = table.getComponentIndex(TransformComponents::getComponentID());
+        TransformComponents* positionComponent = static_cast<TransformComponents*>(entity3[index].m_column.get());
         EXPECT_FLOAT_EQ(positionComponent->m_ps[i].m_x, 2.0f);
     }
     for (uint32_t i = 10; i < 20; i++) {
         std::vector<Column> entity3 = table.getEntity(i);
-        TransformComponent* positionComponent = static_cast<TransformComponent*>(entity3[table.getComponentIndex(TransformComponent::getComponentID())].m_column);
+        TransformComponents* positionComponent = static_cast<TransformComponents*>(entity3[table.getComponentIndex(TransformComponents::getComponentID())].m_column.get());
         EXPECT_FLOAT_EQ(positionComponent->m_ps[i].m_x, 1.0f);
     }
-    table.run(&moveSystem, TransformComponent::getComponentID(), 10, 20);
+    table.run(&moveSystem, TransformComponents::getComponentID(), 10, 20);
     for (uint32_t i = 0; i < 10; i++) {
         std::vector<Column> entity3 = table.getEntity(i);
-        int index = table.getComponentIndex(TransformComponent::getComponentID());
-        TransformComponent* positionComponent = static_cast<TransformComponent*>(entity3[index].m_column);
+        int index = table.getComponentIndex(TransformComponents::getComponentID());
+        TransformComponents* positionComponent = static_cast<TransformComponents*>(entity3[index].m_column.get());
         EXPECT_FLOAT_EQ(positionComponent->m_ps[i].m_x, 2.0f);
     }
     for (uint32_t i = 10; i < 20; i++) {
         std::vector<Column> entity3 = table.getEntity(i);
-        TransformComponent* positionComponent = static_cast<TransformComponent*>(entity3[table.getComponentIndex(TransformComponent::getComponentID())].m_column);
+        TransformComponents* positionComponent = static_cast<TransformComponents*>(entity3[table.getComponentIndex(TransformComponents::getComponentID())].m_column.get());
         EXPECT_FLOAT_EQ(positionComponent->m_ps[i].m_x, 2.0f);
     }
 }

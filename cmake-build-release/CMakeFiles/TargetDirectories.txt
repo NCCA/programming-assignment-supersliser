@@ -1,0 +1,6 @@
+/home/tom/programming-assignment-supersliser/cmake-build-release/CMakeFiles/ColonyGame.dir
+/home/tom/programming-assignment-supersliser/cmake-build-release/CMakeFiles/Tests.dir
+/home/tom/programming-assignment-supersliser/cmake-build-release/CMakeFiles/ColonyGameCopyShaders.dir
+/home/tom/programming-assignment-supersliser/cmake-build-release/CMakeFiles/test.dir
+/home/tom/programming-assignment-supersliser/cmake-build-release/CMakeFiles/edit_cache.dir
+/home/tom/programming-assignment-supersliser/cmake-build-release/CMakeFiles/rebuild_cache.dir

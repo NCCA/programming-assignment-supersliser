@@ -6,7 +6,7 @@
 
 #include "Table.h"
 
-void TestIsBlockedSystem::run(TransformComponent* io_component, int i_index)
+void TestIsBlockedSystem::run(TransformComponents* io_component, int i_index)
 {
     if (io_component->m_ps[i_index].m_x == i_pos.m_x && io_component->m_ps[i_index].m_y == i_pos.m_y && io_component->m_ps[i_index].m_z == i_pos.m_z)
     {
