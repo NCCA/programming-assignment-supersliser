@@ -9,7 +9,7 @@
 class CameraComponents
 {
     public:
-    CameraComponents(size_t i_size);
+    explicit CameraComponents(size_t i_size);
     std::vector<ngl::Mat4> m_view;
     std::vector<ngl::Mat4> m_proj;
     static ngl::Mat4 getDefaultView();

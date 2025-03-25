@@ -127,30 +127,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ColonyManager
+# Target rules for targets named ColonyGame
 
 # Build rule for target.
-ColonyManager: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ColonyManager
-.PHONY : ColonyManager
+ColonyGame: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ColonyGame
+.PHONY : ColonyGame
 
 # fast build rule for target.
-ColonyManager/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/build
-.PHONY : ColonyManager/fast
-
-#=============================================================================
-# Target rules for targets named ColonyManagerCopyShaders
-
-# Build rule for target.
-ColonyManagerCopyShaders: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ColonyManagerCopyShaders
-.PHONY : ColonyManagerCopyShaders
-
-# fast build rule for target.
-ColonyManagerCopyShaders/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManagerCopyShaders.dir/build.make CMakeFiles/ColonyManagerCopyShaders.dir/build
-.PHONY : ColonyManagerCopyShaders/fast
+ColonyGame/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/build
+.PHONY : ColonyGame/fast
 
 #=============================================================================
 # Target rules for targets named Tests
@@ -165,39 +152,25 @@ Tests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/build
 .PHONY : Tests/fast
 
-src/MoveSystem.o: src/MoveSystem.cpp.o
-.PHONY : src/MoveSystem.o
+#=============================================================================
+# Target rules for targets named ColonyGameCopyShaders
 
-# target to build an object file
-src/MoveSystem.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveSystem.cpp.o
-.PHONY : src/MoveSystem.cpp.o
+# Build rule for target.
+ColonyGameCopyShaders: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ColonyGameCopyShaders
+.PHONY : ColonyGameCopyShaders
 
-src/MoveSystem.i: src/MoveSystem.cpp.i
-.PHONY : src/MoveSystem.i
-
-# target to preprocess a source file
-src/MoveSystem.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveSystem.cpp.i
-.PHONY : src/MoveSystem.cpp.i
-
-src/MoveSystem.s: src/MoveSystem.cpp.s
-.PHONY : src/MoveSystem.s
-
-# target to generate assembly for a file
-src/MoveSystem.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/MoveSystem.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/MoveSystem.cpp.s
-.PHONY : src/MoveSystem.cpp.s
+# fast build rule for target.
+ColonyGameCopyShaders/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGameCopyShaders.dir/build.make CMakeFiles/ColonyGameCopyShaders.dir/build
+.PHONY : ColonyGameCopyShaders/fast
 
 src/NGLDraw.o: src/NGLDraw.cpp.o
 .PHONY : src/NGLDraw.o
 
 # target to build an object file
 src/NGLDraw.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/NGLDraw.cpp.o
 .PHONY : src/NGLDraw.cpp.o
 
 src/NGLDraw.i: src/NGLDraw.cpp.i
@@ -205,7 +178,7 @@ src/NGLDraw.i: src/NGLDraw.cpp.i
 
 # target to preprocess a source file
 src/NGLDraw.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/NGLDraw.cpp.i
 .PHONY : src/NGLDraw.cpp.i
 
 src/NGLDraw.s: src/NGLDraw.cpp.s
@@ -213,7 +186,7 @@ src/NGLDraw.s: src/NGLDraw.cpp.s
 
 # target to generate assembly for a file
 src/NGLDraw.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/NGLDraw.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/NGLDraw.cpp.s
 .PHONY : src/NGLDraw.cpp.s
 
 src/Table.o: src/Table.cpp.o
@@ -221,7 +194,7 @@ src/Table.o: src/Table.cpp.o
 
 # target to build an object file
 src/Table.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Table.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/Table.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Table.cpp.o
 .PHONY : src/Table.cpp.o
 
@@ -230,7 +203,7 @@ src/Table.i: src/Table.cpp.i
 
 # target to preprocess a source file
 src/Table.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Table.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/Table.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Table.cpp.i
 .PHONY : src/Table.cpp.i
 
@@ -239,16 +212,124 @@ src/Table.s: src/Table.cpp.s
 
 # target to generate assembly for a file
 src/Table.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/Table.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/Table.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/Table.cpp.s
 .PHONY : src/Table.cpp.s
+
+src/component/BlockComponents.o: src/component/BlockComponents.cpp.o
+.PHONY : src/component/BlockComponents.o
+
+# target to build an object file
+src/component/BlockComponents.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/BlockComponents.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/BlockComponents.cpp.o
+.PHONY : src/component/BlockComponents.cpp.o
+
+src/component/BlockComponents.i: src/component/BlockComponents.cpp.i
+.PHONY : src/component/BlockComponents.i
+
+# target to preprocess a source file
+src/component/BlockComponents.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/BlockComponents.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/BlockComponents.cpp.i
+.PHONY : src/component/BlockComponents.cpp.i
+
+src/component/BlockComponents.s: src/component/BlockComponents.cpp.s
+.PHONY : src/component/BlockComponents.s
+
+# target to generate assembly for a file
+src/component/BlockComponents.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/BlockComponents.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/BlockComponents.cpp.s
+.PHONY : src/component/BlockComponents.cpp.s
+
+src/component/CameraComponents.o: src/component/CameraComponents.cpp.o
+.PHONY : src/component/CameraComponents.o
+
+# target to build an object file
+src/component/CameraComponents.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/CameraComponents.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/CameraComponents.cpp.o
+.PHONY : src/component/CameraComponents.cpp.o
+
+src/component/CameraComponents.i: src/component/CameraComponents.cpp.i
+.PHONY : src/component/CameraComponents.i
+
+# target to preprocess a source file
+src/component/CameraComponents.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/CameraComponents.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/CameraComponents.cpp.i
+.PHONY : src/component/CameraComponents.cpp.i
+
+src/component/CameraComponents.s: src/component/CameraComponents.cpp.s
+.PHONY : src/component/CameraComponents.s
+
+# target to generate assembly for a file
+src/component/CameraComponents.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/CameraComponents.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/CameraComponents.cpp.s
+.PHONY : src/component/CameraComponents.cpp.s
+
+src/component/Entities.o: src/component/Entities.cpp.o
+.PHONY : src/component/Entities.o
+
+# target to build an object file
+src/component/Entities.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/Entities.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/Entities.cpp.o
+.PHONY : src/component/Entities.cpp.o
+
+src/component/Entities.i: src/component/Entities.cpp.i
+.PHONY : src/component/Entities.i
+
+# target to preprocess a source file
+src/component/Entities.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/Entities.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/Entities.cpp.i
+.PHONY : src/component/Entities.cpp.i
+
+src/component/Entities.s: src/component/Entities.cpp.s
+.PHONY : src/component/Entities.s
+
+# target to generate assembly for a file
+src/component/Entities.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/Entities.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/Entities.cpp.s
+.PHONY : src/component/Entities.cpp.s
+
+src/component/TransformComponents.o: src/component/TransformComponents.cpp.o
+.PHONY : src/component/TransformComponents.o
+
+# target to build an object file
+src/component/TransformComponents.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/TransformComponents.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/TransformComponents.cpp.o
+.PHONY : src/component/TransformComponents.cpp.o
+
+src/component/TransformComponents.i: src/component/TransformComponents.cpp.i
+.PHONY : src/component/TransformComponents.i
+
+# target to preprocess a source file
+src/component/TransformComponents.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/TransformComponents.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/TransformComponents.cpp.i
+.PHONY : src/component/TransformComponents.cpp.i
+
+src/component/TransformComponents.s: src/component/TransformComponents.cpp.s
+.PHONY : src/component/TransformComponents.s
+
+# target to generate assembly for a file
+src/component/TransformComponents.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/TransformComponents.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/TransformComponents.cpp.s
+.PHONY : src/component/TransformComponents.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -256,7 +337,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -264,8 +345,143 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyManager.dir/build.make CMakeFiles/ColonyManager.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/system/MoveSystem.o: src/system/MoveSystem.cpp.o
+.PHONY : src/system/MoveSystem.o
+
+# target to build an object file
+src/system/MoveSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/MoveSystem.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/MoveSystem.cpp.o
+.PHONY : src/system/MoveSystem.cpp.o
+
+src/system/MoveSystem.i: src/system/MoveSystem.cpp.i
+.PHONY : src/system/MoveSystem.i
+
+# target to preprocess a source file
+src/system/MoveSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/MoveSystem.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/MoveSystem.cpp.i
+.PHONY : src/system/MoveSystem.cpp.i
+
+src/system/MoveSystem.s: src/system/MoveSystem.cpp.s
+.PHONY : src/system/MoveSystem.s
+
+# target to generate assembly for a file
+src/system/MoveSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/MoveSystem.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/MoveSystem.cpp.s
+.PHONY : src/system/MoveSystem.cpp.s
+
+src/system/RenderCubeSystem.o: src/system/RenderCubeSystem.cpp.o
+.PHONY : src/system/RenderCubeSystem.o
+
+# target to build an object file
+src/system/RenderCubeSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/RenderCubeSystem.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/RenderCubeSystem.cpp.o
+.PHONY : src/system/RenderCubeSystem.cpp.o
+
+src/system/RenderCubeSystem.i: src/system/RenderCubeSystem.cpp.i
+.PHONY : src/system/RenderCubeSystem.i
+
+# target to preprocess a source file
+src/system/RenderCubeSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/RenderCubeSystem.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/RenderCubeSystem.cpp.i
+.PHONY : src/system/RenderCubeSystem.cpp.i
+
+src/system/RenderCubeSystem.s: src/system/RenderCubeSystem.cpp.s
+.PHONY : src/system/RenderCubeSystem.s
+
+# target to generate assembly for a file
+src/system/RenderCubeSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/RenderCubeSystem.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/RenderCubeSystem.cpp.s
+.PHONY : src/system/RenderCubeSystem.cpp.s
+
+src/system/RenderWorldSystem.o: src/system/RenderWorldSystem.cpp.o
+.PHONY : src/system/RenderWorldSystem.o
+
+# target to build an object file
+src/system/RenderWorldSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/RenderWorldSystem.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/RenderWorldSystem.cpp.o
+.PHONY : src/system/RenderWorldSystem.cpp.o
+
+src/system/RenderWorldSystem.i: src/system/RenderWorldSystem.cpp.i
+.PHONY : src/system/RenderWorldSystem.i
+
+# target to preprocess a source file
+src/system/RenderWorldSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/RenderWorldSystem.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/RenderWorldSystem.cpp.i
+.PHONY : src/system/RenderWorldSystem.cpp.i
+
+src/system/RenderWorldSystem.s: src/system/RenderWorldSystem.cpp.s
+.PHONY : src/system/RenderWorldSystem.s
+
+# target to generate assembly for a file
+src/system/RenderWorldSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/RenderWorldSystem.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/RenderWorldSystem.cpp.s
+.PHONY : src/system/RenderWorldSystem.cpp.s
+
+src/system/SetPositionSystem.o: src/system/SetPositionSystem.cpp.o
+.PHONY : src/system/SetPositionSystem.o
+
+# target to build an object file
+src/system/SetPositionSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/SetPositionSystem.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/SetPositionSystem.cpp.o
+.PHONY : src/system/SetPositionSystem.cpp.o
+
+src/system/SetPositionSystem.i: src/system/SetPositionSystem.cpp.i
+.PHONY : src/system/SetPositionSystem.i
+
+# target to preprocess a source file
+src/system/SetPositionSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/SetPositionSystem.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/SetPositionSystem.cpp.i
+.PHONY : src/system/SetPositionSystem.cpp.i
+
+src/system/SetPositionSystem.s: src/system/SetPositionSystem.cpp.s
+.PHONY : src/system/SetPositionSystem.s
+
+# target to generate assembly for a file
+src/system/SetPositionSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/SetPositionSystem.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/SetPositionSystem.cpp.s
+.PHONY : src/system/SetPositionSystem.cpp.s
+
+src/system/TestIsBlockedSystem.o: src/system/TestIsBlockedSystem.cpp.o
+.PHONY : src/system/TestIsBlockedSystem.o
+
+# target to build an object file
+src/system/TestIsBlockedSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/TestIsBlockedSystem.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/TestIsBlockedSystem.cpp.o
+.PHONY : src/system/TestIsBlockedSystem.cpp.o
+
+src/system/TestIsBlockedSystem.i: src/system/TestIsBlockedSystem.cpp.i
+.PHONY : src/system/TestIsBlockedSystem.i
+
+# target to preprocess a source file
+src/system/TestIsBlockedSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/TestIsBlockedSystem.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/TestIsBlockedSystem.cpp.i
+.PHONY : src/system/TestIsBlockedSystem.cpp.i
+
+src/system/TestIsBlockedSystem.s: src/system/TestIsBlockedSystem.cpp.s
+.PHONY : src/system/TestIsBlockedSystem.s
+
+# target to generate assembly for a file
+src/system/TestIsBlockedSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/TestIsBlockedSystem.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/TestIsBlockedSystem.cpp.s
+.PHONY : src/system/TestIsBlockedSystem.cpp.s
 
 tests/TableTests.o: tests/TableTests.cpp.o
 .PHONY : tests/TableTests.o
@@ -291,6 +507,30 @@ tests/TableTests.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/TableTests.cpp.s
 .PHONY : tests/TableTests.cpp.s
 
+tests/WorldTests.o: tests/WorldTests.cpp.o
+.PHONY : tests/WorldTests.o
+
+# target to build an object file
+tests/WorldTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/WorldTests.cpp.o
+.PHONY : tests/WorldTests.cpp.o
+
+tests/WorldTests.i: tests/WorldTests.cpp.i
+.PHONY : tests/WorldTests.i
+
+# target to preprocess a source file
+tests/WorldTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/WorldTests.cpp.i
+.PHONY : tests/WorldTests.cpp.i
+
+tests/WorldTests.s: tests/WorldTests.cpp.s
+.PHONY : tests/WorldTests.s
+
+# target to generate assembly for a file
+tests/WorldTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/tests/WorldTests.cpp.s
+.PHONY : tests/WorldTests.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -300,24 +540,51 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... ColonyManagerCopyShaders"
-	@echo "... ColonyManager"
+	@echo "... ColonyGameCopyShaders"
+	@echo "... ColonyGame"
 	@echo "... Tests"
-	@echo "... src/MoveSystem.o"
-	@echo "... src/MoveSystem.i"
-	@echo "... src/MoveSystem.s"
 	@echo "... src/NGLDraw.o"
 	@echo "... src/NGLDraw.i"
 	@echo "... src/NGLDraw.s"
 	@echo "... src/Table.o"
 	@echo "... src/Table.i"
 	@echo "... src/Table.s"
+	@echo "... src/component/BlockComponents.o"
+	@echo "... src/component/BlockComponents.i"
+	@echo "... src/component/BlockComponents.s"
+	@echo "... src/component/CameraComponents.o"
+	@echo "... src/component/CameraComponents.i"
+	@echo "... src/component/CameraComponents.s"
+	@echo "... src/component/Entities.o"
+	@echo "... src/component/Entities.i"
+	@echo "... src/component/Entities.s"
+	@echo "... src/component/TransformComponents.o"
+	@echo "... src/component/TransformComponents.i"
+	@echo "... src/component/TransformComponents.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/system/MoveSystem.o"
+	@echo "... src/system/MoveSystem.i"
+	@echo "... src/system/MoveSystem.s"
+	@echo "... src/system/RenderCubeSystem.o"
+	@echo "... src/system/RenderCubeSystem.i"
+	@echo "... src/system/RenderCubeSystem.s"
+	@echo "... src/system/RenderWorldSystem.o"
+	@echo "... src/system/RenderWorldSystem.i"
+	@echo "... src/system/RenderWorldSystem.s"
+	@echo "... src/system/SetPositionSystem.o"
+	@echo "... src/system/SetPositionSystem.i"
+	@echo "... src/system/SetPositionSystem.s"
+	@echo "... src/system/TestIsBlockedSystem.o"
+	@echo "... src/system/TestIsBlockedSystem.i"
+	@echo "... src/system/TestIsBlockedSystem.s"
 	@echo "... tests/TableTests.o"
 	@echo "... tests/TableTests.i"
 	@echo "... tests/TableTests.s"
+	@echo "... tests/WorldTests.o"
+	@echo "... tests/WorldTests.i"
+	@echo "... tests/WorldTests.s"
 .PHONY : help
 
 

@@ -88,6 +88,6 @@ int Table::getComponentIndex(uint8_t i_componentType) const
     return -1;
 }
 
-void* Table::getColumn(uint32_t i_columnIndex) const {
-    return m_columns[i_columnIndex].m_column.get();
+std::shared_ptr<void> Table::getColumn(uint32_t i_columnIndex) const {
+    return m_columns[i_columnIndex].m_column;
 }
