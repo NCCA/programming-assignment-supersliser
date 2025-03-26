@@ -53,6 +53,10 @@ add_executable(${TargetName}
         include/system/RenderWorldSystem.h
         src/system/RenderWorldSystem.cpp
         src/component/CameraComponents.cpp
+        include/component/BlockTextureComponent.h
+        src/component/BlockTextureComponent.cpp
+        include/system/ApplyBlockTextureSystem.h
+        src/system/ApplyBlockTextureSystem.cpp
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
@@ -97,6 +101,10 @@ add_executable(Tests
         include/system/RenderWorldSystem.h
         src/system/RenderWorldSystem.cpp
         src/component/CameraComponents.cpp
+        include/component/BlockTextureComponent.h
+        src/component/BlockTextureComponent.cpp
+        include/system/ApplyBlockTextureSystem.h
+        src/system/ApplyBlockTextureSystem.cpp
 )
 include_directories(include)
 target_sources(Tests PRIVATE)
@@ -109,4 +117,7 @@ add_custom_target(${TargetName}CopyShaders ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_CURRENT_SOURCE_DIR}/shaders
         $<TARGET_FILE_DIR:${TargetName}>/shaders
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_CURRENT_SOURCE_DIR}/textures
+        $<TARGET_FILE_DIR:${TargetName}>/textures
 )

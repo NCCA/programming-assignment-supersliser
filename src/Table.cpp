@@ -8,6 +8,7 @@
 #include "component/CameraComponents.h"
 #include "component/Entities.h"
 #include "component/TransformComponents.h"
+#include "component/BlockTextureComponent.h"
 
 uint32_t Table::createEntity() {
     if (m_columns.empty()) {
@@ -33,6 +34,10 @@ uint32_t Table::createEntity() {
         case 4:
                 static_cast<CameraComponents*>(m_columns[i].m_column.get())->m_proj.push_back(CameraComponents::getDefaultProj());
                 static_cast<CameraComponents*>(m_columns[i].m_column.get())->m_view.push_back(CameraComponents::getDefaultView());
+                break;
+            case 5:
+                static_cast<BlockTextureComponent*>(m_columns[i].m_column.get())->m_textures.push_back(0);
+                break;
         }
     }
     return static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount() - 1;
@@ -58,6 +63,9 @@ uint32_t Table::registerComponentType(const uint8_t i_componentType) {
     case 4:
         m_columns.push_back({i_componentType, std::make_shared<CameraComponents>(static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount())});
         break;
+        case 5:
+            m_columns.push_back({i_componentType, std::make_shared<BlockTextureComponent>(static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount())});
+            break;
     }
     return m_columns.size() - 1;
 }

@@ -11,6 +11,7 @@
 #include "component/CameraComponents.h"
 #include "system/RenderWorldSystem.h"
 #include "system/SetPositionSystem.h"
+#include "system/ApplyBlockTextureSystem.h"
 
 SDL_GLContext createOpenGLContext(SDL_Window *window)
 {
@@ -167,14 +168,16 @@ TEST(System, WorldVisible)
     }
     world.registerComponentType(TransformComponents::getComponentID());
     world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
 
+    ApplyBlockTextureSystem applyBlockTextureSystem;
+    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
 
     RenderWorldSystem renderWorldSystem;
     renderWorldSystem.i_world = &world;
     renderWorldSystem.i_cams = static_cast<CameraComponents*>(players.getColumn(1).get());
-    renderWorldSystem.run(static_cast<CameraComponents*>(players.getColumn(1).get()), 0);
 
     bool success = false;
 

@@ -243,6 +243,33 @@ src/component/BlockComponents.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/BlockComponents.cpp.s
 .PHONY : src/component/BlockComponents.cpp.s
 
+src/component/BlockTextureComponent.o: src/component/BlockTextureComponent.cpp.o
+.PHONY : src/component/BlockTextureComponent.o
+
+# target to build an object file
+src/component/BlockTextureComponent.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/BlockTextureComponent.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/BlockTextureComponent.cpp.o
+.PHONY : src/component/BlockTextureComponent.cpp.o
+
+src/component/BlockTextureComponent.i: src/component/BlockTextureComponent.cpp.i
+.PHONY : src/component/BlockTextureComponent.i
+
+# target to preprocess a source file
+src/component/BlockTextureComponent.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/BlockTextureComponent.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/BlockTextureComponent.cpp.i
+.PHONY : src/component/BlockTextureComponent.cpp.i
+
+src/component/BlockTextureComponent.s: src/component/BlockTextureComponent.cpp.s
+.PHONY : src/component/BlockTextureComponent.s
+
+# target to generate assembly for a file
+src/component/BlockTextureComponent.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/component/BlockTextureComponent.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/component/BlockTextureComponent.cpp.s
+.PHONY : src/component/BlockTextureComponent.cpp.s
+
 src/component/CameraComponents.o: src/component/CameraComponents.cpp.o
 .PHONY : src/component/CameraComponents.o
 
@@ -347,6 +374,33 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/system/ApplyBlockTextureSystem.o: src/system/ApplyBlockTextureSystem.cpp.o
+.PHONY : src/system/ApplyBlockTextureSystem.o
+
+# target to build an object file
+src/system/ApplyBlockTextureSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/ApplyBlockTextureSystem.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/ApplyBlockTextureSystem.cpp.o
+.PHONY : src/system/ApplyBlockTextureSystem.cpp.o
+
+src/system/ApplyBlockTextureSystem.i: src/system/ApplyBlockTextureSystem.cpp.i
+.PHONY : src/system/ApplyBlockTextureSystem.i
+
+# target to preprocess a source file
+src/system/ApplyBlockTextureSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/ApplyBlockTextureSystem.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/ApplyBlockTextureSystem.cpp.i
+.PHONY : src/system/ApplyBlockTextureSystem.cpp.i
+
+src/system/ApplyBlockTextureSystem.s: src/system/ApplyBlockTextureSystem.cpp.s
+.PHONY : src/system/ApplyBlockTextureSystem.s
+
+# target to generate assembly for a file
+src/system/ApplyBlockTextureSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ColonyGame.dir/build.make CMakeFiles/ColonyGame.dir/src/system/ApplyBlockTextureSystem.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/src/system/ApplyBlockTextureSystem.cpp.s
+.PHONY : src/system/ApplyBlockTextureSystem.cpp.s
 
 src/system/MoveSystem.o: src/system/MoveSystem.cpp.o
 .PHONY : src/system/MoveSystem.o
@@ -552,6 +606,9 @@ help:
 	@echo "... src/component/BlockComponents.o"
 	@echo "... src/component/BlockComponents.i"
 	@echo "... src/component/BlockComponents.s"
+	@echo "... src/component/BlockTextureComponent.o"
+	@echo "... src/component/BlockTextureComponent.i"
+	@echo "... src/component/BlockTextureComponent.s"
 	@echo "... src/component/CameraComponents.o"
 	@echo "... src/component/CameraComponents.i"
 	@echo "... src/component/CameraComponents.s"
@@ -564,6 +621,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/system/ApplyBlockTextureSystem.o"
+	@echo "... src/system/ApplyBlockTextureSystem.i"
+	@echo "... src/system/ApplyBlockTextureSystem.s"
 	@echo "... src/system/MoveSystem.o"
 	@echo "... src/system/MoveSystem.i"
 	@echo "... src/system/MoveSystem.s"

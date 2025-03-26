@@ -24,20 +24,26 @@ CameraComponents::CameraComponents(size_t i_size) {
 
     glClearColor(0.4f, 0.4f, 0.4f, 1.0f); // Grey Background
     glEnable(GL_DEPTH_TEST);
-    constexpr auto vertexShader = "PBRVertex";
-    constexpr auto fragShader = "PBRFragment";
+    constexpr auto vertexShader = "SimpleVertex";
+    constexpr auto fragShader = "SimpleFragment";
     constexpr auto PBR = "PBR";
+
+    ngl::ShaderLib::createShaderProgram("TextureShader");
+
     ngl::ShaderLib::createShaderProgram(PBR);
     ngl::ShaderLib::attachShader(vertexShader, ngl::ShaderType::VERTEX);
     ngl::ShaderLib::attachShader(fragShader, ngl::ShaderType::FRAGMENT);
-    ngl::ShaderLib::loadShaderSource(vertexShader, "shaders/PBRVertex.glsl");
-    ngl::ShaderLib::loadShaderSource(fragShader, "shaders/PBRFragment.glsl");
+    ngl::ShaderLib::loadShaderSource(vertexShader, "shaders/TextureVert.glsl");
+    ngl::ShaderLib::loadShaderSource(fragShader, "shaders/TextureFrag.glsl");
     ngl::ShaderLib::compileShader(vertexShader);
     ngl::ShaderLib::compileShader(fragShader);
-    ngl::ShaderLib::attachShaderToProgram(PBR, vertexShader);
-    ngl::ShaderLib::attachShaderToProgram(PBR, fragShader);
-    ngl::ShaderLib::linkProgramObject(PBR);
-    ngl::ShaderLib::use(PBR);
+    ngl::ShaderLib::attachShaderToProgram("TextureShader", vertexShader);
+    ngl::ShaderLib::attachShaderToProgram("TextureShader", fragShader);
+
+    ngl::ShaderLib::linkProgramObject("TextureShader");
+    ngl::ShaderLib::use("TextureShader");
+    ngl::ShaderLib::setUniform("tex", 0);
+
     ngl::Vec3 from(0.0f, 2.0f, 2.0f);
 
     glViewport(0, 0, 1080, 720);
