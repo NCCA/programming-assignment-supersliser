@@ -30,19 +30,32 @@ class Entity {
 }
 
 abstract class System {
-	+ {virtual} void run(T& i_component, int i_index);
+	+ void run(T i_component, int i_index);
 }
 
 class MoveSystem {
 	+ void run(PositionComponent i_position, int i_index)
+    + Table* i_world
+    + Vec3 m_pos
+}
+
+class TestIsBlockedSystem{
+    + void run(PositionComponent i_position, int i_index)
+    + Table* i_world
+    + bool o_isBlocked
 }
 
 
 
-Table "1" *-- "0..*" Column : "Contains multiple"
-Column o.. PositionComponent : "Could Point to a"
-Column o.. Entity : "Could Point to an"
-System <|-- MoveSystem : "Inherits with T = PositionComponent"
-Table o-- System : "Runs"
+Table "1" o-- "0..*" Column : "Contains multiple"
+Column "1" o.. "1" PositionComponent : "Could be pointed to by"
+Column "1" o.. "1" Entity : "Could be pointed to by"
+System <|-- MoveSystem : "Is Inherited from"
+Table "1" o-- "*" System : "Runs"
+System <|-- TestIsBlockedSystem : "Is Inherited from"
+TestIsBlockedSystem "1" ..o "1" Table : "Points to a different"
+MoveSystem "1" ..o "1" Table : "Points to a different"
+MoveSystem o-- PositionComponent: "T="
+TestIsBlockedSystem o-- PositionComponent: "T="
 
 @enduml
