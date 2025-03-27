@@ -54,8 +54,6 @@ System <|-- MoveSystem : "Is Inherited from"
 Table "1" o-- "*" System : "Runs"
 System <|-- TestIsBlockedSystem : "Is Inherited from"
 TestIsBlockedSystem "1" ..o "1" Table : "Points to a different"
-MoveSystem "1" ..o "1" Table : "Points to a different"
-MoveSystem o-- PositionComponent: "T="
-TestIsBlockedSystem o-- PositionComponent: "T="
+MoveSystem "1" ..o "0 | 1" Table : "Could point to a different"
 
 @enduml

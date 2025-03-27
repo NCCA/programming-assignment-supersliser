@@ -4,43 +4,50 @@
 
 #include "system/ApplyBlockTextureSystem.h"
 
+#include <iostream>
+
+#include "component/BlockComponents.h"
+
 void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_index)
 {
-    ngl::Image image;
-    bool loaded = image.load("/home/tom/programming-assignment-supersliser/textures/crate.bmp");
-    if (loaded == true)
+    std::string_view path = i_texturePath;
+    uint8_t texId = io_component->getTextureID(path);
+
+    // Check if the index is within bounds
+    if (i_index >= io_component->m_vaos.size()) {
+        std::cerr << "Index out of bounds: " << i_index << std::endl;
+        return;
+    }
+
+    if (texId == io_component->s_registeredTextures.size() - 1)
     {
-        int width = image.width();
-        int height = image.height();
-
-        std::unique_ptr<unsigned char[]> data = std::make_unique<unsigned char[]>(width * height * 3);
-        size_t index = 0;
-        ngl::Vec3 colour;
-        for (unsigned int y = 0; y < height; ++y)
-        {
-            for (unsigned int x = 0; x < width; ++x)
-            {
-                colour = image.getColour(x, y);
-
-                data[index++] = colour.m_r;
-                data[index++] = colour.m_g;
-                data[index++] = colour.m_b;
-            }
+        // Check if the VAO is null before resetting
+        if (!io_component->m_vaos[i_index]) {
+            auto temp = ngl::VAOFactory::createVAO(ngl::multiBufferVAO, GL_TRIANGLES);
+            io_component->m_vaos[i_index] = std::move(temp);
         }
 
-        GLuint textureName;
+        // io_component->m_vaos[i_index].reset((ngl::VAOFactory::createVAO(ngl::multiBufferVAO, GL_TRIANGLES).get()));
+        io_component->m_vaos[i_index]->bind();
+
+        std::array<ngl::Vec3, 36> vertices = BlockComponents::getVertices();
+
+        io_component->m_vaos[i_index]->setData(ngl::MultiBufferVAO::VertexData(sizeof(vertices), vertices[0].m_x));
+        io_component->m_vaos[i_index]->setVertexAttributePointer(0, 3, GL_FLOAT, 0, 0);
+        io_component->m_vaos[i_index]->setNumIndices(vertices.size());
+
+        ngl::Texture tex;
+        tex.loadImage(path);
+        io_component->m_textureIDs[i_index] = texId;
+        io_component->m_GLTextureIDs.push_back(tex.setTextureGL());
 
 
-        glGenTextures(1, &textureName);
-        glBindTexture(GL_TEXTURE_2D, textureName);
-        // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-        io_component->m_textures[i_index] = textureName;
-
-
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data.get());
-
-        glGenerateMipmap(GL_TEXTURE_2D); //  Allocate the mipmaps
-        glBindTexture(GL_TEXTURE_2D, 0);
+        io_component->m_vaos[i_index]->unbind();
+    }
+    else
+    {
+        io_component->m_vaos[i_index] = io_component->m_vaos[texId];
+        io_component->m_textureIDs[i_index] = texId;
+        io_component->m_GLTextureIDs[i_index] = io_component->m_GLTextureIDs[texId];
     }
 }

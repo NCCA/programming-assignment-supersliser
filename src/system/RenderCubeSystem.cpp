@@ -9,7 +9,7 @@
 #include <ngl/VAOPrimitives.h>
 
 #include "component/BlockComponents.h"
-void RenderCubeSystem::run(BlockComponents* io_component, int i_index) {
+void RenderCubeSystem::run(BlockTextureComponent* io_component, int i_index) {
     // // vertex coords array
     // GLfloat vertices[] = {
     //         -1, 1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, // back
@@ -81,25 +81,11 @@ void RenderCubeSystem::run(BlockComponents* io_component, int i_index) {
     // grab an instance of the shader manager
     ngl::ShaderLib::use("TextureShader");
 
-    GLuint m_vaoID[2];
-    // Two VAOs allocation
-    glGenVertexArrays(2, &m_vaoID[0]);
-    // First VAO setup
-    glBindVertexArray(m_vaoID[0]);
-    GLuint vboID;
-    glGenBuffers(1, &vboID);
-    glBindBuffer(GL_ARRAY_BUFFER, vboID);
-    glBufferData(GL_ARRAY_BUFFER, 9*sizeof(GLfloat), vert2, GL_STATIC_DRAW);
-    glVertexAttribPointer((GLuint)0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-    glEnableVertexAttribArray(0);
-    glBindVertexArray(0);
+    io_component->m_vaos[i_index]->bind();
+    io_component->m_vaos[i_index]->draw();
+    io_component->m_vaos[i_index]->unbind();
 
-    // get the VBO instance and draw the built in teapot
-    // draw
-    // need to bind the active texture before drawing
-    glActiveTexture(GL_TEXTURE0 + i_index); // Bind to a different texture unit
-    glBindTexture(GL_TEXTURE_2D, m_texture->m_textures[i_index]);
-    ngl::;
+
     auto tx = ngl::Mat4::translate(0.0f, -0.45f, 0.0f);
     ngl::Mat4 MVP =  m_camera->m_proj[0] * m_camera->m_view[0] * tx;
     ngl::ShaderLib::setUniform("MVP", MVP);

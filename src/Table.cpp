@@ -36,7 +36,8 @@ uint32_t Table::createEntity() {
                 static_cast<CameraComponents*>(m_columns[i].m_column.get())->m_view.push_back(CameraComponents::getDefaultView());
                 break;
             case 5:
-                static_cast<BlockTextureComponent*>(m_columns[i].m_column.get())->m_textures.push_back(0);
+                static_cast<BlockTextureComponent*>(m_columns[i].m_column.get())->m_vaos.push_back(nullptr);
+                static_cast<BlockTextureComponent*>(m_columns[i].m_column.get())->m_textureIDs.push_back(0);
                 break;
         }
     }

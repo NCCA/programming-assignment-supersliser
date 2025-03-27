@@ -12,12 +12,11 @@
 #include "System.h"
 #include "component/BlockTextureComponent.h"
 
-class RenderCubeSystem : public a_System<BlockComponents>
+class RenderCubeSystem : public a_System<BlockTextureComponent>
 {
     public:
     ngl::Vec3 i_pos;
     CameraComponents* m_camera;
-    BlockTextureComponent* m_texture;
-    void run(BlockComponents* io_component, int i_index) override;
+    void run(BlockTextureComponent* io_component, int i_index) override;
 
 };
