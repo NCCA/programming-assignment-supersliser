@@ -162,11 +162,14 @@ TEST(System, WorldVisible)
 
     Table players;
     Table world;
-    for (uint32_t i = 0; i < 9; i++)
+    for (uint32_t i = 0; i < 1; i++)
     {
         world.createEntity();
     }
     world.registerComponentType(TransformComponents::getComponentID());
+    MoveSystem ms;
+    ms.i_pos = ngl::Vec3(0.0f, 0.0f, 1.0f);
+    world.run(&ms, TransformComponents::getComponentID());
     world.registerComponentType(BlockComponents::getComponentID());
     world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
@@ -211,7 +214,7 @@ TEST(System, WorldVisible)
 
         // now we draw ngl
         players.run(&renderWorldSystem, CameraComponents::getComponentID());
-        std::cout << "Running World Visible Test, please press enter if you can see the world or escape otherwise: ";
+        // std::cout << "Running World Visible Test, please press enter if you can see the world or escape otherwise: ";
         // swap the buffers
         SDL_GL_SwapWindow(window);
 

@@ -28,8 +28,8 @@ NGLDraw::NGLDraw()
   ngl::ShaderLib::attachShader(vertexShader, ngl::ShaderType::VERTEX);
   ngl::ShaderLib::attachShader(fragShader, ngl::ShaderType::FRAGMENT);
   // attach the source
-  ngl::ShaderLib::loadShaderSource(vertexShader, "shaders/PBRVertex.glsl");
-  ngl::ShaderLib::loadShaderSource(fragShader, "shaders/PBRFragment.glsl");
+  ngl::ShaderLib::loadShaderSource(vertexShader, "/home/tom/programming-assignment-supersliser/shaders/TextureVert.glsl");
+  ngl::ShaderLib::loadShaderSource(fragShader, "/home/tom/programming-assignment-supersliser/shaders/TextureFrag.glsl");
   // compile the shaders
   ngl::ShaderLib::compileShader(vertexShader);
   ngl::ShaderLib::compileShader(fragShader);

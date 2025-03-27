@@ -43,21 +43,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ColonyGame::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ColonyGame-Release-eda505d944dc37c15404.json",
+					"jsonFile" : "target-ColonyGame-Release-6cb2b3d4c876d7b8f98e.json",
 					"name" : "ColonyGame",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "ColonyGameCopyShaders::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ColonyGameCopyShaders-Release-948a5bf52394be5d527b.json",
+					"jsonFile" : "target-ColonyGameCopyShaders-Release-8b9a4204627537e79afa.json",
 					"name" : "ColonyGameCopyShaders",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "Tests::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Tests-Release-aa3fcb69714ca9feb817.json",
+					"jsonFile" : "target-Tests-Release-6b3452a61eed5c03df63.json",
 					"name" : "Tests",
 					"projectIndex" : 0
 				}
