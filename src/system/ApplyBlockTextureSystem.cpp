@@ -41,6 +41,11 @@ void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_ind
         io_component->m_textureIDs[i_index] = texId;
         io_component->m_GLTextureIDs.push_back(tex.setTextureGL());
 
+        std::array<ngl::Vec2, 36> texCoords = BlockComponents::getTexCoordinates();
+
+        io_component->m_vaos[i_index]->setData(ngl::MultiBufferVAO::VertexData(sizeof(texCoords), texCoords[0].m_x));
+        io_component->m_vaos[i_index]->setVertexAttributePointer(1, 2, GL_FLOAT, 0, 0);
+        io_component->m_vaos[i_index]->setNumIndices(texCoords.size());
 
         io_component->m_vaos[i_index]->unbind();
     }

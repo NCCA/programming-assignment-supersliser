@@ -12,7 +12,7 @@
 class ApplyBlockTextureSystem : public a_System<BlockTextureComponent>
 {
 public:
-    std::string_view i_texturePath = "/home/tom/programming-assignment-supersliser/textures/crate.bmp";
+    std::string_view i_texturePath = "/transfer/programming-assignment-supersliser/textures/crate.bmp";
     void run(BlockTextureComponent* io_component, int i_index) override;
 };
 

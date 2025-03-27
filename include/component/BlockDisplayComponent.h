@@ -5,6 +5,9 @@
 #ifndef BLOCKDISPLAYCOMPONENT_H
 #define BLOCKDISPLAYCOMPONENT_H
 
+#include <cstdio>
+#include <cstdint>
+
 class BlockDisplayComponent
 {
     BlockDisplayComponent(size_t i_size);

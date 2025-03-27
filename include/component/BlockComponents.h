@@ -13,62 +13,140 @@ public:
     BlockComponents(size_t i_size);
     static std::uint8_t getComponentID() { return 3; }
 
-    // vertex data from https://gist.github.com/OrangeTide/fbe703b80d143983361f
-    static std::array<ngl::Vec3,36> getVertices() { return std::array<ngl::Vec3,36> {
-        /* face 1 */
-        ngl::Vec3(1.0, -1.0, -1.0),
-        ngl::Vec3(-1.0, 1.0, -1.0),
-        ngl::Vec3(1.0, 1.0, -1.0),
+    static std::array<ngl::Vec2, 36> getTexCoordinates() {
+        std::array<ngl::Vec2, 36> texCoords;
+        size_t i = 0;
 
-        ngl::Vec3(-1.0, 1.0, -1.0),
-        ngl::Vec3(1.0, -1.0, -1.0),
-        ngl::Vec3(-1.0, -1.0, -1.0),
+        // Define texture coordinates for each vertex of each triangle
 
-        /* face 2 */
-        ngl::Vec3(-1.0, 1.0, 1.0),
-        ngl::Vec3(1.0, -1.0, 1.0),
-        ngl::Vec3(1.0, 1.0, 1.0),
+        // Front face
+        texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v0
+        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v1
+        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v2
 
-        ngl::Vec3(1.0, -1.0, 1.0),
-        ngl::Vec3(-1.0, 1.0, 1.0),
-        ngl::Vec3(-1.0, -1.0, 1.0),
+        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v2
+        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v3
+        texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v0
 
-        /* face 3 */
-        ngl::Vec3(-1.0, 1.0, -1.0),
-        ngl::Vec3(-1.0, 1.0, 1.0),
-        ngl::Vec3(1.0, 1.0, -1.0),
+        // Back face
+        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v5
+        texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v4
+        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v7
 
-        ngl::Vec3(-1.0, 1.0, 1.0),
-        ngl::Vec3(1.0, 1.0, 1.0),
-        ngl::Vec3(1.0, 1.0, -1.0),
+        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v7
+        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v6
+        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v5
 
-        /* face 4 */
-        ngl::Vec3(-1.0, -1.0, 1.0),
-        ngl::Vec3(-1.0, -1.0, -1.0),
-        ngl::Vec3(1.0, -1.0, -1.0),
+        // Top face
+        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v3
+        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v2
+        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v6
 
-        ngl::Vec3(1.0, -1.0, 1.0),
-        ngl::Vec3(-1.0, -1.0, 1.0),
-        ngl::Vec3(1.0, -1.0, -1.0),
+        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v6
+        texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v7
+        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v3
 
-        /* face 5 */
-        ngl::Vec3(1.0, 1.0, -1.0),
-        ngl::Vec3(1.0, 1.0, 1.0),
-        ngl::Vec3(1.0, -1.0, 1.0),
+        // Bottom face
+        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v4
+        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v5
+        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v1
 
-        ngl::Vec3(1.0, 1.0, -1.0),
-        ngl::Vec3(1.0, -1.0, 1.0),
-        ngl::Vec3(1.0, -1.0, -1.0),
+        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v1
+        texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v0
+        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v4
 
-        /* face 6 */
-        ngl::Vec3(-1.0, 1.0, 1.0),
-        ngl::Vec3(-1.0, 1.0, -1.0),
-        ngl::Vec3(-1.0, -1.0, 1.0),
+        // Right face
+        texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v1
+        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v5
+        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v6
 
-        ngl::Vec3(-1.0, -1.0, 1.0),
-        ngl::Vec3(-1.0, 1.0, -1.0),
-        ngl::Vec3(-1.0, -1.0, -1.0),
-    };};
+        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v6
+        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v2
+        texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v1
+
+        // Left face
+        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v4
+        texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v0
+        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v3
+
+        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v3
+        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v7
+        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v4
+
+        return texCoords;
+    }
+
+    // vertex data from google gemini
+    static std::array<ngl::Vec3,36> getVertices() {
+        std::array<ngl::Vec3, 36> vertices;
+        size_t i = 0;
+
+        // Define the 8 corner vertices (for reference)
+        ngl::Vec3 v0(-1.0f, -1.0f,  1.0f); // Front Bottom Left
+        ngl::Vec3 v1( 1.0f, -1.0f,  1.0f); // Front Bottom Right
+        ngl::Vec3 v2( 1.0f,  1.0f,  1.0f); // Front Top Right
+        ngl::Vec3 v3(-1.0f,  1.0f,  1.0f); // Front Top Left
+        ngl::Vec3 v4(-1.0f, -1.0f, -1.0f); // Back Bottom Left
+        ngl::Vec3 v5( 1.0f, -1.0f, -1.0f); // Back Bottom Right
+        ngl::Vec3 v6( 1.0f,  1.0f, -1.0f); // Back Top Right
+        ngl::Vec3 v7(-1.0f,  1.0f, -1.0f); // Back Top Left
+
+        // Front face (2 triangles)
+        vertices[i++] = v0;
+        vertices[i++] = v1;
+        vertices[i++] = v2;
+
+        vertices[i++] = v2;
+        vertices[i++] = v3;
+        vertices[i++] = v0;
+
+        // Back face
+        vertices[i++] = v5;
+        vertices[i++] = v4;
+        vertices[i++] = v7;
+
+        vertices[i++] = v7;
+        vertices[i++] = v6;
+        vertices[i++] = v5;
+
+        // Top face
+        vertices[i++] = v3;
+        vertices[i++] = v2;
+        vertices[i++] = v6;
+
+        vertices[i++] = v6;
+        vertices[i++] = v7;
+        vertices[i++] = v3;
+
+        // Bottom face
+        vertices[i++] = v4;
+        vertices[i++] = v5;
+        vertices[i++] = v1;
+
+        vertices[i++] = v1;
+        vertices[i++] = v0;
+        vertices[i++] = v4;
+
+        // Right face
+        vertices[i++] = v1;
+        vertices[i++] = v5;
+        vertices[i++] = v6;
+
+        vertices[i++] = v6;
+        vertices[i++] = v2;
+        vertices[i++] = v1;
+
+        // Left face
+        vertices[i++] = v4;
+        vertices[i++] = v0;
+        vertices[i++] = v3;
+
+        vertices[i++] = v3;
+        vertices[i++] = v7;
+        vertices[i++] = v4;
+
+        return vertices;
+    }
 };
 
 #endif //BLOCKCOMPONENT_H
