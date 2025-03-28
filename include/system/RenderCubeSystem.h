@@ -2,21 +2,23 @@
 // Created by thoma on 24/03/2025.
 //
 
-#ifndef RENDERWORLDSYSTEM_H
-#define RENDERWORLDSYSTEM_H
+#ifndef RENDERCUBESYSTEM_H
+#define RENDERCUBESYSTEM_H
 #include "component/BlockComponents.h"
 #include "component/CameraComponents.h"
-
-#endif //RENDERWORLDSYSTEM_H
-
 #include "System.h"
 #include "component/BlockTextureComponent.h"
+#include <ngl/Transformation.h>
 
 class RenderCubeSystem : public a_System<BlockTextureComponent>
 {
-    public:
+public:
     ngl::Vec3 i_pos;
     CameraComponents* m_camera;
     void run(BlockTextureComponent* io_component, int i_index) override;
 
 };
+
+#endif //RENDERCUBESYSTEM_H
+
+

@@ -10,21 +10,25 @@
 
 #include "component/BlockComponents.h"
 void RenderCubeSystem::run(BlockTextureComponent* io_component, int i_index) {
-
-    // clear the screen and depth buffer
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    // grab an instance of the shader manager
     ngl::ShaderLib::use("TextureShader");
 
+    // clear the screen and depth buffer
     io_component->m_vaos[i_index]->bind();
-    io_component->m_vaos[i_index]->draw();
     glBindTexture(GL_TEXTURE_2D, io_component->m_GLTextureIDs[i_index]);
+
+    // grab an instance of the shader manager
+
+    ngl::Transformation tx;
+    tx.setPosition(i_pos);
+    ngl::Mat4 MVP =  m_camera->m_proj[0] * m_camera->m_view[0] * tx.getMatrix();
+    ngl::ShaderLib::setUniform("MVP", MVP);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+
+    io_component->m_vaos[i_index]->draw();
+
     io_component->m_vaos[i_index]->unbind();
 
 
-    auto tx = ngl::Mat4::translate(0.0f, -0.45f, 0.0f);
-    ngl::Mat4 MVP =  m_camera->m_proj[0] * m_camera->m_view[0] * tx;
-    ngl::ShaderLib::setUniform("MVP", MVP);
+
 }

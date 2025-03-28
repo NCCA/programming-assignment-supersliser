@@ -224,3 +224,129 @@ TEST(System, WorldVisible)
   // now tidy up and exit SDL
  SDL_Quit();
 }
+
+TEST(System, WorldMultiBlockVisible) {
+    // Initialize SDL's Video subsystem
+    if (SDL_Init(SDL_INIT_VIDEO) < 0 )
+    {
+        // Or die on error
+        printf("Unable to initialize SDL");
+        return;
+    }
+
+    // now get the size of the display and create a window we need to init the video
+    SDL_Rect rect;
+    SDL_GetDisplayBounds(0,&rect);
+    // now create our window
+    SDL_Window *window=SDL_CreateWindow("SDLNGL",
+                                        SDL_WINDOWPOS_CENTERED,
+                                        SDL_WINDOWPOS_CENTERED,
+                                        rect.w/2,
+                                        rect.h/2,
+                                        SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI
+    );
+    // check to see if that worked or exit
+    if (!window)
+    {
+        printf("Unable to create window");
+        return;
+    }
+
+    // Create our opengl context and attach it to our window
+
+    SDL_GLContext glContext=createOpenGLContext(window);
+    if(!glContext)
+    {
+        printf("Problem creating OpenGL context ");
+        return;
+    }
+    // make this our current GL context (we can have more than one window but in this case not)
+    SDL_GL_MakeCurrent(window, glContext);
+    /* This makes our buffer swap syncronized with the monitor's vertical refresh */
+    SDL_GL_SetSwapInterval(1);
+    // we need to initialise the NGL lib which will load all of the OpenGL functions, this must
+    // be done once we have a valid GL context but before we call any GL commands. If we dont do
+    // this everything will crash
+    ngl::NGLInit::initialize();
+    // now clear the screen and swap whilst NGL inits (which may take time)
+    glClear(GL_COLOR_BUFFER_BIT);
+    SDL_GL_SwapWindow(window);
+    // flag to indicate if we need to exit
+    bool quit=false;
+    // sdl event processing data structure
+    SDL_Event event;
+    // now we create an instance of our ngl class, this will init NGL and setup basic
+    // opengl stuff ext. When this falls out of scope the dtor will be called and cleanup
+    // our gl stuff
+
+    Table players;
+    Table world;
+    for (uint32_t i = 0; i < 9; i++)
+    {
+        world.createEntity();
+    }
+    world.registerComponentType(TransformComponents::getComponentID());
+    MoveSystem ms;
+    for (float i = -1; i <= 1; i++)
+    {
+        for (float j = -1; j <= 1; j++)
+        {
+            std::vector<float> args;
+            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            world.run(&ms, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1), (i + 1) * 3 + (j + 1));
+        }
+    }
+    world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
+    players.createEntity();
+    players.registerComponentType(CameraComponents::getComponentID());
+
+    ApplyBlockTextureSystem applyBlockTextureSystem;
+    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
+
+    RenderWorldSystem renderWorldSystem;
+    renderWorldSystem.i_world = &world;
+    renderWorldSystem.i_cams = static_cast<CameraComponents*>(players.getColumn(1).get());
+
+    bool success = false;
+
+
+    while(!quit)
+    {
+
+        while ( SDL_PollEvent(&event) )
+        {
+            switch (event.type)
+            {
+                // this is the window x being clicked.
+                case SDL_QUIT : quit = true; break;
+
+                    // now we look for a keydown event
+                case SDL_KEYDOWN:
+                {
+                    switch( event.key.keysym.sym )
+                    {
+                        // if it's the escape key quit
+                        case SDLK_ESCAPE :  quit = true; break;
+                        case SDLK_RETURN : success = true; quit = true; break;
+                        default : break;
+                    } // end of key process
+                } // end of keydown
+
+                    break;
+                default : break;
+            } // end of event switch
+        } // end of poll events
+
+        // now we draw ngl
+        players.run(&renderWorldSystem, CameraComponents::getComponentID());
+        // std::cout << "Running World Visible Test, please press enter if you can see the world or escape otherwise: ";
+        // swap the buffers
+        SDL_GL_SwapWindow(window);
+
+    }
+
+    EXPECT_TRUE(success);
+    // now tidy up and exit SDL
+    SDL_Quit();
+}
