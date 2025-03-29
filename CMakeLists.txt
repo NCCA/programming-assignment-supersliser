@@ -62,11 +62,12 @@ add_executable(${TargetName}
         include/Camera.h
         src/Camera.cpp
         include/component/BlockType.h
+        include/utils.h
+        src/utils.cpp
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
 target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
-    ${PROJECT_SOURCE_DIR}/include/NGLDraw.h
 )
 
 # need to add some exta libs for SDL under linux
@@ -84,6 +85,7 @@ include(GoogleTest)
 enable_testing()
 add_executable(Tests
         tests/TableTests.cpp
+        tests/PlayerTests.cpp
         tests/WorldTests.cpp
         src/system/TestIsBlockedSystem.cpp
         include/component/TransformComponents.h
@@ -113,6 +115,8 @@ add_executable(Tests
         src/component/BlockDisplayComponent.cpp
         src/Camera.cpp
         include/component/BlockType.h
+        include/utils.h
+        src/utils.cpp
 )
 include_directories(include)
 target_sources(Tests PRIVATE)

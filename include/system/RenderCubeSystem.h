@@ -10,11 +10,14 @@
 #include "component/BlockTextureComponent.h"
 #include <ngl/Transformation.h>
 
+#include "component/TransformComponents.h"
+
 class RenderCubeSystem : public a_System<BlockTextureComponent>
 {
 public:
     ngl::Vec3 i_pos;
-    CameraComponents* m_camera;
+    CameraComponents* i_camera;
+    TransformComponents* i_cameraTransform = nullptr;
     void run(BlockTextureComponent* io_component, int i_index) override;
 
 };

@@ -62,7 +62,7 @@ void Camera ::setDefaultCamera() noexcept
   m_aspect = 1080.0f / 720.0f;
 
   setShape(m_fov, m_aspect, m_zNear, m_zFar); // good default values here
-  set(ngl::Vec3(5.0, 5.0, 5.0), ngl::Vec3(0.0, 0.0, 0.0), ngl::Vec3(0, 1, 0));
+  set(ngl::Vec3(0.0, 2.0, 0.0), ngl::Vec3(0.0, 1.0, 0.0), ngl::Vec3(0, 1, 0));
 }
 
 //----------------------------------------------------------------------------------------------------------------------

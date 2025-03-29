@@ -12,28 +12,8 @@
 #include "system/RenderWorldSystem.h"
 #include "system/SetPositionSystem.h"
 #include "system/ApplyBlockTextureSystem.h"
+#include "utils.h"
 
-SDL_GLContext createOpenGLContext(SDL_Window *window)
-{
-    // Note you may have to change this depending upon the driver (Windows is fussy)
-    // stick to 4.5 as the core base level for NGL works ok
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-
-    // set multi sampling else we get really bad graphics that alias
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES,4);
-    // Turn on double buffering with a 24bit Z buffer.
-    // You may need to change this to 16 or 32 for your system
-    // on mac up to 32 will work but under linux centos build only 16
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-    // enable double buffering (should be on by default)
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    //
-    return SDL_GL_CreateContext(window);
-
-}
 
 TEST(System, generateWorld)
 {
@@ -115,15 +95,12 @@ TEST(System, WorldVisible)
       return;
   }
 
-  // now get the size of the display and create a window we need to init the video
-  SDL_Rect rect;
-  SDL_GetDisplayBounds(0,&rect);
   // now create our window
   SDL_Window *window=SDL_CreateWindow("SDLNGL",
                                       SDL_WINDOWPOS_CENTERED,
                                       SDL_WINDOWPOS_CENTERED,
-                                      rect.w/2,
-                                      rect.h/2,
+                                      1080,
+                                      720,
                                       SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI
                                      );
   // check to see if that worked or exit
@@ -135,7 +112,7 @@ TEST(System, WorldVisible)
 
   // Create our opengl context and attach it to our window
 
-   SDL_GLContext glContext=createOpenGLContext(window);
+   SDL_GLContext glContext=utils::createOpenGLContext(window);
    if(!glContext)
    {
      printf("Problem creating OpenGL context ");
@@ -181,7 +158,6 @@ TEST(System, WorldVisible)
 
     RenderWorldSystem renderWorldSystem;
     renderWorldSystem.i_world = &world;
-    renderWorldSystem.i_cams = static_cast<CameraComponents*>(players.getColumn(1).get());
 
     bool success = false;
 
@@ -226,7 +202,161 @@ TEST(System, WorldVisible)
  SDL_Quit();
 }
 
-TEST(System, WorldMultiBlockVisible) {
+TEST(Player, PlayerMoveForwards)
+{
+    // Initialize SDL's Video subsystem
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+        // Or die on error
+        printf("Unable to initialize SDL");
+        return;
+    }
+
+    // now create our window
+    SDL_Window* window = SDL_CreateWindow("SDLNGL",
+                                          SDL_WINDOWPOS_CENTERED,
+                                          SDL_WINDOWPOS_CENTERED,
+                                          1080,
+                                          720,
+                                          SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI
+    );
+    // check to see if that worked or exit
+    if (!window)
+    {
+        printf("Unable to create window");
+        return;
+    }
+
+    // Create our opengl context and attach it to our window
+
+    SDL_GLContext glContext = utils::createOpenGLContext(window);
+    if (!glContext)
+    {
+        printf("Problem creating OpenGL context ");
+        return;
+    }
+    // make this our current GL context (we can have more than one window but in this case not)
+    SDL_GL_MakeCurrent(window, glContext);
+    /* This makes our buffer swap syncronized with the monitor's vertical refresh */
+    SDL_GL_SetSwapInterval(1);
+    // we need to initialise the NGL lib which will load all of the OpenGL functions, this must
+    // be done once we have a valid GL context but before we call any GL commands. If we dont do
+    // this everything will crash
+    ngl::NGLInit::initialize();
+    // now clear the screen and swap whilst NGL inits (which may take time)
+    glClear(GL_COLOR_BUFFER_BIT);
+    SDL_GL_SwapWindow(window);
+    // flag to indicate if we need to exit
+    bool quit = false;
+    // sdl event processing data structure
+    SDL_Event event;
+    // now we create an instance of our ngl class, this will init NGL and setup basic
+    // opengl stuff ext. When this falls out of scope the dtor will be called and cleanup
+    // our gl stuff
+
+    Table players;
+    Table world;
+    for (uint32_t i = 0; i < 25; i++)
+    {
+        world.createEntity();
+    }
+    world.registerComponentType(TransformComponents::getComponentID());
+    MoveSystem ms;
+    for (float i = -5; i <= 5; i++)
+    {
+        for (float j = -5; j <= 5; j++)
+        {
+            std::vector<float> args;
+            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            world.run(&ms, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1), (i + 1) * 3 + (j + 1));
+        }
+    }
+    world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
+    players.createEntity();
+    players.registerComponentType(CameraComponents::getComponentID());
+    players.registerComponentType(TransformComponents::getComponentID());
+
+    ApplyBlockTextureSystem applyBlockTextureSystem;
+    applyBlockTextureSystem.i_blockType = BlockType::Grass;
+    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
+
+    RenderWorldSystem renderWorldSystem;
+    renderWorldSystem.i_world = &world;
+    renderWorldSystem.i_cameraTransforms = static_cast<TransformComponents*>(players.getColumn(players.getComponentIndex(TransformComponents::getComponentID())).get());
+
+    bool success = false;
+    float currentTime = SDL_GetTicks() / 1000;
+
+    bool wHeld = false;
+
+    while (!quit)
+    {
+        currentTime = (SDL_GetTicks() - currentTime) / 1000;
+        while (SDL_PollEvent(&event))
+        {
+            switch (event.type)
+            {
+            // this is the window x being clicked.
+            case SDL_QUIT: quit = true;
+                break;
+
+            // now we look for a keydown event
+            case SDL_KEYDOWN:
+                {
+                    switch (event.key.keysym.sym)
+                    {
+                    // if it's the escape key quit
+                    case SDLK_w:
+                        {
+                            wHeld = true;
+                        }
+                        break;
+                    case SDLK_ESCAPE: quit = true;
+                        break;
+                    case SDLK_RETURN: success = true;
+                        quit = true;
+                        break;
+                    default: break;
+                    } // end of key process
+                } // end of keydown
+
+                case SDL_KEYUP:
+                {
+                    switch (event.key.keysym.sym)
+                    {
+                        case SDLK_w:
+                        {
+                            wHeld = false;
+                        }
+                        break;
+                    }
+                }
+                break;
+            default: break;
+            } // end of event switch
+        } // end of poll events
+        if (wHeld)
+        {
+            MoveSystem _ms;
+            _ms.i_world = &world;
+            _ms.i_pos = ngl::Vec3(0.0f, 0.0f, 0.001f * currentTime);
+            players.run(&_ms, TransformComponents::getComponentID());
+        }
+        // now we draw ngl
+        players.run(&renderWorldSystem, CameraComponents::getComponentID());
+        // std::cout << "Running World Visible Test, please press enter if you can see the world or escape otherwise: ";
+        // swap the buffers
+        SDL_GL_SwapWindow(window);
+    }
+
+    EXPECT_TRUE(success);
+    // now tidy up and exit SDL
+    SDL_Quit();
+}
+
+
+TEST(World, WorldMultiBlockVisible) {
     // Initialize SDL's Video subsystem
     if (SDL_Init(SDL_INIT_VIDEO) < 0 )
     {
@@ -235,15 +365,12 @@ TEST(System, WorldMultiBlockVisible) {
         return;
     }
 
-    // now get the size of the display and create a window we need to init the video
-    SDL_Rect rect;
-    SDL_GetDisplayBounds(0,&rect);
     // now create our window
     SDL_Window *window=SDL_CreateWindow("SDLNGL",
                                         SDL_WINDOWPOS_CENTERED,
                                         SDL_WINDOWPOS_CENTERED,
-                                        rect.w/2,
-                                        rect.h/2,
+                                        1080,
+                                        720,
                                         SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI
     );
     // check to see if that worked or exit
@@ -255,7 +382,7 @@ TEST(System, WorldMultiBlockVisible) {
 
     // Create our opengl context and attach it to our window
 
-    SDL_GLContext glContext=createOpenGLContext(window);
+    SDL_GLContext glContext=utils::createOpenGLContext(window);
     if(!glContext)
     {
         printf("Problem creating OpenGL context ");
@@ -319,7 +446,6 @@ TEST(System, WorldMultiBlockVisible) {
 
     RenderWorldSystem renderWorldSystem;
     renderWorldSystem.i_world = &world;
-    renderWorldSystem.i_cams = static_cast<CameraComponents*>(players.getColumn(1).get());
 
     bool success = false;
 

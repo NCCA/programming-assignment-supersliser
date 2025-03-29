@@ -22,7 +22,8 @@ void RenderWorldSystem::run(CameraComponents* io_component, int i_index) {
 
         RenderCubeSystem renderCubeSystem;
         renderCubeSystem.i_pos = static_cast<TransformComponents*>(i_world->getColumn(i_world->getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[i];
-        renderCubeSystem.m_camera = i_cams;
+        renderCubeSystem.i_camera = io_component;
+        renderCubeSystem.i_cameraTransform = i_cameraTransforms;
         renderCubeSystem.run(blockTextureComponent, i);
 
     }

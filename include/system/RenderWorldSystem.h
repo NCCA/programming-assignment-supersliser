@@ -7,12 +7,13 @@
 #include "System.h"
 #include "Table.h"
 #include "component/CameraComponents.h"
+#include "component/TransformComponents.h"
 
 class RenderWorldSystem : public a_System<CameraComponents>
 {
 public:
     Table* i_world;
-    CameraComponents* i_cams;
+    TransformComponents* i_cameraTransforms = nullptr;
     void run(CameraComponents* io_component, int i_index) override;
 };
 #endif //RENDERWORLDSYSTEM_H
