@@ -4,22 +4,6 @@
 
 #include "component/CameraComponents.h"
 
-#include <ngl/NGLInit.h>
-#include <ngl/ShaderLib.h>
-#include <ngl/VAOPrimitives.h>
-
-ngl::Mat4 CameraComponents::getDefaultProj()
-{
-    return ngl::perspective(45.0f, static_cast<float>(1080) / 720, 0.1f, 200.0f);
-}
-
-ngl::Mat4 CameraComponents::getDefaultView()
-{
-    ngl::Vec3 to(0.0f, 0.0f, 0.0f);
-    ngl::Vec3 up(0.0f, 1.0f, 0.0f);
-    ngl::Vec3 from(0.0f, 2.0f, 2.0f);
-    return ngl::lookAt(from, to, up);
-}
 
 CameraComponents::CameraComponents(size_t i_size) {
     ngl::NGLInit::initialize();
@@ -63,7 +47,8 @@ CameraComponents::CameraComponents(size_t i_size) {
 
     glViewport(0, 0, 1080, 720);
     for (size_t i = 0; i < i_size; i++) {
-        m_view.push_back(getDefaultView());
-        m_proj.push_back(getDefaultProj());
+        auto camera = Camera();
+        camera.setDefaultCamera();
+        m_cameras.push_back(camera);
     }
 }
