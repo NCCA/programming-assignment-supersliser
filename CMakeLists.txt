@@ -61,6 +61,7 @@ add_executable(${TargetName}
         src/component/BlockDisplayComponent.cpp
         include/Camera.h
         src/Camera.cpp
+        include/component/BlockType.h
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
@@ -111,6 +112,7 @@ add_executable(Tests
         include/component/BlockDisplayComponent.h
         src/component/BlockDisplayComponent.cpp
         src/Camera.cpp
+        include/component/BlockType.h
 )
 include_directories(include)
 target_sources(Tests PRIVATE)

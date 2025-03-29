@@ -10,8 +10,10 @@
 
 void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_index)
 {
-    std::string_view path = i_texturePath;
-    uint8_t texId = io_component->getTextureID(path);
+    std::string textureDir = getTextureDir();
+    std::string textureName = getTextureName(i_blockType);
+    std::string path = fmt::format("{}{}", textureDir, textureName);
+    uint8_t texId = BlockTextureComponent::getTextureID(path);
 
     // Check if the index is within bounds
     if (i_index >= io_component->m_vaos.size()) {

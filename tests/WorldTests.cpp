@@ -176,6 +176,7 @@ TEST(System, WorldVisible)
     players.registerComponentType(CameraComponents::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
+    applyBlockTextureSystem.i_blockType = BlockType::Grass;
     world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
 
     RenderWorldSystem renderWorldSystem;
@@ -302,7 +303,19 @@ TEST(System, WorldMultiBlockVisible) {
     players.registerComponentType(CameraComponents::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
+    applyBlockTextureSystem.i_blockType = BlockType::Grass;
     world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
+    for (float i = -1; i <= 1; i++)
+    {
+        for (float j = -1; j <= 1; j++)
+        {
+            world.createEntity();
+            ms.i_pos = ngl::Vec3(i * 2, -2.0f, j * 2);
+            world.run(&ms, TransformComponents::getComponentID(),  9 + (i + 1) * 3 + (j + 1), 9 + (i + 1) * 3 + (j + 1));
+        }
+    }
+    applyBlockTextureSystem.i_blockType = BlockType::Dirt;
+    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), 9, 18);
 
     RenderWorldSystem renderWorldSystem;
     renderWorldSystem.i_world = &world;

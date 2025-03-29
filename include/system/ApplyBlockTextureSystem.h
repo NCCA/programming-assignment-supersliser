@@ -9,14 +9,35 @@
 #include "component/BlockTextureComponent.h"
 #include <ngl/VAOFactory.h>
 #include <ngl/MultiBufferVAO.h>
+
+#include "component/BlockType.h"
+
 class ApplyBlockTextureSystem : public a_System<BlockTextureComponent>
 {
 public:
+
+    static std::string getTextureDir()
+    {
 #ifdef __amd64__
-    std::string_view i_texturePath = "/home/tom/programming-assignment-supersliser/textures/crate.bmp";
+        return "/home/tom/programming-assignment-supersliser/textures/";
 #elif __linux__
-    std::string_view i_texturePath = "/home/s5605187/Documents/programming-assignment-supersliser/textures/crate.bmp";
+        return "/home/s5605187/Documents/programming-assignment-supersliser/textures/";
 #endif
+    }
+
+    static std::string getTextureName(BlockType i_blockType)
+    {
+        switch (i_blockType)
+        {
+            case BlockType::Grass:
+                return "GrassTexture.bmp";
+            case BlockType::Dirt:
+                return "DirtTexture.bmp";
+            default:
+                return "crate.bmp";
+        }
+    }
+    BlockType i_blockType;
     void run(BlockTextureComponent* io_component, int i_index) override;
 };
 
