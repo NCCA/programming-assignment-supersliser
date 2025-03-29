@@ -33,8 +33,16 @@ CameraComponents::CameraComponents(size_t i_size) {
 
     ngl::ShaderLib::attachShader(vertexShader, ngl::ShaderType::VERTEX);
     ngl::ShaderLib::attachShader(fragShader, ngl::ShaderType::FRAGMENT);
-    ngl::ShaderLib::loadShaderSource(vertexShader, "/home/s5605187/Documents/programming-assignment-supersliser/shaders/TextureVert.glsl");
-    ngl::ShaderLib::loadShaderSource(fragShader, "/home/s5605187/Documents/programming-assignment-supersliser/shaders/TextureFrag.glsl");
+    std::string path;
+#ifdef __amd64__
+    path = "/home/tom/programming-assignment-supersliser/";
+#elif __linux__
+    path = "/home/s5605187/Documents/programming-assignment-supersliser/";
+#endif
+
+
+    ngl::ShaderLib::loadShaderSource(vertexShader, path + "shaders/TextureVert.glsl");
+    ngl::ShaderLib::loadShaderSource(fragShader, path + "shaders/TextureFrag.glsl");
     if (!ngl::ShaderLib::compileShader(vertexShader)) {
         std::cerr << "Vertex shader compilation failed\n";
         return;

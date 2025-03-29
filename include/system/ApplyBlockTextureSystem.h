@@ -12,7 +12,11 @@
 class ApplyBlockTextureSystem : public a_System<BlockTextureComponent>
 {
 public:
+#ifdef __amd64__
+    std::string_view i_texturePath = "/home/tom/programming-assignment-supersliser/textures/crate.bmp";
+#elif __linux__
     std::string_view i_texturePath = "/home/s5605187/Documents/programming-assignment-supersliser/textures/crate.bmp";
+#endif
     void run(BlockTextureComponent* io_component, int i_index) override;
 };
 
