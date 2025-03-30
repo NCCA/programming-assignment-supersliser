@@ -8,6 +8,7 @@
 #include "system/System.h"
 #include "component/CameraComponents.h"
 #include "Table.h"
+#include "component/IsSprintingComponent.h"
 
 class MovePlayerSystem : public a_System<CameraComponents>
 {
@@ -15,6 +16,7 @@ public:
     ngl::Vec3 i_pos;
     Table* i_world = nullptr;
     CameraComponents* i_camera = nullptr;
+    IsSprintingComponent* i_isSprinting = nullptr;
 
     void run(CameraComponents* io_component, int i_index) override;
 };

@@ -21,6 +21,12 @@ void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
         {
             return;
         }
+        if (i_isSprinting == nullptr)
+        {
+            io_component->m_cameras[i_index].move(i_pos.m_x, i_pos.m_y, i_pos.m_z);
+            return;
+        }
+        i_pos *= i_isSprinting->m_isSprinting[i_index] ? 2.0f : 1.0f;
         io_component->m_cameras[i_index].move(i_pos.m_x, i_pos.m_y, i_pos.m_z);
     }
     else
@@ -44,6 +50,12 @@ void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
         }
 
 
+        if (i_isSprinting == nullptr)
+        {
+            io_component->m_cameras[i_index].move(out.m_x, out.m_y, out.m_z);
+            return;
+        }
+        out *= i_isSprinting->m_isSprinting[i_index] ? 2.0f : 1.0f;
         io_component->m_cameras[i_index].move(out.m_x, out.m_y, out.m_z);
     }
 }

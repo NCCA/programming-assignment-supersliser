@@ -10,6 +10,7 @@
 #include "component/TransformComponents.h"
 #include "component/BlockTextureComponent.h"
 #include "Camera.h"
+#include "component/IsSprintingComponent.h"
 
 uint32_t Table::createEntity()
 {
@@ -46,6 +47,10 @@ uint32_t Table::createEntity()
             static_cast<BlockTextureComponent*>(m_columns[i].m_column.get())->m_vaos.push_back(nullptr);
             static_cast<BlockTextureComponent*>(m_columns[i].m_column.get())->m_textureIDs.push_back(0);
             break;
+        case 6:
+            static_cast<IsSprintingComponent*>(m_columns[i].m_column.get())->m_isSprinting.push_back(false);
+            break;
+
         }
     }
     return static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount() - 1;
@@ -90,6 +95,12 @@ uint32_t Table::registerComponentType(const uint8_t i_componentType)
                 static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount())
         });
         break;
+    case 6:
+        m_columns.push_back({
+        i_componentType,
+            std::make_shared<IsSprintingComponent>(
+                static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount())
+        });
     }
     return m_columns.size() - 1;
 }

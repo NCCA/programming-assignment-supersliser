@@ -69,6 +69,7 @@ add_executable(${TargetName}
         src/system/MovePlayerSystem.cpp
         src/system/RotateCameraSystem.cpp
         include/system/RotateCameraSystem.h
+        include/component/IsSprintingComponent.h
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
@@ -127,7 +128,12 @@ add_executable(Tests
         src/system/MovePlayerSystem.cpp
         src/system/RotateCameraSystem.cpp
         include/system/RotateCameraSystem.h
-
+        include/component/IsSprintingComponent.h
+        src/component/IsSprintingComponent.cpp
+        include/system/SetSprintingSystem.h
+        include/system/ToggleSprintingSystem.h
+        src/system/SetSprintingSystem.cpp
+        src/system/ToggleSprintingSystem.cpp
 )
 include_directories(include)
 target_sources(Tests PRIVATE)
