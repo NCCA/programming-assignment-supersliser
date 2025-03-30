@@ -101,6 +101,7 @@ uint32_t Table::registerComponentType(const uint8_t i_componentType)
             std::make_shared<IsSprintingComponent>(
                 static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount())
         });
+        break;
     }
     return m_columns.size() - 1;
 }
