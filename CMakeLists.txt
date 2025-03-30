@@ -64,6 +64,11 @@ add_executable(${TargetName}
         include/component/BlockType.h
         include/utils.h
         src/utils.cpp
+        include/dir.h
+        include/system/SetCameraLookSystem.h
+        src/system/SetCameraLookSystem.cpp
+        include/system/MovePlayerSystem.h
+        src/system/MovePlayerSystem.cpp
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
@@ -117,6 +122,12 @@ add_executable(Tests
         include/component/BlockType.h
         include/utils.h
         src/utils.cpp
+        include/dir.h
+        include/system/SetCameraLookSystem.h
+        src/system/SetCameraLookSystem.cpp
+        include/system/MovePlayerSystem.h
+        src/system/MovePlayerSystem.cpp
+
 )
 include_directories(include)
 target_sources(Tests PRIVATE)

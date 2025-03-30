@@ -15,26 +15,16 @@
 class ApplyBlockTextureSystem : public a_System<BlockTextureComponent>
 {
 public:
-
-    static std::string getTextureDir()
-    {
-#ifdef __amd64__
-        return "/home/tom/programming-assignment-supersliser/textures/";
-#elif __linux__
-        return "/home/s5605187/Documents/programming-assignment-supersliser/textures/";
-#endif
-    }
-
     static std::string getTextureName(BlockType i_blockType)
     {
         switch (i_blockType)
         {
             case BlockType::Grass:
-                return "GrassTexture.bmp";
+                return "textures/GrassTexture.bmp";
             case BlockType::Dirt:
-                return "DirtTexture.bmp";
+                return "textures/DirtTexture.bmp";
             default:
-                return "crate.bmp";
+                return "textures/crate.bmp";
         }
     }
     BlockType i_blockType;

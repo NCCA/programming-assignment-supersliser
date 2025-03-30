@@ -3,6 +3,7 @@
 //
 
 #include "component/CameraComponents.h"
+#include "dir.h"
 
 
 CameraComponents::CameraComponents(size_t i_size) {
@@ -17,16 +18,9 @@ CameraComponents::CameraComponents(size_t i_size) {
 
     ngl::ShaderLib::attachShader(vertexShader, ngl::ShaderType::VERTEX);
     ngl::ShaderLib::attachShader(fragShader, ngl::ShaderType::FRAGMENT);
-    std::string path;
-#ifdef __amd64__
-    path = "/home/tom/programming-assignment-supersliser/";
-#elif __linux__
-    path = "/home/s5605187/Documents/programming-assignment-supersliser/";
-#endif
 
-
-    ngl::ShaderLib::loadShaderSource(vertexShader, path + "shaders/TextureVert.glsl");
-    ngl::ShaderLib::loadShaderSource(fragShader, path + "shaders/TextureFrag.glsl");
+    ngl::ShaderLib::loadShaderSource(vertexShader,  fmt::format("{}{}", DIR, "shaders/TextureVert.glsl"));
+    ngl::ShaderLib::loadShaderSource(fragShader, fmt::format("{}{}", DIR, "shaders/TextureFrag.glsl"));
     if (!ngl::ShaderLib::compileShader(vertexShader)) {
         std::cerr << "Vertex shader compilation failed\n";
         return;

@@ -13,7 +13,6 @@ class RenderWorldSystem : public a_System<CameraComponents>
 {
 public:
     Table* i_world;
-    TransformComponents* i_cameraTransforms = nullptr;
     void run(CameraComponents* io_component, int i_index) override;
 };
 #endif //RENDERWORLDSYSTEM_H

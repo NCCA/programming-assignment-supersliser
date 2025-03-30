@@ -20,10 +20,6 @@ void RenderCubeSystem::run(BlockTextureComponent* io_component, int i_index) {
 
     ngl::Transformation tx;
     tx.setPosition(i_pos);
-    if (i_cameraTransform != nullptr)
-    {
-        i_camera->m_cameras[0].move(i_cameraTransform->m_ps[0].m_x, i_cameraTransform->m_ps[0].m_y, i_cameraTransform->m_ps[0].m_z);
-    }
     ngl::Mat4 MVP =  i_camera->m_cameras[0].getVPMatrix() * tx.getMatrix();
     ngl::ShaderLib::setUniform("MVP", MVP);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);

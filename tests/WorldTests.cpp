@@ -13,53 +13,58 @@
 #include "system/SetPositionSystem.h"
 #include "system/ApplyBlockTextureSystem.h"
 #include "utils.h"
+#include "system/SetCameraLookSystem.h"
+#include "system/MovePlayerSystem.h"
 
 
-TEST(System, generateWorld)
-{
+TEST(System, generateWorld) {
     Table world;
-    for (uint32_t i = 0; i < 9; i++)
-    {
+    for (uint32_t i = 0; i < 9; i++) {
         world.createEntity();
     }
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem setPositionSystem;
-    for (float i = -1; i <= 1; i++)
-    {
-        for (float j = -1; j <= 1; j++)
-        {
+    for (float i = -1; i <= 1; i++) {
+        for (float j = -1; j <= 1; j++) {
             setPositionSystem.i_pos = ngl::Vec3(i, 0.0f, j);
-            world.run(&setPositionSystem, TransformComponents::getComponentID(),  (i + 1) * 3 + (j + 1), (i + 1) * 3 + (j + 1));
+            world.run(&setPositionSystem, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1),
+                      (i + 1) * 3 + (j + 1));
         }
     }
-    EXPECT_TRUE(static_cast<TransformComponents*>(world.getEntity(0)[world.getComponentIndex(TransformComponents::getComponentID())].m_column.get())->m_ps[0]==ngl::Vec3(-1.0f, 0.0f, -1.0f));
-    EXPECT_TRUE(static_cast<TransformComponents*>(world.getEntity(1)[world.getComponentIndex(TransformComponents::getComponentID())].m_column.get())->m_ps[1]==ngl::Vec3(-1.0f, 0.0f, 0.0f));
-    EXPECT_TRUE(static_cast<TransformComponents*>(world.getEntity(2)[world.getComponentIndex(TransformComponents::getComponentID())].m_column.get())->m_ps[2]==ngl::Vec3(-1.0f, 0.0f, 1.0f));
-    EXPECT_TRUE(static_cast<TransformComponents*>(world.getEntity(3)[world.getComponentIndex(TransformComponents::getComponentID())].m_column.get())->m_ps[3]==ngl::Vec3(0.0f, 0.0f, -1.0f));
-    EXPECT_TRUE(static_cast<TransformComponents*>(world.getEntity(4)[world.getComponentIndex(TransformComponents::getComponentID())].m_column.get())->m_ps[4]==ngl::Vec3(0.0f, 0.0f, 0.0f));
-    EXPECT_TRUE(static_cast<TransformComponents*>(world.getEntity(5)[world.getComponentIndex(TransformComponents::getComponentID())].m_column.get())->m_ps[5]==ngl::Vec3(0.0f, 0.0f, 1.0f));
-    EXPECT_TRUE(static_cast<TransformComponents*>(world.getEntity(6)[world.getComponentIndex(TransformComponents::getComponentID())].m_column.get())->m_ps[6]==ngl::Vec3(1.0f, 0.0f, -1.0f));
-    EXPECT_TRUE(static_cast<TransformComponents*>(world.getEntity(7)[world.getComponentIndex(TransformComponents::getComponentID())].m_column.get())->m_ps[7]==ngl::Vec3(1.0f, 0.0f, 0.0f));
-    EXPECT_TRUE(static_cast<TransformComponents*>(world.getEntity(8)[world.getComponentIndex(TransformComponents::getComponentID())].m_column.get())->m_ps[8]==ngl::Vec3(1.0f, 0.0f, 1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(0)[world.getComponentIndex(
+            TransformComponents::getComponentID())].m_column.get())->m_ps[0] == ngl::Vec3(-1.0f, 0.0f, -1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(1)[world.getComponentIndex(
+            TransformComponents::getComponentID())].m_column.get())->m_ps[1] == ngl::Vec3(-1.0f, 0.0f, 0.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(2)[world.getComponentIndex(
+            TransformComponents::getComponentID())].m_column.get())->m_ps[2] == ngl::Vec3(-1.0f, 0.0f, 1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(3)[world.getComponentIndex(
+            TransformComponents::getComponentID())].m_column.get())->m_ps[3] == ngl::Vec3(0.0f, 0.0f, -1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(4)[world.getComponentIndex(
+            TransformComponents::getComponentID())].m_column.get())->m_ps[4] == ngl::Vec3(0.0f, 0.0f, 0.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(5)[world.getComponentIndex(
+            TransformComponents::getComponentID())].m_column.get())->m_ps[5] == ngl::Vec3(0.0f, 0.0f, 1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(6)[world.getComponentIndex(
+            TransformComponents::getComponentID())].m_column.get())->m_ps[6] == ngl::Vec3(1.0f, 0.0f, -1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(7)[world.getComponentIndex(
+            TransformComponents::getComponentID())].m_column.get())->m_ps[7] == ngl::Vec3(1.0f, 0.0f, 0.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(8)[world.getComponentIndex(
+            TransformComponents::getComponentID())].m_column.get())->m_ps[8] == ngl::Vec3(1.0f, 0.0f, 1.0f));
 }
 
-TEST(System, moveEntityInWorld)
-{
+TEST(System, moveEntityInWorld) {
     Table world;
-    for (uint32_t i = 0; i < 12; i++)
-    {
+    for (uint32_t i = 0; i < 12; i++) {
         world.createEntity();
     }
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem setPositionSystem;
-    for (float i = -1; i <= 1; i++)
-    {
-        for (float j = -1; j <= 1; j++)
-        {
+    for (float i = -1; i <= 1; i++) {
+        for (float j = -1; j <= 1; j++) {
 
             std::vector<float> args;
             setPositionSystem.i_pos = ngl::Vec3(i, 0.0f, j);
-            world.run(&setPositionSystem, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1), (i + 1) * 3 + (j + 1));
+            world.run(&setPositionSystem, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1),
+                      (i + 1) * 3 + (j + 1));
         }
     }
     setPositionSystem.i_pos = ngl::Vec3(1.0f, 1.0f, 0.0f);
@@ -78,142 +83,25 @@ TEST(System, moveEntityInWorld)
     m.i_pos = ngl::Vec3(1.0f, 0.0f, 0.0f);
     m.i_world = &world;
     character.run(&m, TransformComponents::getComponentID());
-    EXPECT_TRUE(static_cast<TransformComponents*>(character.getEntity(0)[1].m_column.get())->m_ps[0] == ngl::Vec3(0.0f, 1.0f, 0.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(character.getEntity(0)[1].m_column.get())->m_ps[0] ==
+                ngl::Vec3(0.0f, 1.0f, 0.0f));
     m.i_pos = ngl::Vec3(0.0f, 0.0f, -1.0f);
     m.i_world = &world;
     character.run(&m, TransformComponents::getComponentID());
-    EXPECT_TRUE(static_cast<TransformComponents*>(character.getEntity(0)[1].m_column.get())->m_ps[0] == ngl::Vec3(0.0f, 1.0f, -1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(character.getEntity(0)[1].m_column.get())->m_ps[0] ==
+                ngl::Vec3(0.0f, 1.0f, -1.0f));
 }
 
-TEST(System, WorldVisible)
-{
-  // Initialize SDL's Video subsystem
-  if (SDL_Init(SDL_INIT_VIDEO) < 0 )
-  {
-    // Or die on error
-    printf("Unable to initialize SDL");
-      return;
-  }
-
-  // now create our window
-  SDL_Window *window=SDL_CreateWindow("SDLNGL",
-                                      SDL_WINDOWPOS_CENTERED,
-                                      SDL_WINDOWPOS_CENTERED,
-                                      1080,
-                                      720,
-                                      SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI
-                                     );
-  // check to see if that worked or exit
-  if (!window)
-  {
-    printf("Unable to create window");
-      return;
-  }
-
-  // Create our opengl context and attach it to our window
-
-   SDL_GLContext glContext=utils::createOpenGLContext(window);
-   if(!glContext)
-   {
-     printf("Problem creating OpenGL context ");
-       return;
-   }
-   // make this our current GL context (we can have more than one window but in this case not)
-   SDL_GL_MakeCurrent(window, glContext);
-  /* This makes our buffer swap syncronized with the monitor's vertical refresh */
-  SDL_GL_SetSwapInterval(1);
-  // we need to initialise the NGL lib which will load all of the OpenGL functions, this must
-  // be done once we have a valid GL context but before we call any GL commands. If we dont do
-  // this everything will crash
-  ngl::NGLInit::initialize();
-  // now clear the screen and swap whilst NGL inits (which may take time)
-  glClear(GL_COLOR_BUFFER_BIT);
-  SDL_GL_SwapWindow(window);
-  // flag to indicate if we need to exit
-  bool quit=false;
-  // sdl event processing data structure
-  SDL_Event event;
-  // now we create an instance of our ngl class, this will init NGL and setup basic
-  // opengl stuff ext. When this falls out of scope the dtor will be called and cleanup
-  // our gl stuff
-
-    Table players;
-    Table world;
-    for (uint32_t i = 0; i < 1; i++)
-    {
-        world.createEntity();
-    }
-    world.registerComponentType(TransformComponents::getComponentID());
-    MoveSystem ms;
-    ms.i_pos = ngl::Vec3(0.0f, 0.0f, 1.0f);
-    world.run(&ms, TransformComponents::getComponentID());
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
-
-    ApplyBlockTextureSystem applyBlockTextureSystem;
-    applyBlockTextureSystem.i_blockType = BlockType::Grass;
-    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
-
-    RenderWorldSystem renderWorldSystem;
-    renderWorldSystem.i_world = &world;
-
-    bool success = false;
-
-
-    while(!quit)
-    {
-
-        while ( SDL_PollEvent(&event) )
-        {
-            switch (event.type)
-            {
-                // this is the window x being clicked.
-                case SDL_QUIT : quit = true; break;
-
-                    // now we look for a keydown event
-                case SDL_KEYDOWN:
-                {
-                    switch( event.key.keysym.sym )
-                    {
-                        // if it's the escape key quit
-                        case SDLK_ESCAPE :  quit = true; break;
-                        case SDLK_RETURN : success = true; quit = true; break;
-                        default : break;
-                    } // end of key process
-                } // end of keydown
-
-                    break;
-                default : break;
-            } // end of event switch
-        } // end of poll events
-
-        // now we draw ngl
-        players.run(&renderWorldSystem, CameraComponents::getComponentID());
-        // std::cout << "Running World Visible Test, please press enter if you can see the world or escape otherwise: ";
-        // swap the buffers
-        SDL_GL_SwapWindow(window);
-
-    }
-
-    EXPECT_TRUE(success);
-  // now tidy up and exit SDL
- SDL_Quit();
-}
-
-TEST(Player, PlayerMoveForwards)
-{
+TEST(System, WorldVisible) {
     // Initialize SDL's Video subsystem
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         // Or die on error
         printf("Unable to initialize SDL");
         return;
     }
 
     // now create our window
-    SDL_Window* window = SDL_CreateWindow("SDLNGL",
+    SDL_Window *window = SDL_CreateWindow("World Visible TEST",
                                           SDL_WINDOWPOS_CENTERED,
                                           SDL_WINDOWPOS_CENTERED,
                                           1080,
@@ -221,8 +109,7 @@ TEST(Player, PlayerMoveForwards)
                                           SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI
     );
     // check to see if that worked or exit
-    if (!window)
-    {
+    if (!window) {
         printf("Unable to create window");
         return;
     }
@@ -230,8 +117,7 @@ TEST(Player, PlayerMoveForwards)
     // Create our opengl context and attach it to our window
 
     SDL_GLContext glContext = utils::createOpenGLContext(window);
-    if (!glContext)
-    {
+    if (!glContext) {
         printf("Problem creating OpenGL context ");
         return;
     }
@@ -256,26 +142,21 @@ TEST(Player, PlayerMoveForwards)
 
     Table players;
     Table world;
-    for (uint32_t i = 0; i < 25; i++)
-    {
+    for (uint32_t i = 0; i < 1; i++) {
         world.createEntity();
     }
     world.registerComponentType(TransformComponents::getComponentID());
     MoveSystem ms;
-    for (float i = -5; i <= 5; i++)
-    {
-        for (float j = -5; j <= 5; j++)
-        {
-            std::vector<float> args;
-            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
-            world.run(&ms, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1), (i + 1) * 3 + (j + 1));
-        }
-    }
+    ms.i_pos = ngl::Vec3(0.0f, 0.0f, 1.0f);
+    world.run(&ms, TransformComponents::getComponentID());
     world.registerComponentType(BlockComponents::getComponentID());
     world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
-    players.registerComponentType(TransformComponents::getComponentID());
+    SetCameraLookSystem setCameraLookSystem;
+    setCameraLookSystem.i_pos = ngl::Vec3(5.0f, 5.0f, 5.0f);
+    setCameraLookSystem.i_look = ngl::Vec3(0.0f, 0.0f, 0.0f);
+    players.run(&setCameraLookSystem, CameraComponents::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
     applyBlockTextureSystem.i_blockType = BlockType::Grass;
@@ -283,71 +164,47 @@ TEST(Player, PlayerMoveForwards)
 
     RenderWorldSystem renderWorldSystem;
     renderWorldSystem.i_world = &world;
-    renderWorldSystem.i_cameraTransforms = static_cast<TransformComponents*>(players.getColumn(players.getComponentIndex(TransformComponents::getComponentID())).get());
 
     bool success = false;
-    float currentTime = SDL_GetTicks() / 1000;
 
-    bool wHeld = false;
 
-    while (!quit)
-    {
-        currentTime = (SDL_GetTicks() - currentTime) / 1000;
-        while (SDL_PollEvent(&event))
-        {
-            switch (event.type)
-            {
-            // this is the window x being clicked.
-            case SDL_QUIT: quit = true;
-                break;
+    while (!quit) {
 
-            // now we look for a keydown event
-            case SDL_KEYDOWN:
-                {
-                    switch (event.key.keysym.sym)
-                    {
-                    // if it's the escape key quit
-                    case SDLK_w:
-                        {
-                            wHeld = true;
-                        }
-                        break;
-                    case SDLK_ESCAPE: quit = true;
-                        break;
-                    case SDLK_RETURN: success = true;
-                        quit = true;
-                        break;
-                    default: break;
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
+                // this is the window x being clicked.
+                case SDL_QUIT :
+                    quit = true;
+                    break;
+
+                    // now we look for a keydown event
+                case SDL_KEYDOWN: {
+                    switch (event.key.keysym.sym) {
+                        // if it's the escape key quit
+                        case SDLK_ESCAPE :
+                            quit = true;
+                            break;
+                        case SDLK_RETURN :
+                            success = true;
+                            quit = true;
+                            break;
+                        default :
+                            break;
                     } // end of key process
                 } // end of keydown
 
-                case SDL_KEYUP:
-                {
-                    switch (event.key.keysym.sym)
-                    {
-                        case SDLK_w:
-                        {
-                            wHeld = false;
-                        }
-                        break;
-                    }
-                }
-                break;
-            default: break;
+                    break;
+                default :
+                    break;
             } // end of event switch
         } // end of poll events
-        if (wHeld)
-        {
-            MoveSystem _ms;
-            _ms.i_world = &world;
-            _ms.i_pos = ngl::Vec3(0.0f, 0.0f, 0.001f * currentTime);
-            players.run(&_ms, TransformComponents::getComponentID());
-        }
+
         // now we draw ngl
         players.run(&renderWorldSystem, CameraComponents::getComponentID());
         // std::cout << "Running World Visible Test, please press enter if you can see the world or escape otherwise: ";
         // swap the buffers
         SDL_GL_SwapWindow(window);
+
     }
 
     EXPECT_TRUE(success);
@@ -355,36 +212,32 @@ TEST(Player, PlayerMoveForwards)
     SDL_Quit();
 }
 
-
-TEST(World, WorldMultiBlockVisible) {
+TEST(Player, PlayerMoveForwards) {
     // Initialize SDL's Video subsystem
-    if (SDL_Init(SDL_INIT_VIDEO) < 0 )
-    {
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         // Or die on error
         printf("Unable to initialize SDL");
         return;
     }
 
     // now create our window
-    SDL_Window *window=SDL_CreateWindow("SDLNGL",
-                                        SDL_WINDOWPOS_CENTERED,
-                                        SDL_WINDOWPOS_CENTERED,
-                                        1080,
-                                        720,
-                                        SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI
+    SDL_Window *window = SDL_CreateWindow("Player Move Forwards TEST",
+                                          SDL_WINDOWPOS_CENTERED,
+                                          SDL_WINDOWPOS_CENTERED,
+                                          1080,
+                                          720,
+                                          SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI
     );
     // check to see if that worked or exit
-    if (!window)
-    {
+    if (!window) {
         printf("Unable to create window");
         return;
     }
 
     // Create our opengl context and attach it to our window
 
-    SDL_GLContext glContext=utils::createOpenGLContext(window);
-    if(!glContext)
-    {
+    SDL_GLContext glContext = utils::createOpenGLContext(window);
+    if (!glContext) {
         printf("Problem creating OpenGL context ");
         return;
     }
@@ -400,7 +253,7 @@ TEST(World, WorldMultiBlockVisible) {
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapWindow(window);
     // flag to indicate if we need to exit
-    bool quit=false;
+    bool quit = false;
     // sdl event processing data structure
     SDL_Event event;
     // now we create an instance of our ngl class, this will init NGL and setup basic
@@ -409,16 +262,155 @@ TEST(World, WorldMultiBlockVisible) {
 
     Table players;
     Table world;
-    for (uint32_t i = 0; i < 9; i++)
-    {
+    for (uint32_t i = 0; i < 441; i++) {
         world.createEntity();
     }
     world.registerComponentType(TransformComponents::getComponentID());
     MoveSystem ms;
-    for (float i = -1; i <= 1; i++)
-    {
-        for (float j = -1; j <= 1; j++)
-        {
+    for (float i = -10; i <= 10; i++) {
+        for (float j = -10; j <= 10; j++) {
+            std::vector<float> args;
+            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            world.run(&ms, TransformComponents::getComponentID(), (i + 10) * 21 + (j + 10), (i + 10) * 21 + (j + 10));
+        }
+    }
+    world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
+    players.createEntity();
+    players.registerComponentType(CameraComponents::getComponentID());
+
+    ApplyBlockTextureSystem applyBlockTextureSystem;
+    applyBlockTextureSystem.i_blockType = BlockType::Grass;
+    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
+
+    RenderWorldSystem renderWorldSystem;
+    renderWorldSystem.i_world = &world;
+
+    bool success = false;
+    Uint32 lastTime = SDL_GetTicks();
+
+    bool wHeld = false;
+
+    while (!quit) {
+        Uint32 currentTime = SDL_GetTicks();
+        Uint32 deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
+
+        if (wHeld) {
+            MovePlayerSystem playerMoveSystem;
+            playerMoveSystem.i_pos = ngl::Vec3(0.0f, 0.0f, deltaTime * 0.01f);
+            playerMoveSystem.i_world = &world;
+            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+        }
+
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
+                // this is the window x being clicked.
+                case SDL_QUIT:
+                    quit = true;
+                    break;
+                case SDL_KEYUP: {
+                    switch (event.key.keysym.sym) {
+                        case SDLK_w:
+                            wHeld = false;
+
+                            break;
+                    }
+                }
+                    break;
+                    // now we look for a keydown event
+                case SDL_KEYDOWN: {
+                    switch (event.key.keysym.sym) {
+                        // if it's the escape key quit
+                        case SDLK_w:
+                            wHeld = true;
+                            break;
+                        case SDLK_ESCAPE:
+                            quit = true;
+                            break;
+                        case SDLK_RETURN:
+                            success = true;
+                            quit = true;
+                            break;
+                        default:
+                            break;
+                    } // end of key process
+                } // end of keydown
+                default:
+                    break;
+            } // end of event switch
+
+        } // end of poll events
+        // now we draw ngl
+        players.run(&renderWorldSystem, CameraComponents::getComponentID());
+        // std::cout << "Running World Visible Test, please press enter if you can see the world or escape otherwise: ";
+        // swap the buffers
+        SDL_GL_SwapWindow(window);
+    }
+
+    EXPECT_TRUE(success);
+    // now tidy up and exit SDL
+    SDL_Quit();
+}
+
+
+TEST(World, WorldMultiBlockVisible) {
+    // Initialize SDL's Video subsystem
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        // Or die on error
+        printf("Unable to initialize SDL");
+        return;
+    }
+
+    // now create our window
+    SDL_Window *window = SDL_CreateWindow("SDLNGL",
+                                          SDL_WINDOWPOS_CENTERED,
+                                          SDL_WINDOWPOS_CENTERED,
+                                          1080,
+                                          720,
+                                          SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI
+    );
+    // check to see if that worked or exit
+    if (!window) {
+        printf("Unable to create window");
+        return;
+    }
+
+    // Create our opengl context and attach it to our window
+
+    SDL_GLContext glContext = utils::createOpenGLContext(window);
+    if (!glContext) {
+        printf("Problem creating OpenGL context ");
+        return;
+    }
+    // make this our current GL context (we can have more than one window but in this case not)
+    SDL_GL_MakeCurrent(window, glContext);
+    /* This makes our buffer swap syncronized with the monitor's vertical refresh */
+    SDL_GL_SetSwapInterval(1);
+    // we need to initialise the NGL lib which will load all of the OpenGL functions, this must
+    // be done once we have a valid GL context but before we call any GL commands. If we dont do
+    // this everything will crash
+    ngl::NGLInit::initialize();
+    // now clear the screen and swap whilst NGL inits (which may take time)
+    glClear(GL_COLOR_BUFFER_BIT);
+    SDL_GL_SwapWindow(window);
+    // flag to indicate if we need to exit
+    bool quit = false;
+    // sdl event processing data structure
+    SDL_Event event;
+    // now we create an instance of our ngl class, this will init NGL and setup basic
+    // opengl stuff ext. When this falls out of scope the dtor will be called and cleanup
+    // our gl stuff
+
+    Table players;
+    Table world;
+    for (uint32_t i = 0; i < 9; i++) {
+        world.createEntity();
+    }
+    world.registerComponentType(TransformComponents::getComponentID());
+    MoveSystem ms;
+    for (float i = -1; i <= 1; i++) {
+        for (float j = -1; j <= 1; j++) {
             std::vector<float> args;
             ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
             world.run(&ms, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1), (i + 1) * 3 + (j + 1));
@@ -432,13 +424,11 @@ TEST(World, WorldMultiBlockVisible) {
     ApplyBlockTextureSystem applyBlockTextureSystem;
     applyBlockTextureSystem.i_blockType = BlockType::Grass;
     world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
-    for (float i = -1; i <= 1; i++)
-    {
-        for (float j = -1; j <= 1; j++)
-        {
+    for (float i = -1; i <= 1; i++) {
+        for (float j = -1; j <= 1; j++) {
             world.createEntity();
             ms.i_pos = ngl::Vec3(i * 2, -2.0f, j * 2);
-            world.run(&ms, TransformComponents::getComponentID(),  9 + (i + 1) * 3 + (j + 1), 9 + (i + 1) * 3 + (j + 1));
+            world.run(&ms, TransformComponents::getComponentID(), 9 + (i + 1) * 3 + (j + 1), 9 + (i + 1) * 3 + (j + 1));
         }
     }
     applyBlockTextureSystem.i_blockType = BlockType::Dirt;
@@ -450,30 +440,34 @@ TEST(World, WorldMultiBlockVisible) {
     bool success = false;
 
 
-    while(!quit)
-    {
+    while (!quit) {
 
-        while ( SDL_PollEvent(&event) )
-        {
-            switch (event.type)
-            {
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
                 // this is the window x being clicked.
-                case SDL_QUIT : quit = true; break;
+                case SDL_QUIT :
+                    quit = true;
+                    break;
 
                     // now we look for a keydown event
-                case SDL_KEYDOWN:
-                {
-                    switch( event.key.keysym.sym )
-                    {
+                case SDL_KEYDOWN: {
+                    switch (event.key.keysym.sym) {
                         // if it's the escape key quit
-                        case SDLK_ESCAPE :  quit = true; break;
-                        case SDLK_RETURN : success = true; quit = true; break;
-                        default : break;
+                        case SDLK_ESCAPE :
+                            quit = true;
+                            break;
+                        case SDLK_RETURN :
+                            success = true;
+                            quit = true;
+                            break;
+                        default :
+                            break;
                     } // end of key process
                 } // end of keydown
 
                     break;
-                default : break;
+                default :
+                    break;
             } // end of event switch
         } // end of poll events
 

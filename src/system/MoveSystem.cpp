@@ -11,9 +11,7 @@ void MoveSystem::run(TransformComponents* io_component, int i_index)
 {
     if (i_world == nullptr)
     {
-        io_component->m_ps[i_index].m_x += i_pos.m_x;
-        io_component->m_ps[i_index].m_y += i_pos.m_y;
-        io_component->m_ps[i_index].m_z += i_pos.m_z;
+        io_component->m_ps[i_index] += i_pos;
         return;
     }
 
@@ -28,7 +26,5 @@ void MoveSystem::run(TransformComponents* io_component, int i_index)
     {
         return;
     }
-    io_component->m_ps[i_index].m_x += i_pos.m_x;
-    io_component->m_ps[i_index].m_y += i_pos.m_y;
-    io_component->m_ps[i_index].m_z += i_pos.m_z;
+    io_component->m_ps[i_index] += i_pos;
 }

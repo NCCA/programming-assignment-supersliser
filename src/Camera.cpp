@@ -53,8 +53,6 @@ Camera::Camera() noexcept
 void Camera ::setDefaultCamera() noexcept
 {
   // make default camera
-  m_eye.set(1.0f,1.0f,1.0f);
-  m_look.set(0.0f,0.0f,0.0f);
   m_up.set(ngl::Vec4::up());
   m_fov = 55.0;
   m_zNear = 0.0001f;
@@ -62,7 +60,7 @@ void Camera ::setDefaultCamera() noexcept
   m_aspect = 1080.0f / 720.0f;
 
   setShape(m_fov, m_aspect, m_zNear, m_zFar); // good default values here
-  set(ngl::Vec3(0.0, 2.0, 0.0), ngl::Vec3(0.0, 1.0, 0.0), ngl::Vec3(0, 1, 0));
+  set(ngl::Vec3(0.0, 4.0, 0.0), ngl::Vec3(0.0, 4.0, 2.0), ngl::Vec3(0, 1, 0));
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -459,6 +457,11 @@ CameraIntercept Camera::boxInFrustum(const ngl::AABB &b) const noexcept
       result = CameraIntercept::INTERSECT;
   }
   return (result);
+}
+
+ngl::Vec3 Camera::getPos() const noexcept
+{
+  return m_eye.toVec3();
 }
 
 /// end citation http://www.lighthouse3d.com/opengl/viewfrustum/index.php?intro

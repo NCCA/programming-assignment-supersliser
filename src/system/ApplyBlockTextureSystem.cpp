@@ -7,10 +7,11 @@
 #include <iostream>
 
 #include "component/BlockComponents.h"
+#include "dir.h"
 
 void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_index)
 {
-    std::string textureDir = getTextureDir();
+    std::string textureDir = DIR;
     std::string textureName = getTextureName(i_blockType);
     std::string path = fmt::format("{}{}", textureDir, textureName);
     uint8_t texId = BlockTextureComponent::getTextureID(path);
