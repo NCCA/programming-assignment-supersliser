@@ -4,8 +4,13 @@
 
 #include "system/MoveSystem.h"
 #include <gtest/gtest.h>
+#include <ngl/NGLInit.h>
+
 #include "Table.h"
 #include "system/SetPositionSystem.h"
+#include <SDL2/SDL.h>
+
+#include "utils.h"
 
 int main(int argc, char **argv)
 {

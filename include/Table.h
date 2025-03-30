@@ -20,7 +20,7 @@ protected:
 
 public:
     Table() = default;
-    ~Table() = default;
+    ~Table();
 
     uint32_t registerComponentType(const uint8_t i_componentType);
 

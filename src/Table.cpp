@@ -128,3 +128,11 @@ std::shared_ptr<void> Table::getColumn(uint32_t i_columnIndex) const
 {
     return m_columns[i_columnIndex].m_column;
 }
+
+Table::~Table()
+{
+    for (size_t i = 0; i < m_columns.size(); i++)
+    {
+        m_columns[i].m_column.reset();
+    }
+}

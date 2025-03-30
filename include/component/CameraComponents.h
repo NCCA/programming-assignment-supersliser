@@ -15,6 +15,7 @@ class CameraComponents
     explicit CameraComponents(size_t i_size);
     std::vector<Camera> m_cameras;
     static std::uint8_t getComponentID() { return 4; }
+    ~CameraComponents();
 };
 
 #endif //CAMERACOMPONENT_H

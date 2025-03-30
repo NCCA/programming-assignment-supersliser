@@ -12,6 +12,7 @@ class BlockComponents
 public:
     BlockComponents(size_t i_size);
     static std::uint8_t getComponentID() { return 3; }
+    ~BlockComponents() = default;
 
     static std::array<ngl::Vec2, 36> getTexCoordinates() {
         std::array<ngl::Vec2, 36> texCoords;

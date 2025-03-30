@@ -12,6 +12,7 @@ class BlockTextureComponent
 {
 public:
     BlockTextureComponent(size_t i_size);
+    ~BlockTextureComponent();
     static std::uint8_t getComponentID() { return 5; }
     std::vector<std::shared_ptr<ngl::AbstractVAO>> m_vaos;
     std::vector<uint8_t> m_textureIDs;

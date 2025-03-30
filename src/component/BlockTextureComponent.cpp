@@ -30,3 +30,21 @@ uint8_t BlockTextureComponent::getTextureID(std::string_view i_path)
     s_registeredTextures.push_back(i_path);
     return s_registeredTextures.size() - 1;
 }
+
+BlockTextureComponent::~BlockTextureComponent()
+{
+    for (size_t i = 0; i < m_vaos.size(); i++)
+    {
+        if (m_vaos[i] != nullptr)
+        {
+            m_vaos[i]->removeVAO();
+        }
+    }
+    for (size_t i = 0; i < m_GLTextureIDs.size(); i++)
+    {
+        if (m_GLTextureIDs[i] != 0)
+        {
+            glDeleteTextures(1, &m_GLTextureIDs[i]);
+        }
+    }
+}

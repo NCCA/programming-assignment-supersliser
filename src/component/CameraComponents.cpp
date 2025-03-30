@@ -50,3 +50,8 @@ CameraComponents::CameraComponents(size_t i_size) {
 
     ngl::ShaderLib::debugOff();
 }
+
+CameraComponents::~CameraComponents() {
+    ngl::ShaderLib::use("TextureShader");
+    ngl::ShaderLib::reset();
+}
