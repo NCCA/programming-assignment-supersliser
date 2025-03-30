@@ -234,16 +234,29 @@ void Camera::roll(ngl::Real _angle) noexcept
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-void Camera::pitch(ngl::Real _angle) noexcept
+void Camera::yaw(ngl::Real _angle) noexcept
 {
-  rotAxes(m_n, m_v, _angle);
+  // Rotate around the world space Y-axis
+  ngl::Vec4 worldy(1.0f, 0.0f, 0.0f, 0.0f);
+  rotAxes(worldy, m_n, _angle);
+  m_u = m_up.cross(m_n);
+  m_u.normalize();
+  m_v = m_n.cross(m_u);
+  m_v.normalize();
   setViewMatrix();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
-void Camera::yaw(ngl::Real _angle) noexcept
+
+
+void Camera::pitch(ngl::Real _angle) noexcept
 {
-  rotAxes(m_u, m_n, _angle);
+  // Rotate around the world space X-axis
+  ngl::Vec4 worldx(0.0f, 1.0f, 0.0f, 0.0f);
+  rotAxes(worldx, m_n, _angle);
+  m_u = m_up.cross(m_n);
+  m_u.normalize();
+  m_v = m_n.cross(m_u);
+  m_v.normalize();
   setViewMatrix();
 }
 
@@ -459,9 +472,17 @@ CameraIntercept Camera::boxInFrustum(const ngl::AABB &b) const noexcept
   return (result);
 }
 
+/// end citation http://www.lighthouse3d.com/opengl/viewfrustum/index.php?intro
+
 ngl::Vec3 Camera::getPos() const noexcept
 {
   return m_eye.toVec3();
 }
 
-/// end citation http://www.lighthouse3d.com/opengl/viewfrustum/index.php?intro
+float Camera::getYaw() const noexcept
+{
+  ngl::Real yaw = atan2(m_n.m_x, m_n.m_z);
+  return yaw;
+}
+
+

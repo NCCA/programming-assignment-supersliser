@@ -135,4 +135,5 @@ Table::~Table()
     {
         m_columns[i].m_column.reset();
     }
+    m_columns.clear();
 }

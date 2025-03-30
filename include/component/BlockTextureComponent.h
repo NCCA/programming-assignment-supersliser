@@ -16,10 +16,9 @@ public:
     static std::uint8_t getComponentID() { return 5; }
     std::vector<std::shared_ptr<ngl::AbstractVAO>> m_vaos;
     std::vector<uint8_t> m_textureIDs;
-    std::vector<GLuint> m_GLTextureIDs;
 
-    static uint8_t getTextureID(std::string_view i_path);
-    static std::vector<std::string_view> s_registeredTextures;
+    static int8_t getTextureID(const std::string& i_path);
+    static std::vector<std::string> s_registeredTextures;
 };
 
 #endif //COLONYMANAGERBUILD_BLOCKTEXTURECOMPONENT_H

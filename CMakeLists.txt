@@ -67,6 +67,8 @@ add_executable(${TargetName}
         src/system/SetCameraLookSystem.cpp
         include/system/MovePlayerSystem.h
         src/system/MovePlayerSystem.cpp
+        src/system/RotateCameraSystem.cpp
+        include/system/RotateCameraSystem.h
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/)
@@ -88,8 +90,8 @@ include(GoogleTest)
 enable_testing()
 add_executable(Tests
         tests/TableTests.cpp
-        tests/PlayerTests.cpp
         tests/WorldTests.cpp
+        tests/PlayerTests.cpp
         src/system/TestIsBlockedSystem.cpp
         include/component/TransformComponents.h
         include/Table.h
@@ -123,6 +125,8 @@ add_executable(Tests
         src/system/SetCameraLookSystem.cpp
         include/system/MovePlayerSystem.h
         src/system/MovePlayerSystem.cpp
+        src/system/RotateCameraSystem.cpp
+        include/system/RotateCameraSystem.h
 
 )
 include_directories(include)

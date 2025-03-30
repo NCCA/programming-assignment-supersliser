@@ -14,6 +14,7 @@ class MovePlayerSystem : public a_System<CameraComponents>
 public:
     ngl::Vec3 i_pos;
     Table* i_world = nullptr;
+    CameraComponents* i_camera = nullptr;
 
     void run(CameraComponents* io_component, int i_index) override;
 };

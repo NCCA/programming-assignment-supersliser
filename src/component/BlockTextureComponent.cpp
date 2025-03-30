@@ -4,7 +4,9 @@
 
 #include <ngl/Texture.h>
 #include "component/BlockTextureComponent.h"
-std::vector<std::string_view> BlockTextureComponent::s_registeredTextures;
+
+#include "dir.h"
+std::vector<std::string> BlockTextureComponent::s_registeredTextures;
 
 
 
@@ -16,9 +18,10 @@ BlockTextureComponent::BlockTextureComponent(size_t i_size)
         m_vaos.push_back(nullptr);
         m_textureIDs.push_back(0);
     }
+    s_registeredTextures.push_back(fmt::format(DIR, "textures/crate.bmp"));
 }
 
-uint8_t BlockTextureComponent::getTextureID(std::string_view i_path)
+int8_t BlockTextureComponent::getTextureID(const std::string& i_path)
 {
     for (size_t i = 0; i < s_registeredTextures.size(); i++)
     {
@@ -27,8 +30,7 @@ uint8_t BlockTextureComponent::getTextureID(std::string_view i_path)
             return i;
         }
     }
-    s_registeredTextures.push_back(i_path);
-    return s_registeredTextures.size() - 1;
+    return -1;
 }
 
 BlockTextureComponent::~BlockTextureComponent()
@@ -40,11 +42,7 @@ BlockTextureComponent::~BlockTextureComponent()
             m_vaos[i]->removeVAO();
         }
     }
-    for (size_t i = 0; i < m_GLTextureIDs.size(); i++)
-    {
-        if (m_GLTextureIDs[i] != 0)
-        {
-            glDeleteTextures(1, &m_GLTextureIDs[i]);
-        }
-    }
+    m_textureIDs.clear();
+    m_vaos.clear();
+    s_registeredTextures.clear();
 }

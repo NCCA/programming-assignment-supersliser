@@ -14,7 +14,7 @@ void RenderCubeSystem::run(BlockTextureComponent* io_component, int i_index) {
 
     // clear the screen and depth buffer
     io_component->m_vaos[i_index]->bind();
-    glBindTexture(GL_TEXTURE_2D, io_component->m_GLTextureIDs[i_index]);
+    glBindTexture(GL_TEXTURE_2D, io_component->m_textureIDs[i_index]);
 
     // grab an instance of the shader manager
 
