@@ -16,6 +16,8 @@ CameraComponents::CameraComponents(size_t i_size) {
 
     ngl::ShaderLib::createShaderProgram("TextureShader");
 
+    ngl::ShaderLib::debugOn();
+
     ngl::ShaderLib::attachShader(vertexShader, ngl::ShaderType::VERTEX);
     ngl::ShaderLib::attachShader(fragShader, ngl::ShaderType::FRAGMENT);
 
@@ -45,4 +47,6 @@ CameraComponents::CameraComponents(size_t i_size) {
         camera.setDefaultCamera();
         m_cameras.push_back(camera);
     }
+
+    ngl::ShaderLib::debugOff();
 }

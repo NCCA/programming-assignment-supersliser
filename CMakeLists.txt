@@ -57,8 +57,6 @@ add_executable(${TargetName}
         src/component/BlockTextureComponent.cpp
         include/system/ApplyBlockTextureSystem.h
         src/system/ApplyBlockTextureSystem.cpp
-        include/component/BlockDisplayComponent.h
-        src/component/BlockDisplayComponent.cpp
         include/Camera.h
         src/Camera.cpp
         include/component/BlockType.h
@@ -116,8 +114,6 @@ add_executable(Tests
         src/component/BlockTextureComponent.cpp
         include/system/ApplyBlockTextureSystem.h
         src/system/ApplyBlockTextureSystem.cpp
-        include/component/BlockDisplayComponent.h
-        src/component/BlockDisplayComponent.cpp
         src/Camera.cpp
         include/component/BlockType.h
         include/utils.h
