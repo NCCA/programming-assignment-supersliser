@@ -28,7 +28,7 @@ void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
     ngl::Real originalX = currentDir.m_x;
     ngl::Real originalZ = currentDir.m_z;
     currentDir.m_x = originalX * cos(angleDir) + originalZ * sin(angleDir);
-    currentDir.m_z = originalX * sin(angleDir) + originalZ * cos(angleDir);
+    currentDir.m_z = -originalX * sin(angleDir) + originalZ * cos(angleDir);
 
     newPos += currentDir;
     newPos.m_y = currentPos.m_y - 1.0f;
