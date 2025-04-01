@@ -295,7 +295,7 @@ protected :
   /// @param[in,out] io_b the second vector to be rotated
   /// @param[in] _angle the angle to rotate
   //----------------------------------------------------------------------------------------------------------------------
-  void rotAxes(ngl::Vec4& io_a, ngl::Vec4& io_b, const ngl::Real _angle) noexcept;
+  void rotAxes(const ngl::Vec4& axis, ngl::Vec4& vector, ngl::Real angle) noexcept;
 
 protected :
 

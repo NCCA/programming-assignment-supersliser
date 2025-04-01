@@ -60,7 +60,7 @@ void Camera ::setDefaultCamera() noexcept
   m_aspect = 1080.0f / 720.0f;
 
   setShape(m_fov, m_aspect, m_zNear, m_zFar); // good default values here
-  set(ngl::Vec3(0.0, 4.0, 0.0), ngl::Vec3(0.0, 4.0, 2.0), ngl::Vec3(0, 1, 0));
+  set(ngl::Vec3(0.0, 2.0, 0.0), ngl::Vec3(0.0, 2.0, 2.0), ngl::Vec3(0, 1, 0));
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -210,20 +210,22 @@ void Camera::moveBoth(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
   setViewMatrix();
 }
 //----------------------------------------------------------------------------------------------------------------------
-void Camera::rotAxes(ngl::Vec4 &io_a, ngl::Vec4 &io_b, const ngl::Real _angle) noexcept
+void Camera::rotAxes(const ngl::Vec4& axis, ngl::Vec4& vector, ngl::Real angle) noexcept
 {
-  // rotate orthogonal vectors a (like x axis) and b(like y axis) through angle degrees
-  // convert to radians
-  ngl::Real ang = ngl::radians(_angle);
-  // pre-calc cos and sine
-  ngl::Real c = cosf(ang);
-  ngl::Real s = sinf(ang);
-  // tmp for io_a vector
-  ngl::Vec4 t(c * io_a.m_x + s * io_b.m_x, c * io_a.m_y + s * io_b.m_y, c * io_a.m_z + s * io_b.m_z);
-  // now set to new rot value
-  io_b.set(-s * io_a.m_x + c * io_b.m_x, -s * io_a.m_y + c * io_b.m_y, -s * io_a.m_z + c * io_b.m_z);
-  // put tmp into _a'
-  io_a.set(t.m_x, t.m_y, t.m_z);
+  ngl::Mat4 rotation;
+  if (axis == ngl::Vec4(1.0f, 0.0f, 0.0f, 0.0f)) // X-axis
+  {
+    rotation = ngl::Mat4::rotateX(angle);
+  }
+  else if (axis == ngl::Vec4(0.0f, 1.0f, 0.0f, 0.0f)) // Y-axis
+  {
+    rotation = ngl::Mat4::rotateY(angle);
+  }
+  else if (axis == ngl::Vec4(0.0f, 0.0f, 1.0f, 0.0f)) // Z-axis
+  {
+    rotation = ngl::Mat4::rotateZ(angle);
+  }
+  vector = rotation * vector;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -237,7 +239,7 @@ void Camera::roll(ngl::Real _angle) noexcept
 void Camera::yaw(ngl::Real _angle) noexcept
 {
   // Rotate around the world space Y-axis
-  ngl::Vec4 worldy(1.0f, 0.0f, 0.0f, 0.0f);
+  ngl::Vec4 worldy(0.0f, 1.0f, 0.0f, 0.0f);
   rotAxes(worldy, m_n, _angle);
   m_u = m_up.cross(m_n);
   m_u.normalize();
@@ -251,7 +253,7 @@ void Camera::yaw(ngl::Real _angle) noexcept
 void Camera::pitch(ngl::Real _angle) noexcept
 {
   // Rotate around the world space X-axis
-  ngl::Vec4 worldx(0.0f, 1.0f, 0.0f, 0.0f);
+  ngl::Vec4 worldx(1.0f, 0.0f, 0.0f, 0.0f);
   rotAxes(worldx, m_n, _angle);
   m_u = m_up.cross(m_n);
   m_u.normalize();
@@ -479,10 +481,13 @@ ngl::Vec3 Camera::getPos() const noexcept
   return m_eye.toVec3();
 }
 
-float Camera::getYaw() const noexcept
+ngl::Real Camera::getYaw() const noexcept
 {
-  ngl::Real yaw = atan2(m_n.m_x, m_n.m_z);
-  return yaw;
+    // Calculate the yaw angle in radians
+    ngl::Real yaw = atan2(m_n.m_x, m_n.m_z);
+    return yaw;
 }
+
+
 
 

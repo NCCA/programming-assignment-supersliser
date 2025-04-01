@@ -22,57 +22,57 @@ public:
 
         // Front face
         texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v0
-        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v1
-        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v2
+        texCoords[i++] = ngl::Vec2(1, 0.0f); // v1
+        texCoords[i++] = ngl::Vec2(1, 1); // v2
 
-        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v2
-        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v3
+        texCoords[i++] = ngl::Vec2(1, 1); // v2
+        texCoords[i++] = ngl::Vec2(0.0f, 1); // v3
         texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v0
 
         // Back face
-        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v5
+        texCoords[i++] = ngl::Vec2(1, 0.0f); // v5
         texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v4
-        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v7
+        texCoords[i++] = ngl::Vec2(0.0f, 1); // v7
 
-        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v7
-        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v6
-        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v5
+        texCoords[i++] = ngl::Vec2(0.0f, 1); // v7
+        texCoords[i++] = ngl::Vec2(1, 1); // v6
+        texCoords[i++] = ngl::Vec2(1, 0.0f); // v5
 
         // Top face
-        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v3
-        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v2
-        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v6
+        texCoords[i++] = ngl::Vec2(0.0f, 1); // v3
+        texCoords[i++] = ngl::Vec2(1, 1); // v2
+        texCoords[i++] = ngl::Vec2(1, 0.0f); // v6
 
-        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v6
+        texCoords[i++] = ngl::Vec2(1, 0.0f); // v6
         texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v7
-        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v3
+        texCoords[i++] = ngl::Vec2(0.0f, 1); // v3
 
         // Bottom face
-        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v4
-        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v5
-        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v1
+        texCoords[i++] = ngl::Vec2(0.0f, 1); // v4
+        texCoords[i++] = ngl::Vec2(1, 1); // v5
+        texCoords[i++] = ngl::Vec2(1, 0.0f); // v1
 
-        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v1
+        texCoords[i++] = ngl::Vec2(1, 0.0f); // v1
         texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v0
-        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v4
+        texCoords[i++] = ngl::Vec2(0.0f, 1); // v4
 
         // Right face
         texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v1
-        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v5
-        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v6
+        texCoords[i++] = ngl::Vec2(1, 0.0f); // v5
+        texCoords[i++] = ngl::Vec2(1, 1); // v6
 
-        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v6
-        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v2
+        texCoords[i++] = ngl::Vec2(1, 1); // v6
+        texCoords[i++] = ngl::Vec2(0.0f, 1); // v2
         texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v1
 
         // Left face
-        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v4
+        texCoords[i++] = ngl::Vec2(1, 0.0f); // v4
         texCoords[i++] = ngl::Vec2(0.0f, 0.0f); // v0
-        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v3
+        texCoords[i++] = ngl::Vec2(0.0f, 1); // v3
 
-        texCoords[i++] = ngl::Vec2(0.0f, 1.0f); // v3
-        texCoords[i++] = ngl::Vec2(1.0f, 1.0f); // v7
-        texCoords[i++] = ngl::Vec2(1.0f, 0.0f); // v4
+        texCoords[i++] = ngl::Vec2(0.0f, 1); // v3
+        texCoords[i++] = ngl::Vec2(1, 1); // v7
+        texCoords[i++] = ngl::Vec2(1, 0.0f); // v4
 
         return texCoords;
     }
@@ -83,14 +83,14 @@ public:
         size_t i = 0;
 
         // Define the 8 corner vertices (for reference)
-        ngl::Vec3 v0(-1.0f, -1.0f,  1.0f); // Front Bottom Left
-        ngl::Vec3 v1( 1.0f, -1.0f,  1.0f); // Front Bottom Right
-        ngl::Vec3 v2( 1.0f,  1.0f,  1.0f); // Front Top Right
-        ngl::Vec3 v3(-1.0f,  1.0f,  1.0f); // Front Top Left
-        ngl::Vec3 v4(-1.0f, -1.0f, -1.0f); // Back Bottom Left
-        ngl::Vec3 v5( 1.0f, -1.0f, -1.0f); // Back Bottom Right
-        ngl::Vec3 v6( 1.0f,  1.0f, -1.0f); // Back Top Right
-        ngl::Vec3 v7(-1.0f,  1.0f, -1.0f); // Back Top Left
+        ngl::Vec3 v0(-0.5f, -0.5f,  0.5f); // Front Bottom Left
+        ngl::Vec3 v1( 0.5f, -0.5f,  0.5f); // Front Bottom Right
+        ngl::Vec3 v2( 0.5f,  0.5f,  0.5f); // Front Top Right
+        ngl::Vec3 v3(-0.5f,  0.5f,  0.5f); // Front Top Left
+        ngl::Vec3 v4(-0.5f, -0.5f, -0.5f); // Back Bottom Left
+        ngl::Vec3 v5( 0.5f, -0.5f, -0.5f); // Back Bottom Right
+        ngl::Vec3 v6( 0.5f,  0.5f, -0.5f); // Back Top Right
+        ngl::Vec3 v7(-0.5f,  0.5f, -0.5f); // Back Top Left
 
         // Front face (2 triangles)
         vertices[i++] = v0;

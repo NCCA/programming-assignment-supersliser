@@ -7,55 +7,95 @@
 
 void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
 {
+    i_dir.m_z = -i_dir.m_z;
+    i_dir.m_x = -i_dir.m_x;
+    ngl::Vec3 currentPos = io_component->m_cameras[i_index].getPos();
+    ngl::Vec3 currentDir = i_dir * (i_speed != nullptr ? i_speed->m_speed[i_index] : SpeedComponent::getDefaultSpeed());
 
-    if (i_camera == nullptr)
+
+    //Is Sprinting?
+    if (i_isSprinting != nullptr)
     {
-        TestIsBlockedSystem system;
-        system.o_output = false;
-        ngl::Vec3 pos = io_component->m_cameras[i_index].getPos();
-        system.i_pos = pos + i_pos;
-        system.i_world = i_world;
-        i_world->run(&system, TransformComponents::getComponentID());
+        if (i_isSprinting->m_isSprinting[i_index])
+        {
+            currentDir *= 2.0f; // Double the speed if sprinting
+        }
+    }
 
-        if (system.o_output)
+    //Calculate new location
+    ngl::Vec3 newPos = currentPos;
+    auto angleDir = io_component->m_cameras[i_index].getYaw();
+    ngl::Real originalX = currentDir.m_x;
+    ngl::Real originalZ = currentDir.m_z;
+    currentDir.m_x = originalX * cos(angleDir) + originalZ * sin(angleDir);
+    currentDir.m_z = originalX * sin(angleDir) + originalZ * cos(angleDir);
+
+    newPos += currentDir;
+    newPos.m_y = currentPos.m_y - 1.0f;
+
+    if (i_world == nullptr)
+    {
+        io_component->m_cameras[i_index].move(currentDir.m_x, currentDir.m_y, currentDir.m_z);
+        return;
+    }
+
+    const float feetHeight = currentPos.m_y - 1.0f;
+
+    TestIsBlockedSystem t;
+    const uint8_t tid = TransformComponents::getComponentID();
+    t.i_pos = newPos;
+    t.i_world = i_world;
+    i_world->run(&t, tid);
+    //o_output == true means the new position is blocked
+    if (t.o_output)
+    {
+        t.i_pos.m_y = feetHeight + 1.0f;
+        t.o_output = false;
+        t.i_world->run(&t, tid);
+        if (t.o_output)
         {
             return;
         }
-        if (i_isSprinting == nullptr)
+        else
         {
-            io_component->m_cameras[i_index].move(i_pos.m_x, i_pos.m_y, i_pos.m_z);
-            return;
+            t.i_pos.m_y = feetHeight + 2.0f;
+            t.o_output = false;
+            t.i_world->run(&t, tid);
+            if (t.o_output)
+            {
+                return;
+            }
+            else
+            {
+                t.i_pos = currentPos;
+                t.i_pos.m_y = feetHeight + 2.0f;
+                t.o_output = false;
+                t.i_world->run(&t, tid);
+                if (t.o_output)
+                {
+                    return;
+                }
+                else
+                {
+                    io_component->m_cameras[i_index].move(currentDir.m_x, +1, currentDir.m_z);
+                    return;
+                }
+            }
         }
-        i_pos *= i_isSprinting->m_isSprinting[i_index] ? 2.0f : 1.0f;
-        io_component->m_cameras[i_index].move(i_pos.m_x, i_pos.m_y, i_pos.m_z);
     }
     else
     {
-        auto angleDirection = i_camera->m_cameras[i_index].getYaw();
-        ngl::Vec3 out = i_pos;
-        out.m_x = -i_pos.m_x * cos(angleDirection) - i_pos.m_z * sin(angleDirection);
-        out.m_z = i_pos.m_x * sin(angleDirection) + -i_pos.m_z * cos(angleDirection);
-        out.m_y = i_pos.m_y;
-
-
-        TestIsBlockedSystem system;
-        system.o_output = false;
-        system.i_pos = out;
-        system.i_world = i_world;
-        i_world->run(&system, TransformComponents::getComponentID());
-
-        if (system.o_output)
+        t.i_pos.m_y = feetHeight + 1.0f;
+        t.o_output = false;
+        t.i_world->run(&t, tid);
+        if (t.o_output)
         {
             return;
         }
-
-
-        if (i_isSprinting == nullptr)
+        else
         {
-            io_component->m_cameras[i_index].move(out.m_x, out.m_y, out.m_z);
-            return;
+                io_component->m_cameras[i_index].move(currentDir.m_x, 0, currentDir.m_z);
+                return;
         }
-        out *= i_isSprinting->m_isSprinting[i_index] ? 2.0f : 1.0f;
-        io_component->m_cameras[i_index].move(out.m_x, out.m_y, out.m_z);
     }
 }

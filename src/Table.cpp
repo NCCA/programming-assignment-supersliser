@@ -11,6 +11,7 @@
 #include "component/BlockTextureComponent.h"
 #include "Camera.h"
 #include "component/IsSprintingComponent.h"
+#include "component/SpeedComponent.h"
 
 uint32_t Table::createEntity()
 {
@@ -50,7 +51,8 @@ uint32_t Table::createEntity()
         case 6:
             static_cast<IsSprintingComponent*>(m_columns[i].m_column.get())->m_isSprinting.push_back(false);
             break;
-
+        case 7:
+            static_cast<SpeedComponent*>(m_columns[i].m_column.get())->m_speed.push_back(SpeedComponent::getDefaultSpeed());
         }
     }
     return static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount() - 1;
@@ -101,6 +103,12 @@ uint32_t Table::registerComponentType(const uint8_t i_componentType)
             std::make_shared<IsSprintingComponent>(
                 static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount())
         });
+        break;
+    case 7:
+        m_columns.push_back({
+        i_componentType,
+        std::make_shared<SpeedComponent>(
+        static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount())});
         break;
     }
     return m_columns.size() - 1;

@@ -53,7 +53,7 @@ TEST(World, generateWorld) {
 
 TEST(World, moveEntityInWorld) {
     Table world;
-    for (uint32_t i = 0; i < 12; i++) {
+    for (uint32_t i = 0; i < 13; i++) {
         world.createEntity();
     }
     world.registerComponentType(TransformComponents::getComponentID());
@@ -62,7 +62,7 @@ TEST(World, moveEntityInWorld) {
         for (float j = -1; j <= 1; j++) {
 
             std::vector<float> args;
-            setPositionSystem.i_pos = ngl::Vec3(i, 0.0f, j);
+            setPositionSystem.i_pos = ngl::Vec3(i * 1, 0.0f, j * 1);
             world.run(&setPositionSystem, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1),
                       (i + 1) * 3 + (j + 1));
         }
@@ -73,6 +73,8 @@ TEST(World, moveEntityInWorld) {
     world.run(&setPositionSystem, TransformComponents::getComponentID(), 10, 10);
     setPositionSystem.i_pos = ngl::Vec3(0.0f, 1.0f, 1.0f);
     world.run(&setPositionSystem, TransformComponents::getComponentID(), 11, 11);
+    setPositionSystem.i_pos = ngl::Vec3(0.0f, 1.0f, 1.0f);
+    world.run(&setPositionSystem, TransformComponents::getComponentID(), 12, 12);
 
     MoveSystem m;
     Table character;
@@ -83,11 +85,15 @@ TEST(World, moveEntityInWorld) {
     m.i_pos = ngl::Vec3(1.0f, 0.0f, 0.0f);
     m.i_world = &world;
     character.run(&m, TransformComponents::getComponentID());
+    auto temp = static_cast<TransformComponents *>(character.getEntity(0)[1].m_column.get())->m_ps[0];
     EXPECT_TRUE(static_cast<TransformComponents *>(character.getEntity(0)[1].m_column.get())->m_ps[0] ==
                 ngl::Vec3(0.0f, 1.0f, 0.0f));
     m.i_pos = ngl::Vec3(0.0f, 0.0f, -1.0f);
     m.i_world = &world;
+    auto currentPos = static_cast<TransformComponents*>(character.getColumn(character.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[0];
     character.run(&m, TransformComponents::getComponentID());
+    currentPos = static_cast<TransformComponents*>(character.getColumn(character.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[0];
+    auto temp2 = static_cast<TransformComponents *>(character.getEntity(0)[1].m_column.get())->m_ps[0];
     EXPECT_TRUE(static_cast<TransformComponents *>(character.getEntity(0)[1].m_column.get())->m_ps[0] ==
                 ngl::Vec3(0.0f, 1.0f, -1.0f));
 }
@@ -154,7 +160,7 @@ TEST(WorldDisplay, WorldVisible) {
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
     SetCameraLookSystem setCameraLookSystem;
-    setCameraLookSystem.i_pos = ngl::Vec3(5.0f, 5.0f, 5.0f);
+    setCameraLookSystem.i_pos = ngl::Vec3(2.0f, 2.0f, 2.0f);
     setCameraLookSystem.i_look = ngl::Vec3(0.0f, 0.0f, 0.0f);
     players.run(&setCameraLookSystem, CameraComponents::getComponentID());
 
@@ -271,7 +277,7 @@ TEST(WorldDisplay, WorldMultiBlockVisible) {
     for (float i = -1; i <= 1; i++) {
         for (float j = -1; j <= 1; j++) {
             std::vector<float> args;
-            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            ms.i_pos = ngl::Vec3(i * 1, 0.0f, j * 1);
             world.run(&ms, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1), (i + 1) * 3 + (j + 1));
         }
     }
@@ -280,7 +286,7 @@ TEST(WorldDisplay, WorldMultiBlockVisible) {
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
     SetCameraLookSystem setCameraLookSystem;
-    setCameraLookSystem.i_pos = ngl::Vec3(5.0f, 5.0f, 5.0f);
+    setCameraLookSystem.i_pos = ngl::Vec3(4.0f, 4.0f, 4.0f);
     setCameraLookSystem.i_look = ngl::Vec3(0.0f, 0.0f, 0.0f);
     players.run(&setCameraLookSystem, CameraComponents::getComponentID());
 
@@ -290,7 +296,7 @@ TEST(WorldDisplay, WorldMultiBlockVisible) {
     for (float i = -1; i <= 1; i++) {
         for (float j = -1; j <= 1; j++) {
             world.createEntity();
-            ms.i_pos = ngl::Vec3(i * 2, -2.0f, j * 2);
+            ms.i_pos = ngl::Vec3(i * 1, -1.0f, j * 1);
             world.run(&ms, TransformComponents::getComponentID(), 9 + (i + 1) * 3 + (j + 1), 9 + (i + 1) * 3 + (j + 1));
         }
     }

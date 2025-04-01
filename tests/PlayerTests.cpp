@@ -78,7 +78,7 @@ TEST(Player, PlayerMoveForwards)
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
             std::vector<float> args;
-            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            ms.i_pos = ngl::Vec3(i, 0.0f, j);
             world.run(&ms, TransformComponents::getComponentID(), (i + 10) * 21 + (j + 10), (i + 10) * 21 + (j + 10));
         }
     }
@@ -86,6 +86,7 @@ TEST(Player, PlayerMoveForwards)
     world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
+    players.registerComponentType(SpeedComponent::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
     applyBlockTextureSystem.i_blockType = BlockType::Grass;
@@ -95,19 +96,20 @@ TEST(Player, PlayerMoveForwards)
     renderWorldSystem.i_world = &world;
 
     bool success = false;
-    Uint32 lastTime = SDL_GetTicks();
+    int32_t lastTime = SDL_GetTicks();
 
     bool wHeld = false;
 
     while (!quit) {
-        Uint32 currentTime = SDL_GetTicks();
-        Uint32 deltaTime = currentTime - lastTime;
+        int32_t currentTime = SDL_GetTicks();
+        int32_t deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         if (wHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(0.0f, 0.0f, deltaTime * 0.01f);
+            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, deltaTime);
             playerMoveSystem.i_world = &world;
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
@@ -219,7 +221,7 @@ TEST(Player, PlayerMoveLeft) {
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
             std::vector<float> args;
-            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            ms.i_pos = ngl::Vec3(i, 0.0f, j);
             world.run(&ms, TransformComponents::getComponentID(), (i + 10) * 21 + (j + 10), (i + 10) * 21 + (j + 10));
         }
     }
@@ -228,6 +230,7 @@ TEST(Player, PlayerMoveLeft) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
+    players.registerComponentType(SpeedComponent::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
     applyBlockTextureSystem.i_blockType = BlockType::Grass;
@@ -237,19 +240,20 @@ TEST(Player, PlayerMoveLeft) {
     renderWorldSystem.i_world = &world;
 
     bool success = false;
-    Uint32 lastTime = SDL_GetTicks();
+    int32_t lastTime = SDL_GetTicks();
 
     bool aHeld = false;
 
     while (!quit) {
-        Uint32 currentTime = SDL_GetTicks();
-        Uint32 deltaTime = currentTime - lastTime;
+        int32_t currentTime = SDL_GetTicks();
+        int32_t deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         if (aHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(deltaTime * 0.01f, 0.0f, 0.0f);
+            playerMoveSystem.i_dir = ngl::Vec3(deltaTime, 0.0f, 0.0f);
             playerMoveSystem.i_world = &world;
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
@@ -360,7 +364,7 @@ TEST(Player, PlayerMoveRight) {
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
             std::vector<float> args;
-            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            ms.i_pos = ngl::Vec3(i, 0.0f, j);
             world.run(&ms, TransformComponents::getComponentID(), (i + 10) * 21 + (j + 10), (i + 10) * 21 + (j + 10));
         }
     }
@@ -369,6 +373,7 @@ TEST(Player, PlayerMoveRight) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
+    players.registerComponentType(SpeedComponent::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
     applyBlockTextureSystem.i_blockType = BlockType::Grass;
@@ -378,19 +383,20 @@ TEST(Player, PlayerMoveRight) {
     renderWorldSystem.i_world = &world;
 
     bool success = false;
-    Uint32 lastTime = SDL_GetTicks();
+    int32_t lastTime = SDL_GetTicks();
 
     bool dHeld = false;
 
     while (!quit) {
-        Uint32 currentTime = SDL_GetTicks();
-        Uint32 deltaTime = currentTime - lastTime;
+        int32_t currentTime = SDL_GetTicks();
+        int32_t deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         if (dHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(deltaTime * -0.01f, 0.0f, 0.0f);
+            playerMoveSystem.i_dir = ngl::Vec3(-deltaTime, 0.0f, 0.0f);
             playerMoveSystem.i_world = &world;
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
@@ -501,7 +507,7 @@ TEST(Player, PlayerMoveBack) {
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
             std::vector<float> args;
-            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            ms.i_pos = ngl::Vec3(i, 0.0f, j);
             world.run(&ms, TransformComponents::getComponentID(), (i + 10) * 21 + (j + 10), (i + 10) * 21 + (j + 10));
         }
     }
@@ -510,6 +516,7 @@ TEST(Player, PlayerMoveBack) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
+    players.registerComponentType(SpeedComponent::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
     applyBlockTextureSystem.i_blockType = BlockType::Grass;
@@ -519,19 +526,20 @@ TEST(Player, PlayerMoveBack) {
     renderWorldSystem.i_world = &world;
 
     bool success = false;
-    Uint32 lastTime = SDL_GetTicks();
+    int32_t lastTime = SDL_GetTicks();
 
     bool sHeld = false;
 
     while (!quit) {
-        Uint32 currentTime = SDL_GetTicks();
-        Uint32 deltaTime = currentTime - lastTime;
+        int32_t currentTime = SDL_GetTicks();
+        int32_t deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         if (sHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(0.0f, 0.0f, deltaTime * -0.01f);
+            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, -deltaTime);
             playerMoveSystem.i_world = &world;
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
@@ -642,7 +650,7 @@ TEST(Player, PlayerMoveDiagonal) {
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
             std::vector<float> args;
-            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            ms.i_pos = ngl::Vec3(i, 0.0f, j);
             world.run(&ms, TransformComponents::getComponentID(), (i + 10) * 21 + (j + 10), (i + 10) * 21 + (j + 10));
         }
     }
@@ -651,6 +659,7 @@ TEST(Player, PlayerMoveDiagonal) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
+    players.registerComponentType(SpeedComponent::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
     applyBlockTextureSystem.i_blockType = BlockType::Grass;
@@ -660,44 +669,47 @@ TEST(Player, PlayerMoveDiagonal) {
     renderWorldSystem.i_world = &world;
 
     bool success = false;
-    Uint32 lastTime = SDL_GetTicks();
+    int32_t lastTime = SDL_GetTicks();
 
     bool wHeld = false;
     bool dHeld = false;
     bool aHeld = false;
     bool sHeld = false;
-    const float MOVEMENT_SPEED = 0.005f;
 
     while (!quit) {
-        Uint32 currentTime = SDL_GetTicks();
-        Uint32 deltaTime = currentTime - lastTime;
+        int32_t currentTime = SDL_GetTicks();
+        int32_t deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         if (sHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(0.0f, 0.0f, deltaTime * -MOVEMENT_SPEED);
+            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, -deltaTime);
             playerMoveSystem.i_world = &world;
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
         if (wHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(0.0f, 0.0f, deltaTime * MOVEMENT_SPEED);
+            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, deltaTime);
             playerMoveSystem.i_world = &world;
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
         if (aHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(deltaTime * MOVEMENT_SPEED, 0.0f, 0.0f);
+            playerMoveSystem.i_dir = ngl::Vec3(deltaTime, 0.0f, 0.0f);
             playerMoveSystem.i_world = &world;
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
         if (dHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(deltaTime * -MOVEMENT_SPEED, 0.0f, 0.0f);
+            playerMoveSystem.i_dir = ngl::Vec3(-deltaTime, 0.0f, 0.0f);
             playerMoveSystem.i_world = &world;
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
@@ -829,7 +841,7 @@ TEST(Player, PlayerLook) {
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
             std::vector<float> args;
-            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            ms.i_pos = ngl::Vec3(i, 0.0f, j);
             world.run(&ms, TransformComponents::getComponentID(), (i + 10) * 21 + (j + 10), (i + 10) * 21 + (j + 10));
         }
     }
@@ -847,11 +859,11 @@ TEST(Player, PlayerLook) {
     renderWorldSystem.i_world = &world;
 
     bool success = false;
-    Uint32 lastTime = SDL_GetTicks();
+    int32_t lastTime = SDL_GetTicks();
 
     while (!quit) {
-        Uint32 currentTime = SDL_GetTicks();
-        Uint32 deltaTime = currentTime - lastTime;
+        int32_t currentTime = SDL_GetTicks();
+        int32_t deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         while (SDL_PollEvent(&event)) {
@@ -963,7 +975,7 @@ TEST(Player, PlayerMoveWithLook) {
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
             std::vector<float> args;
-            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            ms.i_pos = ngl::Vec3(i, 0.0f, j);
             world.run(&ms, TransformComponents::getComponentID(), (i + 10) * 21 + (j + 10), (i + 10) * 21 + (j + 10));
         }
     }
@@ -972,6 +984,7 @@ TEST(Player, PlayerMoveWithLook) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
+    players.registerComponentType(SpeedComponent::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
     applyBlockTextureSystem.i_blockType = BlockType::Grass;
@@ -981,51 +994,47 @@ TEST(Player, PlayerMoveWithLook) {
     renderWorldSystem.i_world = &world;
 
     bool success = false;
-    Uint32 lastTime = SDL_GetTicks();
+    int32_t lastTime = SDL_GetTicks();
 
     bool wHeld = false;
     bool dHeld = false;
     bool aHeld = false;
     bool sHeld = false;
-    const float MOVEMENT_SPEED = 0.005f;
 
     while (!quit) {
-        Uint32 currentTime = SDL_GetTicks();
-        Uint32 deltaTime = currentTime - lastTime;
+        int32_t currentTime = SDL_GetTicks();
+        int32_t deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         if (sHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(0.0f, 0.0f, deltaTime * -MOVEMENT_SPEED);
+            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, -deltaTime);
             playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_camera = static_cast<CameraComponents*>(players.getColumn(players.getComponentIndex(CameraComponents::getComponentID())).get());
-
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
         if (wHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(0.0f, 0.0f, deltaTime * MOVEMENT_SPEED);
+            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, deltaTime);
             playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_camera = static_cast<CameraComponents*>(players.getColumn(players.getComponentIndex(CameraComponents::getComponentID())).get());
-
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
         if (aHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(deltaTime * MOVEMENT_SPEED, 0.0f, 0.0f);
+            playerMoveSystem.i_dir = ngl::Vec3(deltaTime, 0.0f, 0.0f);
             playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_camera = static_cast<CameraComponents*>(players.getColumn(players.getComponentIndex(CameraComponents::getComponentID())).get());
-
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
         if (dHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(deltaTime * -MOVEMENT_SPEED, 0.0f, 0.0f);
+            playerMoveSystem.i_dir = ngl::Vec3(-deltaTime, 0.0f, 0.0f);
             playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_camera = static_cast<CameraComponents*>(players.getColumn(players.getComponentIndex(CameraComponents::getComponentID())).get());
+            playerMoveSystem.i_speed = static_cast<SpeedComponent*>(players.getColumn(players.getComponentIndex(SpeedComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
@@ -1170,7 +1179,7 @@ TEST(Player, PlayerSprint)
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
             std::vector<float> args;
-            ms.i_pos = ngl::Vec3(i * 2, 0.0f, j * 2);
+            ms.i_pos = ngl::Vec3(i, 0.0f, j);
             world.run(&ms, TransformComponents::getComponentID(), (i + 10) * 21 + (j + 10), (i + 10) * 21 + (j + 10));
         }
     }
@@ -1180,6 +1189,7 @@ TEST(Player, PlayerSprint)
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
     players.registerComponentType(IsSprintingComponent::getComponentID());
+    players.registerComponentType(SpeedComponent::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
     applyBlockTextureSystem.i_blockType = BlockType::Grass;
@@ -1189,51 +1199,46 @@ TEST(Player, PlayerSprint)
     renderWorldSystem.i_world = &world;
 
     bool success = false;
-    Uint32 lastTime = SDL_GetTicks();
+    int32_t lastTime = SDL_GetTicks();
 
     bool wHeld = false;
     bool dHeld = false;
     bool aHeld = false;
     bool sHeld = false;
-    const float MOVEMENT_SPEED = 0.005f;
 
     while (!quit) {
-        Uint32 currentTime = SDL_GetTicks();
-        Uint32 deltaTime = currentTime - lastTime;
+        int32_t currentTime = SDL_GetTicks();
+        int32_t deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
         if (sHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(0.0f, 0.0f, deltaTime * -MOVEMENT_SPEED);
+            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, -deltaTime);
             playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_camera = static_cast<CameraComponents*>(players.getColumn(players.getComponentIndex(CameraComponents::getComponentID())).get());
             playerMoveSystem.i_isSprinting = static_cast<IsSprintingComponent*>(players.getColumn(players.getComponentIndex(IsSprintingComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
         if (wHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(0.0f, 0.0f, deltaTime * MOVEMENT_SPEED);
+            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, deltaTime);
             playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_camera = static_cast<CameraComponents*>(players.getColumn(players.getComponentIndex(CameraComponents::getComponentID())).get());
             playerMoveSystem.i_isSprinting = static_cast<IsSprintingComponent*>(players.getColumn(players.getComponentIndex(IsSprintingComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
         if (aHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(deltaTime * MOVEMENT_SPEED, 0.0f, 0.0f);
+            playerMoveSystem.i_dir = ngl::Vec3(deltaTime, 0.0f, 0.0f);
             playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_camera = static_cast<CameraComponents*>(players.getColumn(players.getComponentIndex(CameraComponents::getComponentID())).get());
             playerMoveSystem.i_isSprinting = static_cast<IsSprintingComponent*>(players.getColumn(players.getComponentIndex(IsSprintingComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
 
         if (dHeld) {
             MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_pos = ngl::Vec3(deltaTime * -MOVEMENT_SPEED, 0.0f, 0.0f);
+            playerMoveSystem.i_dir = ngl::Vec3(-deltaTime, 0.0f, 0.0f);
             playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_camera = static_cast<CameraComponents*>(players.getColumn(players.getComponentIndex(CameraComponents::getComponentID())).get());
             playerMoveSystem.i_isSprinting = static_cast<IsSprintingComponent*>(players.getColumn(players.getComponentIndex(IsSprintingComponent::getComponentID())).get());
             players.run(&playerMoveSystem, CameraComponents::getComponentID());
         }
