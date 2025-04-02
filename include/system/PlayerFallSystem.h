@@ -11,7 +11,7 @@
 #include "Table.h"
 #include "system/TestIsBlockedSystem.h"
 
-class PlayerFallSystem : a_System<CameraComponents>
+class PlayerFallSystem : public a_System<CameraComponents>
 {
     public:
     SpeedComponent* i_speed = nullptr;

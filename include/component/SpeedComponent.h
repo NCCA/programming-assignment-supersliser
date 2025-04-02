@@ -13,7 +13,7 @@ class SpeedComponent
 public:
     std::vector<float> m_speed;
     static std::uint8_t getComponentID() { return 7; }
-    static float getDefaultSpeed() { return 0.001f; }
+    static float getDefaultSpeed() { return 0.003f; }
     SpeedComponent(size_t size);
     ~SpeedComponent() = default;
 };

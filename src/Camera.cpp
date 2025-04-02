@@ -478,7 +478,7 @@ CameraIntercept Camera::boxInFrustum(const ngl::AABB &b) const noexcept
 
 ngl::Vec3 Camera::getPos() const noexcept
 {
-  return m_eye.toVec3();
+  return getEye().toVec3();
 }
 
 ngl::Real Camera::getYaw() const noexcept
