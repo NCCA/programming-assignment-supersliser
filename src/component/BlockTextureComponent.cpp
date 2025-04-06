@@ -6,6 +6,8 @@
 #include "component/BlockTextureComponent.h"
 
 #include "dir.h"
+#include "system/ApplyBlockTextureSystem.h"
+
 std::vector<std::string> BlockTextureComponent::s_registeredTextures;
 
 
@@ -19,6 +21,11 @@ BlockTextureComponent::BlockTextureComponent(size_t i_size)
         m_textureIDs.push_back(0);
     }
     s_registeredTextures.push_back(fmt::format(DIR, "textures/crate.bmp"));
+
+    ApplyBlockTextureSystem applyBlockTextureSystem;
+
+    applyBlockTextureSystem.i_blockType = BlockType::None;
+    applyBlockTextureSystem.run(this, 0);
 }
 
 int8_t BlockTextureComponent::getTextureID(const std::string& i_path)

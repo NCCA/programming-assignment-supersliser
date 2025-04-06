@@ -75,6 +75,8 @@ TEST(PlayerStep, PlayerStepUp)
     for (uint32_t i = 0; i < 6; i++) {
         world.createEntity();
     }
+    world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     MoveSystem ms;
         for (float j = 0; j < 4; j++) {
@@ -86,8 +88,6 @@ TEST(PlayerStep, PlayerStepUp)
             ms.i_pos = ngl::Vec3(0.0f, 1.0f, (j - 1));
             world.run(&ms, TransformComponents::getComponentID(), j, j);
         }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
     players.registerComponentType(SpeedComponent::getComponentID());
@@ -242,6 +242,8 @@ TEST(PlayerStep, PlayerWall)
     for (uint32_t i = 0; i < 6; i++) {
         world.createEntity();
     }
+    world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     MoveSystem ms;
         for (float j = 0; j < 4; j++) {
@@ -253,8 +255,6 @@ TEST(PlayerStep, PlayerWall)
             ms.i_pos = ngl::Vec3(0.0f, j, 3.0f);
             world.run(&ms, TransformComponents::getComponentID(), j + 3, j + 3);
         }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
     players.registerComponentType(SpeedComponent::getComponentID());
@@ -409,6 +409,8 @@ TEST(PlayerStep, PlayerTopBlockWall)
     for (uint32_t i = 0; i < 6; i++) {
         world.createEntity();
     }
+    world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     MoveSystem ms;
         for (float j = 0; j < 4; j++) {
@@ -420,8 +422,6 @@ TEST(PlayerStep, PlayerTopBlockWall)
             ms.i_pos = ngl::Vec3(0.0f, j + 1, 3.0f);
             world.run(&ms, TransformComponents::getComponentID(), j + 3, j + 3);
         }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
     players.registerComponentType(SpeedComponent::getComponentID());
@@ -576,6 +576,8 @@ TEST(PlayerStep, PlayerBlockedAbove)
     for (uint32_t i = 0; i < 6; i++) {
         world.createEntity();
     }
+    world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     MoveSystem ms;
         for (float j = 0; j < 4; j++) {
@@ -587,8 +589,6 @@ TEST(PlayerStep, PlayerBlockedAbove)
     ms.i_pos = ngl::Vec3(0.0f, 3, 2.0f);
     world.run(&ms, TransformComponents::getComponentID(), 5, 5);
 
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
     players.registerComponentType(SpeedComponent::getComponentID());
@@ -743,6 +743,8 @@ TEST(PlayerStep, PlayerStepDown)
     for (uint32_t i = 0; i < 6; i++) {
         world.createEntity();
     }
+    world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     MoveSystem ms;
         for (float j = 0; j < 4; j++) {
@@ -754,8 +756,6 @@ TEST(PlayerStep, PlayerStepDown)
     ms.i_pos = ngl::Vec3(0.0f, -1.0f, 4.0f);
     world.run(&ms, TransformComponents::getComponentID(), 5, 5);
 
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
     players.registerComponentType(SpeedComponent::getComponentID());
@@ -914,6 +914,8 @@ TEST(PlayerStep, PlayerFallTest)
     for (uint32_t i = 0; i < 29; i++) {
         world.createEntity();
     }
+    world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     MoveSystem ms;
         for (float j = 0; j < 4; j++) {
@@ -929,8 +931,7 @@ TEST(PlayerStep, PlayerFallTest)
         }
     }
 
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
+
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
     players.registerComponentType(SpeedComponent::getComponentID());

@@ -7,6 +7,7 @@
 
 enum class BlockType
 {
+    None = 0,
     Grass,
     Dirt,
     Stone,

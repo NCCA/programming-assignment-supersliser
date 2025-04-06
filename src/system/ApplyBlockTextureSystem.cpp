@@ -41,10 +41,10 @@ void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_ind
         // Check if the VAO is null before resetting
             if (!io_component->m_vaos[i_index]) {
                 auto temp = ngl::VAOFactory::createVAO(ngl::multiBufferVAO, GL_TRIANGLES);
+                auto ahh = temp.get();
                 io_component->m_vaos[i_index] = std::move(temp);
             }
 
-            // io_component->m_vaos[i_index].reset((ngl::VAOFactory::createVAO(ngl::multiBufferVAO, GL_TRIANGLES).get()));
             io_component->m_vaos[i_index]->bind();
 
             std::array<ngl::Vec3, 36> vertices = BlockComponents::getVertices();

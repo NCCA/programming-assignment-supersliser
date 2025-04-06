@@ -19,9 +19,9 @@ void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::P
             }
         }
     }
-    i_world->registerComponentType(TransformComponents::getComponentID());
     i_world->registerComponentType(BlockComponents::getComponentID());
     i_world->registerComponentType(BlockTextureComponent::getComponentID());
+    i_world->registerComponentType(TransformComponents::getComponentID());
 
     SetPositionSystem setPositionSystem;
 
@@ -34,8 +34,6 @@ void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::P
         {
             for (int y = 0; y < i_ysize * getNoise(noise, x, z) + 5; y++)
             {
-                setPositionSystem.i_pos = ngl::Vec3(x, y - 5, z);
-                i_world->run(&setPositionSystem, TransformComponents::getComponentID(), blockCount, blockCount);
 //                if (y - 5 < i_ysize * noise.noise2D(x, z) - 1) {
 //                    ApplyBlockTextureSystem applyBlockTextureSystem;
 //                    applyBlockTextureSystem.i_blockType = BlockType::Grass;
@@ -51,6 +49,8 @@ void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::P
                     applyBlockTextureSystem.i_blockType = BlockType::Stone;
                     i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount, blockCount);
 //                }
+                setPositionSystem.i_pos = ngl::Vec3(x, y - 5, z);
+                i_world->run(&setPositionSystem, TransformComponents::getComponentID(), blockCount, blockCount);
 blockCount++;
             }
         }
