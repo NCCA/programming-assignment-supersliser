@@ -9,6 +9,10 @@ enum class BlockType
 {
     Grass,
     Dirt,
-};
+    Stone,
+    Log,
+    Leaves,
+    Planks
+    };
 
 #endif //BLOCKTYPE_H

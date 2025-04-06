@@ -23,6 +23,14 @@ public:
                 return "textures/GrassTexture.bmp";
             case BlockType::Dirt:
                 return "textures/DirtTexture.bmp";
+            case BlockType::Stone:
+                return "textures/StoneTexture.bmp";
+            case BlockType::Log:
+                return "textures/LogTexture.bmp";
+            case BlockType::Leaves:
+                return "textures/LeavesTexture.bmp";
+            case BlockType::Planks:
+                return "textures/PlanksTexture.bmp";
             default:
                 return "textures/crate.bmp";
         }
