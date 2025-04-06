@@ -48,8 +48,6 @@ add_executable(${TargetName}
         src/system/SetPositionSystem.cpp
         include/component/BlockComponents.h
         src/component/BlockComponents.cpp
-        include/system/RenderCubeSystem.h
-        src/system/RenderCubeSystem.cpp
         include/system/RenderWorldSystem.h
         src/system/RenderWorldSystem.cpp
         src/component/CameraComponents.cpp
@@ -111,8 +109,6 @@ add_executable(Tests
         src/system/SetPositionSystem.cpp
         include/component/BlockComponents.h
         src/component/BlockComponents.cpp
-        include/system/RenderCubeSystem.h
-        src/system/RenderCubeSystem.cpp
         include/system/RenderWorldSystem.h
         src/system/RenderWorldSystem.cpp
         src/component/CameraComponents.cpp

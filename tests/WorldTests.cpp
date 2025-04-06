@@ -425,7 +425,7 @@ TEST(WorldDisplay, AllTextureTest)
     for (int i = -2; i < TEXTURE_COUNT - 2; i++) {
         ms.i_pos = ngl::Vec3(i, 0.0f, 0.0f);
         world.run(&ms, TransformComponents::getComponentID(), i + 2, i + 2);
-        applyBlockTextureSystem.i_blockType = static_cast<BlockType>(i + 2);
+        applyBlockTextureSystem.i_blockType = static_cast<BlockType>(i + 1);
         world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), i + 2, i + 2);
     }
 
