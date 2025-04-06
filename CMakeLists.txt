@@ -71,6 +71,10 @@ add_executable(${TargetName}
         include/component/SpeedComponent.h
         include/system/PlayerFallSystem.h
         PerlinNoise/PerlinNoise.hpp
+        src/GenerateWorld.cpp
+        include/GenerateWorld.h
+        src/system/SetPlayerPositionSystem.cpp
+        include/system/SetPlayerPositionSystem.h
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/ PerlinNoise/)
@@ -95,6 +99,8 @@ add_executable(Tests
         tests/WorldTests.cpp
         tests/PlayerTests.cpp
         tests/PlayerStepTests.cpp
+        tests/NoiseTests.cpp
+        tests/GenerateWorldTests.cpp
         src/system/TestIsBlockedSystem.cpp
         include/component/TransformComponents.h
         include/Table.h
@@ -139,7 +145,10 @@ add_executable(Tests
         include/system/PlayerFallSystem.h
         src/system/PlayerFallSystem.cpp
         PerlinNoise/PerlinNoise.hpp
-        tests/NoiseTests.cpp
+        src/GenerateWorld.cpp
+        include/GenerateWorld.h
+        src/system/SetPlayerPositionSystem.cpp
+        include/system/SetPlayerPositionSystem.h
 )
 include_directories(include)
 target_sources(Tests PRIVATE)

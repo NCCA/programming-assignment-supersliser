@@ -870,7 +870,7 @@ TEST(PlayerStep, PlayerFallTest)
     }
 
     // now create our window
-    SDL_Window *window = SDL_CreateWindow("Player Step Down TEST",
+    SDL_Window *window = SDL_CreateWindow("Player Fall Down TEST",
                                           SDL_WINDOWPOS_CENTERED,
                                           SDL_WINDOWPOS_CENTERED,
                                           1080,

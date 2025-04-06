@@ -16,11 +16,14 @@
 void RenderWorldSystem::run(CameraComponents* io_component, int i_index) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    std::vector<std::shared_ptr<ngl::AbstractVAO>> vaos =
+        (static_cast<BlockTextureComponent*>(i_world->getColumn(i_world->getComponentIndex(BlockTextureComponent::getComponentID())).get()))->m_vaos;
+
     for (int i = 0; i < static_cast<TransformComponents*>(i_world->getColumn(i_world->getComponentIndex(TransformComponents::getComponentID())).get())->m_ps.size(); i++)
     {
         ngl::ShaderLib::use("TextureShader");
 
-        std::shared_ptr<ngl::AbstractVAO> vao = (static_cast<BlockTextureComponent*>(i_world->getColumn(i_world->getComponentIndex(BlockTextureComponent::getComponentID())).get()))->m_vaos[i];
+        std::shared_ptr<ngl::AbstractVAO> vao = vaos[i];
         uint8_t blockTextureComponent = (static_cast<BlockTextureComponent*>(i_world->getColumn(i_world->getComponentIndex(BlockTextureComponent::getComponentID())).get()))->m_textureIDs[i];
 
         // clear the screen and depth buffer
