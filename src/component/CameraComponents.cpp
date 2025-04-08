@@ -3,7 +3,11 @@
 //
 
 #include "component/CameraComponents.h"
+
+#include <ngl/VAOFactory.h>
+
 #include "dir.h"
+#include "nglExtension/MultiBufferInstanceVAO.h"
 
 
 CameraComponents::CameraComponents(size_t i_size) {
@@ -47,6 +51,8 @@ CameraComponents::CameraComponents(size_t i_size) {
         camera.setDefaultCamera();
         m_cameras.push_back(camera);
     }
+    ngl::VAOFactory::registerVAOCreator("MultiBufferInstanceVAO", MultiBufferInstanceVAO::create);
+    ngl::VAOFactory::listCreators();
 
     ngl::ShaderLib::debugOff();
 }

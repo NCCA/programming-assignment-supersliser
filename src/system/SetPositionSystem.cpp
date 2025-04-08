@@ -10,7 +10,14 @@ void SetPositionSystem::run(TransformComponents* io_component, int i_index)
     io_component->m_ps[i_index].m_y = i_pos.m_y;
     io_component->m_ps[i_index].m_z = i_pos.m_z;
     ngl::ShaderLib::use("TextureShader");
-    i_vao[i_index]->bind();
-    ngl::ShaderLib::setUniform("inPos", i_pos);
-    i_vao[i_index]->unbind();
+    if ((*i_vaos)[i_index] == nullptr)
+    {
+        return;
+    }
+    (*i_vaos)[i_index]->bind();
+    (*i_vaos)[i_index]->setData(ngl::AbstractVAO::VertexData(sizeof(io_component->m_ps[i_index]), io_component->m_ps[i_index].m_x), (*i_vaos)[i_index]->getBufferID(2));
+    (*i_vaos)[i_index]->setVertexAttributePointer(2, 3, GL_FLOAT, 0, 0);
+    (*i_vaos)[i_index]->setNumIndices(3);
+    glVertexAttribDivisor(2, 1);
+    (*i_vaos)[i_index]->unbind();
 }

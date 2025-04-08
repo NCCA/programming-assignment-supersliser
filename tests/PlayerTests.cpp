@@ -78,7 +78,7 @@ TEST(Player, PlayerMoveForwards)
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
             std::vector<float> args;
@@ -222,7 +222,7 @@ TEST(Player, PlayerMoveLeft) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
 
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
@@ -366,7 +366,7 @@ TEST(Player, PlayerMoveRight) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
 
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
@@ -511,7 +511,7 @@ TEST(Player, PlayerMoveBack) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
 
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
@@ -656,7 +656,7 @@ TEST(Player, PlayerMoveDiagonal) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
 
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
@@ -849,7 +849,7 @@ TEST(Player, PlayerLook) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
 
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
@@ -985,7 +985,7 @@ TEST(Player, PlayerMoveWithLook) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
 
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {
@@ -1191,7 +1191,7 @@ TEST(Player, PlayerSprint)
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
 
     for (float i = -10; i <= 10; i++) {
         for (float j = -10; j <= 10; j++) {

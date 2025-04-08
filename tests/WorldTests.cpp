@@ -22,8 +22,7 @@ TEST(World, generateWorld) {
     for (uint32_t i = 0; i < 9; i++) {
         world.createEntity();
     }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
+
     world.registerComponentType(TransformComponents::getComponentID());
     MoveSystem setPositionSystem;
     for (float i = -1; i <= 1; i++) {
@@ -58,8 +57,6 @@ TEST(World, moveEntityInWorld) {
     for (uint32_t i = 0; i < 13; i++) {
         world.createEntity();
     }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     MoveSystem setPositionSystem;
     for (float i = -1; i <= 1; i++) {
@@ -151,6 +148,8 @@ TEST(WorldDisplay, WorldVisible) {
     // our gl stuff
 
     Table players;
+    players.createEntity();
+    players.registerComponentType(CameraComponents::getComponentID());
     Table world;
     for (uint32_t i = 0; i < 1; i++) {
         world.createEntity();
@@ -159,11 +158,9 @@ TEST(WorldDisplay, WorldVisible) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
     ms.i_pos = ngl::Vec3(0.0f, 0.0f, 1.0f);
     world.run(&ms, TransformComponents::getComponentID());
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
     SetCameraLookSystem setCameraLookSystem;
     setCameraLookSystem.i_pos = ngl::Vec3(2.0f, 2.0f, 2.0f);
     setCameraLookSystem.i_look = ngl::Vec3(0.0f, 0.0f, 0.0f);
@@ -273,6 +270,8 @@ TEST(WorldDisplay, WorldMultiBlockVisible) {
     // our gl stuff
 
     Table players;
+    players.createEntity();
+    players.registerComponentType(CameraComponents::getComponentID());
     Table world;
     for (uint32_t i = 0; i < 9; i++) {
         world.createEntity();
@@ -281,7 +280,7 @@ TEST(WorldDisplay, WorldMultiBlockVisible) {
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
     for (float i = -1; i <= 1; i++) {
         for (float j = -1; j <= 1; j++) {
             std::vector<float> args;
@@ -290,8 +289,7 @@ TEST(WorldDisplay, WorldMultiBlockVisible) {
         }
     }
 
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
+
     SetCameraLookSystem setCameraLookSystem;
     setCameraLookSystem.i_pos = ngl::Vec3(4.0f, 4.0f, 4.0f);
     setCameraLookSystem.i_look = ngl::Vec3(0.0f, 0.0f, 0.0f);
@@ -420,7 +418,7 @@ TEST(WorldDisplay, AllTextureTest)
     world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem ms;
-    ms.i_vao = static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
+    ms.i_vaos = &static_cast<BlockTextureComponent*>(world.getColumn(world.getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaos;
 
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());

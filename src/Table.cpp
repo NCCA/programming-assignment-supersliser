@@ -10,8 +10,10 @@
 #include "component/TransformComponents.h"
 #include "component/BlockTextureComponent.h"
 #include "Camera.h"
+#include "component/BlockType.h"
 #include "component/IsSprintingComponent.h"
 #include "component/SpeedComponent.h"
+#include "system/ApplyBlockTextureSystem.h"
 
 uint32_t Table::createEntity()
 {
@@ -31,8 +33,6 @@ uint32_t Table::createEntity()
             break;
         case 2:
             static_cast<TransformComponents*>(m_columns[i].m_column.get())->m_ps.push_back(ngl::Vec3());
-            static_cast<TransformComponents*>(m_columns[i].m_column.get())->m_rs.push_back(ngl::Quaternion());
-            static_cast<TransformComponents*>(m_columns[i].m_column.get())->m_ss.push_back(ngl::Vec3(1, 1, 1));
             break;
         case 3:
             // add anything to block component if needed
@@ -45,8 +45,9 @@ uint32_t Table::createEntity()
             }
                 break;
         case 5:
-            static_cast<BlockTextureComponent*>(m_columns[i].m_column.get())->m_vaos.push_back(nullptr);
-            static_cast<BlockTextureComponent*>(m_columns[i].m_column.get())->m_textureIDs.push_back(0);
+            {
+                static_cast<BlockTextureComponent*>(m_columns[i].m_column.get())->addBlock();
+            }
             break;
         case 6:
             static_cast<IsSprintingComponent*>(m_columns[i].m_column.get())->m_isSprinting.push_back(false);

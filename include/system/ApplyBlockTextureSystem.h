@@ -31,6 +31,7 @@ public:
                 return "textures/LeavesTexture.bmp";
             case BlockType::Planks:
                 return "textures/PlanksTexture.bmp";
+        case BlockType::None:
             default:
                 return "textures/crate.bmp";
         }

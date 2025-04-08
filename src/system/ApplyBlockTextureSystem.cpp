@@ -8,6 +8,7 @@
 
 #include "component/BlockComponents.h"
 #include "dir.h"
+#include "nglExtension/MultiBufferInstanceVAO.h"
 
 void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_index)
 {
@@ -24,15 +25,8 @@ void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_ind
 
     if (texId != -1)
     {
-        for (size_t i = 0; i < io_component->m_textureIDs.size(); i++)
-        {
-            if (io_component->m_textureIDs[i] == texId)
-            {
-                io_component->m_vaos[i_index] = io_component->m_vaos[i];
-                io_component->m_textureIDs[i_index] = texId;
-                return;
-            }
-        }
+        io_component->m_vaos[i_index] = io_component->s_trueVaos[texId];
+        io_component->m_textureIDs[i_index] = texId;
     }
     else
     {
@@ -40,8 +34,7 @@ void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_ind
         texId = BlockTextureComponent::getTextureID(path);
         // Check if the VAO is null before resetting
             if (!io_component->m_vaos[i_index]) {
-                auto temp = ngl::VAOFactory::createVAO(ngl::multiBufferVAO, GL_TRIANGLES);
-                auto ahh = temp.get();
+                auto temp = ngl::vaoFactoryCast<MultiBufferInstanceVAO>(ngl::VAOFactory::createVAO("MultiBufferInstanceVAO", GL_TRIANGLES));
                 io_component->m_vaos[i_index] = std::move(temp);
             }
 
@@ -65,5 +58,8 @@ void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_ind
             io_component->m_vaos[i_index]->setNumIndices(texCoords.size());
 
             io_component->m_vaos[i_index]->unbind();
+        io_component->s_trueVaos.push_back(io_component->m_vaos[i_index]);
+        // io_component->updateRegisteredTextures(path);
+
     }
 }
