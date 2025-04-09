@@ -11,15 +11,12 @@
 #include <ngl/ShaderLib.h>
 #include <ngl/AbstractVAO.h>
 #include <ngl/MultiBufferVAO.h>
-
-#include "nglExtension/MultiBufferInstanceVAO.h"
-
+#include "component/BlockTextureComponent.h"
 
 class SetPositionSystem : public a_System<TransformComponents>
 {
 public:
     ngl::Vec3 i_pos;
-    std::vector<std::shared_ptr<MultiBufferInstanceVAO>>* i_vaos;
     void run(TransformComponents* io_component, int i_index) override;
 };
 

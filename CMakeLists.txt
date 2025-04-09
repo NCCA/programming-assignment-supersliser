@@ -75,8 +75,6 @@ add_executable(${TargetName}
         include/GenerateWorld.h
         src/system/SetPlayerPositionSystem.cpp
         include/system/SetPlayerPositionSystem.h
-        include/nglExtension/MultiBufferInstanceVAO.h
-        src/nglExtension/MultiBufferInstanceVAO.cpp
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/ PerlinNoise/)
@@ -151,8 +149,6 @@ add_executable(Tests
         include/GenerateWorld.h
         src/system/SetPlayerPositionSystem.cpp
         include/system/SetPlayerPositionSystem.h
-        include/nglExtension/MultiBufferInstanceVAO.h
-        src/nglExtension/MultiBufferInstanceVAO.cpp
 )
 include_directories(include)
 target_sources(Tests PRIVATE)

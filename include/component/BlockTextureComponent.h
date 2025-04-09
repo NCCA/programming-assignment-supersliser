@@ -8,22 +8,23 @@
 #include <ngl/AbstractVAO.h>
 #include <ngl/Texture.h>
 
-#include "nglExtension/MultiBufferInstanceVAO.h"
-
 class BlockTextureComponent
 {
-    void setupDefaultBlock(int i_index);
+    // void setupDefaultBlock(int i_index);
 public:
     BlockTextureComponent(size_t i_size);
     void addBlock();
     ~BlockTextureComponent();
     static std::uint8_t getComponentID() { return 5; }
-    std::vector<std::shared_ptr<MultiBufferInstanceVAO>> m_vaos;
+    std::shared_ptr<GLuint> m_meshVboId;
+    std::shared_ptr<GLuint> m_uvVboId;
+    std::shared_ptr<GLuint> m_texVboId;
     std::vector<uint8_t> m_textureIDs;
+    static std::shared_ptr<GLuint> s_vaoID;
 
     static int8_t getTextureID(const std::string& i_path);
     static std::vector<std::string> s_registeredTextures;
-    static std::vector<std::shared_ptr<MultiBufferInstanceVAO>> s_trueVaos;
+    static std::vector<std::shared_ptr<GLuint>> s_trueVbos;
 };
 
 #endif //COLONYMANAGERBUILD_BLOCKTEXTURECOMPONENT_H

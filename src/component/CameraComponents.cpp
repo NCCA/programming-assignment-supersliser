@@ -7,7 +7,6 @@
 #include <ngl/VAOFactory.h>
 
 #include "dir.h"
-#include "nglExtension/MultiBufferInstanceVAO.h"
 
 
 CameraComponents::CameraComponents(size_t i_size) {
@@ -43,7 +42,13 @@ CameraComponents::CameraComponents(size_t i_size) {
         return;
     }
     ngl::ShaderLib::use("TextureShader");
-    ngl::ShaderLib::setUniform("tex", 0);
+    ngl::ShaderLib::setUniform("tex1", 0);
+    ngl::ShaderLib::setUniform("tex2", 0);
+    ngl::ShaderLib::setUniform("tex3", 0);
+    ngl::ShaderLib::setUniform("tex4", 0);
+    ngl::ShaderLib::setUniform("tex5", 0);
+    ngl::ShaderLib::setUniform("tex6", 0);
+    ngl::ShaderLib::setUniform("tex7", 0);
 
     glViewport(0, 0, 1080, 720);
     for (size_t i = 0; i < i_size; i++) {
@@ -51,8 +56,6 @@ CameraComponents::CameraComponents(size_t i_size) {
         camera.setDefaultCamera();
         m_cameras.push_back(camera);
     }
-    ngl::VAOFactory::registerVAOCreator("MultiBufferInstanceVAO", MultiBufferInstanceVAO::create);
-    ngl::VAOFactory::listCreators();
 
     ngl::ShaderLib::debugOff();
 }

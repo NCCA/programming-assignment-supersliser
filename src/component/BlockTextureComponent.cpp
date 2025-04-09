@@ -5,36 +5,69 @@
 #include <ngl/Texture.h>
 #include "component/BlockTextureComponent.h"
 
+#include <iostream>
+
 #include "dir.h"
 #include "component/BlockComponents.h"
-#include "nglExtension/MultiBufferInstanceVAO.h"
 #include "system/ApplyBlockTextureSystem.h"
 
 std::vector<std::string> BlockTextureComponent::s_registeredTextures;
-std::vector<std::shared_ptr<MultiBufferInstanceVAO>> BlockTextureComponent::s_trueVaos;
-
+std::vector<std::shared_ptr<GLuint>> BlockTextureComponent::s_trueVbos;
+std::shared_ptr<GLuint> BlockTextureComponent::s_vaoID = std::make_shared<GLuint>();
 
 
 BlockTextureComponent::BlockTextureComponent(size_t i_size)
 {
-
+    glGenVertexArrays(1, s_vaoID.get());
+    glBindVertexArray(*s_vaoID);
+    m_meshVboId = std::make_shared<GLuint>();
+    m_uvVboId = std::make_shared<GLuint>();
+    glGenBuffers(1, m_meshVboId.get());
+    glBindBuffer(GL_ARRAY_BUFFER, *m_meshVboId);
+    auto verts = BlockComponents::getVertices();
+    glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(sizeof(verts)), &verts[0].m_x, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glGenBuffers(1, m_uvVboId.get());
+    glBindBuffer(GL_ARRAY_BUFFER, *m_uvVboId);
+    auto texCoords = BlockComponents::getTexCoordinates();
+    glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(sizeof(texCoords)), &texCoords[0].m_x, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
     for (size_t i = 0; i < i_size; i++)
     {
-        m_vaos.push_back(nullptr);
         m_textureIDs.push_back(0);
     }
     s_registeredTextures.push_back(fmt::format(DIR, "textures/crate.bmp"));
-    for (size_t i = 0; i < i_size; i++)
+    m_texVboId = std::make_shared<GLuint>();
+    glGenBuffers(1, m_texVboId.get());
+    glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
+    glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size(), &m_textureIDs[0], GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glEnableVertexAttribArray(2);
+    glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glVertexAttribDivisor(2, 1);
+    glBindVertexArray(0);
+    auto error = glGetError();
+    if (error != GL_NO_ERROR)
     {
-        setupDefaultBlock(i);
+        std::cerr << "Error Creating texture component: " << error << std::endl;
     }
 }
 
 void BlockTextureComponent::addBlock()
 {
-    m_vaos.push_back(nullptr);
     m_textureIDs.push_back(0);
-    setupDefaultBlock(m_vaos.size() -1);
+    glBindVertexArray(*s_vaoID);
+    glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
+    glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size(), &m_textureIDs[0], GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+    auto error = glGetError();
+    if (error != GL_NO_ERROR)
+    {
+        std::cerr << "Error adding block: " << error << std::endl;
+    }
 }
 
 int8_t BlockTextureComponent::getTextureID(const std::string& i_path)
@@ -51,62 +84,8 @@ int8_t BlockTextureComponent::getTextureID(const std::string& i_path)
 
 BlockTextureComponent::~BlockTextureComponent()
 {
-    for (size_t i = 0; i < m_vaos.size(); i++)
-    {
-        if (m_vaos[i] != nullptr)
-        {
-            m_vaos[i]->removeVAO();
-        }
-    }
     m_textureIDs.clear();
-    m_vaos.clear();
+    m_meshVboId.reset();
+    m_uvVboId.reset();
     s_registeredTextures.clear();
-}
-
-void BlockTextureComponent::setupDefaultBlock(int i_index)
-{
-    std::string textureDir = DIR;
-    std::string textureName = ApplyBlockTextureSystem::getTextureName(BlockType::None);
-    std::string path = fmt::format("{}{}", textureDir, textureName);
-    int8_t texId = getTextureID(path);
-
-    if (texId != -1)
-    {
-                m_vaos[i_index] = s_trueVaos[texId];
-                m_textureIDs[i_index] = texId;
-    }
-    else
-    {
-        BlockTextureComponent::s_registeredTextures.push_back(path);
-
-        texId = BlockTextureComponent::getTextureID(path);
-        // Check if the VAO is null before resetting
-            if (!m_vaos[i_index]) {
-                auto temp = ngl::vaoFactoryCast<MultiBufferInstanceVAO>(ngl::VAOFactory::createVAO("MultiBufferInstanceVAO", GL_TRIANGLES));
-                m_vaos[i_index] = std::move(temp);
-            }
-
-            m_vaos[i_index]->bind();
-
-            std::array<ngl::Vec3, 36> vertices = BlockComponents::getVertices();
-
-            m_vaos[i_index]->setData(ngl::MultiBufferVAO::VertexData(sizeof(vertices), vertices[0].m_x));
-            m_vaos[i_index]->setVertexAttributePointer(0, 3, GL_FLOAT, 0, 0);
-            m_vaos[i_index]->setNumIndices(vertices.size());
-
-            ngl::Texture tex;
-            tex.loadImage(path);
-            m_textureIDs[i_index] = tex.setTextureGL();
-
-
-            std::array<ngl::Vec2, 36> texCoords = BlockComponents::getTexCoordinates();
-
-            m_vaos[i_index]->setData(ngl::MultiBufferVAO::VertexData(sizeof(texCoords), texCoords[0].m_x));
-            m_vaos[i_index]->setVertexAttributePointer(1, 2, GL_FLOAT, 0, 0);
-            m_vaos[i_index]->setNumIndices(texCoords.size());
-
-            m_vaos[i_index]->unbind();
-
-        s_trueVaos.push_back(m_vaos[i_index]);
-    }
 }
