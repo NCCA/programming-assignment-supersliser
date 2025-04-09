@@ -43,12 +43,12 @@ CameraComponents::CameraComponents(size_t i_size) {
     }
     ngl::ShaderLib::use("TextureShader");
     ngl::ShaderLib::setUniform("tex1", 0);
-    ngl::ShaderLib::setUniform("tex2", 0);
-    ngl::ShaderLib::setUniform("tex3", 0);
-    ngl::ShaderLib::setUniform("tex4", 0);
-    ngl::ShaderLib::setUniform("tex5", 0);
-    ngl::ShaderLib::setUniform("tex6", 0);
-    ngl::ShaderLib::setUniform("tex7", 0);
+    ngl::ShaderLib::setUniform("tex2", 1);
+    ngl::ShaderLib::setUniform("tex3", 2);
+    ngl::ShaderLib::setUniform("tex4", 3);
+    ngl::ShaderLib::setUniform("tex5", 4);
+    ngl::ShaderLib::setUniform("tex6", 5);
+    ngl::ShaderLib::setUniform("tex7", 6);
 
     glViewport(0, 0, 1080, 720);
     for (size_t i = 0; i < i_size; i++) {

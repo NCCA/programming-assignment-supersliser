@@ -19,12 +19,13 @@ public:
     std::shared_ptr<GLuint> m_meshVboId;
     std::shared_ptr<GLuint> m_uvVboId;
     std::shared_ptr<GLuint> m_texVboId;
-    std::vector<uint8_t> m_textureIDs;
+    std::vector<GLuint> m_textureIDs;
     static std::shared_ptr<GLuint> s_vaoID;
 
-    static int8_t getTextureID(const std::string& i_path);
     static std::vector<std::string> s_registeredTextures;
+    static std::vector<std::shared_ptr<GLuint>> s_registeredTextureIDs;
     static std::vector<std::shared_ptr<GLuint>> s_trueVbos;
+    static void loadAllTextures();
 };
 
 #endif //COLONYMANAGERBUILD_BLOCKTEXTURECOMPONENT_H
