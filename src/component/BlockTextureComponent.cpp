@@ -11,6 +11,7 @@
 #include "dir.h"
 #include "component/BlockComponents.h"
 #include "system/ApplyBlockTextureSystem.h"
+#include "utils.h"
 
 std::vector<std::string> BlockTextureComponent::s_registeredTextures;
 std::vector<std::shared_ptr<GLuint>> BlockTextureComponent::s_trueVbos;
@@ -42,12 +43,11 @@ BlockTextureComponent::BlockTextureComponent(size_t i_size)
     {
         m_textureIDs.push_back(0);
     }
-    s_registeredTextures.push_back(fmt::format(DIR, "textures/crate.bmp"));
+    s_registeredTextureIDs.clear();
     m_texVboId = std::make_shared<GLuint>();
-    loadAllTextures();
     glGenBuffers(1, m_texVboId.get());
     glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
-    glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size() * sizeof(GLuint), &m_textureIDs[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size() * sizeof(GLuint) + 1, &m_textureIDs[0], GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glEnableVertexAttribArray(3);
     glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
@@ -60,6 +60,7 @@ BlockTextureComponent::BlockTextureComponent(size_t i_size)
     {
         std::cerr << "Error Creating texture component: " << error << std::endl;
     }
+    loadAllTextures();
 }
 
 void BlockTextureComponent::addBlock()
@@ -88,6 +89,8 @@ BlockTextureComponent::~BlockTextureComponent()
 void BlockTextureComponent::loadAllTextures()
 {
     s_registeredTextures.clear();
+    ngl::ShaderLib::use("TextureShader"); // Ensure the shader program is active
+
     for (size_t i = 0; i < 7; i++)
     {
         std::string textureDir = DIR;
@@ -114,9 +117,16 @@ void BlockTextureComponent::loadAllTextures()
 
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 
-        std::string nameStr = fmt::format("tex{}", textureUnit + 1); // +1 because shader uniforms are named tex1-tex7
-        const char* name = nameStr.c_str();
-        glUniform1i(glGetUniformLocation(ngl::ShaderLib::getProgramID("TextureShader"), name), textureUnit);
+        std::string nameStr = fmt::format("tex[{}]", textureUnit);
+        GLint uniformLocation = glGetUniformLocation(ngl::ShaderLib::getProgramID("TextureShader"), nameStr.c_str());
+        if (uniformLocation == -1)
+        {
+            std::cerr << "T Uniform " << nameStr << " not found in shader program." << std::endl;
+        }
+        else
+        {
+            glUniform1i(uniformLocation, textureUnit);
+        }
         s_registeredTextureIDs.push_back(std::make_shared<GLuint>(texID));
     }
 }

@@ -26,3 +26,9 @@ SDL_GLContext utils::createOpenGLContext(SDL_Window *window)
     return SDL_GL_CreateContext(window);
 
 }
+
+char utils::numToString(uint8_t i_num)
+{
+    char output = 64 + i_num;
+    return output;
+}

@@ -33,6 +33,7 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the name of the executable we want to build
 add_executable(${TargetName}
+        src/main.cpp
         src/system/TestIsBlockedSystem.cpp
         include/component/TransformComponents.h
         include/Table.h
@@ -55,7 +56,6 @@ add_executable(${TargetName}
         src/component/BlockTextureComponent.cpp
         include/system/ApplyBlockTextureSystem.h
         src/system/ApplyBlockTextureSystem.cpp
-        include/Camera.h
         src/Camera.cpp
         include/component/BlockType.h
         include/utils.h
@@ -68,8 +68,15 @@ add_executable(${TargetName}
         src/system/RotateCameraSystem.cpp
         include/system/RotateCameraSystem.h
         include/component/IsSprintingComponent.h
+        src/component/IsSprintingComponent.cpp
+        include/system/SetSprintingSystem.h
+        include/system/ToggleSprintingSystem.h
+        src/system/SetSprintingSystem.cpp
+        src/system/ToggleSprintingSystem.cpp
         include/component/SpeedComponent.h
+        src/component/SpeedComponent.cpp
         include/system/PlayerFallSystem.h
+        src/system/PlayerFallSystem.cpp
         PerlinNoise/PerlinNoise.hpp
         src/GenerateWorld.cpp
         include/GenerateWorld.h
