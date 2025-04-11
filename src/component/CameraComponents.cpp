@@ -24,9 +24,9 @@ CameraComponents::CameraComponents(size_t i_size)
     ngl::ShaderLib::attachShader(vertexShader, ngl::ShaderType::VERTEX);
     ngl::ShaderLib::attachShader(fragShader, ngl::ShaderType::FRAGMENT);
 
-    const auto vertexPath = fmt::format("{}{}", DIR, "shaders/TextureVert.glsl");
-    const auto fragPath = fmt::format("{}{}", DIR, "shaders/TextureFrag.glsl");
-    ngl::ShaderLib::loadShaderSource(vertexShader, vertexPath);
+    const auto vertexPath = fmt::format("{}{}", getDir(), "shaders/TextureVert.glsl");
+    const auto fragPath = fmt::format("{}{}", getDir(), "shaders/TextureFrag.glsl");
+    ngl::ShaderLib::loadShaderSource(vertexShader,  vertexPath);
     ngl::ShaderLib::loadShaderSource(fragShader, fragPath);
     if (!ngl::ShaderLib::compileShader(vertexShader))
     {

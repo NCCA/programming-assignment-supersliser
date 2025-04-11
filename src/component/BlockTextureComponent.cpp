@@ -92,7 +92,7 @@ void BlockTextureComponent::loadAllTextures()
 
     for (size_t i = 0; i < 7; i++)
     {
-        std::string textureDir = DIR;
+        std::string textureDir = getDir();
         std::string textureName = ApplyBlockTextureSystem::getTextureName(static_cast<BlockType>(i));
         std::string path = fmt::format("{}{}", textureDir, textureName);
         s_registeredTextures.push_back(path);

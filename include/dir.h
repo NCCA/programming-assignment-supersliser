@@ -5,10 +5,18 @@
 #ifndef COLONYMANAGERBUILD_DIR_H
 #define COLONYMANAGERBUILD_DIR_H
 
-#ifdef __amd64__
-    #define DIR "/home/tom/programming-assignment-supersliser/"
-#else
-    #define DIR "/home/s5605187/Documents/programming-assignment-supersliser/"
-#endif
+#include <cstdlib>
+#include <cstring>
+
+inline const char* getDir() {
+    const char* env_location = std::getenv("ENV_LOCATION");
+    if (env_location && std::strcmp(env_location, "home") == 0) {
+        return "/home/tom/programming-assignment-supersliser/";
+    } else if (env_location && std::strcmp(env_location, "university") == 0) {
+        return "/home/s5605187/Documents/programming-assignment-supersliser/";
+    } else {
+        throw std::runtime_error("Unknown environment. Please set ENV_LOCATION to 'home' or 'university'.");
+    }
+}
 
 #endif //COLONYMANAGERBUILD_DIR_H
