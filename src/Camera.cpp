@@ -53,7 +53,7 @@ void Camera ::setDefaultCamera() noexcept
   m_aspect = 1080.0f / 720.0f;
 
   setShape(m_fov, m_aspect, m_zNear, m_zFar); // good default values here
-  set(ngl::Vec3(0.0, 2.0, 0.0), ngl::Vec3(0.0, 2.0, 2.0), ngl::Vec3(0, 1, 0));
+  set(ngl::Vec3(0.0, 2.0, 0.0), ngl::Vec3(0.0, 2.0, 1.0), ngl::Vec3(0, 1, 0));
 }
 
 void Camera::set(const ngl::Vec3 &_eye, const ngl::Vec3 &_look, const ngl::Vec3 &_up) noexcept
@@ -164,6 +164,15 @@ void Camera::slide(ngl::Real _du, ngl::Real _dv, ngl::Real _dn) noexcept
   m_eye.m_y += _du * m_u.m_y + _dv * m_v.m_y + _dn * m_n.m_y;
   m_eye.m_z += _du * m_u.m_z + _dv * m_v.m_z + _dn * m_n.m_z;
   setViewMatrix();
+}
+
+void Camera::move(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
+{
+    // simply add the translation to the current eye point
+    m_eye.m_x += _dx;
+    m_eye.m_y += _dy;
+    m_eye.m_z += _dz;
+    setViewMatrix();
 }
 
 void Camera::moveBoth(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept

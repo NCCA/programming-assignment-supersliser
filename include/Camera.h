@@ -128,6 +128,8 @@ public :
   //----------------------------------------------------------------------------------------------------------------------
   void moveBoth( ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept;
 
+    void move(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept;
+
   //----------------------------------------------------------------------------------------------------------------------
   /// @brief move the eye position
   /// @param[in] _dx ammount to move the eye in the x
@@ -184,6 +186,7 @@ public :
   /// @returns the m_projectionMatrix*m_viewMatrix
   //----------------------------------------------------------------------------------------------------------------------
   ngl::Mat4  getVPMatrix()const  noexcept{return m_projectionMatrix*m_viewMatrix;}
+
   //----------------------------------------------------------------------------------------------------------------------
   /// @brief get the eye position
   /// @returns the current eye pos

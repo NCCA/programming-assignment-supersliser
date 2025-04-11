@@ -56,8 +56,8 @@ add_executable(${TargetName}
         src/system/ApplyBlockTextureSystem.cpp
         src/Camera.cpp
         include/component/BlockType.h
-        include/utils.h
-        src/utils.cpp
+        include/Utils.h
+        src/Utils.cpp
         include/dir.h
         include/system/SetCameraLookSystem.h
         src/system/SetCameraLookSystem.cpp
@@ -129,8 +129,8 @@ add_executable(Tests
         src/system/ApplyBlockTextureSystem.cpp
         src/Camera.cpp
         include/component/BlockType.h
-        include/utils.h
-        src/utils.cpp
+        include/Utils.h
+        src/Utils.cpp
         include/dir.h
         include/system/SetCameraLookSystem.h
         src/system/SetCameraLookSystem.cpp

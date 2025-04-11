@@ -3,13 +3,12 @@
 //
 
 #include <gtest/gtest.h>
-#include <PerlinNoise.hpp>
 #include <SDL2/SDL.h>
 #include <ngl/NGLInit.h>
 
 #include "GenerateWorld.h"
 #include "Table.h"
-#include "utils.h"
+#include "Utils.h"
 #include "system/RenderWorldSystem.h"
 #include "system/MovePlayerSystem.h"
 #include "system/RotateCameraSystem.h"

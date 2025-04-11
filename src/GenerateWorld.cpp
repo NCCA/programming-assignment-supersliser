@@ -67,5 +67,5 @@ void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::P
 
 float getNoise(siv::PerlinNoise noise, int x, int y, float scale)
 {
-    return std::clamp((float)noise.noise2D(x * scale, y * scale) * 0.5f + 0.5f, 0.75f, 1.0f);
+    return std::clamp((float)noise.noise2D(x * scale, y * scale) * 0.5f + 0.5f, 0.2f, 1.0f);
 }

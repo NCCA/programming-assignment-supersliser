@@ -32,7 +32,7 @@ void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
 
     if (i_world == nullptr)
     {
-        io_component->m_cameras[i_index].moveBoth(currentDir.m_x, currentDir.m_y, currentDir.m_z);
+        io_component->m_cameras[i_index].move(currentDir.m_x, currentDir.m_y, currentDir.m_z);
         return;
     }
 
@@ -74,7 +74,7 @@ void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
                 }
                 else
                 {
-                    io_component->m_cameras[i_index].moveBoth(currentDir.m_x, +1, currentDir.m_z);
+                    io_component->m_cameras[i_index].move(currentDir.m_x, +1, currentDir.m_z);
                     return;
                 }
             }
@@ -91,7 +91,7 @@ void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
         }
         else
         {
-            io_component->m_cameras[i_index].moveBoth(currentDir.m_x, 0, currentDir.m_z);
+            io_component->m_cameras[i_index].move(currentDir.m_x, 0, currentDir.m_z);
             return;
         }
     }
