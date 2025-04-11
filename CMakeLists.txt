@@ -39,8 +39,6 @@ add_executable(${TargetName}
         include/Table.h
         include/system/System.h
         src/Table.cpp
-        include/system/MoveSystem.h
-        src/system/MoveSystem.cpp
         include/component/Entities.h
         src/component/Entities.cpp
         include/component/Column.h
@@ -114,8 +112,6 @@ add_executable(Tests
         include/Table.h
         include/system/System.h
         src/Table.cpp
-        include/system/MoveSystem.h
-        src/system/MoveSystem.cpp
         include/component/Entities.h
         src/component/Entities.cpp
         include/component/Column.h

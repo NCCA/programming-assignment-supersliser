@@ -3,7 +3,6 @@
 //
 
 #include "system/TestIsBlockedSystem.h"
-
 #include "Table.h"
 
 void TestIsBlockedSystem::run(TransformComponents* io_component, int i_index)

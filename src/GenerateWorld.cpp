@@ -7,7 +7,7 @@
 void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::PerlinNoise::seed_type i_seed)
 {
     float scale = i_xsize / 1000.0f;
-    siv::PerlinNoise noise {i_seed};
+    siv::PerlinNoise noise{i_seed};
     int blockCount = 0;
     for (int x = 0; x < i_xsize; x++)
     {
@@ -35,24 +35,30 @@ void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::P
         {
             for (int y = -5; y < i_ysize * getNoise(noise, x, z, scale); y++)
             {
-                if (y < i_ysize * getNoise(noise, x, z, scale) - 7) {
+                if (y < i_ysize * getNoise(noise, x, z, scale) - 7)
+                {
                     ApplyBlockTextureSystem applyBlockTextureSystem;
                     applyBlockTextureSystem.i_blockType = BlockType::Stone;
-                    i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount, blockCount);
+                    i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount,
+                                 blockCount);
                 }
-                else if (y < i_ysize * getNoise(noise, x, z, scale) - 3) {
+                else if (y < i_ysize * getNoise(noise, x, z, scale) - 3)
+                {
                     ApplyBlockTextureSystem applyBlockTextureSystem;
                     applyBlockTextureSystem.i_blockType = BlockType::Dirt;
-                    i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount, blockCount);
+                    i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount,
+                                 blockCount);
                 }
-                else {
+                else
+                {
                     ApplyBlockTextureSystem applyBlockTextureSystem;
                     applyBlockTextureSystem.i_blockType = BlockType::Grass;
-                    i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount, blockCount);
+                    i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount,
+                                 blockCount);
                 }
                 setPositionSystem.i_pos = ngl::Vec3(x, y, z);
                 i_world->run(&setPositionSystem, TransformComponents::getComponentID(), blockCount, blockCount);
-blockCount++;
+                blockCount++;
                 printf("Block %d: %d %d %d\n", blockCount, x, y, z);
             }
         }

@@ -27,15 +27,9 @@
 #include <iostream>
 #include <cmath>
 #include <memory>
-//----------------------------------------------------------------------------------------------------------------------
-/// @file Camera.cpp
-/// @brief implementation files for Camera class
-//----------------------------------------------------------------------------------------------------------------------
-// a lot of this stuff is from the HILL book Computer Graphics with OpenGL 2nd Ed Prentice Hall
-// a very good book
+
 constexpr ngl::Real CAMERANEARLIMIT = 0.00001f;
 
-//----------------------------------------------------------------------------------------------------------------------
 
 Camera::Camera() noexcept
 {
@@ -49,7 +43,6 @@ Camera::Camera() noexcept
   m_eye.set(1, 1, 1);
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera ::setDefaultCamera() noexcept
 {
   // make default camera
@@ -63,7 +56,6 @@ void Camera ::setDefaultCamera() noexcept
   set(ngl::Vec3(0.0, 2.0, 0.0), ngl::Vec3(0.0, 2.0, 2.0), ngl::Vec3(0, 1, 0));
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::set(const ngl::Vec3 &_eye, const ngl::Vec3 &_look, const ngl::Vec3 &_up) noexcept
 {
   // make U, V, N vectors
@@ -79,14 +71,12 @@ void Camera::set(const ngl::Vec3 &_eye, const ngl::Vec3 &_look, const ngl::Vec3 
   setViewMatrix();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 Camera::Camera(const ngl::Vec3 &_eye, const ngl::Vec3 &_look, const ngl::Vec3 &_up) noexcept
 {
   setDefaultCamera();
   set(_eye, _look, _up);
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::setViewMatrix() noexcept
 {
   // grab a pointer to the matrix so we can index is quickly
@@ -128,13 +118,11 @@ void Camera::setPerspProjection() noexcept
   m_projectionMatrix.m_m[3][3] = 1.0f;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::setProjectionMatrix() noexcept
 {
   m_projectionMatrix.null();
   setPerspProjection();
 }
-//----------------------------------------------------------------------------------------------------------------------
 
 void Camera::setShape(ngl::Real _viewAngle, ngl::Real _aspect, ngl::Real _near, ngl::Real _far) noexcept
 
@@ -157,21 +145,18 @@ void Camera::setShape(ngl::Real _viewAngle, ngl::Real _aspect, ngl::Real _near, 
   // calculateFrustum();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::setAspect(ngl::Real _asp) noexcept
 {
   m_aspect = _asp;
   setShape(m_fov, m_aspect, m_zNear, m_zFar);
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::setViewAngle(ngl::Real _angle) noexcept
 {
   m_fov = _angle;
   setShape(_angle, m_aspect, m_zNear, m_zFar);
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::slide(ngl::Real _du, ngl::Real _dv, ngl::Real _dn) noexcept
 {
   // slide eye by amount du * u + dv * v + dn * n;
@@ -181,16 +166,6 @@ void Camera::slide(ngl::Real _du, ngl::Real _dv, ngl::Real _dn) noexcept
   setViewMatrix();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
-void Camera::move(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
-{
-  // simply add the translation to the current eye point
-  m_eye.m_x += _dx;
-  m_eye.m_y += _dy;
-  m_eye.m_z += _dz;
-  setViewMatrix();
-}
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::moveBoth(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
 {
   m_eye.m_x += _dx;
@@ -209,7 +184,7 @@ void Camera::moveBoth(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
   // pass to OpenGL
   setViewMatrix();
 }
-//----------------------------------------------------------------------------------------------------------------------
+
 void Camera::rotAxes(const ngl::Vec4& axis, ngl::Vec4& vector, ngl::Real angle) noexcept
 {
   ngl::Mat4 rotation;
@@ -228,14 +203,12 @@ void Camera::rotAxes(const ngl::Vec4& axis, ngl::Vec4& vector, ngl::Real angle) 
   vector = rotation * vector;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::roll(ngl::Real _angle) noexcept
 {
   rotAxes(m_u, m_v, -_angle);
   setViewMatrix();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::yaw(ngl::Real _angle) noexcept
 {
   // Rotate around the world space Y-axis
@@ -247,8 +220,6 @@ void Camera::yaw(ngl::Real _angle) noexcept
   m_v.normalize();
   setViewMatrix();
 }
-
-
 
 void Camera::pitch(ngl::Real _angle) noexcept
 {
@@ -262,7 +233,6 @@ void Camera::pitch(ngl::Real _angle) noexcept
   setViewMatrix();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::moveEye(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
 {
   m_eye.m_x += _dx;
@@ -279,7 +249,6 @@ void Camera::moveEye(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
   setViewMatrix();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::moveLook(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
 {
   m_look.m_x += _dx;
@@ -296,13 +265,11 @@ void Camera::moveLook(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
   setViewMatrix();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::update() noexcept
 {
   setViewMatrix();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::normalisedYaw(ngl::Real _angle) noexcept
 {
   // build a rotation matrix around the y axis
@@ -314,7 +281,7 @@ void Camera::normalisedYaw(ngl::Real _angle) noexcept
   // reset the modelview matrix
   setViewMatrix();
 }
-//----------------------------------------------------------------------------------------------------------------------
+
 void Camera::normalisedRoll(ngl::Real _angle) noexcept
 {
   // build a rotation matrix around the y axis
@@ -327,7 +294,6 @@ void Camera::normalisedRoll(ngl::Real _angle) noexcept
   setViewMatrix();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 void Camera::normalisedPitch(ngl::Real _angle) noexcept
 {
   // build a rotation matrix around the y axis
@@ -340,7 +306,6 @@ void Camera::normalisedPitch(ngl::Real _angle) noexcept
   setViewMatrix();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 /// Code modified from http://www.lighthouse3d.com/opengl/viewfrustum/index.php?intro
 ///
 void Camera::calculateFrustum() noexcept
@@ -370,57 +335,6 @@ void Camera::calculateFrustum() noexcept
   m_planes[static_cast<int>(ProjPlane::RIGHT)].setPoints(m_nbr, m_ntr, m_fbr);
   m_planes[static_cast<int>(ProjPlane::NEARP)].setPoints(m_ntl, m_ntr, m_nbr);
   m_planes[static_cast<int>(ProjPlane::FARP)].setPoints(m_ftr, m_ftl, m_fbl);
-}
-
-void Camera::drawFrustum() noexcept
-{
-  std::vector<ngl::Vec3> points;
-
-  // draw the sides as lines
-  points.push_back(m_ntl);
-  points.push_back(m_ftl);
-
-  points.push_back(m_ntr);
-  points.push_back(m_ftr);
-
-  points.push_back(m_nbl);
-  points.push_back(m_fbl);
-
-  points.push_back(m_nbr);
-  points.push_back(m_fbr);
-  // near plane lines
-  points.push_back(m_ntr);
-  points.push_back(m_ntl);
-  points.push_back(m_nbr);
-  points.push_back(m_nbl);
-  points.push_back(m_ntr);
-  points.push_back(m_nbr);
-  points.push_back(m_ntl);
-  points.push_back(m_nbl);
-  // far plane lines
-  points.push_back(m_ftr);
-  points.push_back(m_ftl);
-  points.push_back(m_fbr);
-  points.push_back(m_fbl);
-  points.push_back(m_ftr);
-  points.push_back(m_fbr);
-  points.push_back(m_ftl);
-  points.push_back(m_fbl);
-
-  // now we create a VAO to store the data
-  std::unique_ptr<ngl::AbstractVAO> vao(ngl::VAOFactory::createVAO("simpleVAO", GL_LINES));
-  // bind it so we can set values
-  vao->bind();
-  // set the vertex data (4 for x,y,z)
-  vao->setData(ngl::SimpleVAO::VertexData(points.size() * sizeof(ngl::Vec3), points[0].m_x));
-  // now we set the attribute pointer to be 0 (as this matches vertIn in our shader)
-  vao->setVertexAttributePointer(0, 3, GL_FLOAT, sizeof(ngl::Vec3), 0);
-  // say how many indecis to be rendered
-  vao->setNumIndices(points.size());
-  vao->draw();
-  // now unbind
-  vao->unbind();
-  vao->removeVAO();
 }
 
 CameraIntercept Camera::isPointInFrustum(const ngl::Vec3 &_p) const noexcept
@@ -483,7 +397,6 @@ ngl::Vec3 Camera::getPos() const noexcept
 
 ngl::Real Camera::getYaw() const noexcept
 {
-    // Calculate the yaw angle in radians
     ngl::Real yaw = atan2(m_n.m_x, m_n.m_z);
     return yaw;
 }

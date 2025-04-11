@@ -2,17 +2,13 @@
 // Created by s5605187 on 26/03/25.
 //
 
-#include "system/ApplyBlockTextureSystem.h"
 #include <ngl/ShaderLib.h>
-
 #include <iostream>
 
-#include "component/BlockComponents.h"
-#include "dir.h"
+#include "system/ApplyBlockTextureSystem.h"
 
 void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_index)
 {
-    // Use i_blockType directly as the texture unit index (0-6)
     auto textureUnit = static_cast<GLuint>(i_blockType);
     io_component->m_textureIDs[i_index] = textureUnit;
 
