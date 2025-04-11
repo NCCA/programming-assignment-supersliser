@@ -103,6 +103,7 @@ include(GoogleTest)
 enable_testing()
 add_executable(Tests
         tests/TableTests.cpp
+        tests/SDLTest.cpp
         tests/WorldTests.cpp
         tests/PlayerTests.cpp
         tests/PlayerStepTests.cpp

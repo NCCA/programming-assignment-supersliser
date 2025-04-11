@@ -14,9 +14,8 @@
 #include "utils.h"
 
 std::vector<std::string> BlockTextureComponent::s_registeredTextures;
-std::vector<std::shared_ptr<GLuint>> BlockTextureComponent::s_trueVbos;
 std::shared_ptr<GLuint> BlockTextureComponent::s_vaoID = std::make_shared<GLuint>();
-std::vector<std::shared_ptr<GLuint>> BlockTextureComponent::s_registeredTextureIDs;
+std::vector<GLuint> BlockTextureComponent::s_registeredTextureIDs;
 
 
 BlockTextureComponent::BlockTextureComponent(size_t i_size)
@@ -47,7 +46,7 @@ BlockTextureComponent::BlockTextureComponent(size_t i_size)
     m_texVboId = std::make_shared<GLuint>();
     glGenBuffers(1, m_texVboId.get());
     glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
-    glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size() * sizeof(GLuint) + 1, &m_textureIDs[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size() * sizeof(GLuint), &m_textureIDs[0], GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glEnableVertexAttribArray(3);
     glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
@@ -127,6 +126,6 @@ void BlockTextureComponent::loadAllTextures()
         {
             glUniform1i(uniformLocation, textureUnit);
         }
-        s_registeredTextureIDs.push_back(std::make_shared<GLuint>(texID));
+        s_registeredTextureIDs.push_back(texID);
     }
 }

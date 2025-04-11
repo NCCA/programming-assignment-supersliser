@@ -18,7 +18,7 @@ void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_ind
 
     glBindVertexArray(*io_component->s_vaoID);
     glBindBuffer(GL_ARRAY_BUFFER, *io_component->m_texVboId);
-    glBufferData(GL_ARRAY_BUFFER, io_component->m_textureIDs.size() * sizeof(GLuint), &io_component->m_textureIDs[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLuint), &io_component->m_textureIDs[0], GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 

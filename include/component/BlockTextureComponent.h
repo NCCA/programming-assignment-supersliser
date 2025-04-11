@@ -23,8 +23,7 @@ public:
     static std::shared_ptr<GLuint> s_vaoID;
 
     static std::vector<std::string> s_registeredTextures;
-    static std::vector<std::shared_ptr<GLuint>> s_registeredTextureIDs;
-    static std::vector<std::shared_ptr<GLuint>> s_trueVbos;
+    static std::vector<GLuint> s_registeredTextureIDs;
     static void loadAllTextures();
 };
 

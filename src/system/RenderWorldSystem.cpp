@@ -36,7 +36,7 @@ void RenderWorldSystem::run(CameraComponents* io_component, int i_index) {
     // Bind textures to texture units
     for (size_t i = 0; i < BlockTextureComponent::s_registeredTextureIDs.size(); i++) {
         glActiveTexture(GL_TEXTURE0 + i);
-        glBindTexture(GL_TEXTURE_2D, *BlockTextureComponent::s_registeredTextureIDs[i]);
+        glBindTexture(GL_TEXTURE_2D, BlockTextureComponent::s_registeredTextureIDs[i]);
     }
 
     // Bind VAO and VBOs

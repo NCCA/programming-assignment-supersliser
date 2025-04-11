@@ -5,7 +5,7 @@
 #ifndef COLONYMANAGERBUILD_DIR_H
 #define COLONYMANAGERBUILD_DIR_H
 
-#ifdef __wint_t_defined__
+#ifdef __amd64__
     #define DIR "/home/tom/programming-assignment-supersliser/"
 #else
     #define DIR "/home/s5605187/Documents/programming-assignment-supersliser/"
