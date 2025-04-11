@@ -76,7 +76,7 @@ TEST(GenerateWorld, generateWorld)
     players.run(&setPlayerPositionSystem, CameraComponents::getComponentID());
 
     Table world;
-    generateWorld(&world, 100, 10, 100, 0);
+    generateWorld(&world, 20, 20, 20, 0);
 
     RenderWorldSystem renderWorldSystem;
     renderWorldSystem.i_world = &world;

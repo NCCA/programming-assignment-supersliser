@@ -6,13 +6,14 @@
 
 void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::PerlinNoise::seed_type i_seed)
 {
+    float scale = i_xsize / 1000.0f;
     siv::PerlinNoise noise {i_seed};
     int blockCount = 0;
     for (int x = 0; x < i_xsize; x++)
     {
         for (int z = 0; z < i_zsize; z++)
         {
-            for (int y = 0; y < i_ysize * getNoise(noise, x, z) + 5; y++)
+            for (int y = 0; y < i_ysize * getNoise(noise, x, z, scale) + 5; y++)
             {
                 i_world->createEntity();
                 blockCount++;
@@ -32,32 +33,33 @@ void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::P
     {
         for (int z = 0; z < i_zsize; z++)
         {
-            for (int y = 0; y < i_ysize * getNoise(noise, x, z) + 5; y++)
+            for (int y = -5; y < i_ysize * getNoise(noise, x, z, scale); y++)
             {
-//                if (y - 5 < i_ysize * noise.noise2D(x, z) - 1) {
-//                    ApplyBlockTextureSystem applyBlockTextureSystem;
-//                    applyBlockTextureSystem.i_blockType = BlockType::Grass;
-//                    i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), x * i_ysize * i_zsize + z * i_zsize + y, x * i_ysize * i_zsize + z * i_zsize + y);
-//                }
-//                else if (y - 6 < i_ysize * noise.noise2D(x, z) - 4) {
-//                    ApplyBlockTextureSystem applyBlockTextureSystem;
-//                    applyBlockTextureSystem.i_blockType = BlockType::Dirt;
-//                    i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), x * i_ysize * i_zsize + z * i_zsize + y, x * i_ysize * i_zsize + z * i_zsize + y);
-//                }
-//                else {
+                if (y < i_ysize * getNoise(noise, x, z, scale) - 7) {
                     ApplyBlockTextureSystem applyBlockTextureSystem;
-                    // applyBlockTextureSystem.i_blockType = BlockType::Stone;
+                    applyBlockTextureSystem.i_blockType = BlockType::Stone;
                     i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount, blockCount);
-//                }
-                setPositionSystem.i_pos = ngl::Vec3(x, y - 5, z);
+                }
+                else if (y < i_ysize * getNoise(noise, x, z, scale) - 3) {
+                    ApplyBlockTextureSystem applyBlockTextureSystem;
+                    applyBlockTextureSystem.i_blockType = BlockType::Dirt;
+                    i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount, blockCount);
+                }
+                else {
+                    ApplyBlockTextureSystem applyBlockTextureSystem;
+                    applyBlockTextureSystem.i_blockType = BlockType::Grass;
+                    i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount, blockCount);
+                }
+                setPositionSystem.i_pos = ngl::Vec3(x, y, z);
                 i_world->run(&setPositionSystem, TransformComponents::getComponentID(), blockCount, blockCount);
 blockCount++;
+                printf("Block %d: %d %d %d\n", blockCount, x, y, z);
             }
         }
     }
 }
 
-float getNoise(siv::PerlinNoise noise, int x, int y)
+float getNoise(siv::PerlinNoise noise, int x, int y, float scale)
 {
-    return std::clamp((float)noise.noise2D(x, y) + 5, 0.5f, 1.0f);
+    return std::clamp((float)noise.noise2D(x * scale, y * scale) * 0.5f + 0.5f, 0.75f, 1.0f);
 }

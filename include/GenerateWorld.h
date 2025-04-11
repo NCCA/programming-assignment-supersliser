@@ -18,6 +18,6 @@
 #include "system/ApplyBlockTextureSystem.h"
 
 void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::PerlinNoise::seed_type i_seed);
-float getNoise(siv::PerlinNoise noise, int x, int y);
+float getNoise(siv::PerlinNoise noise, int x, int y, float scale);
 
 #endif //COLONYMANAGERBUILD_GENERATEWORLD_H
