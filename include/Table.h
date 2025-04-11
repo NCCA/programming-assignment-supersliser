@@ -27,8 +27,6 @@ public:
     template<typename T>
     void run(a_System<T>* i_system, const uint8_t i_componentType, int startIndex = -1, int endIndex = -1);
 
-    std::vector<Column> getEntity(uint32_t i_entity) const;
-
     int getComponentIndex(uint8_t i_componentType) const;
 
     std::shared_ptr<void> getColumn(uint32_t i_columnIndex) const;

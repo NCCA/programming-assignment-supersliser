@@ -121,14 +121,6 @@ public :
   void setDefaultCamera() noexcept;
 
   //----------------------------------------------------------------------------------------------------------------------
-  /// @brief move the camera in world space (i.e. add a translation to each of the axis
-  /// @param[in] _dx the translation in the x
-  /// @param[in] _dy the translation in the y
-  /// @param[in] _dz the translation in the z
-  //----------------------------------------------------------------------------------------------------------------------
-  void move(ngl::Real _dx,ngl::Real _dy,ngl::Real _dz) noexcept;
-
-  //----------------------------------------------------------------------------------------------------------------------
   /// @brief move both the eye and the look at the same time
   /// @param[in] _dx ammount to move in the x
   /// @param[in] _dy ammount to move in the y

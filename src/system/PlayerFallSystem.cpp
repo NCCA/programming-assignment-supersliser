@@ -30,7 +30,7 @@ void PlayerFallSystem::run(CameraComponents* io_component, int i_index)
         newPos.m_y = std::floor(newPos.m_y);
     }
 
-    io_component->m_cameras[i_index].move(newPos.m_x - io_component->m_cameras[i_index].getPos().m_x,
+    io_component->m_cameras[i_index].moveBoth(newPos.m_x - io_component->m_cameras[i_index].getPos().m_x,
                                           newPos.m_y - io_component->m_cameras[i_index].getPos().m_y,
                                           newPos.m_z - io_component->m_cameras[i_index].getPos().m_z);
 }

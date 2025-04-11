@@ -1,7 +1,6 @@
 //
 // Created by thoma on 23/03/2025.
 //
-#include "system/MoveSystem.h"
 #include <gtest/gtest.h>
 #include <ngl/NGLInit.h>
 #include <SDL2/SDL.h>
@@ -15,16 +14,18 @@
 #include "utils.h"
 #include "system/SetCameraLookSystem.h"
 #include "system/MovePlayerSystem.h"
+#include "system/SetPlayerPositionSystem.h"
 
 
-TEST(World, generateWorld) {
+TEST(World, generateWorld)
+{
     Table world;
     for (uint32_t i = 0; i < 9; i++) {
         world.createEntity();
     }
 
     world.registerComponentType(TransformComponents::getComponentID());
-    MoveSystem setPositionSystem;
+    SetPositionSystem setPositionSystem;
     for (float i = -1; i <= 1; i++) {
         for (float j = -1; j <= 1; j++) {
             setPositionSystem.i_pos = ngl::Vec3(i, 0.0f, j);
@@ -50,53 +51,6 @@ TEST(World, generateWorld) {
             TransformComponents::getComponentID())].m_column.get())->m_ps[7] == ngl::Vec3(1.0f, 0.0f, 0.0f));
     EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(8)[world.getComponentIndex(
             TransformComponents::getComponentID())].m_column.get())->m_ps[8] == ngl::Vec3(1.0f, 0.0f, 1.0f));
-}
-
-TEST(World, moveEntityInWorld) {
-    Table world;
-    for (uint32_t i = 0; i < 13; i++) {
-        world.createEntity();
-    }
-    world.registerComponentType(TransformComponents::getComponentID());
-    MoveSystem setPositionSystem;
-    for (float i = -1; i <= 1; i++) {
-        for (float j = -1; j <= 1; j++) {
-
-            std::vector<float> args;
-            setPositionSystem.i_pos = ngl::Vec3(i * 1, 0.0f, j * 1);
-            world.run(&setPositionSystem, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1),
-                      (i + 1) * 3 + (j + 1));
-        }
-    }
-    setPositionSystem.i_pos = ngl::Vec3(1.0f, 1.0f, 0.0f);
-    world.run(&setPositionSystem, TransformComponents::getComponentID(), 9, 9);
-    setPositionSystem.i_pos = ngl::Vec3(-1.0f, 1.0f, 1.0f);
-    world.run(&setPositionSystem, TransformComponents::getComponentID(), 10, 10);
-    setPositionSystem.i_pos = ngl::Vec3(0.0f, 1.0f, 1.0f);
-    world.run(&setPositionSystem, TransformComponents::getComponentID(), 11, 11);
-    setPositionSystem.i_pos = ngl::Vec3(0.0f, 1.0f, 1.0f);
-    world.run(&setPositionSystem, TransformComponents::getComponentID(), 12, 12);
-
-    MoveSystem m;
-    Table character;
-    character.createEntity();
-    character.registerComponentType(TransformComponents::getComponentID());
-    setPositionSystem.i_pos = ngl::Vec3(0.0f, 1.0f, 0.0f);
-    character.run(&setPositionSystem, TransformComponents::getComponentID());
-    m.i_pos = ngl::Vec3(1.0f, 0.0f, 0.0f);
-    m.i_world = &world;
-    character.run(&m, TransformComponents::getComponentID());
-    auto temp = static_cast<TransformComponents *>(character.getEntity(0)[1].m_column.get())->m_ps[0];
-    EXPECT_TRUE(static_cast<TransformComponents *>(character.getEntity(0)[1].m_column.get())->m_ps[0] ==
-                ngl::Vec3(0.0f, 1.0f, 0.0f));
-    m.i_pos = ngl::Vec3(0.0f, 0.0f, -1.0f);
-    m.i_world = &world;
-    auto currentPos = static_cast<TransformComponents*>(character.getColumn(character.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[0];
-    character.run(&m, TransformComponents::getComponentID());
-    currentPos = static_cast<TransformComponents*>(character.getColumn(character.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[0];
-    auto temp2 = static_cast<TransformComponents *>(character.getEntity(0)[1].m_column.get())->m_ps[0];
-    EXPECT_TRUE(static_cast<TransformComponents *>(character.getEntity(0)[1].m_column.get())->m_ps[0] ==
-                ngl::Vec3(0.0f, 1.0f, -1.0f));
 }
 
 TEST(WorldDisplay, WorldVisible) {

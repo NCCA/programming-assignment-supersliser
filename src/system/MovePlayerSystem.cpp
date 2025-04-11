@@ -12,17 +12,14 @@ void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
     ngl::Vec3 currentPos = io_component->m_cameras[i_index].getPos();
     ngl::Vec3 currentDir = i_dir * (i_speed != nullptr ? i_speed->m_speed[i_index] : SpeedComponent::getDefaultSpeed());
 
-
-    //Is Sprinting?
     if (i_isSprinting != nullptr)
     {
         if (i_isSprinting->m_isSprinting[i_index])
         {
-            currentDir *= 2.0f; // Double the speed if sprinting
+            currentDir *= 2.0f;
         }
     }
 
-    //Calculate new location
     ngl::Vec3 newPos = currentPos;
     auto angleDir = io_component->m_cameras[i_index].getYaw();
     ngl::Real originalX = currentDir.m_x;
@@ -35,7 +32,7 @@ void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
 
     if (i_world == nullptr)
     {
-        io_component->m_cameras[i_index].move(currentDir.m_x, currentDir.m_y, currentDir.m_z);
+        io_component->m_cameras[i_index].moveBoth(currentDir.m_x, currentDir.m_y, currentDir.m_z);
         return;
     }
 
@@ -77,7 +74,7 @@ void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
                 }
                 else
                 {
-                    io_component->m_cameras[i_index].move(currentDir.m_x, +1, currentDir.m_z);
+                    io_component->m_cameras[i_index].moveBoth(currentDir.m_x, +1, currentDir.m_z);
                     return;
                 }
             }
@@ -94,8 +91,8 @@ void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
         }
         else
         {
-                io_component->m_cameras[i_index].move(currentDir.m_x, 0, currentDir.m_z);
-                return;
+            io_component->m_cameras[i_index].moveBoth(currentDir.m_x, 0, currentDir.m_z);
+            return;
         }
     }
 }
