@@ -45,11 +45,11 @@ void RenderWorldSystem::run(CameraComponents* io_component, int i_index) {
     // THIS IS THE CRITICAL PART - rebinding the texture ID buffer
     glBindBuffer(GL_ARRAY_BUFFER, *textureComponent->m_texVboId);
     // Make sure we're using the latest texture IDs data
-    glBufferData(GL_ARRAY_BUFFER, textureComponent->m_textureIDs.size() * sizeof(GLuint),
-                 &textureComponent->m_textureIDs[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, textureComponent->m_textureIDs.size() * sizeof(GLfloat),
+                 textureComponent->m_textureIDs.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(3);
-    glVertexAttribPointer(3, 1, GL_UNSIGNED_INT, GL_FALSE, 0, nullptr);
-    glVertexAttribDivisor(3, 1);  // Critical for instanced rendering
+    glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glVertexAttribDivisor(3, 1);
 
         ngl::Mat4 MVP = io_component->m_cameras[0].getVPMatrix();
         ngl::ShaderLib::setUniform("MVP", MVP);

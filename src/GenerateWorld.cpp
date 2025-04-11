@@ -46,7 +46,7 @@ void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::P
 //                }
 //                else {
                     ApplyBlockTextureSystem applyBlockTextureSystem;
-                    applyBlockTextureSystem.i_blockType = BlockType::Stone;
+                    // applyBlockTextureSystem.i_blockType = BlockType::Stone;
                     i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), blockCount, blockCount);
 //                }
                 setPositionSystem.i_pos = ngl::Vec3(x, y - 5, z);

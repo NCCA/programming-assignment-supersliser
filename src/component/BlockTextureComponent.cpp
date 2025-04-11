@@ -46,11 +46,11 @@ BlockTextureComponent::BlockTextureComponent(size_t i_size)
     m_texVboId = std::make_shared<GLuint>();
     glGenBuffers(1, m_texVboId.get());
     glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
-    glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size() * sizeof(GLuint), &m_textureIDs[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size() * sizeof(GLfloat), m_textureIDs.data(), GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glEnableVertexAttribArray(3);
     glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
-    glVertexAttribPointer(3, 1, GL_UNSIGNED_INT, GL_FALSE, 0, nullptr);
+    glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 0, nullptr);
     glVertexAttribDivisor(3, 1);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -67,7 +67,10 @@ void BlockTextureComponent::addBlock()
     m_textureIDs.push_back(0);
     glBindVertexArray(*s_vaoID);
     glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
-    glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size() * sizeof(GLuint), &m_textureIDs[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size() * sizeof(GLfloat), m_textureIDs.data(), GL_STATIC_DRAW);
+    glEnableVertexAttribArray(3);
+    glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glVertexAttribDivisor(3, 1);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     auto error = glGetError();
@@ -107,8 +110,11 @@ void BlockTextureComponent::loadAllTextures()
         glActiveTexture(GL_TEXTURE0 + textureUnit);
         glBindTexture(GL_TEXTURE_2D, texID);
 
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
         auto width = tex.width();
         auto height = tex.height();

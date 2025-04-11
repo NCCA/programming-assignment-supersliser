@@ -9,10 +9,10 @@ layout (location=1)in vec2 inUV;
 
 layout (location=2)in vec3 inLoc;
 
-layout (location=3)in uint inTexID;
+layout (location=3)in float inTexID;
 // we use this to pass the UV values to the frag shader
 out vec2 vertUV;
-out flat uint TexID;
+out float TexID;
 
 
 void main()

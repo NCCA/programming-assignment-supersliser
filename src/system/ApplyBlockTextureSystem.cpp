@@ -18,7 +18,10 @@ void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_ind
 
     glBindVertexArray(*io_component->s_vaoID);
     glBindBuffer(GL_ARRAY_BUFFER, *io_component->m_texVboId);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLuint), &io_component->m_textureIDs[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * io_component->m_textureIDs.size(), io_component->m_textureIDs.data(), GL_STATIC_DRAW);
+    glEnableVertexAttribArray(3);
+    glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glVertexAttribDivisor(3, 1);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
@@ -27,5 +30,4 @@ void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_ind
     {
         std::cerr << "Error applying texture: " << error << std::endl;
     }
-    std::cout << "Block " << i_index << " assigned texture ID: " << textureUnit << std::endl;
 }

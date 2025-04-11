@@ -405,7 +405,7 @@ TEST(WorldDisplay, AllTextureTest)
     // opengl stuff ext. When this falls out of scope the dtor will be called and cleanup
     // our gl stuff
 
-    const int TEXTURE_COUNT = 7;
+    constexpr int TEXTURE_COUNT = 7;
 
     Table players;
     Table world;
@@ -425,11 +425,11 @@ TEST(WorldDisplay, AllTextureTest)
     players.run(&setCameraLookSystem, CameraComponents::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
-    for (int i = -2; i < TEXTURE_COUNT - 2; i++) {
-        ms.i_pos = ngl::Vec3(i, 0.0f, 0.0f);
-        world.run(&ms, TransformComponents::getComponentID(), i + 2, i + 2);
-        applyBlockTextureSystem.i_blockType = static_cast<BlockType>(i + 1);
-        world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), i + 2, i + 2);
+    for (int i = 0; i < TEXTURE_COUNT; i++) {
+        ms.i_pos = ngl::Vec3(i - TEXTURE_COUNT / 2, 0.0f, 0.0f);
+        world.run(&ms, TransformComponents::getComponentID(), i, i);
+        applyBlockTextureSystem.i_blockType = static_cast<BlockType>(i);
+        world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), i, i);
     }
 
     RenderWorldSystem renderWorldSystem;
