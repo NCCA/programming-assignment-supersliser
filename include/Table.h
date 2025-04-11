@@ -31,6 +31,10 @@ public:
 
     std::shared_ptr<void> getColumn(uint32_t i_columnIndex) const;
 
+    unsigned int getComponentCount() const;
+
+    unsigned int getEntityCount() const;
+
     uint32_t createEntity();
 };
 

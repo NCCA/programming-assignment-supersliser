@@ -33,24 +33,15 @@ TEST(World, generateWorld)
                       (i + 1) * 3 + (j + 1));
         }
     }
-    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(0)[world.getComponentIndex(
-            TransformComponents::getComponentID())].m_column.get())->m_ps[0] == ngl::Vec3(-1.0f, 0.0f, -1.0f));
-    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(1)[world.getComponentIndex(
-            TransformComponents::getComponentID())].m_column.get())->m_ps[1] == ngl::Vec3(-1.0f, 0.0f, 0.0f));
-    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(2)[world.getComponentIndex(
-            TransformComponents::getComponentID())].m_column.get())->m_ps[2] == ngl::Vec3(-1.0f, 0.0f, 1.0f));
-    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(3)[world.getComponentIndex(
-            TransformComponents::getComponentID())].m_column.get())->m_ps[3] == ngl::Vec3(0.0f, 0.0f, -1.0f));
-    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(4)[world.getComponentIndex(
-            TransformComponents::getComponentID())].m_column.get())->m_ps[4] == ngl::Vec3(0.0f, 0.0f, 0.0f));
-    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(5)[world.getComponentIndex(
-            TransformComponents::getComponentID())].m_column.get())->m_ps[5] == ngl::Vec3(0.0f, 0.0f, 1.0f));
-    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(6)[world.getComponentIndex(
-            TransformComponents::getComponentID())].m_column.get())->m_ps[6] == ngl::Vec3(1.0f, 0.0f, -1.0f));
-    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(7)[world.getComponentIndex(
-            TransformComponents::getComponentID())].m_column.get())->m_ps[7] == ngl::Vec3(1.0f, 0.0f, 0.0f));
-    EXPECT_TRUE(static_cast<TransformComponents *>(world.getEntity(8)[world.getComponentIndex(
-            TransformComponents::getComponentID())].m_column.get())->m_ps[8] == ngl::Vec3(1.0f, 0.0f, 1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getColumn(world.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[0] == ngl::Vec3(-1.0f, 0.0f, -1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getColumn(world.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[1] == ngl::Vec3(-1.0f, 0.0f, 0.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getColumn(world.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[2] == ngl::Vec3(-1.0f, 0.0f, 1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getColumn(world.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[3] == ngl::Vec3(0.0f, 0.0f, -1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getColumn(world.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[4] == ngl::Vec3(0.0f, 0.0f, 0.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getColumn(world.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[5] == ngl::Vec3(0.0f, 0.0f, 1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getColumn(world.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[6] == ngl::Vec3(1.0f, 0.0f, -1.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getColumn(world.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[7] == ngl::Vec3(1.0f, 0.0f, 0.0f));
+    EXPECT_TRUE(static_cast<TransformComponents *>(world.getColumn(world.getComponentIndex(TransformComponents::getComponentID())).get())->m_ps[8] == ngl::Vec3(1.0f, 0.0f, 1.0f));
 }
 
 TEST(WorldDisplay, WorldVisible) {

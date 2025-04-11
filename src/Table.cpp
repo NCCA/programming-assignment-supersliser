@@ -140,3 +140,13 @@ Table::~Table()
     }
     m_columns.clear();
 }
+
+unsigned int Table::getComponentCount() const
+{
+    return m_columns.size();
+}
+
+unsigned int Table::getEntityCount() const
+{
+    return static_cast<Entities*>(m_columns[0].m_column.get())->getEntityCount();
+}

@@ -67,13 +67,13 @@ TEST(Table, AddComponent) {
     Table table;
     uint32_t entity = table.createEntity();
     table.registerComponentType(TransformComponents::getComponentID());
-    EXPECT_EQ(table.getEntity(entity).size(), 2);
+    EXPECT_EQ(table.getComponentCount(), 2);
 
     table.registerComponentType(TransformComponents::getComponentID());
-    EXPECT_EQ(table.getEntity(entity).size(), 2);
+    EXPECT_EQ(table.getComponentCount(), 2);
 
     uint32_t entity2 = table.createEntity();
-    EXPECT_EQ(table.getEntity(entity2).size(), 2);
+    EXPECT_EQ(table.getComponentCount(), 2);
 }
 
 TEST(System, RunSystem) {
@@ -84,11 +84,10 @@ TEST(System, RunSystem) {
     table.registerComponentType(TransformComponents::getComponentID());
     SetPositionSystem moveSystem;
     moveSystem.i_pos = ngl::Vec3{1.0f, 0.0f, 0.0f};
-    table.run(&moveSystem, 2);
+    table.run(&moveSystem, TransformComponents::getComponentID());
     for (uint32_t i = 0; i < 10; i++) {
-        std::vector<Column> entity3 = table.getEntity(i);
-        auto* positionComponent = static_cast<TransformComponents*>(entity3[table.getComponentIndex(TransformComponents::getComponentID())].m_column.get());
-        EXPECT_EQ(positionComponent->m_ps[i].m_x, 1.0f);
+        TransformComponents* entity3 = static_cast<TransformComponents*>(table.getColumn(table.getComponentIndex(TransformComponents::getComponentID())).get());
+        EXPECT_EQ(entity3->m_ps[i].m_x, 1.0f);
     }
 
     for (uint32_t i = 0; i < 10; i++)
@@ -97,29 +96,23 @@ TEST(System, RunSystem) {
     }
     table.run(&moveSystem, TransformComponents::getComponentID());
     for (uint32_t i = 0; i < 10; i++) {
-        std::vector<Column> entity3 = table.getEntity(i);
-        int index = table.getComponentIndex(TransformComponents::getComponentID());
-        TransformComponents* positionComponent = static_cast<TransformComponents*>(entity3[index].m_column.get());
-        EXPECT_FLOAT_EQ(positionComponent->m_ps[i].m_x, 1.0f);
+        TransformComponents* entity3 = static_cast<TransformComponents*>(table.getColumn(table.getComponentIndex(TransformComponents::getComponentID())).get());
+        EXPECT_EQ(entity3->m_ps[i].m_x, 1.0f);
     }
     for (uint32_t i = 10; i < 20; i++) {
-        std::vector<Column> entity3 = table.getEntity(i);
-        TransformComponents* positionComponent = static_cast<TransformComponents*>(entity3[table.getComponentIndex(TransformComponents::getComponentID())].m_column.get());
-        EXPECT_FLOAT_EQ(positionComponent->m_ps[i].m_x, 1.0f);
+        TransformComponents* entity3 = static_cast<TransformComponents*>(table.getColumn(table.getComponentIndex(TransformComponents::getComponentID())).get());
+        EXPECT_EQ(entity3->m_ps[i].m_x, 1.0f);
     }
     moveSystem.i_pos = ngl::Vec3{0.0f, 0.0f, 0.0f};
     table.run(&moveSystem, TransformComponents::getComponentID());
     moveSystem.i_pos = ngl::Vec3{1.0f, 0.0f, 0.0f};
     table.run(&moveSystem, TransformComponents::getComponentID(), 10, 20);
     for (uint32_t i = 0; i < 10; i++) {
-        std::vector<Column> entity3 = table.getEntity(i);
-        int index = table.getComponentIndex(TransformComponents::getComponentID());
-        TransformComponents* positionComponent = static_cast<TransformComponents*>(entity3[index].m_column.get());
-        EXPECT_FLOAT_EQ(positionComponent->m_ps[i].m_x, 0.0f);
+        TransformComponents* entity3 = static_cast<TransformComponents*>(table.getColumn(table.getComponentIndex(TransformComponents::getComponentID())).get());
+        EXPECT_EQ(entity3->m_ps[i].m_x, 1.0f);
     }
     for (uint32_t i = 10; i < 20; i++) {
-        std::vector<Column> entity3 = table.getEntity(i);
-        TransformComponents* positionComponent = static_cast<TransformComponents*>(entity3[table.getComponentIndex(TransformComponents::getComponentID())].m_column.get());
-        EXPECT_FLOAT_EQ(positionComponent->m_ps[i].m_x, 1.0f);
+        TransformComponents* entity3 = static_cast<TransformComponents*>(table.getColumn(table.getComponentIndex(TransformComponents::getComponentID())).get());
+        EXPECT_EQ(entity3->m_ps[i].m_x, 1.0f);
     }
 }
