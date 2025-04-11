@@ -7,12 +7,13 @@
 
 enum class BlockType
 {
-    Grass,
-    Dirt,
-    Stone,
-    Log,
-    Leaves,
-    Planks
+    None = 0,
+    Grass = 1,
+    Dirt = 2,
+    Stone = 3,
+    Log = 4,
+    Leaves = 5,
+    Planks = 6,
     };
 
 #endif //BLOCKTYPE_H

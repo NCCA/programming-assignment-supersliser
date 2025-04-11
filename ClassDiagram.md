@@ -50,10 +50,10 @@ class TestIsBlockedSystem{
 Table "1" o-- "0..*" Column : "Contains multiple"
 Column "1" o.. "1" PositionComponent : "Could be pointed to by"
 Column "1" o.. "1" Entity : "Could be pointed to by"
-System <|-- MoveSystem : "Is Inherited from"
+System <|-- MoveSystem : "Inherits from"
 Table "1" o-- "*" System : "Runs"
-System <|-- TestIsBlockedSystem : "Is Inherited from"
-TestIsBlockedSystem "1" o.. "1" Table : "Points to a different"
+System <|-- TestIsBlockedSystem : "Inherits from"
+TestIsBlockedSystem "1" ..o "1" Table : "Points to a different"
 MoveSystem "1" o.. "0 | 1" Table : "Could point to a different"
 MoveSystem "1" ..o "0" TestIsBlockedSystem : "Could run"
 

@@ -22,8 +22,9 @@ TEST(World, generateWorld) {
     for (uint32_t i = 0; i < 9; i++) {
         world.createEntity();
     }
+
     world.registerComponentType(TransformComponents::getComponentID());
-    SetPositionSystem setPositionSystem;
+    MoveSystem setPositionSystem;
     for (float i = -1; i <= 1; i++) {
         for (float j = -1; j <= 1; j++) {
             setPositionSystem.i_pos = ngl::Vec3(i, 0.0f, j);
@@ -57,7 +58,7 @@ TEST(World, moveEntityInWorld) {
         world.createEntity();
     }
     world.registerComponentType(TransformComponents::getComponentID());
-    SetPositionSystem setPositionSystem;
+    MoveSystem setPositionSystem;
     for (float i = -1; i <= 1; i++) {
         for (float j = -1; j <= 1; j++) {
 
@@ -147,18 +148,18 @@ TEST(WorldDisplay, WorldVisible) {
     // our gl stuff
 
     Table players;
+    players.createEntity();
+    players.registerComponentType(CameraComponents::getComponentID());
     Table world;
     for (uint32_t i = 0; i < 1; i++) {
         world.createEntity();
     }
-    world.registerComponentType(TransformComponents::getComponentID());
-    MoveSystem ms;
-    ms.i_pos = ngl::Vec3(0.0f, 0.0f, 1.0f);
-    world.run(&ms, TransformComponents::getComponentID());
     world.registerComponentType(BlockComponents::getComponentID());
     world.registerComponentType(BlockTextureComponent::getComponentID());
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
+    world.registerComponentType(TransformComponents::getComponentID());
+    SetPositionSystem ms;
+    ms.i_pos = ngl::Vec3(0.0f, 0.0f, 1.0f);
+    world.run(&ms, TransformComponents::getComponentID());
     SetCameraLookSystem setCameraLookSystem;
     setCameraLookSystem.i_pos = ngl::Vec3(2.0f, 2.0f, 2.0f);
     setCameraLookSystem.i_look = ngl::Vec3(0.0f, 0.0f, 0.0f);
@@ -268,12 +269,16 @@ TEST(WorldDisplay, WorldMultiBlockVisible) {
     // our gl stuff
 
     Table players;
+    players.createEntity();
+    players.registerComponentType(CameraComponents::getComponentID());
     Table world;
     for (uint32_t i = 0; i < 9; i++) {
         world.createEntity();
     }
+    world.registerComponentType(BlockComponents::getComponentID());
+    world.registerComponentType(BlockTextureComponent::getComponentID());
     world.registerComponentType(TransformComponents::getComponentID());
-    MoveSystem ms;
+    SetPositionSystem ms;
     for (float i = -1; i <= 1; i++) {
         for (float j = -1; j <= 1; j++) {
             std::vector<float> args;
@@ -281,10 +286,8 @@ TEST(WorldDisplay, WorldMultiBlockVisible) {
             world.run(&ms, TransformComponents::getComponentID(), (i + 1) * 3 + (j + 1), (i + 1) * 3 + (j + 1));
         }
     }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
+
+
     SetCameraLookSystem setCameraLookSystem;
     setCameraLookSystem.i_pos = ngl::Vec3(4.0f, 4.0f, 4.0f);
     setCameraLookSystem.i_look = ngl::Vec3(0.0f, 0.0f, 0.0f);
@@ -402,18 +405,18 @@ TEST(WorldDisplay, AllTextureTest)
     // opengl stuff ext. When this falls out of scope the dtor will be called and cleanup
     // our gl stuff
 
-    const int TEXTURE_COUNT = 7;
+    constexpr int TEXTURE_COUNT = 7;
 
     Table players;
     Table world;
     for (uint32_t i = 0; i < TEXTURE_COUNT; i++) {
         world.createEntity();
     }
-    world.registerComponentType(TransformComponents::getComponentID());
-    MoveSystem ms;
-
     world.registerComponentType(BlockComponents::getComponentID());
     world.registerComponentType(BlockTextureComponent::getComponentID());
+    world.registerComponentType(TransformComponents::getComponentID());
+    SetPositionSystem ms;
+
     players.createEntity();
     players.registerComponentType(CameraComponents::getComponentID());
     SetCameraLookSystem setCameraLookSystem;
@@ -422,11 +425,11 @@ TEST(WorldDisplay, AllTextureTest)
     players.run(&setCameraLookSystem, CameraComponents::getComponentID());
 
     ApplyBlockTextureSystem applyBlockTextureSystem;
-    for (int i = -2; i < TEXTURE_COUNT - 2; i++) {
-        ms.i_pos = ngl::Vec3(i, 0.0f, 0.0f);
-        world.run(&ms, TransformComponents::getComponentID(), i + 2, i + 2);
-        applyBlockTextureSystem.i_blockType = static_cast<BlockType>(i + 1);
-        world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), i + 2, i + 2);
+    for (int i = 0; i < TEXTURE_COUNT; i++) {
+        ms.i_pos = ngl::Vec3(i - TEXTURE_COUNT / 2, 0.0f, 0.0f);
+        world.run(&ms, TransformComponents::getComponentID(), i, i);
+        applyBlockTextureSystem.i_blockType = static_cast<BlockType>(i);
+        world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID(), i, i);
     }
 
     RenderWorldSystem renderWorldSystem;

@@ -33,67 +33,7 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the name of the executable we want to build
 add_executable(${TargetName}
-        src/system/TestIsBlockedSystem.cpp
-        include/component/TransformComponents.h
-        include/Table.h
-        include/system/System.h
-        src/Table.cpp
-        include/system/MoveSystem.h
-        src/system/MoveSystem.cpp
-        include/component/Entities.h
-        src/component/Entities.cpp
-        include/component/Column.h
-        src/component/TransformComponents.cpp
-        include/system/SetPositionSystem.h
-        src/system/SetPositionSystem.cpp
-        include/component/BlockComponents.h
-        src/component/BlockComponents.cpp
-        include/system/RenderWorldSystem.h
-        src/system/RenderWorldSystem.cpp
-        src/component/CameraComponents.cpp
-        include/component/BlockTextureComponent.h
-        src/component/BlockTextureComponent.cpp
-        include/system/ApplyBlockTextureSystem.h
-        src/system/ApplyBlockTextureSystem.cpp
-        include/Camera.h
-        src/Camera.cpp
-        include/component/BlockType.h
-        include/utils.h
-        src/utils.cpp
-        include/dir.h
-        include/system/SetCameraLookSystem.h
-        src/system/SetCameraLookSystem.cpp
-        include/system/MovePlayerSystem.h
-        src/system/MovePlayerSystem.cpp
-        src/system/RotateCameraSystem.cpp
-        include/system/RotateCameraSystem.h
-        include/component/IsSprintingComponent.h
-        include/component/SpeedComponent.h
-        include/system/PlayerFallSystem.h
-)
-# Add NGL include path
-include_directories(include $ENV{HOME}/NGL/include include/)
-target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
-)
-
-# need to add some exta libs for SDL under linux
-if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    target_link_libraries(${TargetName} PRIVATE -lX11 -lXext)
-endif()
-
-target_link_libraries(${TargetName} PRIVATE NGL)
-
-# Link in the SDL2 libraries
-target_link_libraries(${TargetName} PRIVATE SDL2::SDL2)
-
-find_package(GTest CONFIG REQUIRED)
-include(GoogleTest)
-enable_testing()
-add_executable(Tests
-        tests/TableTests.cpp
-        tests/WorldTests.cpp
-        tests/PlayerTests.cpp
-        tests/PlayerStepTests.cpp
+        src/main.cpp
         src/system/TestIsBlockedSystem.cpp
         include/component/TransformComponents.h
         include/Table.h
@@ -137,6 +77,86 @@ add_executable(Tests
         src/component/SpeedComponent.cpp
         include/system/PlayerFallSystem.h
         src/system/PlayerFallSystem.cpp
+        PerlinNoise/PerlinNoise.hpp
+        src/GenerateWorld.cpp
+        include/GenerateWorld.h
+        src/system/SetPlayerPositionSystem.cpp
+        include/system/SetPlayerPositionSystem.h
+)
+# Add NGL include path
+include_directories(include $ENV{HOME}/NGL/include include/ PerlinNoise/)
+target_sources(${TargetName} PRIVATE ${PROJECT_SOURCE_DIR}/src/main.cpp
+)
+
+# need to add some exta libs for SDL under linux
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    target_link_libraries(${TargetName} PRIVATE -lX11 -lXext)
+endif()
+
+target_link_libraries(${TargetName} PRIVATE NGL)
+
+# Link in the SDL2 libraries
+target_link_libraries(${TargetName} PRIVATE SDL2::SDL2)
+
+find_package(GTest CONFIG REQUIRED)
+include(GoogleTest)
+enable_testing()
+add_executable(Tests
+        tests/TableTests.cpp
+        tests/SDLTest.cpp
+        tests/WorldTests.cpp
+        tests/PlayerTests.cpp
+        tests/PlayerStepTests.cpp
+        tests/NoiseTests.cpp
+        tests/GenerateWorldTests.cpp
+        src/system/TestIsBlockedSystem.cpp
+        include/component/TransformComponents.h
+        include/Table.h
+        include/system/System.h
+        src/Table.cpp
+        include/system/MoveSystem.h
+        src/system/MoveSystem.cpp
+        include/component/Entities.h
+        src/component/Entities.cpp
+        include/component/Column.h
+        src/component/TransformComponents.cpp
+        include/system/SetPositionSystem.h
+        src/system/SetPositionSystem.cpp
+        include/component/BlockComponents.h
+        src/component/BlockComponents.cpp
+        include/system/RenderWorldSystem.h
+        src/system/RenderWorldSystem.cpp
+        src/component/CameraComponents.cpp
+        include/component/BlockTextureComponent.h
+        src/component/BlockTextureComponent.cpp
+        include/system/ApplyBlockTextureSystem.h
+        src/system/ApplyBlockTextureSystem.cpp
+        src/Camera.cpp
+        include/component/BlockType.h
+        include/utils.h
+        src/utils.cpp
+        include/dir.h
+        include/system/SetCameraLookSystem.h
+        src/system/SetCameraLookSystem.cpp
+        include/system/MovePlayerSystem.h
+        src/system/MovePlayerSystem.cpp
+        src/system/RotateCameraSystem.cpp
+        include/system/RotateCameraSystem.h
+        include/component/IsSprintingComponent.h
+        src/component/IsSprintingComponent.cpp
+        include/system/SetSprintingSystem.h
+        include/system/ToggleSprintingSystem.h
+        src/system/SetSprintingSystem.cpp
+        src/system/ToggleSprintingSystem.cpp
+        include/component/SpeedComponent.h
+        src/component/SpeedComponent.cpp
+        include/system/PlayerFallSystem.h
+        src/system/PlayerFallSystem.cpp
+        PerlinNoise/PerlinNoise.hpp
+        src/GenerateWorld.cpp
+        include/GenerateWorld.h
+        src/system/SetPlayerPositionSystem.cpp
+        include/system/SetPlayerPositionSystem.h
 )
 include_directories(include)
 target_sources(Tests PRIVATE)

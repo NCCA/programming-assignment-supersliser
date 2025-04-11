@@ -19,20 +19,21 @@ public:
     {
         switch (i_blockType)
         {
+            case BlockType::None:
+            default:
+            return "textures/crate.bmp";
             case BlockType::Grass:
                 return "textures/GrassTexture.bmp";
             case BlockType::Dirt:
                 return "textures/DirtTexture.bmp";
             case BlockType::Stone:
-                return "textures/StoneTexture.bmp";
+            return "textures/StoneTexture.bmp";
             case BlockType::Log:
-                return "textures/LogTexture.bmp";
+            return "textures/LogTexture.bmp";
             case BlockType::Leaves:
-                return "textures/LeavesTexture.bmp";
+            return "textures/LeavesTexture.bmp";
             case BlockType::Planks:
-                return "textures/PlanksTexture.bmp";
-            default:
-                return "textures/crate.bmp";
+            return "textures/PlanksTexture.bmp";
         }
     }
     BlockType i_blockType;

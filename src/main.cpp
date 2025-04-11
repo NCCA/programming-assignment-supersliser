@@ -4,7 +4,6 @@
 #include <SDL2/SDL.h>
 #include <cstdlib>
 #include <iostream>
-#include "NGLDraw.h"
 #include <ngl/NGLInit.h>
 
 /// @brief function to quit SDL with error message
@@ -18,9 +17,6 @@ SDL_GLContext createOpenGLContext( SDL_Window *window);
 
 int main(int argc, char * argv[])
 {
-  // under windows we must use main with argc / v so jus flag unused for params
-  NGL_UNUSED(argc);
-  NGL_UNUSED(argv);
   // Initialize SDL's Video subsystem
   if (SDL_Init(SDL_INIT_VIDEO) < 0 )
   {
@@ -70,7 +66,6 @@ int main(int argc, char * argv[])
   // now we create an instance of our ngl class, this will init NGL and setup basic
   // opengl stuff ext. When this falls out of scope the dtor will be called and cleanup
   // our gl stuff
-  NGLDraw ngl;
   while(!quit)
   {
 
@@ -81,21 +76,12 @@ int main(int argc, char * argv[])
         // this is the window x being clicked.
         case SDL_QUIT : quit = true; break;
         // process the mouse data by passing it to ngl class
-        case SDL_MOUSEMOTION : ngl.mouseMoveEvent(event.motion); break;
-        case SDL_MOUSEBUTTONDOWN : ngl.mousePressEvent(event.button); break;
-        case SDL_MOUSEBUTTONUP : ngl.mouseReleaseEvent(event.button); break;
-        case SDL_MOUSEWHEEL : ngl.wheelEvent(event.wheel); break;
         // if the window is re-sized pass it to the ngl class to change gl viewport
         // note this is slow as the context is re-create by SDL each time
         case SDL_WINDOWEVENT :
           int w,h;
           // get the new window size
           SDL_GetWindowSize(window,&w,&h);
-          #ifdef __APPLE__
-            ngl.resize(w*2,h*2);
-          #else
-            ngl.resize(w,h);
-          #endif
         break;
 
         // now we look for a keydown event
@@ -123,7 +109,6 @@ int main(int argc, char * argv[])
     } // end of poll events
 
     // now we draw ngl
-    ngl.draw();
     // swap the buffers
     SDL_GL_SwapWindow(window);
 

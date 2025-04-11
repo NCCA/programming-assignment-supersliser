@@ -8,6 +8,10 @@
 #include "System.h"
 #include "Table.h"
 #include "component/TransformComponents.h"
+#include <ngl/ShaderLib.h>
+#include <ngl/AbstractVAO.h>
+#include <ngl/MultiBufferVAO.h>
+#include "component/BlockTextureComponent.h"
 
 class SetPositionSystem : public a_System<TransformComponents>
 {

@@ -12,9 +12,9 @@ class TransformComponents {
 public:
     TransformComponents(size_t i_size);
     std::vector<ngl::Vec3> m_ps;
-    std::vector<ngl::Quaternion> m_rs;
-    std::vector<ngl::Vec3> m_ss;
+    std::shared_ptr<GLuint> m_positionVboId;
     static std::uint8_t getComponentID() { return 2;}
+    void addEntity();
 };
 
 #endif //TRANSFORMCOMPONENT_H

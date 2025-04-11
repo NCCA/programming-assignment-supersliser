@@ -3,6 +3,9 @@
 //
 
 #include "component/CameraComponents.h"
+
+#include <ngl/VAOFactory.h>
+
 #include "dir.h"
 
 
@@ -11,18 +14,21 @@ CameraComponents::CameraComponents(size_t i_size) {
     glClearColor(0.4f, 0.4f, 0.4f, 1.0f); // Grey Background
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_MULTISAMPLE);
-    constexpr auto vertexShader = "SimpleVertex";
-    constexpr auto fragShader = "SimpleFragment";
+    constexpr auto vertexShader = "TextureVertex";
+    constexpr auto fragShader = "TextureFragment";
+    constexpr auto program = "TextureShader";
 
-    ngl::ShaderLib::createShaderProgram("TextureShader");
+    ngl::ShaderLib::createShaderProgram(program);
 
     ngl::ShaderLib::debugOn();
 
     ngl::ShaderLib::attachShader(vertexShader, ngl::ShaderType::VERTEX);
     ngl::ShaderLib::attachShader(fragShader, ngl::ShaderType::FRAGMENT);
 
-    ngl::ShaderLib::loadShaderSource(vertexShader,  fmt::format("{}{}", DIR, "shaders/TextureVert.glsl"));
-    ngl::ShaderLib::loadShaderSource(fragShader, fmt::format("{}{}", DIR, "shaders/TextureFrag.glsl"));
+    const auto vertexPath = fmt::format("{}{}", DIR, "shaders/TextureVert.glsl");
+    const auto fragPath = fmt::format("{}{}", DIR, "shaders/TextureFrag.glsl");
+    ngl::ShaderLib::loadShaderSource(vertexShader,  vertexPath);
+    ngl::ShaderLib::loadShaderSource(fragShader, fragPath);
     if (!ngl::ShaderLib::compileShader(vertexShader)) {
         std::cerr << "Vertex shader compilation failed\n";
         return;
@@ -31,15 +37,14 @@ CameraComponents::CameraComponents(size_t i_size) {
         std::cerr << "Fragment shader compilation failed\n";
         return;
     }
-    ngl::ShaderLib::attachShaderToProgram("TextureShader", vertexShader);
-    ngl::ShaderLib::attachShaderToProgram("TextureShader", fragShader);
+    ngl::ShaderLib::attachShaderToProgram(program, vertexShader);
+    ngl::ShaderLib::attachShaderToProgram(program, fragShader);
 
-    if (!ngl::ShaderLib::linkProgramObject("TextureShader")) {
+    if (!ngl::ShaderLib::linkProgramObject(program)) {
         std::cerr << "Shader program linking failed\n";
         return;
     }
-    ngl::ShaderLib::use("TextureShader");
-    ngl::ShaderLib::setUniform("tex", 0);
+    ngl::ShaderLib::use(program);
 
     glViewport(0, 0, 1080, 720);
     for (size_t i = 0; i < i_size; i++) {
@@ -49,6 +54,10 @@ CameraComponents::CameraComponents(size_t i_size) {
     }
 
     ngl::ShaderLib::debugOff();
+    auto error = glGetError();
+    if (error != GL_NO_ERROR) {
+        std::cerr << "Error Creating camera component: " << error << std::endl;
+    }
 }
 
 CameraComponents::~CameraComponents() {
