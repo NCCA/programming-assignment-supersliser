@@ -1,0 +1,8 @@
+@startuml
+
+abstract class System<ComponentType> {
+    + {abstract} ~System()
+    + {abstract} void run(ComponentType* component, int index)
+}
+
+@enduml

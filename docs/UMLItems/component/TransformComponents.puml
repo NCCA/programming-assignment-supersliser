@@ -1,0 +1,16 @@
+@startuml
+
+!include ../Table.puml
+
+class TransformComponents {
+    + TransformComponents(int size)
+    + ~TransformComponents()
+    + vector<vec3> ps
+    + unsigned int* positionVBO_ID
+    + {static} unsigned char getComponentID()
+    + void addEntity()
+}
+
+Table o.. TransformComponents : Used By
+
+@enduml

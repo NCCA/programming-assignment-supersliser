@@ -1,0 +1,16 @@
+@startuml
+
+!include ../Table.puml
+
+class Entities {
+    - vector<unsigned int> entities
+    + void addEntity()
+    + unsigned int getEntityID(int index)
+    + int getEntityIndex(unsigned int EntityID)
+    + void removeEntity(unsigned int EntityID)
+    + int getEntityCount()
+    + Entities(int size)
+}
+
+Table o-- Entities : Held By
+@enduml

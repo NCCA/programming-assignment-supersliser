@@ -1,0 +1,14 @@
+@startuml
+
+!include System.puml
+!include ../component/IsSprintingComponent.puml
+
+class ToggleSprintingSystem {
+    + void run(IsSprintingComponent* component, int index)
+}
+
+System <|-- ToggleSprintingSystem : Makes Concrete
+ToggleSprintingSystem o-- IsSprintingComponent : Uses
+ToggleSprintingSystem ..o Table : Runs
+
+@enduml

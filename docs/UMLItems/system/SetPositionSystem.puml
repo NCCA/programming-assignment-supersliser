@@ -1,0 +1,15 @@
+@startuml
+
+!include System.puml
+!include ../component/TransformComponents.puml
+
+class SetPositionSystem {
+    + vec3 pos
+    + void run(TransformComponents* component, int index)
+}
+
+System <|-- SetPositionSystem : Makes Concrete
+SetPositionSystem o-- TransformComponents : Uses
+SetPositionSystem ..o Table : Runs
+
+@enduml

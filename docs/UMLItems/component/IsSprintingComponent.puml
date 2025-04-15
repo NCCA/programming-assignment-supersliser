@@ -1,0 +1,14 @@
+@startuml
+
+!include ../Table.puml
+
+class IsSprintingComponent {
+    + vector<boo> isSprinting
+    + {static} unsigned char getComponentID()
+    + IsSprintingComponent(int size)
+    + ~IsSprintingComponent()
+}
+
+Table o.. IsSprintingComponent : Used By
+
+@enduml
