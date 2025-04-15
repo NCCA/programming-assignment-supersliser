@@ -32,7 +32,8 @@ public:
     /// @brief Pointer to the UV VBO ID
     /// @detail This is a pointer due to the fact that all blocks are instances of this base block and thus all share an identical UV VBO.
     std::shared_ptr<GLuint> m_uvVboId;
-    /// @todo check wtf this actually does coz i dont remember
+    /// @brief Pointer to the texture VBO ID
+    /// @detail This is a pointer to the id of the VBO where m_textureIDs are actually stored.
     std::shared_ptr<GLuint> m_texVboId;
     /// @brief vector of texture IDs
     /// @detail Each index of this vector is a separate entity, these should be updated on the GPU for shader access whenever the vector is updated.
