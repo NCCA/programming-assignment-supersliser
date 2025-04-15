@@ -59,9 +59,9 @@ and stone some distance below that. This is a simple system which allows for the
 
 ## Project Structure
 
-![/docs/ClassDiagram.png](https://github.com/NCCA/programming-assignment-supersliser/blob/main/docs/ClassDiagram.png?raw=true)
+![/docs/ClassDiagram.png](https://github.com/NCCA/programming-assignment-supersliser/blob/docs/docs/ClassDiagram.png?raw=true)
 
 Above is a class diagram to describe the basic ideas behind how the project is structured and various classes link together.
 
 > [!NOTE]
-> The above diagram does not show all components and systems, rather it demonstrates the basic ideas, of which you can assume other components and systems will follow similar patterns. To view a full UML, see [docs/FullUML.png](https://githib.com/NCCA/programming-assignment-supersliser/blob/main/docs/FullUML.png?raw=true)
+> The above diagram does not show all components and systems, rather it demonstrates the basic ideas, of which you can assume other components and systems will follow similar patterns. To view a full UML, see [docs/FullUML.png](https://githib.com/NCCA/programming-assignment-supersliser/blob/docs/docs/FullUML.png?raw=true)
