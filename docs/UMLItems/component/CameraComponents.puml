@@ -1,0 +1,14 @@
+@startuml
+
+!include ../Table.puml
+
+class CameraComponents {
+    + CameraComponents(int size)
+    + ~CameraComponents()
+    + vector<camera> cameras
+    + {static} unsigned char getComponentID()
+}
+
+Table o.. CameraComponents : Held By
+
+@enduml

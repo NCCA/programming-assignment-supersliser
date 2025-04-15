@@ -1,0 +1,19 @@
+@startuml
+
+!include System.puml
+!include ../component/SpeedComponent.puml
+!include ../component/CameraComponents.puml
+
+class PlayerFallSystem {
+    + SpeedComponent* speed
+    + Table* world
+    + void run(CameraComponents* component, int index)
+}
+
+System <|-- PlayerFallSystem : Makes Concrete
+PlayerFallSystem o-- SpeedComponent : Uses
+PlayerFallSystem o-- CameraComponents : Uses
+PlayerFallSystem ..o Table : Runs
+PlayerFallSystem o-- Table : Uses a different one
+
+@enduml

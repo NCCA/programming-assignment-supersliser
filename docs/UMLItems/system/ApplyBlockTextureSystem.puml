@@ -1,0 +1,15 @@
+@startuml
+
+!include System.puml
+!include ../component/BlockTextureComponent.puml
+
+class ApplyBlockTextureSystem {
+    + {static} string getTextureName(BlockType blockType)
+    + BlockType blockType
+    + void run(BlockTextureComponent component, int index)
+}
+
+ApplyBlockTextureSystem --|> System : Makes Concrete
+ApplyBlockTextureSystem o-- BlockTextureComponent : Uses
+
+@enduml

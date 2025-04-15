@@ -1,0 +1,16 @@
+@startuml
+
+!include System.puml
+!include ../component/CameraComponents.puml
+
+class RotateCameraSystem {
+    + vec2 mouseDelta
+    + float sensitivity
+    + void run(CameraComponents* component, int index)
+}
+
+System <|-- RotateCameraSystem : Makes Concrete
+RotateCameraSystem o-- CameraComponents : Uses
+RotateCameraSystem ..o Table : Runs
+
+@enduml
