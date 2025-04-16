@@ -40,9 +40,7 @@ void RenderWorldSystem::run(CameraComponents* io_component, int i_index)
     // Bind VAO and VBOs
     glBindVertexArray(*BlockTextureComponent::s_vaoID);
 
-    // THIS IS THE CRITICAL PART - rebinding the texture ID buffer
     glBindBuffer(GL_ARRAY_BUFFER, *textureComponent->m_texVboId);
-    // Make sure we're using the latest texture IDs data
     glBufferData(GL_ARRAY_BUFFER, textureComponent->m_textureIDs.size() * sizeof(GLfloat),
                  textureComponent->m_textureIDs.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(3);
@@ -52,6 +50,7 @@ void RenderWorldSystem::run(CameraComponents* io_component, int i_index)
     ngl::Mat4 MVP = io_component->m_cameras[0].getVPMatrix();
     ngl::ShaderLib::setUniform("MVP", MVP);
 
+    // Draw the meshes with instances
     glDrawArraysInstanced(GL_TRIANGLES, 0, 36, pos.size());
 
     glBindVertexArray(0);

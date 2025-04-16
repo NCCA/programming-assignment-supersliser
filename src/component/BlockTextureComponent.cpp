@@ -11,16 +11,19 @@
 #include "component/BlockComponents.h"
 #include "system/ApplyBlockTextureSystem.h"
 
+// Declare static variables
 std::vector<std::string> BlockTextureComponent::s_registeredTextures;
 std::shared_ptr<GLuint> BlockTextureComponent::s_vaoID = std::make_shared<GLuint>();
 std::vector<GLuint> BlockTextureComponent::s_registeredTextureIDs;
 
 BlockTextureComponent::BlockTextureComponent(size_t i_size)
 {
+    //Create the VAO
     glGenVertexArrays(1, s_vaoID.get());
     glBindVertexArray(*s_vaoID);
+
+    //Create the Mesh VBO
     m_meshVboId = std::make_shared<GLuint>();
-    m_uvVboId = std::make_shared<GLuint>();
     glGenBuffers(1, m_meshVboId.get());
     glBindBuffer(GL_ARRAY_BUFFER, *m_meshVboId);
     auto verts = BlockComponents::getVertices();
@@ -28,6 +31,9 @@ BlockTextureComponent::BlockTextureComponent(size_t i_size)
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    //Create the UV VBO
+    m_uvVboId = std::make_shared<GLuint>();
     glGenBuffers(1, m_uvVboId.get());
     glBindBuffer(GL_ARRAY_BUFFER, *m_uvVboId);
     auto texCoords = BlockComponents::getTexCoordinates();
@@ -35,6 +41,8 @@ BlockTextureComponent::BlockTextureComponent(size_t i_size)
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    //Create the Texture Instance VBO
     for (size_t i = 0; i < i_size; i++)
     {
         m_textureIDs.push_back(0);
@@ -56,11 +64,14 @@ BlockTextureComponent::BlockTextureComponent(size_t i_size)
     {
         std::cerr << "Error Creating texture component: " << error << std::endl;
     }
+
+    //Load all the textures
     loadAllTextures();
 }
 
 void BlockTextureComponent::addBlock()
 {
+    // Resizes the texture VBO
     m_textureIDs.push_back(0);
     glBindVertexArray(*s_vaoID);
     glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
@@ -92,32 +103,38 @@ void BlockTextureComponent::loadAllTextures()
 
     for (size_t i = 0; i < 7; i++)
     {
+        // Add a path to the texture vector
         std::string textureDir = getDir();
         std::string textureName = ApplyBlockTextureSystem::getTextureName(static_cast<BlockType>(i));
         std::string path = fmt::format("{}{}", textureDir, textureName);
         s_registeredTextures.push_back(path);
 
+        // Load the texture
         ngl::Texture tex;
         tex.loadImage(path);
         GLuint texID;
         glGenTextures(1, &texID);
 
+        // Bind the texture
         GLuint textureUnit = i;
         glActiveTexture(GL_TEXTURE0 + textureUnit);
         glBindTexture(GL_TEXTURE_2D, texID);
 
+        // Generate the texture mipmap
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
+        // Gather Texture Parameters
         auto width = tex.width();
         auto height = tex.height();
         auto data = tex.getPixels();
 
+        // Upload the texture data to the GPU
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 
+        // Set the texture unit in the shader to the 2DSampler
         std::string nameStr = fmt::format("tex[{}]", textureUnit);
         GLint uniformLocation = glGetUniformLocation(ngl::ShaderLib::getProgramID("TextureShader"), nameStr.c_str());
         if (uniformLocation == -1)

@@ -9,6 +9,7 @@
 
 CameraComponents::CameraComponents(size_t i_size)
 {
+    // Initialize the shaders
     ngl::NGLInit::initialize();
     glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
     glEnable(GL_DEPTH_TEST);
@@ -48,6 +49,7 @@ CameraComponents::CameraComponents(size_t i_size)
     }
     ngl::ShaderLib::use(program);
 
+    // Initialise the camera
     glViewport(0, 0, 1080, 720);
     for (size_t i = 0; i < i_size; i++)
     {

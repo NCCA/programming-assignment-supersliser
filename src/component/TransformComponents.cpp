@@ -19,6 +19,8 @@ TransformComponents::TransformComponents(size_t i_size)
         return;
     }
     m_positionVboId = std::make_shared<GLuint>();
+
+    // Add the Instanced Position VBO
     glBindVertexArray(*BlockTextureComponent::s_vaoID);
     for (size_t i = 0; i < i_size; i++)
     {
@@ -27,11 +29,9 @@ TransformComponents::TransformComponents(size_t i_size)
     glGenBuffers(1, m_positionVboId.get());
     glBindBuffer(GL_ARRAY_BUFFER, *m_positionVboId);
     glBufferData(GL_ARRAY_BUFFER, sizeof(ngl::Vec3) * m_ps.size(), &m_ps[0].m_x, GL_STATIC_DRAW);
-
     glEnableVertexAttribArray(2);
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
     glVertexAttribDivisor(2, 1);
-
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     auto error = glGetError();
@@ -48,6 +48,8 @@ void TransformComponents::addEntity()
     {
         return;
     }
+
+    // Update the Instanced Position VBO
     glBindVertexArray(*BlockTextureComponent::s_vaoID);
     glBindBuffer(GL_ARRAY_BUFFER, *m_positionVboId);
     glBufferData(GL_ARRAY_BUFFER, sizeof(ngl::Vec3) * m_ps.size(), &m_ps[0].m_x, GL_STATIC_DRAW);

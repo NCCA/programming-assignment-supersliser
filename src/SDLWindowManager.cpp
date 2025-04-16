@@ -84,15 +84,28 @@ bool SDLWindowManager::runEvents()
         };
     }
 
+    std::vector<std::function<void(int32_t)>> walkFunctions;
+    if (m_controlWEnabled) {
+        walkFunctions.push_back([&](int32_t deltaTime) { walk(ngl::Vec2(0, wHeld), deltaTime); });
+    }
+    if (m_controlSEnabled) {
+        walkFunctions.push_back([&](int32_t deltaTime) { walk(ngl::Vec2(0, -sHeld), deltaTime); });
+    }
+    if (m_controlAEnabled) {
+        walkFunctions.push_back([&](int32_t deltaTime) { walk(ngl::Vec2(aHeld, 0), deltaTime); });
+    }
+    if (m_controlDEnabled) {
+        walkFunctions.push_back([&](int32_t deltaTime) { walk(ngl::Vec2(-dHeld, 0), deltaTime); });
+    }
+
     while (m_isRunning) {
         int32_t currentTime = SDL_GetTicks();
         int32_t deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
-        if (wHeld) { walk(ngl::Vec2(0, 1), deltaTime); }
-        if (sHeld) { walk(ngl::Vec2(0, -1), deltaTime); }
-        if (aHeld) { walk(ngl::Vec2(1, 0), deltaTime); }
-        if (dHeld) { walk(ngl::Vec2(-1, 0), deltaTime); }
+        for (const auto& walkFunction : walkFunctions) {
+            walkFunction(deltaTime);
+        }
 
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
@@ -109,35 +122,35 @@ bool SDLWindowManager::runEvents()
                         m_isRunning = false;
                         return true;
                     }
-                    if (event.key.keysym.sym == SDLK_w && m_controlWEnabled) {
+                    if (event.key.keysym.sym == SDLK_w) {
                         wHeld = true;
                     }
-                    if (event.key.keysym.sym == SDLK_s && m_controlSEnabled) {
+                    if (event.key.keysym.sym == SDLK_s) {
                         sHeld = true;
                     }
-                    if (event.key.keysym.sym == SDLK_a && m_controlAEnabled) {
+                    if (event.key.keysym.sym == SDLK_a) {
                         aHeld = true;
                     }
-                    if (event.key.keysym.sym == SDLK_d && m_controlDEnabled) {
+                    if (event.key.keysym.sym == SDLK_d) {
                         dHeld = true;
                     }
-                    if (event.key.keysym.sym == SDLK_LSHIFT && m_sprintEnabled) {
+                    if (event.key.keysym.sym == SDLK_LSHIFT) {
                         SetSprintingSystem t;
                         t.i_value = true;
                         m_players.run(&t, IsSprintingComponent::getComponentID());
                     }
                     break;
                 case SDL_KEYUP:
-                    if (event.key.keysym.sym == SDLK_w && m_controlWEnabled) {
+                    if (event.key.keysym.sym == SDLK_w) {
                         wHeld = false;
                     }
-                    if (event.key.keysym.sym == SDLK_s && m_controlSEnabled) {
+                    if (event.key.keysym.sym == SDLK_s) {
                         sHeld = false;
                     }
-                    if (event.key.keysym.sym == SDLK_a && m_controlAEnabled) {
+                    if (event.key.keysym.sym == SDLK_a) {
                         aHeld = false;
                     }
-                    if (event.key.keysym.sym == SDLK_d && m_controlDEnabled) {
+                    if (event.key.keysym.sym == SDLK_d) {
                         dHeld = false;
                     }
                     if (event.key.keysym.sym == SDLK_LSHIFT) {

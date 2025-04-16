@@ -6,5 +6,5 @@
 
 BlockComponents::BlockComponents(size_t i_size)
 {
-
+    //null
 }
