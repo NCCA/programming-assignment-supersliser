@@ -15,7 +15,6 @@ int main(int argc, char* argv[])
     windowManager.createWindow("World Generator TEST");
     windowManager.generateWorld = [](Table* i_world, Table* i_players) {
         generateWorld(i_world, 100, 20, 100, 0);
-        utils::printTestString("world will generate");
     };
     windowManager.runEvents();
   return EXIT_SUCCESS;
