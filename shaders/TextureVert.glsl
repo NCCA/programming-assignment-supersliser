@@ -6,12 +6,13 @@ uniform mat4 MVP;
 layout (location=0) in vec3 inVert;
 // second attribute the UV values from our VAO
 layout (location=1)in vec2 inUV;
-
+// third attribute the position values from our VAO
 layout (location=2)in vec3 inLoc;
-
+// fourth attribute the texture ID from our VAO
 layout (location=3)in float inTexID;
 // we use this to pass the UV values to the frag shader
 out vec2 vertUV;
+// we use this to pass the texture ID to the frag shader
 out float TexID;
 
 

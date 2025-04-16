@@ -7,6 +7,8 @@
 
 void MovePlayerSystem::run(CameraComponents* io_component, int i_index)
 {
+    // See docs/MoveFlowchart.png for explanation
+
     i_dir.m_z = -i_dir.m_z;
     i_dir.m_x = -i_dir.m_x;
     ngl::Vec3 currentPos = io_component->m_cameras[i_index].getPos();

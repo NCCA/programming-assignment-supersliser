@@ -12,6 +12,7 @@ void ApplyBlockTextureSystem::run(BlockTextureComponent* io_component, int i_ind
     auto textureUnit = static_cast<GLuint>(i_blockType);
     io_component->m_textureIDs[i_index] = textureUnit;
 
+    // Add the texture to the VBO
     glBindVertexArray(*io_component->s_vaoID);
     glBindBuffer(GL_ARRAY_BUFFER, *io_component->m_texVboId);
     glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * io_component->m_textureIDs.size(), io_component->m_textureIDs.data(), GL_STATIC_DRAW);

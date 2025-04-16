@@ -18,29 +18,74 @@
 #include "system/SetPlayerPositionSystem.h"
 #include "system/PlayerFallSystem.h"
 
+
+/// @class SDLWindowManager include/SDLWindowManager.h
+/// @brief Manages the SDL window and handles events
+/// @details This class is responsible for creating the SDL window, handling events, and managing the game loop.
+/// @author Thomas Lower
+/// @date 2025/04/15
+/// @version 1.0
 class SDLWindowManager {
+    /// @brief SDL window pointer
     SDL_Window *m_window;
+    /// @brief SDL OpenGL context
     SDL_GLContext m_glContext;
+    /// @brief World Table
     Table m_world;
+    /// @brief Player Table
     Table m_players;
 
+    /// @brief Window is running
     bool m_isRunning;
+    /// @brief Window is fullscreen
     bool m_isFullscreen;
+    /// @brief Window is visible
     bool m_isVisible;
+    /// @brief Control W key enabled
     bool m_controlWEnabled;
+    /// @brief Control S key enabled
     bool m_controlSEnabled;
+    /// @brief Control A key enabled
     bool m_controlAEnabled;
+    /// @brief Control D key enabled
     bool m_controlDEnabled;
+    /// @brief Mouse control enabled
     bool m_mouseControlEnabled;
+    /// @brief Sprint enabled
     bool m_sprintEnabled;
+    /// @brief Player can fall
     bool m_canFall;
 
+    /// @brief Spawn point for the player
     ngl::Vec3 m_spawnPoint;
 public:
+    /// @creates a window
+    /// @param[in] title The title of the window
     void createWindow(const char* title);
+    /// @brief Begins the event loop
+    /// @returns true if the loop is ended by pressing enter, otherwise returns false
     bool runEvents();
+    /// @brief Handles the movement of the player
+    /// @param[in] dir The direction of the movement
+    /// @param[in] deltaTime The time since the last frame
     void walk(ngl::Vec2 dir, int32_t deltaTime);
+    /// @brief Destructor
     ~SDLWindowManager();
+    /// @brief Constructor
+    /// @param[in] i_fullscreen If true, the window will be fullscreen
+    /// @param[in] i_visible If true, the window will be visible
+    /// @param[in] i_sprint If true, the player will sprint
+    /// @param[in] i_controlW If true, the W key will be used for movement
+    /// @param[in] i_controlS If true, the S key will be used for movement
+    /// @param[in] i_controlA If true, the A key will be used for movement
+    /// @param[in] i_controlD If true, the D key will be used for movement
+    /// @param[in] i_mouseControl If true, the mouse will be used for movement
+    /// @param[in] i_canFall If true, the player can fall
+    /// @param[in] i_spawnPoint The spawn point of the player
+    /// @details The constructor initializes the SDL window and OpenGL context, and sets up the world and player tables.
+    /// @details The constructor also sets up the event loop and handles the movement of the player.
+    /// @details The constructor also sets up the camera and rendering systems.
+    /// @details The constructor also sets up the player fall system and the sprinting system.
     explicit SDLWindowManager(bool i_fullscreen = false, bool i_visible = true, bool i_sprint = false,
                      bool i_controlW = false, bool i_controlS = false, bool i_controlA = false,
                      bool i_controlD = false, bool i_mouseControl = false, bool i_canFall = false, ngl::Vec3 i_spawnPoint = ngl::Vec3(0, 2, 0));
