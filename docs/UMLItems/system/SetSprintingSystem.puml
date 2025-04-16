@@ -1,0 +1,16 @@
+@startuml
+
+!include System.puml
+!include ../component/IsSprintingComponent.puml
+!include ../Table.puml
+
+class SetSprintingSystem {
+    + bool value
+    + void run(IsSprintingComponent* component, int index)
+}
+
+System <|-- SetSprintingSystem : Makes Concrete
+SetSprintingSystem o-- IsSprintingComponent : Uses
+SetSprintingSystem ..o Table : Runs
+
+@enduml

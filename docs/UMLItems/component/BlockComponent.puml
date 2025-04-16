@@ -1,0 +1,14 @@
+@startuml
+!include ../Table.puml
+
+class BlockComponents {
+   + BlockComponents(int size)
+   + ~BlockComponents()
+   + {static} unsigned char getComponentID()
+   + {static} vec2[36] getTexCoordinates()
+   + {static} vec3[36] getVertices()
+}
+
+Table o.. BlockComponents : Held By
+
+@enduml

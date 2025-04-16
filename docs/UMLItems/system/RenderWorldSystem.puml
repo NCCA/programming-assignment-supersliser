@@ -1,0 +1,17 @@
+@startuml
+
+!include System.puml
+!include ../component/CameraComponents.puml
+!include ../Table.puml
+
+class RenderWorldSystem {
+    Table* world
+    void run(CameraComponents* component, int index)
+}
+
+System <|-- RenderWorldSystem : Makes Concrete
+RenderWorldSystem o-- CameraComponents : Uses
+RenderWorldSystem ..o Table : Runs
+RenderWorldSystem o-- Table : Uses a different one
+
+@enduml

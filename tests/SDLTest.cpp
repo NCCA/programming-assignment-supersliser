@@ -7,18 +7,17 @@
 #include <gtest/gtest.h>
 #include <ngl/NGLInit.h>
 
-#include "utils.h"
+#include "Utils.h"
+#include "SDLWindowManager.h"
+#include "GenerateWorld.h"
 
 TEST(SDLTest, WindowVisible)
 {
-    // Initialize SDL's Video subsystem
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         // Or die on error
         printf("Unable to initialize SDL");
         return;
     }
-
-    // now create our window
     SDL_Window *window = SDL_CreateWindow("Is this window visible?",
                                           SDL_WINDOWPOS_CENTERED,
                                           SDL_WINDOWPOS_CENTERED,
@@ -26,43 +25,24 @@ TEST(SDLTest, WindowVisible)
                                           720,
                                           SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI
     );
-    // check to see if that worked or exit
     if (!window) {
         printf("Unable to create window");
         return;
     }
 
-    // Create our opengl context and attach it to our window
-
-    // make this our current GL context (we can have more than one window but in this case not)
-    /* This makes our buffer swap syncronized with the monitor's vertical refresh */// we need to initialise the NGL lib which will load all of the OpenGL functions, this must
-    // be done once we have a valid GL context but before we call any GL commands. If we dont do
-    // this everything will crash
-    // now clear the screen and swap whilst NGL inits (which may take time)
-    // flag to indicate if we need to exit
     bool quit = false;
-    // sdl event processing data structure
     SDL_Event event;
-    // now we create an instance of our ngl class, this will init NGL and setup basic
-    // opengl stuff ext. When this falls out of scope the dtor will be called and cleanup
-    // our gl stuff
-
     bool success = false;
-
 
     while (!quit) {
 
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
-                // this is the window x being clicked.
                 case SDL_QUIT :
                     quit = true;
                     break;
-
-                    // now we look for a keydown event
                 case SDL_KEYDOWN: {
                     switch (event.key.keysym.sym) {
-                        // if it's the escape key quit
                         case SDLK_ESCAPE :
                             quit = true;
                             break;
@@ -72,17 +52,58 @@ TEST(SDLTest, WindowVisible)
                             break;
                         default :
                             break;
-                    } // end of key process
-                } // end of keydown
-
+                    }
+                }
                     break;
                 default :
                     break;
-            } // end of event switch
-        } // end of poll events
+            }
+        }
     }
-
     EXPECT_TRUE(success);
-    // now tidy up and exit SDL
     SDL_Quit();
+}
+
+TEST(SDLTest, SDLWindowManagerTest) {
+    SDLWindowManager windowManager = SDLWindowManager();
+    windowManager.createWindow("SDL Window Manager Test");
+    EXPECT_TRUE(windowManager.isMIsRunning());
+    EXPECT_FALSE(windowManager.isMIsFullscreen());
+    EXPECT_TRUE(windowManager.isMIsVisible());
+    EXPECT_FALSE(windowManager.isMControlWEnabled());
+    EXPECT_FALSE(windowManager.isMControlSEnabled());
+    EXPECT_FALSE(windowManager.isMControlAEnabled());
+    EXPECT_FALSE(windowManager.isMControlDEnabled());
+    EXPECT_FALSE(windowManager.isMMouseControlEnabled());
+    EXPECT_FALSE(windowManager.isMSprintEnabled());
+
+    windowManager.setMIsRunning(false);
+    windowManager.setMIsFullscreen(true);
+    windowManager.setMIsVisible(false);
+    windowManager.setMControlWEnabled(true);
+    windowManager.setMControlSEnabled(true);
+    windowManager.setMControlAEnabled(true);
+    windowManager.setMControlDEnabled(true);
+    windowManager.setMMouseControlEnabled(true);
+    windowManager.setMSprintEnabled(true);
+
+    EXPECT_FALSE(windowManager.isMIsRunning());
+    EXPECT_TRUE(windowManager.isMIsFullscreen());
+    EXPECT_FALSE(windowManager.isMIsVisible());
+    EXPECT_TRUE(windowManager.isMControlWEnabled());
+    EXPECT_TRUE(windowManager.isMControlSEnabled());
+    EXPECT_TRUE(windowManager.isMControlAEnabled());
+    EXPECT_TRUE(windowManager.isMControlDEnabled());
+    EXPECT_TRUE(windowManager.isMMouseControlEnabled());
+    EXPECT_TRUE(windowManager.isMSprintEnabled());
+}
+
+TEST(SDLTest, SDLWindowManagerUsage) {
+    SDLWindowManager windowManager = SDLWindowManager();
+    windowManager.createWindow("SDL Window Manager Usage Test");
+    windowManager.generateWorld = [](Table* io_world, Table* i_players) {
+        generateWorld(io_world, 5, 5, 5, 666);
+    };
+    auto output = windowManager.runEvents();
+    EXPECT_TRUE(output);
 }

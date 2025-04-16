@@ -1,0 +1,15 @@
+@startuml
+
+class Table {
+   # vector<column> columns
+   + Table()
+   + ~Table()
+   + unsigned int registerComponentType(unsigned char componentType)
+   + void run(System* system, unsigned char componentType, int startIndex, int endIndex)
+   + int getComponentIndex(unsigned char componentType)
+   + shared_ptr<void> getColumn(unsigned int columnIndex)
+   + unsigned int getComponentCount()
+   + unsigned int getEntityCount()
+   + unsigned int createEntity()
+}
+@enduml

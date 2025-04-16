@@ -39,8 +39,6 @@ add_executable(${TargetName}
         include/Table.h
         include/system/System.h
         src/Table.cpp
-        include/system/MoveSystem.h
-        src/system/MoveSystem.cpp
         include/component/Entities.h
         src/component/Entities.cpp
         include/component/Column.h
@@ -58,8 +56,8 @@ add_executable(${TargetName}
         src/system/ApplyBlockTextureSystem.cpp
         src/Camera.cpp
         include/component/BlockType.h
-        include/utils.h
-        src/utils.cpp
+        include/Utils.h
+        src/Utils.cpp
         include/dir.h
         include/system/SetCameraLookSystem.h
         src/system/SetCameraLookSystem.cpp
@@ -82,6 +80,8 @@ add_executable(${TargetName}
         include/GenerateWorld.h
         src/system/SetPlayerPositionSystem.cpp
         include/system/SetPlayerPositionSystem.h
+        include/SDLWindowManager.h
+        src/SDLWindowManager.cpp
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/ PerlinNoise/)
@@ -114,8 +114,6 @@ add_executable(Tests
         include/Table.h
         include/system/System.h
         src/Table.cpp
-        include/system/MoveSystem.h
-        src/system/MoveSystem.cpp
         include/component/Entities.h
         src/component/Entities.cpp
         include/component/Column.h
@@ -133,8 +131,8 @@ add_executable(Tests
         src/system/ApplyBlockTextureSystem.cpp
         src/Camera.cpp
         include/component/BlockType.h
-        include/utils.h
-        src/utils.cpp
+        include/Utils.h
+        src/Utils.cpp
         include/dir.h
         include/system/SetCameraLookSystem.h
         src/system/SetCameraLookSystem.cpp
@@ -157,6 +155,8 @@ add_executable(Tests
         include/GenerateWorld.h
         src/system/SetPlayerPositionSystem.cpp
         include/system/SetPlayerPositionSystem.h
+        include/SDLWindowManager.h
+        src/SDLWindowManager.cpp
 )
 include_directories(include)
 target_sources(Tests PRIVATE)

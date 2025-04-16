@@ -1,0 +1,22 @@
+@startuml
+
+!include ../Table.puml
+
+class BlockTextureComponent {
+    + BlockTextureComponent(int size)
+    + ~BlockTextureComponent()
+    + void addBlock()
+    + {static} unsigned char getComponentID()
+    + unsigned int* meshVBO_ID
+    + unsigned int* uvVBO_ID
+    + unsigned int* textureVBO_ID
+    + vector<float> textureIDs
+    + {static} unsigned int* VAO_ID
+    + {static} vector<string> registeredTextures
+    + {static} unsigned int registeredTextureIDs
+    + {static} void loadAllTextures()
+}
+
+Table o.. BlockTextureComponent : Held by
+
+@enduml

@@ -3,20 +3,17 @@
 //
 
 #include <ngl/Texture.h>
-#include "component/BlockTextureComponent.h"
-
 #include <iostream>
 #include <ngl/ShaderLib.h>
 
 #include "dir.h"
+#include "component/BlockTextureComponent.h"
 #include "component/BlockComponents.h"
 #include "system/ApplyBlockTextureSystem.h"
-#include "utils.h"
 
 std::vector<std::string> BlockTextureComponent::s_registeredTextures;
 std::shared_ptr<GLuint> BlockTextureComponent::s_vaoID = std::make_shared<GLuint>();
 std::vector<GLuint> BlockTextureComponent::s_registeredTextureIDs;
-
 
 BlockTextureComponent::BlockTextureComponent(size_t i_size)
 {
@@ -91,7 +88,7 @@ BlockTextureComponent::~BlockTextureComponent()
 void BlockTextureComponent::loadAllTextures()
 {
     s_registeredTextures.clear();
-    ngl::ShaderLib::use("TextureShader"); // Ensure the shader program is active
+    ngl::ShaderLib::use("TextureShader");
 
     for (size_t i = 0; i < 7; i++)
     {
@@ -105,7 +102,6 @@ void BlockTextureComponent::loadAllTextures()
         GLuint texID;
         glGenTextures(1, &texID);
 
-        // Use the loop index i as the texture unit instead
         GLuint textureUnit = i;
         glActiveTexture(GL_TEXTURE0 + textureUnit);
         glBindTexture(GL_TEXTURE_2D, texID);

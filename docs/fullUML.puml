@@ -1,0 +1,21 @@
+@startuml
+!include UMLItems/component/BlockComponent.puml
+!include UMLItems/component/BlockTextureComponent.puml
+!include UMLItems/component/CameraComponents.puml
+!include UMLItems/component/Entities.puml
+!include UMLItems/component/IsSprintingComponent.puml
+!include UMLItems/component/TransformComponents.puml
+!include UMLItems/system/ApplyBlockTextureSystem.puml
+!include UMLItems/system/MovePlayerSystem.puml
+!include UMLItems/system/PlayerFallSystem.puml
+!include UMLItems/system/RenderWorldSystem.puml
+!include UMLItems/system/RotateCameraSystem.puml
+!include UMLItems/system/SetCameraLookSystem.puml
+!include UMLItems/system/SetPlayerPositionSystem.puml
+!include UMLItems/system/SetPositionSystem.puml
+!include UMLItems/system/SetSprintingSystem.puml
+!include UMLItems/system/System.puml
+!include UMLItems/system/TestIsBlockedSystem.puml
+!include UMLItems/system/ToggleSprintingSystem.puml
+!include UMLItems/Table.puml
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+!include System.puml
+!include ../component/CameraComponents.puml
+!include ../component/SpeedComponent.puml
+!include ../component/IsSprintingComponent.puml
+
+
+class MovePlayerSystem {
+    + void run(CameraComponents component, int index)
+    + SpeedComponent* speed
+    + Table* world
+    + vec3 dir
+    + IsSprintingComponent* isSprinting
+}
+
+MovePlayerSystem --|> System : Makes Concrete
+MovePlayerSystem o-- CameraComponents : Uses
+MovePlayerSystem o-- SpeedComponent : Uses
+MovePlayerSystem o-- IsSprintingComponent : Uses
+
+@enduml

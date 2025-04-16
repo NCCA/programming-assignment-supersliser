@@ -1,0 +1,15 @@
+@startuml
+
+!include ../Table.puml
+
+class SpeedComponent {
+    + vector<float> speed
+    + {static} unsigned char getComponentID()
+    + {static} float getDefaultSpeed()
+    + SpeedComponent(int size)
+    + ~SpeedComponent()
+}
+
+Table o.. SpeedComponent : Held By
+
+@enduml

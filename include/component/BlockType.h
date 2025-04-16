@@ -5,6 +5,12 @@
 #ifndef BLOCKTYPE_H
 #define BLOCKTYPE_H
 
+/// @class BlockType include/component/BlockType.h
+/// @brief Enum class to define the different types of blocks
+/// @author Thomas Lower
+/// @version 1.0
+/// @date 2025-03-29
+/// @details This enum class is used to define the different types of blocks in the game.\n The values are used to index into the texture atlas to get the correct texture for each block type.\n
 enum class BlockType
 {
     None = 0,

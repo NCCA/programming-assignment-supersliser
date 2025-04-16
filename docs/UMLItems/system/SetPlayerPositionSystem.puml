@@ -1,0 +1,15 @@
+@startuml
+
+!include System.puml
+!include ../component/CameraComponents.puml
+
+class SetPlayerPositionSystem {
+    + vec3 pos
+    + void run(CameraComponents* component, int index)
+}
+
+System <|-- SetPlayerPositionSystem : Makes Concrete
+SetPlayerPositionSystem o-- CameraComponents : Uses
+SetPlayerPositionSystem ..o Table : Runs
+
+@enduml

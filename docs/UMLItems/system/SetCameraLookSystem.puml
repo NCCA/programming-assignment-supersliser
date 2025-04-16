@@ -1,0 +1,16 @@
+@startuml
+
+!include System.puml
+!include ../component/CameraComponents.puml
+
+class SetCameraLookSystem {
+ + vec3 pos
+ + vec3 look
+ + void run(CameraComponents* component, int index)
+}
+
+System <|-- SetCameraLookSystem : Makes Concrete
+SetCameraLookSystem o-- CameraComponents : Uses
+SetCameraLookSystem ..o Table : Runs
+
+@enduml

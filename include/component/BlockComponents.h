@@ -7,13 +7,26 @@
 
 #include <ngl/Texture.h>
 
+/// @class BlockComponents include/component/BlockComponents.h
+/// @brief Class to hold the vertices and texture coordinates for a block as well as define a generic entity as a block
+/// @author Thomas Lower
+/// @version 1.0
+/// @date 2025-03-23
 class BlockComponents
 {
 public:
+    /// @brief Constructor
+    /// @param[in] i_size number of entities in parent table
     BlockComponents(size_t i_size);
+    /// @brief Static function to get the component ID
+    /// @return component ID: 3
     static std::uint8_t getComponentID() { return 3; }
+    /// @brief Default Destructor
     ~BlockComponents() = default;
 
+    /// @brief Static function to get the texture coordinates of the block
+    /// @return array of texture coordinates
+    /// @detail texture coordinates data from google gemini v2.0
     static std::array<ngl::Vec2, 36> getTexCoordinates() {
         std::array<ngl::Vec2, 36> texCoords;
         size_t i = 0;
@@ -77,7 +90,9 @@ public:
         return texCoords;
     }
 
-    // vertex data from google gemini
+    /// @brief Static function to get the vertices of the block
+    /// @return array of vertices
+    ///@detail vertex data from google gemini v2.0
     static std::array<ngl::Vec3,36> getVertices() {
         std::array<ngl::Vec3, 36> vertices;
         size_t i = 0;

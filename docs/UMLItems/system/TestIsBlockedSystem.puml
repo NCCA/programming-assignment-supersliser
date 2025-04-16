@@ -1,0 +1,19 @@
+@startuml
+
+!include System.puml
+!include ../component/TransformComponents.puml
+!include ../Table.puml
+
+class TestIsBlockedSystem {
+    + bool output
+    + Table* world
+    + vec3 pos
+    + void run(TransformComponents* component, int index)
+}
+
+System <|-- TestIsBlockedSystem : Makes Concrete
+TestIsBlockedSystem o-- TransformComponents : Uses
+TestIsBlockedSystem ..o Table : Runs
+TestIsBlockedSystem o.. Table : Points to a different one
+
+@enduml

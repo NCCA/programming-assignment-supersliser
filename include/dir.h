@@ -8,6 +8,9 @@
 #include <cstdlib>
 #include <cstring>
 
+/// @brief Get the directory based on the environment variable ENV_LOCATION
+/// @return The directory path as a string
+/// @note This may only be explicitly needed for use with Clion. But doesn't hurt to be safe.
 inline const char* getDir() {
     const char* env_location = std::getenv("ENV_LOCATION");
     if (env_location && std::strcmp(env_location, "home") == 0) {
