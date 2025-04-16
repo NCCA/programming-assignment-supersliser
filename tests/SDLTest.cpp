@@ -8,6 +8,8 @@
 #include <ngl/NGLInit.h>
 
 #include "Utils.h"
+#include "SDLWindowManager.h"
+#include "GenerateWorld.h"
 
 TEST(SDLTest, WindowVisible)
 {
@@ -60,4 +62,48 @@ TEST(SDLTest, WindowVisible)
     }
     EXPECT_TRUE(success);
     SDL_Quit();
+}
+
+TEST(SDLTest, SDLWindowManagerTest) {
+    SDLWindowManager windowManager = SDLWindowManager();
+    windowManager.createWindow("SDL Window Manager Test");
+    EXPECT_TRUE(windowManager.isMIsRunning());
+    EXPECT_FALSE(windowManager.isMIsFullscreen());
+    EXPECT_TRUE(windowManager.isMIsVisible());
+    EXPECT_FALSE(windowManager.isMControlWEnabled());
+    EXPECT_FALSE(windowManager.isMControlSEnabled());
+    EXPECT_FALSE(windowManager.isMControlAEnabled());
+    EXPECT_FALSE(windowManager.isMControlDEnabled());
+    EXPECT_FALSE(windowManager.isMMouseControlEnabled());
+    EXPECT_FALSE(windowManager.isMSprintEnabled());
+
+    windowManager.setMIsRunning(false);
+    windowManager.setMIsFullscreen(true);
+    windowManager.setMIsVisible(false);
+    windowManager.setMControlWEnabled(true);
+    windowManager.setMControlSEnabled(true);
+    windowManager.setMControlAEnabled(true);
+    windowManager.setMControlDEnabled(true);
+    windowManager.setMMouseControlEnabled(true);
+    windowManager.setMSprintEnabled(true);
+
+    EXPECT_FALSE(windowManager.isMIsRunning());
+    EXPECT_TRUE(windowManager.isMIsFullscreen());
+    EXPECT_FALSE(windowManager.isMIsVisible());
+    EXPECT_TRUE(windowManager.isMControlWEnabled());
+    EXPECT_TRUE(windowManager.isMControlSEnabled());
+    EXPECT_TRUE(windowManager.isMControlAEnabled());
+    EXPECT_TRUE(windowManager.isMControlDEnabled());
+    EXPECT_TRUE(windowManager.isMMouseControlEnabled());
+    EXPECT_TRUE(windowManager.isMSprintEnabled());
+}
+
+TEST(SDLTest, SDLWindowManagerUsage) {
+    SDLWindowManager windowManager = SDLWindowManager();
+    windowManager.createWindow("SDL Window Manager Usage Test");
+    windowManager.generateWorld = [](Table* io_world, Table* i_players) {
+        generateWorld(io_world, 5, 5, 5, 666);
+    };
+    auto output = windowManager.runEvents();
+    EXPECT_TRUE(output);
 }

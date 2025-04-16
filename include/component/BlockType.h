@@ -11,7 +11,7 @@
 /// @version 1.0
 /// @date 2025-03-29
 /// @details This enum class is used to define the different types of blocks in the game.\n The values are used to index into the texture atlas to get the correct texture for each block type.\n
-enum Class BlockType
+enum class BlockType
 {
     None = 0,
     Grass = 1,

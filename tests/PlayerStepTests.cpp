@@ -18,857 +18,181 @@
 #include "system/RenderWorldSystem.h"
 #include "system/RotateCameraSystem.h"
 #include "system/SetPositionSystem.h"
+#include "SDLWindowManager.h"
 
 TEST(PlayerStep, PlayerStepUp) {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("Unable to initialize SDL");
-        return;
-    }
-    SDL_Window *window = SDL_CreateWindow("Player Step Up TEST",
-                                          SDL_WINDOWPOS_CENTERED,
-                                          SDL_WINDOWPOS_CENTERED,
-                                          1080,
-                                          720,
-                                          SDL_WINDOW_OPENGL | SDL_WINDOW_ALLOW_HIGHDPI
-    );
-    if (!window) {
-        printf("Unable to create window");
-        return;
-    }
-    SDL_GLContext glContext = utils::createOpenGLContext(window);
-    if (!glContext) {
-        printf("Problem creating OpenGL context ");
-        return;
-    }
-    SDL_GL_MakeCurrent(window, glContext);
-    SDL_GL_SetSwapInterval(1);
-    ngl::NGLInit::initialize();
-    glClear(GL_COLOR_BUFFER_BIT);
-    SDL_GL_SwapWindow(window);
-    bool quit = false;
-    SDL_Event event;
-
-    Table players;
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
-    players.registerComponentType(SpeedComponent::getComponentID());
-
-    Table world;
-    for (uint32_t i = 0; i < 6; i++) {
-        world.createEntity();
-    }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
-    world.registerComponentType(TransformComponents::getComponentID());
-    SetPositionSystem ms;
-    for (float j = 0; j < 4; j++) {
-        ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
-        world.run(&ms, TransformComponents::getComponentID(), j, j);
-    }
-    for (float j = 4; j < 6; j++) {
-        ms.i_pos = ngl::Vec3(0.0f, 1.0f, (j - 1));
-        world.run(&ms, TransformComponents::getComponentID(), j, j);
-    }
-
-    ApplyBlockTextureSystem applyBlockTextureSystem;
-    applyBlockTextureSystem.i_blockType = BlockType::Grass;
-    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
-
-    RenderWorldSystem renderWorldSystem;
-    renderWorldSystem.i_world = &world;
-
-    bool success = false;
-    int32_t lastTime = SDL_GetTicks();
-
-    bool wHeld = false;
-    bool sHeld = false;
-
-    utils::printTestString("player's ability to step up");
-
-    while (!quit) {
-        int32_t currentTime = SDL_GetTicks();
-        int32_t deltaTime = currentTime - lastTime;
-        lastTime = currentTime;
-
-        if (wHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+    SDLWindowManager windowManager = SDLWindowManager(false, true, false, true, true, false, false, true, 0);
+    windowManager.createWindow("Step Up TEST");
+    windowManager.generateWorld = [](Table* i_world, Table* i_players) {
+        for (uint32_t i = 0; i < 6; i++) {
+            i_world->createEntity();
+        }
+        i_world->registerComponentType(BlockComponents::getComponentID());
+        i_world->registerComponentType(BlockTextureComponent::getComponentID());
+        i_world->registerComponentType(TransformComponents::getComponentID());
+        SetPositionSystem ms;
+        for (float j = 0; j < 4; j++) {
+            ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
+            i_world->run(&ms, TransformComponents::getComponentID(), j, j);
+        }
+        for (float j = 4; j < 6; j++) {
+            ms.i_pos = ngl::Vec3(0.0f, 1.0f, (j - 1));
+            i_world->run(&ms, TransformComponents::getComponentID(), j, j);
         }
 
-        if (sHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, -deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
-        }
+        ApplyBlockTextureSystem applyBlockTextureSystem;
+        applyBlockTextureSystem.i_blockType = BlockType::Grass;
+        i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
 
-        while (SDL_PollEvent(&event)) {
-            switch (event.type) {
-                case SDL_MOUSEMOTION: {
-                    RotateCameraSystem rotateCameraSystem;
-                    rotateCameraSystem.i_mouseDelta = ngl::Vec2(event.motion.xrel, event.motion.yrel);
-                    players.run(&rotateCameraSystem, CameraComponents::getComponentID());
-                }
-                    break;
-                case SDL_QUIT:
-                    quit = true;
-                    break;
-                case SDL_KEYUP: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = false;
-                            break;
-                        case SDLK_s:
-                            sHeld = false;
-                            break;
-                    }
-                }
-                    break;
-                case SDL_KEYDOWN: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = true;
-                            break;
-                        case SDLK_s:
-                            sHeld = true;
-                            break;
-                        case SDLK_ESCAPE:
-                            quit = true;
-                            break;
-                        case SDLK_RETURN:
-                            success = true;
-                            quit = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                default:
-                    break;
-            }
-        }
-        players.run(&renderWorldSystem, CameraComponents::getComponentID());
-        SDL_GL_SwapWindow(window);
-    }
-
-    EXPECT_TRUE(success);
-    SDL_Quit();
+        utils::printTestString("player can step up if blocked");
+    };
+    auto output = windowManager.runEvents();
+    EXPECT_TRUE(output);
 }
 
 TEST(PlayerStep, PlayerWall) {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("Unable to initialize SDL");
-        return;
-    }
-    SDL_Window *window = SDL_CreateWindow("Player Wall TEST",
-                                          SDL_WINDOWPOS_CENTERED,
-                                          SDL_WINDOWPOS_CENTERED,
-                                          1080,
-                                          720,
-                                          SDL_WINDOW_OPENGL | SDL_WINDOW_ALLOW_HIGHDPI
-    );
-    if (!window) {
-        printf("Unable to create window");
-        return;
-    }
-    SDL_GLContext glContext = utils::createOpenGLContext(window);
-    if (!glContext) {
-        printf("Problem creating OpenGL context ");
-        return;
-    }
-    SDL_GL_MakeCurrent(window, glContext);
-    SDL_GL_SetSwapInterval(1);
-    ngl::NGLInit::initialize();
-    glClear(GL_COLOR_BUFFER_BIT);
-    SDL_GL_SwapWindow(window);
-    bool quit = false;
-    SDL_Event event;
-
-    Table players;
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
-    players.registerComponentType(SpeedComponent::getComponentID());
-
-    Table world;
-    for (uint32_t i = 0; i < 6; i++) {
-        world.createEntity();
-    }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
-    world.registerComponentType(TransformComponents::getComponentID());
-    SetPositionSystem ms;
-    for (float j = 0; j < 4; j++) {
-        ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
-        world.run(&ms, TransformComponents::getComponentID(), j, j);
-    }
-    for (float j = 1; j < 3; j++) {
-        ms.i_pos = ngl::Vec3(0.0f, j, 3.0f);
-        world.run(&ms, TransformComponents::getComponentID(), j + 3, j + 3);
-    }
-    ApplyBlockTextureSystem applyBlockTextureSystem;
-    applyBlockTextureSystem.i_blockType = BlockType::Grass;
-    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
-
-    RenderWorldSystem renderWorldSystem;
-    renderWorldSystem.i_world = &world;
-
-    bool success = false;
-    int32_t lastTime = SDL_GetTicks();
-
-    bool wHeld = false;
-    bool sHeld = false;
-
-    utils::printTestString("player stops when hitting a wall");
-
-    while (!quit) {
-        int32_t currentTime = SDL_GetTicks();
-        int32_t deltaTime = currentTime - lastTime;
-        lastTime = currentTime;
-
-        if (wHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+    SDLWindowManager windowManager = SDLWindowManager(false, true, false, true, true, false, false, true, 0);
+    windowManager.createWindow("Step Wall TEST");
+    windowManager.generateWorld = [](Table* i_world, Table* i_players) {
+        for (uint32_t i = 0; i < 6; i++) {
+            i_world->createEntity();
         }
-
-        if (sHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, -deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+        i_world->registerComponentType(BlockComponents::getComponentID());
+        i_world->registerComponentType(BlockTextureComponent::getComponentID());
+        i_world->registerComponentType(TransformComponents::getComponentID());
+        SetPositionSystem ms;
+        for (float j = 0; j < 4; j++) {
+            ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
+            i_world->run(&ms, TransformComponents::getComponentID(), j, j);
         }
-
-        while (SDL_PollEvent(&event)) {
-            switch (event.type) {
-                case SDL_MOUSEMOTION: {
-                    RotateCameraSystem rotateCameraSystem;
-                    rotateCameraSystem.i_mouseDelta = ngl::Vec2(event.motion.xrel, event.motion.yrel);
-                    players.run(&rotateCameraSystem, CameraComponents::getComponentID());
-                }
-                    break;
-                case SDL_QUIT:
-                    quit = true;
-                    break;
-                case SDL_KEYUP: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = false;
-                            break;
-                        case SDLK_s:
-                            sHeld = false;
-                            break;
-                    }
-                }
-                    break;
-                case SDL_KEYDOWN: {
-                    switch (event.key.keysym.sym) {
-                        // if it's the escape key quit
-                        case SDLK_w:
-                            wHeld = true;
-                            break;
-                        case SDLK_s:
-                            sHeld = true;
-                            break;
-                        case SDLK_ESCAPE:
-                            quit = true;
-                            break;
-                        case SDLK_RETURN:
-                            success = true;
-                            quit = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                default:
-                    break;
-            }
+        for (float j = 1; j < 3; j++) {
+            ms.i_pos = ngl::Vec3(0.0f, j, 3.0f);
+            i_world->run(&ms, TransformComponents::getComponentID(), j + 3, j + 3);
         }
-        players.run(&renderWorldSystem, CameraComponents::getComponentID());
-        SDL_GL_SwapWindow(window);
-    }
-    EXPECT_TRUE(success);
-    SDL_Quit();
+        ApplyBlockTextureSystem applyBlockTextureSystem;
+        applyBlockTextureSystem.i_blockType = BlockType::Grass;
+        i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
+
+        utils::printTestString("player will be blocked");
+    };
+    auto output = windowManager.runEvents();
+    EXPECT_TRUE(output);
 }
 
 TEST(PlayerStep, PlayerTopBlockWall) {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("Unable to initialize SDL");
-        return;
-    }
-    SDL_Window *window = SDL_CreateWindow("Player Top Block Wall TEST",
-                                          SDL_WINDOWPOS_CENTERED,
-                                          SDL_WINDOWPOS_CENTERED,
-                                          1080,
-                                          720,
-                                          SDL_WINDOW_OPENGL | SDL_WINDOW_ALLOW_HIGHDPI
-    );
-    if (!window) {
-        printf("Unable to create window");
-        return;
-    }
-    SDL_GLContext glContext = utils::createOpenGLContext(window);
-    if (!glContext) {
-        printf("Problem creating OpenGL context ");
-        return;
-    }
-    SDL_GL_MakeCurrent(window, glContext);
-    SDL_GL_SetSwapInterval(1);
-    ngl::NGLInit::initialize();
-    glClear(GL_COLOR_BUFFER_BIT);
-    SDL_GL_SwapWindow(window);
-    bool quit = false;
-    SDL_Event event;
-
-    Table players;
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
-    players.registerComponentType(SpeedComponent::getComponentID());
-    Table world;
-    for (uint32_t i = 0; i < 6; i++) {
-        world.createEntity();
-    }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
-    world.registerComponentType(TransformComponents::getComponentID());
-    SetPositionSystem ms;
-    for (float j = 0; j < 4; j++) {
-        ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
-        world.run(&ms, TransformComponents::getComponentID(), j, j);
-    }
-    for (float j = 1; j < 3; j++) {
-        ms.i_pos = ngl::Vec3(0.0f, j + 1, 3.0f);
-        world.run(&ms, TransformComponents::getComponentID(), j + 3, j + 3);
-    }
-    ApplyBlockTextureSystem applyBlockTextureSystem;
-    applyBlockTextureSystem.i_blockType = BlockType::Grass;
-    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
-
-    RenderWorldSystem renderWorldSystem;
-    renderWorldSystem.i_world = &world;
-
-    bool success = false;
-    int32_t lastTime = SDL_GetTicks();
-
-    bool wHeld = false;
-    bool sHeld = false;
-
-    utils::printTestString("player stopping when attempting to step up without space");
-
-    while (!quit) {
-        int32_t currentTime = SDL_GetTicks();
-        int32_t deltaTime = currentTime - lastTime;
-        lastTime = currentTime;
-
-        if (wHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+    SDLWindowManager windowManager = SDLWindowManager(false, true, false, true, true, false, false, true, 0);
+    windowManager.createWindow("Blocked by Top of Wall TEST");
+    windowManager.generateWorld = [](Table* i_world, Table* i_players) {
+        for (uint32_t i = 0; i < 6; i++) {
+            i_world->createEntity();
         }
-
-        if (sHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, -deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+        i_world->registerComponentType(BlockComponents::getComponentID());
+        i_world->registerComponentType(BlockTextureComponent::getComponentID());
+        i_world->registerComponentType(TransformComponents::getComponentID());
+        SetPositionSystem ms;
+        for (float j = 0; j < 4; j++) {
+            ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
+            i_world->run(&ms, TransformComponents::getComponentID(), j, j);
         }
-
-        while (SDL_PollEvent(&event)) {
-            switch (event.type) {
-                case SDL_MOUSEMOTION: {
-                    RotateCameraSystem rotateCameraSystem;
-                    rotateCameraSystem.i_mouseDelta = ngl::Vec2(event.motion.xrel, event.motion.yrel);
-                    players.run(&rotateCameraSystem, CameraComponents::getComponentID());
-                }
-                    break;
-                case SDL_QUIT:
-                    quit = true;
-                    break;
-                case SDL_KEYUP: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = false;
-                            break;
-                        case SDLK_s:
-                            sHeld = false;
-                            break;
-                    }
-                }
-                    break;
-                case SDL_KEYDOWN: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = true;
-                            break;
-                        case SDLK_s:
-                            sHeld = true;
-                            break;
-                        case SDLK_ESCAPE:
-                            quit = true;
-                            break;
-                        case SDLK_RETURN:
-                            success = true;
-                            quit = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                default:
-                    break;
-            }
+        for (float j = 1; j < 3; j++) {
+            ms.i_pos = ngl::Vec3(0.0f, j + 1, 3.0f);
+            i_world->run(&ms, TransformComponents::getComponentID(), j + 3, j + 3);
         }
-        players.run(&renderWorldSystem, CameraComponents::getComponentID());
-        SDL_GL_SwapWindow(window);
-    }
-    EXPECT_TRUE(success);
-    SDL_Quit();
+        ApplyBlockTextureSystem applyBlockTextureSystem;
+        applyBlockTextureSystem.i_blockType = BlockType::Grass;
+        i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
+
+        utils::printTestString("player will be blocked by top of wall only");
+    };
+    auto output = windowManager.runEvents();
+    EXPECT_TRUE(output);
 }
 
 TEST(PlayerStep, PlayerBlockedAbove) {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("Unable to initialize SDL");
-        return;
-    }
-    SDL_Window *window = SDL_CreateWindow("Player Blocked Above TEST",
-                                          SDL_WINDOWPOS_CENTERED,
-                                          SDL_WINDOWPOS_CENTERED,
-                                          1080,
-                                          720,
-                                          SDL_WINDOW_OPENGL | SDL_WINDOW_ALLOW_HIGHDPI
-    );
-    if (!window) {
-        printf("Unable to create window");
-        return;
-    }
-    SDL_GLContext glContext = utils::createOpenGLContext(window);
-    if (!glContext) {
-        printf("Problem creating OpenGL context ");
-        return;
-    }
-    SDL_GL_MakeCurrent(window, glContext);
-    SDL_GL_SetSwapInterval(1);
-    ngl::NGLInit::initialize();
-    glClear(GL_COLOR_BUFFER_BIT);
-    SDL_GL_SwapWindow(window);
-    bool quit = false;
-    SDL_Event event;
-
-    Table players;
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
-    players.registerComponentType(SpeedComponent::getComponentID());
-
-    Table world;
-    for (uint32_t i = 0; i < 6; i++) {
-        world.createEntity();
-    }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
-    world.registerComponentType(TransformComponents::getComponentID());
-    SetPositionSystem ms;
-    for (float j = 0; j < 4; j++) {
-        ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
-        world.run(&ms, TransformComponents::getComponentID(), j, j);
-    }
-    ms.i_pos = ngl::Vec3(0.0f, 1, 3.0f);
-    world.run(&ms, TransformComponents::getComponentID(), 4, 4);
-    ms.i_pos = ngl::Vec3(0.0f, 3, 2.0f);
-    world.run(&ms, TransformComponents::getComponentID(), 5, 5);
-    ApplyBlockTextureSystem applyBlockTextureSystem;
-    applyBlockTextureSystem.i_blockType = BlockType::Grass;
-    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
-
-    RenderWorldSystem renderWorldSystem;
-    renderWorldSystem.i_world = &world;
-
-    bool success = false;
-    int32_t lastTime = SDL_GetTicks();
-
-    bool wHeld = false;
-    bool sHeld = false;
-
-    utils::printTestString("player doesn't from stepping up when blocked above");
-
-    while (!quit) {
-        int32_t currentTime = SDL_GetTicks();
-        int32_t deltaTime = currentTime - lastTime;
-        lastTime = currentTime;
-
-        if (wHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+    SDLWindowManager windowManager = SDLWindowManager(false, true, false, true, true, false, false, true, 0);
+    windowManager.createWindow("Blocked from Above TEST");
+    windowManager.generateWorld = [](Table* i_world, Table* i_players) {
+        for (uint32_t i = 0; i < 6; i++) {
+            i_world->createEntity();
         }
-
-        if (sHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, -deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+        i_world->registerComponentType(BlockComponents::getComponentID());
+        i_world->registerComponentType(BlockTextureComponent::getComponentID());
+        i_world->registerComponentType(TransformComponents::getComponentID());
+        SetPositionSystem ms;
+        for (float j = 0; j < 4; j++) {
+            ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
+            i_world->run(&ms, TransformComponents::getComponentID(), j, j);
         }
+        ms.i_pos = ngl::Vec3(0.0f, 1, 3.0f);
+        i_world->run(&ms, TransformComponents::getComponentID(), 4, 4);
+        ms.i_pos = ngl::Vec3(0.0f, 3, 2.0f);
+        i_world->run(&ms, TransformComponents::getComponentID(), 5, 5);
+        ApplyBlockTextureSystem applyBlockTextureSystem;
+        applyBlockTextureSystem.i_blockType = BlockType::Grass;
+        i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
 
-        while (SDL_PollEvent(&event)) {
-            switch (event.type) {
-                case SDL_MOUSEMOTION: {
-                    RotateCameraSystem rotateCameraSystem;
-                    rotateCameraSystem.i_mouseDelta = ngl::Vec2(event.motion.xrel, event.motion.yrel);
-                    players.run(&rotateCameraSystem, CameraComponents::getComponentID());
-                }
-                    break;
-                case SDL_QUIT:
-                    quit = true;
-                    break;
-                case SDL_KEYUP: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = false;
-                            break;
-                        case SDLK_s:
-                            sHeld = false;
-                            break;
-                    }
-                }
-                    break;
-                case SDL_KEYDOWN: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = true;
-                            break;
-                        case SDLK_s:
-                            sHeld = true;
-                            break;
-                        case SDLK_ESCAPE:
-                            quit = true;
-                            break;
-                        case SDLK_RETURN:
-                            success = true;
-                            quit = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                default:
-                    break;
-            }
-        }
-        players.run(&renderWorldSystem, CameraComponents::getComponentID());
-        SDL_GL_SwapWindow(window);
-    }
-    EXPECT_TRUE(success);
-    SDL_Quit();
+        utils::printTestString("player will be blocked from above and by step");
+    };
+    auto output = windowManager.runEvents();
+    EXPECT_TRUE(output);
 }
 
 TEST(PlayerStep, PlayerStepDown) {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("Unable to initialize SDL");
-        return;
-    }
-    SDL_Window *window = SDL_CreateWindow("Player Step Down TEST",
-                                          SDL_WINDOWPOS_CENTERED,
-                                          SDL_WINDOWPOS_CENTERED,
-                                          1080,
-                                          720,
-                                          SDL_WINDOW_OPENGL | SDL_WINDOW_ALLOW_HIGHDPI
-    );
-    if (!window) {
-        printf("Unable to create window");
-        return;
-    }
-    SDL_GLContext glContext = utils::createOpenGLContext(window);
-    if (!glContext) {
-        printf("Problem creating OpenGL context ");
-        return;
-    }
-    SDL_GL_MakeCurrent(window, glContext);
-    SDL_GL_SetSwapInterval(1);
-    ngl::NGLInit::initialize();
-    glClear(GL_COLOR_BUFFER_BIT);
-    SDL_GL_SwapWindow(window);
-    bool quit = false;
-    SDL_Event event;
-
-    Table players;
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
-    players.registerComponentType(SpeedComponent::getComponentID());
-
-    Table world;
-    for (uint32_t i = 0; i < 6; i++) {
-        world.createEntity();
-    }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
-    world.registerComponentType(TransformComponents::getComponentID());
-    SetPositionSystem ms;
-    for (float j = 0; j < 4; j++) {
-        ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
-        world.run(&ms, TransformComponents::getComponentID(), j, j);
-    }
-    ms.i_pos = ngl::Vec3(0.0f, -1.0f, 3.0f);
-    world.run(&ms, TransformComponents::getComponentID(), 4, 4);
-    ms.i_pos = ngl::Vec3(0.0f, -1.0f, 4.0f);
-    world.run(&ms, TransformComponents::getComponentID(), 5, 5);
-    ApplyBlockTextureSystem applyBlockTextureSystem;
-    applyBlockTextureSystem.i_blockType = BlockType::Grass;
-    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
-
-    RenderWorldSystem renderWorldSystem;
-    renderWorldSystem.i_world = &world;
-    PlayerFallSystem playerFallSystem;
-    playerFallSystem.i_world = &world;
-    playerFallSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-            players.getComponentIndex(SpeedComponent::getComponentID())).get());
-
-    bool success = false;
-    int32_t lastTime = SDL_GetTicks();
-
-    bool wHeld = false;
-    bool sHeld = false;
-
-    utils::printTestString("player's ability to step down");
-
-    while (!quit) {
-        int32_t currentTime = SDL_GetTicks();
-        int32_t deltaTime = currentTime - lastTime;
-        lastTime = currentTime;
-
-        if (wHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+    SDLWindowManager windowManager = SDLWindowManager(false, true, false, true, true, false, false, true, 1);
+    windowManager.createWindow("Step Down TEST");
+    windowManager.generateWorld = [](Table* i_world, Table* i_players) {
+        for (uint32_t i = 0; i < 6; i++) {
+            i_world->createEntity();
         }
-
-        if (sHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, -deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+        i_world->registerComponentType(BlockComponents::getComponentID());
+        i_world->registerComponentType(BlockTextureComponent::getComponentID());
+        i_world->registerComponentType(TransformComponents::getComponentID());
+        SetPositionSystem ms;
+        for (float j = 0; j < 4; j++) {
+            ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
+            i_world->run(&ms, TransformComponents::getComponentID(), j, j);
         }
+        ms.i_pos = ngl::Vec3(0.0f, -1.0f, 3.0f);
+        i_world->run(&ms, TransformComponents::getComponentID(), 4, 4);
+        ms.i_pos = ngl::Vec3(0.0f, -1.0f, 4.0f);
+        i_world->run(&ms, TransformComponents::getComponentID(), 5, 5);
+        ApplyBlockTextureSystem applyBlockTextureSystem;
+        applyBlockTextureSystem.i_blockType = BlockType::Grass;
+        i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
 
-        while (SDL_PollEvent(&event)) {
-            switch (event.type) {
-                case SDL_MOUSEMOTION: {
-                    RotateCameraSystem rotateCameraSystem;
-                    rotateCameraSystem.i_mouseDelta = ngl::Vec2(event.motion.xrel, event.motion.yrel);
-                    players.run(&rotateCameraSystem, CameraComponents::getComponentID());
-                }
-                    break;
-                case SDL_QUIT:
-                    quit = true;
-                    break;
-                case SDL_KEYUP: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = false;
-                            break;
-                        case SDLK_s:
-                            sHeld = false;
-                            break;
-                    }
-                }
-                    break;
-                case SDL_KEYDOWN: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = true;
-                            break;
-                        case SDLK_s:
-                            sHeld = true;
-                            break;
-                        case SDLK_ESCAPE:
-                            quit = true;
-                            break;
-                        case SDLK_RETURN:
-                            success = true;
-                            quit = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                default:
-                    break;
-            }
-        }
-        players.run(&playerFallSystem, CameraComponents::getComponentID());
-        players.run(&renderWorldSystem, CameraComponents::getComponentID());
-        SDL_GL_SwapWindow(window);
-    }
-    EXPECT_TRUE(success);
-    SDL_Quit();
+        utils::printTestString("player will step down");
+    };
+    auto output = windowManager.runEvents();
+    EXPECT_TRUE(output);
 }
 
 TEST(PlayerStep, PlayerFallTest) {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("Unable to initialize SDL");
-        return;
-    }
-    SDL_Window *window = SDL_CreateWindow("Player Fall Down TEST",
-                                          SDL_WINDOWPOS_CENTERED,
-                                          SDL_WINDOWPOS_CENTERED,
-                                          1080,
-                                          720,
-                                          SDL_WINDOW_OPENGL | SDL_WINDOW_ALLOW_HIGHDPI
-    );
-    if (!window) {
-        printf("Unable to create window");
-        return;
-    }
-    SDL_GLContext glContext = utils::createOpenGLContext(window);
-    if (!glContext) {
-        printf("Problem creating OpenGL context ");
-        return;
-    }
-    SDL_GL_MakeCurrent(window, glContext);
-    SDL_GL_SetSwapInterval(1);
-    ngl::NGLInit::initialize();
-    glClear(GL_COLOR_BUFFER_BIT);
-    SDL_GL_SwapWindow(window);
-    bool quit = false;
-    SDL_Event event;
-
-    Table players;
-    players.createEntity();
-    players.registerComponentType(CameraComponents::getComponentID());
-    players.registerComponentType(SpeedComponent::getComponentID());
-
-    Table world;
-    for (uint32_t i = 0; i < 29; i++) {
-        world.createEntity();
-    }
-    world.registerComponentType(BlockComponents::getComponentID());
-    world.registerComponentType(BlockTextureComponent::getComponentID());
-    world.registerComponentType(TransformComponents::getComponentID());
-    SetPositionSystem ms;
-    for (float j = 0; j < 4; j++) {
-        ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
-        world.run(&ms, TransformComponents::getComponentID(), j, j);
-    }
-    for (float x = -2.0f; x < 3.0f; x++) {
-        for (float z = -2.0f; z < 3.0f; z++) {
-            ms.i_pos = ngl::Vec3(x, -50.0f, z + 5);
-            world.run(&ms, TransformComponents::getComponentID(), (x + 2) * 5 + (z + 2) + 4, (x + 2) * 5 + (z + 2) + 4);
+    SDLWindowManager windowManager = SDLWindowManager(false, true, false, true, true, false, false, true, 1);
+    windowManager.createWindow("Step Fall TEST");
+    windowManager.generateWorld = [](Table* i_world, Table* i_players) {
+        for (uint32_t i = 0; i < 29; i++) {
+            i_world->createEntity();
         }
-    }
-    ApplyBlockTextureSystem applyBlockTextureSystem;
-    applyBlockTextureSystem.i_blockType = BlockType::Grass;
-    world.run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
-
-    RenderWorldSystem renderWorldSystem;
-    renderWorldSystem.i_world = &world;
-    PlayerFallSystem playerFallSystem;
-    playerFallSystem.i_world = &world;
-    playerFallSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-            players.getComponentIndex(SpeedComponent::getComponentID())).get());
-
-    bool success = false;
-    int32_t lastTime = SDL_GetTicks();
-
-    bool wHeld = false;
-    bool sHeld = false;
-
-    utils::printTestString("player falls down");
-
-    while (!quit) {
-        int32_t currentTime = SDL_GetTicks();
-        int32_t deltaTime = currentTime - lastTime;
-        lastTime = currentTime;
-
-        if (wHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
+        i_world->registerComponentType(BlockComponents::getComponentID());
+        i_world->registerComponentType(BlockTextureComponent::getComponentID());
+        i_world->registerComponentType(TransformComponents::getComponentID());
+        SetPositionSystem ms;
+        for (float j = 0; j < 4; j++) {
+            ms.i_pos = ngl::Vec3(0.0f, 0.0f, j);
+            i_world->run(&ms, TransformComponents::getComponentID(), j, j);
         }
-
-        if (sHeld) {
-            MovePlayerSystem playerMoveSystem;
-            playerMoveSystem.i_dir = ngl::Vec3(0.0f, 0.0f, -deltaTime);
-            playerMoveSystem.i_world = &world;
-            playerMoveSystem.i_speed = static_cast<SpeedComponent *>(players.getColumn(
-                    players.getComponentIndex(SpeedComponent::getComponentID())).get());
-            players.run(&playerMoveSystem, CameraComponents::getComponentID());
-        }
-
-        while (SDL_PollEvent(&event)) {
-            switch (event.type) {
-                case SDL_MOUSEMOTION: {
-                    RotateCameraSystem rotateCameraSystem;
-                    rotateCameraSystem.i_mouseDelta = ngl::Vec2(event.motion.xrel, event.motion.yrel);
-                    players.run(&rotateCameraSystem, CameraComponents::getComponentID());
-                }
-                    break;
-                case SDL_QUIT:
-                    quit = true;
-                    break;
-                case SDL_KEYUP: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = false;
-                            break;
-                        case SDLK_s:
-                            sHeld = false;
-                            break;
-                    }
-                }
-                    break;
-                case SDL_KEYDOWN: {
-                    switch (event.key.keysym.sym) {
-                        case SDLK_w:
-                            wHeld = true;
-                            break;
-                        case SDLK_s:
-                            sHeld = true;
-                            break;
-                        case SDLK_ESCAPE:
-                            quit = true;
-                            break;
-                        case SDLK_RETURN:
-                            success = true;
-                            quit = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                default:
-                    break;
+        for (float x = -2.0f; x < 3.0f; x++) {
+            for (float z = -2.0f; z < 3.0f; z++) {
+                ms.i_pos = ngl::Vec3(x, -50.0f, z + 5);
+                i_world->run(&ms, TransformComponents::getComponentID(), (x + 2) * 5 + (z + 2) + 4, (x + 2) * 5 + (z + 2) + 4);
             }
         }
-        players.run(&playerFallSystem, CameraComponents::getComponentID());
-        players.run(&renderWorldSystem, CameraComponents::getComponentID());
-        SDL_GL_SwapWindow(window);
-    }
-    EXPECT_TRUE(success);
-    SDL_Quit();
+        ApplyBlockTextureSystem applyBlockTextureSystem;
+        applyBlockTextureSystem.i_blockType = BlockType::Grass;
+        i_world->run(&applyBlockTextureSystem, BlockTextureComponent::getComponentID());
+
+        utils::printTestString("player will fall down");
+    };
+    auto output = windowManager.runEvents();
+    EXPECT_TRUE(output);
 }
