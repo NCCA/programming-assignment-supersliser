@@ -6,7 +6,7 @@
 
 void generateWorld(Table* i_world, int i_xsize, int i_ysize, int i_zsize, siv::PerlinNoise::seed_type i_seed)
 {
-    float scale = i_xsize / 1000.0f;
+    float scale = 0.0001f;
     siv::PerlinNoise noise{i_seed};
     int blockCount = 0;
     for (int x = 0; x < i_xsize; x++)
