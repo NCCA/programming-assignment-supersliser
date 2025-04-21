@@ -65,3 +65,11 @@ Above is a class diagram to describe the basic ideas behind how the project is s
 
 > [!NOTE]
 > The above diagram does not show all components and systems, rather it demonstrates the basic ideas, of which you can assume other components and systems will follow similar patterns. To view a full UML, see [docs/FullUML.png](https://github.com/NCCA/programming-assignment-supersliser/blob/docs/docs/fullUML.png?raw=true)
+
+## Testing
+
+Upon building the program, you should end up with 2 binaries: `build/ColonyGame` and `build/Tests`.
+
+The `ColonyGame` executable will launch you straight into an explorable world.
+
+The `Tests` executable will run the test suites to make sure the program runs properly, due to the graphical nature of the program, some tests will require visual confirmation from the user that what is expected to happen, is indeed happening. For these tests, please press `ENTER` to end that specific test with a `SUCCCESS`, or press `ESC` to  end the test with a `FAIL`.
