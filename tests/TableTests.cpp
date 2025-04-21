@@ -16,6 +16,9 @@ int main(int argc, char **argv)
     return RUN_ALL_TESTS();
 }
 
+
+/// @brief Tests if a table is able to have entities added to it
+/// @detail When adding an entity to a table, it's ID is the index it was originally added to. For example, the first entity added to a table will have ID 0, the second will have ID 1 etc... This test checks that a table can have multiple entities assigned to it by checking the id's of each entity after they have been added to the table.
 TEST(Table, AddEntity) {
     Table table;
     uint32_t entity = table.createEntity();
@@ -24,6 +27,9 @@ TEST(Table, AddEntity) {
     EXPECT_EQ(entity2, 1);
 }
 
+/// @brief Tests if a table is able to assign a component to an entity
+/// @detail Components are associated with entities, therefore we must add an entity first, then we can attempt to add a component to the table which will create a component of that type for each entity in the table. This test also checks that, after a component is registered with a table, any entities added afterwards will also have this component.
+/// @note You may notice that this tests initialises SDL but never actually uses it, this is to because the component used for this test, Transform Component, relies on SDL and OpenGL to be able to update VBO instance locations, without having this active, the test will crash due to attempting to access the OpenGL systems which are not initialised.
 TEST(Table, AddComponent) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("Unable to initialize SDL");
@@ -62,6 +68,9 @@ TEST(Table, AddComponent) {
     EXPECT_EQ(table.getComponentCount(), 2);
 }
 
+
+/// @brief Tests if a table is able to run a system on a set of components, each assigned to entities
+/// @detail When a system is run on a table, the function is able to specify a specific subset of entities to run this on, rather than running on all components of that type within the table. The user can also specify 1 individual component to run on by stating its index in both the start and end parameters of the function.
 TEST(Table, RunSystem) {
     Table table;
     for (uint32_t i = 0; i < 10; i++) {

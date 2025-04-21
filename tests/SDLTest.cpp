@@ -11,6 +11,8 @@
 #include "SDLWindowManager.h"
 #include "GenerateWorld.h"
 
+/// @brief Tests that an SDL window with OpenGL can be created and displayed
+/// @result Success if the user presses ENTER after entering the event loop after the window has been displayed, otherwise fails
 TEST(SDLTest, WindowVisible)
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -64,6 +66,7 @@ TEST(SDLTest, WindowVisible)
     SDL_Quit();
 }
 
+/// @brief Tests the SDLWindowManager can be created and can contain a window
 TEST(SDLTest, SDLWindowManagerTest) {
     SDLWindowManager windowManager = SDLWindowManager();
     windowManager.createWindow("SDL Window Manager Test");
@@ -98,6 +101,7 @@ TEST(SDLTest, SDLWindowManagerTest) {
     EXPECT_TRUE(windowManager.isMSprintEnabled());
 }
 
+/// @brief Tests the SDLWindowManager can show a world.
 TEST(SDLTest, SDLWindowManagerUsage) {
     SDLWindowManager windowManager = SDLWindowManager();
     windowManager.createWindow("SDL Window Manager Usage Test");

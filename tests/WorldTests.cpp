@@ -15,6 +15,8 @@
 #include "system/SetCameraLookSystem.h"
 #include "SDLWindowManager.h"
 
+/// @brief Tests if the world can be displayed in an SDL window.
+/// @result A single grass block floating in a grey background. The block will appear slightly to the left of the screen and diagonally rotated to the camera.
 TEST(WorldDisplay, WorldVisible) {
     SDLWindowManager windowManager = SDLWindowManager(0, 1, 0, 0, 0, 0, 0, 0, 0);
     windowManager.createWindow("World Visible TEST");
@@ -43,7 +45,8 @@ TEST(WorldDisplay, WorldVisible) {
     EXPECT_TRUE(output);
 }
 
-
+/// @brief Tests if multiple blocks can be displayed in an SDL window
+/// @result a 3x3 of grass blocks directly above a 3x3 of brown dirt blocks. The blocks will appear central in the screen and diagonally rotated to the camera.
 TEST(WorldDisplay, WorldMultiBlockVisible) {
     SDLWindowManager windowManager = SDLWindowManager(0, 1, 0, 0, 0, 0, 0, 0, 0);
     windowManager.createWindow("MutliBlock Visible TEST");
@@ -87,6 +90,9 @@ TEST(WorldDisplay, WorldMultiBlockVisible) {
     EXPECT_TRUE(output);
 }
 
+/// @brief Tests all textures and makes sure that they display properly.
+/// @result All possible blocks (see include/component/BlockType.h for a list of all possible blocks).
+/// @note The null block should be displayed as a crate.
 TEST(WorldDisplay, AllTextureTest) {
     SDLWindowManager windowManager = SDLWindowManager(0, 1, 0, 0, 0, 0, 0, 0, 0);
     windowManager.createWindow("All Texture TEST");

@@ -5,6 +5,8 @@
 #include <gtest/gtest.h>
 #include <PerlinNoise.hpp>
 
+/// @brief Tests the generation of 2D Perlin noise.
+/// @detial Tests by checking the UV center of the generated noise and checks that a value between 1 and -1 is got.
 TEST(PerlinNoise, 2DPerlinNoise)
 {
     // Create a Perlin noise object
@@ -18,6 +20,8 @@ TEST(PerlinNoise, 2DPerlinNoise)
     EXPECT_LE(noiseValue, 1.0);
 }
 
+/// @brief Tests the generation of 3D Perlin noise.
+/// @detail Tests by checking the WUV center of the generated noise and checks that a value between 1 and -1 is returned.
 TEST(PerlinNoise, 3DPerlinNoise)
 {
     // Create a Perlin noise object
