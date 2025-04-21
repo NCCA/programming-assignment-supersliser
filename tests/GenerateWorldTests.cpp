@@ -22,7 +22,7 @@ TEST(GenerateWorld, generateWorld)
     SDLWindowManager windowManager = SDLWindowManager(false, true, true, true, true, true, true, true, 1, ngl::Vec3(0, 20, 0));
     windowManager.createWindow("World Generator TEST");
     windowManager.generateWorld = [](Table* i_world, Table* i_players) {
-        generateWorld(i_world, 10, 20, 10, 0);
+        generateWorld(i_world, 10, 10, 10, 1);
         utils::printTestString("world will generate");
     };
     auto output = windowManager.runEvents();
