@@ -54,6 +54,8 @@ void Camera ::setDefaultCamera() noexcept
 
   setShape(m_fov, m_aspect, m_zNear, m_zFar); // good default values here
   set(ngl::Vec3(0.0, 2.0, 0.0), ngl::Vec3(0.0, 2.0, 1.0), ngl::Vec3(0, 1, 0));
+    m_yawAngle = -90.0f; // Default looking along negative Z
+    m_pitchAngle = 0.0f;
 }
 
 void Camera::set(const ngl::Vec3 &_eye, const ngl::Vec3 &_look, const ngl::Vec3 &_up) noexcept
@@ -197,6 +199,7 @@ void Camera::moveBoth(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
 void Camera::rotAxes(const ngl::Vec4& axis, ngl::Vec4& vector, ngl::Real angle) noexcept
 {
   ngl::Mat4 rotation;
+  rotation.identity();
   if (axis == ngl::Vec4(1.0f, 0.0f, 0.0f, 0.0f)) // X-axis
   {
     rotation = ngl::Mat4::rotateX(angle);
@@ -220,28 +223,48 @@ void Camera::roll(ngl::Real _angle) noexcept
 
 void Camera::yaw(ngl::Real _angle) noexcept
 {
-  // Rotate around the world space Y-axis
-  ngl::Vec4 worldy(0.0f, 1.0f, 0.0f, 0.0f);
-  rotAxes(worldy, m_n, _angle);
-  m_u = m_up.cross(m_n);
-  m_u.normalize();
-  m_v = m_n.cross(m_u);
-  m_v.normalize();
-  setViewMatrix();
+    m_yawAngle += _angle;
+    updateCameraVectors();
 }
 
 void Camera::pitch(ngl::Real _angle) noexcept
 {
-  // Rotate around the world space X-axis
-  ngl::Vec4 worldx(1.0f, 0.0f, 0.0f, 0.0f);
-  rotAxes(worldx, m_n, _angle);
-  m_u = m_up.cross(m_n);
-  m_u.normalize();
-  m_v = m_n.cross(m_u);
-  m_v.normalize();
-  setViewMatrix();
-}
+    // Add the angle to our pitch
+    m_pitchAngle += _angle;
 
+    // Constrain pitch to avoid gimbal lock (-89 to +89 degrees)
+    if(m_pitchAngle > 89.0f)
+        m_pitchAngle = 89.0f;
+    if(m_pitchAngle < -89.0f)
+        m_pitchAngle = -89.0f;
+
+    updateCameraVectors();
+}
+void Camera::updateCameraVectors() noexcept
+{
+    // Calculate the new front vector
+    ngl::Vec3 front;
+    front.m_x = cos(ngl::radians(m_yawAngle)) * cos(ngl::radians(m_pitchAngle));
+    front.m_y = sin(ngl::radians(m_pitchAngle));
+    front.m_z = sin(ngl::radians(m_yawAngle)) * cos(ngl::radians(m_pitchAngle));
+    front.normalize();
+
+    // Calculate the new camera n vector (opposite of front)
+    m_n = -front;
+    m_n.normalize();
+
+    // Recalculate the right and up vectors
+    m_u = ngl::Vec4::up().cross(m_n);
+    m_u.normalize();
+    m_v = m_n.cross(m_u);
+    m_v.normalize();
+
+    // Update look target based on eye position and front vector
+    m_look = m_eye - m_n;
+
+    // Reset the view matrix
+    setViewMatrix();
+}
 void Camera::moveEye(ngl::Real _dx, ngl::Real _dy, ngl::Real _dz) noexcept
 {
   m_eye.m_x += _dx;

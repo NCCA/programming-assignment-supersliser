@@ -370,7 +370,9 @@ protected :
   /// @brief set the projection matrix
   //----------------------------------------------------------------------------------------------------------------------
   void setProjectionMatrix() noexcept;
-
+    ngl::Real m_yawAngle = 0.0f;
+    ngl::Real m_pitchAngle = 0.0f;
+    void updateCameraVectors() noexcept;
 };
 //----------------------------------------------------------------------------------------------------------------------
 #endif //CAMERA_H

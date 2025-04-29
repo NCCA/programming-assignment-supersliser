@@ -20,7 +20,7 @@ class RotateCameraSystem : public a_System<CameraComponents>
     /// @brief The mouse delta to be applied to the camera
     ngl::Vec2 i_mouseDelta;
     /// @brief The sensitivity of the camera rotation
-    float s_sensitivity = 0.1f;
+    float s_sensitivity = 0.075f;
     /// @brief Runs the system
     /// @param[in] io_component A pointer to the CameraComponents to have the rotation applied to it
     /// @param[in] i_index The index of the entity in the parent table
