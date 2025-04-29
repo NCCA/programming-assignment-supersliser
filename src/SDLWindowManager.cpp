@@ -98,6 +98,8 @@ bool SDLWindowManager::runEvents()
         walkFunctions.push_back([&](int32_t deltaTime) { walk(ngl::Vec2(-dHeld, 0), deltaTime); });
     }
 
+    SDL_SetRelativeMouseMode(SDL_TRUE);
+
     while (m_isRunning) {
         int32_t currentTime = SDL_GetTicks();
         int32_t deltaTime = currentTime - lastTime;
