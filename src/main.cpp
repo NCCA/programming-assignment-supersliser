@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     SDLWindowManager windowManager = SDLWindowManager(false, true, true, true, true, true, true, true, 1, ngl::Vec3(0, 20, 0));
     windowManager.createWindow("World Generator TEST");
     windowManager.generateWorld = [](Table* i_world, Table* i_players) {
-        generateWorld(i_world, 100, 20, 100, 1565614156156);
+        generateWorld(i_world, 20, 10, 20, 1565614156156);
     };
     windowManager.runEvents();
   return EXIT_SUCCESS;

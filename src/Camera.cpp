@@ -54,6 +54,8 @@ void Camera ::setDefaultCamera() noexcept
 
   setShape(m_fov, m_aspect, m_zNear, m_zFar); // good default values here
   set(ngl::Vec3(0.0, 2.0, 0.0), ngl::Vec3(0.0, 2.0, 1.0), ngl::Vec3(0, 1, 0));
+  m_yawAngle = -90.0f;
+  m_pitchAngle = -20.0f;
 }
 
 void Camera::set(const ngl::Vec3 &_eye, const ngl::Vec3 &_look, const ngl::Vec3 &_up) noexcept
