@@ -21,7 +21,7 @@
 #ifndef CAMERA_H_
 #define CAMERA_H_
 /// @file Camera.h
-/// @brief a simple camera class based on the Hill Book
+/// @brief a simple camera class based on Code from Jon Macey who based it on the Hill Book
 // must include types.h first for ngl::Real and GLEW if required
 #include <ngl/AABB.h>
 #include <ngl/Plane.h>
