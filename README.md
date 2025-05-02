@@ -1,6 +1,6 @@
 # Thomas Lower CFGAA Assignment
 > s5605187
-> [!NOTE]
+> 
 > Any graphics created in this project were likely generated using [PlantUML](https://plantuml.com/)
 
 ## Idea
