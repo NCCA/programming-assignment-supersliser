@@ -3,14 +3,16 @@
 //
 
 #include <iostream>
+#include <utility>
 #include <ngl/VAOFactory.h>
 
 #include "component/BlockTextureComponent.h"
 #include "component/TransformComponents.h"
 
-TransformComponents::TransformComponents(size_t i_size)
+TransformComponents::TransformComponents(size_t i_size, std::shared_ptr<GLuint> i_vaoID)
 {
-    if (*BlockTextureComponent::s_vaoID == 0)
+    m_vaoID = std::move(i_vaoID);
+    if (*m_vaoID == 0)
     {
         for (size_t i = 0; i < i_size; i++)
         {
@@ -21,7 +23,7 @@ TransformComponents::TransformComponents(size_t i_size)
     m_positionVboId = std::make_shared<GLuint>();
 
     // Add the Instanced Position VBO
-    glBindVertexArray(*BlockTextureComponent::s_vaoID);
+    glBindVertexArray(*m_vaoID);
     for (size_t i = 0; i < i_size; i++)
     {
         m_ps.push_back(ngl::Vec3(0, 0, 0));
@@ -44,13 +46,13 @@ TransformComponents::TransformComponents(size_t i_size)
 void TransformComponents::addEntity()
 {
     m_ps.push_back(ngl::Vec3(0, 0, 0));
-    if (*BlockTextureComponent::s_vaoID == 0)
+    if (*m_vaoID == 0)
     {
         return;
     }
 
     // Update the Instanced Position VBO
-    glBindVertexArray(*BlockTextureComponent::s_vaoID);
+    glBindVertexArray(*m_vaoID);
     glBindBuffer(GL_ARRAY_BUFFER, *m_positionVboId);
     glBufferData(GL_ARRAY_BUFFER, sizeof(ngl::Vec3) * m_ps.size(), &m_ps[0].m_x, GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);

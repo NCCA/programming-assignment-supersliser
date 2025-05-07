@@ -40,7 +40,7 @@ public:
     std::vector<GLfloat> m_textureIDs;
     /// @brief Static Pointer to the VAO ID
     /// @detail Due to the instanced nature of this system, the VAO ID is static and shared between all instances of this class so that all blocks are added to the same VAO as instances.
-    static std::shared_ptr<GLuint> s_vaoID;
+    std::shared_ptr<GLuint> m_vaoID;
 
     // @brief Static Vector of the currently active texture paths
     static std::vector<std::string> s_registeredTextures;

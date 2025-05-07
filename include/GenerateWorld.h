@@ -34,4 +34,6 @@ float getNoise(siv::PerlinNoise noise, int x, int y, float scale);
 
 void growTree(Table* i_world, int i_xPos, int i_zPos, int i_yPos, int* i_blockCount);
 
+void generateChunkedWorld(std::vector<Table>* i_world, Table* i_chunks, int i_xChunkSize, int i_zChunkSize, siv::PerlinNoise::seed_type i_seed);
+
 #endif //COLONYMANAGERBUILD_GENERATEWORLD_H

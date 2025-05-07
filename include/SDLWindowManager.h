@@ -32,6 +32,8 @@ class SDLWindowManager {
     SDL_GLContext m_glContext;
     /// @brief World Table
     Table m_world;
+
+    std::vector<Table> m_chunkedWorld;
     /// @brief Player Table
     Table m_players;
 
@@ -65,6 +67,8 @@ public:
     /// @brief Begins the event loop
     /// @returns true if the loop is ended by pressing enter, otherwise returns false
     bool runEvents();
+
+    bool runEventsWithChunking();
     /// @brief Handles the movement of the player
     /// @param[in] dir The direction of the movement
     /// @param[in] deltaTime The time since the last frame
@@ -89,7 +93,9 @@ public:
     explicit SDLWindowManager(bool i_fullscreen = false, bool i_visible = true, bool i_sprint = false,
                      bool i_controlW = false, bool i_controlS = false, bool i_controlA = false,
                      bool i_controlD = false, bool i_mouseControl = false, bool i_canFall = false, ngl::Vec3 i_spawnPoint = ngl::Vec3(0, 2, 0));
+
     std::function<void(Table* io_world, Table* i_players)> generateWorld;
+    std::function<void(std::vector<Table>* io_chunkedWorld, Table* io_chunks, Table* i_players)> generateChunkedWorld;
 
     bool isMIsRunning() const {
         return m_isRunning;

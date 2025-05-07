@@ -17,7 +17,7 @@ class TransformComponents {
 public:
     /// @brief Constructor
     /// @param[in] i_size number of entities in parent table
-    TransformComponents(size_t i_size);
+    TransformComponents(size_t i_size, std::shared_ptr<GLuint> i_vaoID);
     /// @brief Vector of positions
     /// @detail Each index of the vector corresponds to a separate entity
     std::vector<ngl::Vec3> m_ps;
@@ -29,6 +29,9 @@ public:
     static std::uint8_t getComponentID() { return 2;}
     /// @brief Adds an entity to the component
     void addEntity();
+
+    std::shared_ptr<GLuint> m_vaoID;
+
 };
 
 #endif //TRANSFORMCOMPONENT_H

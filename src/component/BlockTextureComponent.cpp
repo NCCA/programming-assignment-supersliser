@@ -13,14 +13,13 @@
 
 // Declare static variables
 std::vector<std::string> BlockTextureComponent::s_registeredTextures;
-std::shared_ptr<GLuint> BlockTextureComponent::s_vaoID = std::make_shared<GLuint>();
 std::vector<GLuint> BlockTextureComponent::s_registeredTextureIDs;
 
 BlockTextureComponent::BlockTextureComponent(size_t i_size)
 {
     //Create the VAO
-    glGenVertexArrays(1, s_vaoID.get());
-    glBindVertexArray(*s_vaoID);
+    glGenVertexArrays(1, m_vaoID.get());
+    glBindVertexArray(*m_vaoID);
 
     //Create the Mesh VBO
     m_meshVboId = std::make_shared<GLuint>();
@@ -64,7 +63,6 @@ BlockTextureComponent::BlockTextureComponent(size_t i_size)
     {
         std::cerr << "Error Creating texture component: " << error << std::endl;
     }
-
     //Load all the textures
     loadAllTextures();
 }
@@ -73,7 +71,7 @@ void BlockTextureComponent::addBlock()
 {
     // Resizes the texture VBO
     m_textureIDs.push_back(0);
-    glBindVertexArray(*s_vaoID);
+    glBindVertexArray(*m_vaoID);
     glBindBuffer(GL_ARRAY_BUFFER, *m_texVboId);
     glBufferData(GL_ARRAY_BUFFER, m_textureIDs.size() * sizeof(GLfloat), m_textureIDs.data(), GL_STATIC_DRAW);
     glEnableVertexAttribArray(3);

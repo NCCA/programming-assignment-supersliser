@@ -83,6 +83,16 @@ add_executable(${TargetName}
         include/SDLWindowManager.h
         src/SDLWindowManager.cpp
         include/component/ChunkComponent.h
+        src/component/ChunkComponent.cpp
+        src/system/TestChunkSystem.cpp
+        src/system/UpdateChunkToGPUSystem.cpp
+        include/system/TestChunkSystem.h
+        include/system/UpdateChunkToGPUSystem.h
+        src/system/RenderChunkedWorldSystem.cpp
+        include/system/RenderChunkedWorldSystem.h
+        include/system/ChunkedPlayerFallSystem.h
+        src/system/ChunkedPlayerFallSystem.cpp
+        include/system/SetChunkPositionSystem.h
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/ PerlinNoise/)
@@ -159,6 +169,16 @@ add_executable(Tests
         include/SDLWindowManager.h
         src/SDLWindowManager.cpp
         include/component/ChunkComponent.h
+        src/component/ChunkComponent.cpp
+        src/system/TestChunkSystem.cpp
+        src/system/UpdateChunkToGPUSystem.cpp
+        include/system/TestChunkSystem.h
+        include/system/UpdateChunkToGPUSystem.h
+        src/system/RenderChunkedWorldSystem.cpp
+        include/system/RenderChunkedWorldSystem.h
+        include/system/ChunkedPlayerFallSystem.h
+        src/system/ChunkedPlayerFallSystem.cpp
+        include/system/SetChunkPositionSystem.h
 )
 include_directories(include)
 target_sources(Tests PRIVATE)

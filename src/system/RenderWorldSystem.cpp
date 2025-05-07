@@ -20,6 +20,9 @@ void RenderWorldSystem::run(CameraComponents* io_component, int i_index)
     std::vector<ngl::Vec3> pos = static_cast<TransformComponents*>(i_world->getColumn(
         i_world->getComponentIndex(TransformComponents::getComponentID())).get())->m_ps;
 
+    std::shared_ptr<GLuint> VAOID =
+        static_cast<BlockTextureComponent*>(i_world->getColumn(
+            i_world->getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_vaoID;
     std::shared_ptr<GLuint> meshVboId =
         static_cast<BlockTextureComponent*>(i_world->getColumn(
             i_world->getComponentIndex(BlockTextureComponent::getComponentID())).get())->m_meshVboId;
@@ -38,7 +41,7 @@ void RenderWorldSystem::run(CameraComponents* io_component, int i_index)
     }
 
     // Bind VAO and VBOs
-    glBindVertexArray(*BlockTextureComponent::s_vaoID);
+    glBindVertexArray(*VAOID);
 
     glBindBuffer(GL_ARRAY_BUFFER, *textureComponent->m_texVboId);
     glBufferData(GL_ARRAY_BUFFER, textureComponent->m_textureIDs.size() * sizeof(GLfloat),

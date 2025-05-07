@@ -70,6 +70,7 @@ public:
     /// @brief Creates a new entity and returns its ID.
     /// @return The ID of the created entity.
     uint32_t createEntity();
+
 };
 
 template<typename T>
