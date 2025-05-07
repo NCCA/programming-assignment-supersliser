@@ -15,6 +15,7 @@
 class BlockComponents
 {
 public:
+      std::vector<uint32_t> m_parentChunk;
     /// @brief Constructor
     /// @param[in] i_size number of entities in parent table
     BlockComponents(size_t i_size);

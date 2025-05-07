@@ -40,12 +40,13 @@ public:
     /// @tparam T The type of the component.
     /// @param i_system The system to run.
     /// @param i_componentType The component type to run the system on.
-    /// @param startIndex The starting index for the system run (default is -1).
-    /// @param endIndex The ending index for the system run (default is -1).
+    /// @param startIndex The inclusive starting index for the system run (default is -1).
+    /// @param endIndex The exclusive ending index for the system run (default is -1).
     /// @throws std::invalid_argument if the component type is not found.
     /// @throws std::runtime_error if the component is null.
+    /// @detail A subset of entities can be specified using the startIndex and endIndex params. If these are ommited, the system will be run on every component of that type in the table. If startindex = endindex, then the system will only be run on the entity specified by startindex.
     template<typename T>
-    void run(a_System<T>* i_system, const uint8_t i_componentType, int startIndex = -1, int endIndex = -1);
+    void run(a_System<T>* i_system, const uint8_t i_componentType, int i_startIndex = -1, int i_endIndex = -1);
 
     /// @brief gets the index of a component type.
     /// @param i_componentType The component type to get the index of.
@@ -72,7 +73,7 @@ public:
 };
 
 template<typename T>
-void Table::run(a_System<T>* i_system, const uint8_t i_componentType, int startIndex, int endIndex) {
+void Table::run(a_System<T>* i_system, const uint8_t i_componentType, int i_startIndex, int i_endIndex) {
     int index = getComponentIndex(i_componentType);
     if (index == -1) {
         throw std::invalid_argument("Component type not found");

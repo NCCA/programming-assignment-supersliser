@@ -12,7 +12,7 @@ class ClassName {
 public:
     Constructor(size_t i_size);
     std::vector<datatype> m_data;
-    statis std::uint8_t getComponentID() { return a_static_number; }
+    static std::uint8_t getComponentID() { return a_static_number; }
 };
 ```
 

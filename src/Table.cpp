@@ -33,7 +33,7 @@ uint32_t Table::createEntity()
             static_cast<TransformComponents*>(m_columns[i].m_column.get())->addEntity();
             break;
         case 3:
-            // add anything to block component if needed
+            static_cast<BlockComponents*>(m_columns[i].m_column.get())->m_parentChunk.push_back(0);
             break;
         case 4:
             {

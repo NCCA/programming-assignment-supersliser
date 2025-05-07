@@ -6,5 +6,7 @@
 
 BlockComponents::BlockComponents(size_t i_size)
 {
-    //null
+    for (int i = 0; i < i_size; i++) {
+        m_parentChunk.push_back(0);
+    }
 }

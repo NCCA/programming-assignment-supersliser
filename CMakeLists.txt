@@ -82,6 +82,7 @@ add_executable(${TargetName}
         include/system/SetPlayerPositionSystem.h
         include/SDLWindowManager.h
         src/SDLWindowManager.cpp
+        include/component/ChunkComponent.h
 )
 # Add NGL include path
 include_directories(include $ENV{HOME}/NGL/include include/ PerlinNoise/)
@@ -157,6 +158,7 @@ add_executable(Tests
         include/system/SetPlayerPositionSystem.h
         include/SDLWindowManager.h
         src/SDLWindowManager.cpp
+        include/component/ChunkComponent.h
 )
 include_directories(include)
 target_sources(Tests PRIVATE)
